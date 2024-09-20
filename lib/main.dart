@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sign_lang_app/core/routing/app_router.dart';
@@ -8,8 +10,14 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +27,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Doc App',
         theme: ThemeData(
-          primaryColor: ColorsManager.mainBlue,
-          scaffoldBackgroundColor: Colors.white,
-        fontFamily: 'Cairo'
-
-        ),
+            primaryColor: ColorsManager.mainBlue,
+            scaffoldBackgroundColor: Colors.white,
+            fontFamily: 'Cairo'),
         debugShowCheckedModeBanner: false,
- initialRoute:Routes.onBoardingScreen,
-          onGenerateRoute: AppRouter.generateRoute,
+        initialRoute: Routes.splashScreen,
+        onGenerateRoute: AppRouter.generateRoute,
       ),
     );
   }
