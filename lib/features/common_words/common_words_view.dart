@@ -8,23 +8,6 @@ class CommonWordsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: CircleAvatar(
-            backgroundColor: ColorsManager.lightGray,
-            child: IconButton(
-              icon: const Icon(Icons.arrow_back_ios,
-                  color: Colors.white), // Back icon
-              onPressed: () {
-                Navigator.of(context).pop(); // Pops back to the previous screen
-              },
-            ),
-          ),
-        ),
-      ),
       body: CommomWordsViewBody(),
     );
   }

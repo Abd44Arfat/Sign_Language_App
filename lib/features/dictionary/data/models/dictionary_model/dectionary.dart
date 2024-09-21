@@ -1,6 +1,6 @@
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 
-class Dectionary extends DictionaryEntity{
+class Dectionary extends DictionaryEntity {
   String? id;
   String? videoUrl;
   String? title;

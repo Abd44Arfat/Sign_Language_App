@@ -4,8 +4,8 @@ import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 
 class DictionaryListViewItem extends StatelessWidget {
-  const DictionaryListViewItem({super.key});
-
+  const DictionaryListViewItem({super.key, required this.title});
+final String title ;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,7 +38,7 @@ class DictionaryListViewItem extends StatelessWidget {
             // Additional widgets can be added here if needed
 
             Text(
-              "How Are You",
+              title,
               style: TextStyles.font16GraySemibold,
             )
           ],

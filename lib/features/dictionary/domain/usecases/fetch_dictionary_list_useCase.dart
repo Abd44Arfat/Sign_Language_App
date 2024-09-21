@@ -1,13 +1,19 @@
 import 'package:dartz/dartz.dart';
 import 'package:sign_lang_app/core/errors/failure.dart';
-import 'package:sign_lang_app/features/dictionary/domain/Entities/dictionary_entity.dart';
+import 'package:sign_lang_app/core/usecase/usecase.dart';
+import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 import 'package:sign_lang_app/features/dictionary/domain/repos/dictionary_repo.dart';
 
-class FetchDictionaryListUsecase {
+class FetchDictionaryListUsecase
+    extends UseCase<List<DictionaryEntity>, NoParam> {
   final DictionaryRepo dictionaryRepo;
 
   FetchDictionaryListUsecase({required this.dictionaryRepo});
-  Future<Either<Failure, List<DictionaryEntity>>> fetchDictionaryList() {
-    return dictionaryRepo.fetchDictionaryList();
+
+  @override
+  Future<Either<Failure, List<DictionaryEntity>>> call(
+      [NoParam? params]) async {
+    return await dictionaryRepo
+        .fetchDictionaryList(); // Ensure this returns Either<Failure, List<DictionaryEntity>>
   }
 }

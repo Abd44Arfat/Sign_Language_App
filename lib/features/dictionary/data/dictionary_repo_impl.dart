@@ -6,31 +6,22 @@ import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_ent
 import 'package:sign_lang_app/features/dictionary/domain/repos/dictionary_repo.dart';
 
 class DictionaryRepoImpl extends DictionaryRepo {
-
   final DictionaryRemoteDataSource dictionaryRemoteDataSource;
   final DictionaryLocalDataSourceImpl dictionaryLocalDataSource;
-  DictionaryRepoImpl({required this.dictionaryRemoteDataSource,required this.dictionaryLocalDataSource});
+  DictionaryRepoImpl(
+      {required this.dictionaryRemoteDataSource,
+      required this.dictionaryLocalDataSource});
   @override
-  Future<Either<Failure, List<DictionaryEntity>>> fetchDictionaryList()async {
-
-try {
-      var dictionaryList= dictionaryLocalDataSource.fetchDictionaryList();
+  Future<Either<Failure, List<DictionaryEntity>>> fetchDictionaryList() async {
+    try {
+      var dictionaryList = dictionaryLocalDataSource.fetchDictionaryList();
       if (dictionaryList.isNotEmpty) {
-
-  return right( dictionaryList);
-
-
-        
+        return right(dictionaryList);
       }
-var dictionary= await dictionaryRemoteDataSource.fetchDictionaryList();
-  return right( dictionary);
-}   catch (e) {
-  return left((Failure()));
-}
-
+      var dictionary = await dictionaryRemoteDataSource.fetchDictionaryList();
+      return right(dictionary);
+    } catch (e) {
+      return left((Failure(e.toString())));
+    }
   }
-
-
-
-
 }

@@ -1,8 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
+import 'package:sign_lang_app/core/utils/api_service.dart';
 import 'package:sign_lang_app/features/common_words/common_words_view.dart';
+import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
+import 'package:sign_lang_app/features/dictionary/data/data_source/remote_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
@@ -36,10 +40,16 @@ class AppRouter {
       case Routes.dictionaryScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => FetchDictionaryListCubit(FetchDictionaryListUsecase(
-getIt.get<DictionaryRepoImpl>()
-
-            )),
+            create: (context) => FetchDictionaryListCubit(
+              FetchDictionaryListUsecase(
+                dictionaryRepo: DictionaryRepoImpl(
+                  dictionaryLocalDataSource: DictionaryLocalDataSourceImpl(),
+                  dictionaryRemoteDataSource: DictionaryRemoteDataSourceImpl(
+                    apiService: ApiService(Dio()),
+                  ),
+                ),
+              ),
+            )..fetchDictionaryList(),
             child: const DictionaryView(),
           ),
         );
