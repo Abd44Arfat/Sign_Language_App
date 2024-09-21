@@ -2,12 +2,18 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
 import 'package:sign_lang_app/core/routing/app_router.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
+import 'package:sign_lang_app/core/utils/constants.dart';
+import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
+Hive.registerAdapter(DictionaryEntityAdapter());
+
+  await Hive.openBox(KDictionaryBox);
 }
 
 class MyApp extends StatefulWidget {
