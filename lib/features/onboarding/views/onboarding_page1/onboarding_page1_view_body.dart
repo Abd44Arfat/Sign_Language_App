@@ -7,9 +7,10 @@ class OnboardingPage1ViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Onboarding(
-        imageUrl: 'assets/images/onboarding_person.png',
-        title: 'Practice Communication Skills',
-        subTitle:
-            'Enhance your signing skills with real time feedback and practice exercises', );
+      imageUrl: 'assets/images/onboarding_person.png',
+      title: 'Practice Communication Skills',
+      subTitle:
+          'Enhance your signing skills with real time feedback and practice exercises',
+    );
   }
 }

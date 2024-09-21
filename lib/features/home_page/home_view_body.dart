@@ -12,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: EdgeInsets.all(20.0),
-      child:  CustomScrollView(
+      child: CustomScrollView(
         slivers: [
           HomeAppBar(),
           SliverToBoxAdapter(
@@ -52,8 +52,6 @@ class HomeViewBody extends StatelessWidget {
             height: 10,
           )),
           WordsCardsList()
-
-
         ],
       ),
     );

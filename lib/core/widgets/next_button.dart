@@ -16,8 +16,11 @@ class NextButton extends StatelessWidget {
       textColor: Colors.white,
       minWidth: 380,
       height: 50,
-      shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20.0) ),
-      child: Text('Next' , style: TextStyles.font18WhiteSemiBold,),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      child: Text(
+        'Next',
+        style: TextStyles.font18WhiteSemiBold,
+      ),
     );
   }
 }

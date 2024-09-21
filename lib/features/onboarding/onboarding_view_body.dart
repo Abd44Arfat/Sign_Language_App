@@ -3,11 +3,10 @@ import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/widgets/next_button.dart';
-import 'package:sign_lang_app/features/onboarding_page1/onboarding_page1_view.dart';
-import 'package:sign_lang_app/features/onboarding_page2/onboarding_page2_view.dart';
-import 'package:sign_lang_app/features/onboarding_page3/onboarding_page3_view.dart';
+import 'package:sign_lang_app/features/onboarding/views/onboarding_page1/onboarding_page1_view.dart';
+import 'package:sign_lang_app/features/onboarding/views/onboarding_page2/onboarding_page2_view.dart';
+import 'package:sign_lang_app/features/onboarding/views/onboarding_page3/onboarding_page3_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 
 class OnboardingViewBody extends StatefulWidget {
   @override

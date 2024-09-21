@@ -17,18 +17,18 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     Timer(
       Duration(seconds: 2),
-          () => Navigator.pushReplacementNamed(
+      () => Navigator.pushReplacementNamed(
         context,
         Routes.onBoardingScreen,
       ),
-
     );
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body:  SplashViewBody(),
+      body: SplashViewBody(),
     );
   }
 }

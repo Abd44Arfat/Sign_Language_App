@@ -8,14 +8,8 @@ class CommomWordsViewBody extends StatelessWidget {
     return const Padding(
       padding: EdgeInsets.all(10),
       child: Column(
-        children: [
-
-        ],
+        children: [],
       ),
-
-
-
-
     );
   }
 }
