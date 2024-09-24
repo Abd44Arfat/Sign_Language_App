@@ -47,13 +47,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
             BottomNavigationBarItem(
                 label: 'Home',
                 icon: ImageIcon(
-
-                    size: iconSize+2,
+                    size: iconSize + 2,
                     const AssetImage('assets/icons/home.png'))),
             BottomNavigationBarItem(
               label: 'Learn',
               icon: ImageIcon(
-
                 size: iconSize,
                 const AssetImage('assets/icons/learning_icon.png'),
               ),
@@ -61,7 +59,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
             BottomNavigationBarItem(
                 label: 'Settings',
                 icon: ImageIcon(
-
                   size: iconSize,
                   const AssetImage('assets/icons/menu.png'),
                 )),

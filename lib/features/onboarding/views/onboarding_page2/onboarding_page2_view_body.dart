@@ -8,9 +8,9 @@ class OnboardingPage2ViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Onboarding(
-            imageUrl: 'assets/images/onboarding2.png',
-            title: 'Learn Sign Language Basics',
-            subTitle:
-                'Speak with Your Hands: Translate Signs into Text and Unlock New Connections!');
+        imageUrl: 'assets/images/onboarding2.png',
+        title: 'Learn Sign Language Basics',
+        subTitle:
+            'Speak with Your Hands: Translate Signs into Text and Unlock New Connections!');
   }
 }

@@ -11,16 +11,23 @@ class SplashViewBody extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Center(child: Text('Sign Talk' , style: TextStyle(fontWeight: FontWeight.w900 ,color: Color(0xFFA7D7A0) , fontSize: 40),)),
+        const Center(
+            child: Text(
+          'Sign Talk',
+          style: TextStyle(
+              fontWeight: FontWeight.w900,
+              color: Color(0xFFA7D7A0),
+              fontSize: 40),
+        )),
         ShakeX(
-          from: 50,
+            from: 50,
             duration: const Duration(seconds: 2),
             infinite: true,
             child: Container(
-            color: ColorsManager.mediumLightBlue,
-          width: 100, height: 20,
-        ))
-
+              color: ColorsManager.mediumLightBlue,
+              width: 100,
+              height: 20,
+            ))
       ],
     );
   }

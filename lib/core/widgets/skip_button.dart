@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../theming/styles.dart';
 
 class SkipButton extends StatelessWidget {
-  const SkipButton({super.key,required this.onPressed});
+  const SkipButton({super.key, required this.onPressed});
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,10 @@ class SkipButton extends StatelessWidget {
       children: [
         TextButton(
           onPressed: onPressed,
-          child: Text('Skip' , style: TextStyles.font18BlackLight, ),
+          child: Text(
+            'Skip',
+            style: TextStyles.font18BlackLight,
+          ),
         ),
       ],
     );

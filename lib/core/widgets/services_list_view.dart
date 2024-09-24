@@ -3,7 +3,7 @@ import 'package:sign_lang_app/core/widgets/services_item.dart';
 import 'package:sign_lang_app/models/service_model.dart';
 
 class ServicesListView extends StatefulWidget {
- const ServicesListView({super.key});
+  const ServicesListView({super.key});
 
   @override
   State<ServicesListView> createState() => _ServicesListViewState();
@@ -18,16 +18,19 @@ class _ServicesListViewState extends State<ServicesListView> {
               top: 25,
               left: 22,
               child: Image.asset(
-              'assets/icons/circle.png',
-              width: 45,
-              height: 45,
-            ), ),
-
-           Image.asset('assets/icons/translate.png' , width: 75, height: 75,),
+                'assets/icons/circle.png',
+                width: 45,
+                height: 45,
+              ),
+            ),
+            Image.asset(
+              'assets/icons/translate.png',
+              width: 75,
+              height: 75,
+            ),
           ],
         ),
         text: 'Translate'),
-
     ServiceModel(
         imageStack: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -46,8 +49,6 @@ class _ServicesListViewState extends State<ServicesListView> {
                   height: 77,
                 ),
               ),
-
-
             ],
           ),
         ),
@@ -76,7 +77,7 @@ class _ServicesListViewState extends State<ServicesListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: EdgeInsets.zero,
+        padding: EdgeInsets.zero,
         scrollDirection: Axis.horizontal,
         itemCount: services.length,
         itemBuilder: (context, index) {
