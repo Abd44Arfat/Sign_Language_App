@@ -46,6 +46,7 @@ dependencies:
   dartz: ^0.10.1
   hive:
   hive_flutter:
+  device_preview: ^1.2.0
 
   
 dev_dependencies:

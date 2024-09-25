@@ -15,7 +15,7 @@ class BuildCommonWordsHeader extends StatelessWidget {
       children: [
         const Text(
           'Common Words',
-          style: TextStyle(fontSize: 27, fontWeight: FontWeight.w600),
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
         ),
         AppTextButton(
           buttonText: 'See All',
@@ -27,7 +27,7 @@ class BuildCommonWordsHeader extends StatelessWidget {
             color: ColorsManager.green,
           ),
           onPressed: () {
-            Navigator.pushNamed(context, Routes.commonWordsScreen);
+            Navigator.pushNamed(context, Routes.dictionaryScreen);
           },
         )
       ],

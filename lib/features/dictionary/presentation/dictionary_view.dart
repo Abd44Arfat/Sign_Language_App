@@ -27,10 +27,7 @@ class DictionaryView extends StatelessWidget {
             ),
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: DictionaryViewBody(),
-        ),
+        body: DictionaryViewBody(),
       ),
     );
   }

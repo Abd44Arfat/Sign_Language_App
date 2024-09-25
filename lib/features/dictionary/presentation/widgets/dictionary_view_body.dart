@@ -13,11 +13,8 @@ class DictionaryViewBody extends StatelessWidget {
 //list
 
       children: [
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: AppTextFormField(
-            hintText: 'Search for a Word',
-          ),
+        AppTextFormField(
+          hintText: 'Search for a Word',
         ),
         FetchDictionaryListViewBlocBuilder()
       ],

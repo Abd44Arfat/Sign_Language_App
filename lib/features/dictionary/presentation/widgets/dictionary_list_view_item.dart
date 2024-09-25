@@ -9,7 +9,7 @@ final String title ;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(bottom: 8),
       child: Container(
         height: 70.h,
         decoration: BoxDecoration(

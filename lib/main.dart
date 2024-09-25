@@ -1,5 +1,4 @@
-import 'dart:async';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,10 +17,15 @@ void main() async {
   Hive.registerAdapter(DictionaryEntityAdapter());
   await Hive.initFlutter();
   await Hive.openBox<DictionaryEntity>(KDictionaryBox);
+  
   Bloc.observer = SimpleBlocObserver();
-  runApp(const MyApp());
+  
+  // Optionally set up your service locator here
+  setupServiceLocator();
 
-// setupServiceLocator();
+  runApp(
+    MyApp(), // Wrap your app
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -38,13 +42,14 @@ class _MyAppState extends State<MyApp> {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       child: MaterialApp(
-        title: 'Doc App',
+ 
         theme: ThemeData(
-            primaryColor: ColorsManager.mainBlue,
-            scaffoldBackgroundColor: Colors.white,
-            fontFamily: 'Cairo'),
+          primaryColor: ColorsManager.mainBlue,
+          scaffoldBackgroundColor: Colors.white,
+          fontFamily: 'Cairo',
+        ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.dictionaryScreen,
+        initialRoute: Routes.bottomNavigationScreen,
         onGenerateRoute: AppRouter.generateRoute,
       ),
     );

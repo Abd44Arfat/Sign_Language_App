@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
-import 'package:sign_lang_app/features/learn_view/learn_view.dart';
-import 'package:sign_lang_app/features/setting_view/setting_view.dart';
+import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
+
 
 import '../home_page/home_view.dart';
 
@@ -20,8 +20,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
     super.initState();
     screens = const [
       HomeView(),
-      LearnView(),
-      SettingView(),
+      HomeView(),
+      HomeView(),
     ];
   }
 

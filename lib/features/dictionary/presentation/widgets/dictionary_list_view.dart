@@ -8,6 +8,8 @@ final List<DictionaryEntity> dictionary;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true, // Important to allow for proper sizing
+      physics: NeverScrollableScrollPhysics(), // Prevents scrolling conflicts
       itemCount: dictionary.length,
       itemBuilder: (context, index) {
         return DictionaryListViewItem(title: dictionary[index].mainTitle,);

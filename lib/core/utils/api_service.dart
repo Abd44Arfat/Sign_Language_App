@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 class ApiService {
   final Dio _dio;
 
-  final String baseUrl = "http://localhost:3000";
+  final String baseUrl = "http://10.0.2.2:3000";
   final String token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmVkYzJjYTA0NGY5YjFhYjgzNDQ0OWMiLCJuYW1lIjoiYW55dGhpbmciLCJpYXQiOjE3MjY4NTgyODF9.kJGXhbpxleF4KWFBY_eRL1ITDa2KzxpsumLquCzeeHk";
 

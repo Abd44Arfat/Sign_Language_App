@@ -3,6 +3,7 @@ import 'package:sign_lang_app/core/widgets/home_app_bar.dart';
 import 'package:sign_lang_app/core/widgets/services_list_view.dart';
 import 'package:sign_lang_app/core/widgets/speak_with_hands.dart';
 import 'package:sign_lang_app/core/widgets/words_cards_list.dart';
+import 'package:sign_lang_app/features/dictionary/presentation/widgets/fetch_list_view_bloc_builder.dart';
 import '../../core/widgets/build_common_words_header.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.all(20.0),
+      padding: EdgeInsets.all(16.0),
       child: CustomScrollView(
         slivers: [
           HomeAppBar(),
@@ -42,16 +43,12 @@ class HomeViewBody extends StatelessWidget {
               child: ServicesListView(),
             ),
           ),
-          SliverToBoxAdapter(
-              child: SizedBox(
-            height: 40,
-          )),
-          BuildCommonWordsHeader(),
-          SliverToBoxAdapter(
-              child: SizedBox(
-            height: 10,
-          )),
-          WordsCardsList()
+     
+         BuildCommonWordsHeader(),
+   
+       SliverToBoxAdapter(
+            child: FetchDictionaryListViewBlocBuilder(itemCount: 5), // Show first 5 items
+          ),
         ],
       ),
     );
