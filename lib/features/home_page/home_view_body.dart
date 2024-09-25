@@ -17,23 +17,23 @@ class HomeViewBody extends StatelessWidget {
         slivers: [
           HomeAppBar(),
           SliverToBoxAdapter(
-              child: SizedBox(
-            height: 140,
-            child: SpeakWithHands(),
-          )),
-          SliverToBoxAdapter(
-              child: SizedBox(
-            height: 20,
-          )),
+            child: SizedBox(
+              height: 140,
+              child: SpeakWithHands(),
+            ),
+          ),
+           SliverToBoxAdapter(
+            child: SizedBox(
+              height: 20,)),
           SliverToBoxAdapter(
             child: SizedBox(
               height: 50,
               child: Text(
                 'Services',
                 style: TextStyle(
-                    fontSize: 27,
-                    fontFamily: 'Cairo',
-                    fontWeight: FontWeight.w500),
+                  fontSize: 24,
+                  fontFamily: 'Cairo',
+                  fontWeight: FontWeight.w500),
               ),
             ),
           ),
@@ -43,11 +43,13 @@ class HomeViewBody extends StatelessWidget {
               child: ServicesListView(),
             ),
           ),
-     
-         BuildCommonWordsHeader(),
+          SliverToBoxAdapter(child: BuildCommonWordsHeader()),
+          SliverToBoxAdapter(
    
-       SliverToBoxAdapter(
-            child: FetchDictionaryListViewBlocBuilder(itemCount: 5), // Show first 5 items
+              child: SizedBox(
+              
+                child: FetchDictionaryListViewBlocBuilder(itemCount: 5,)),
+            
           ),
         ],
       ),

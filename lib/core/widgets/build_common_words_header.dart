@@ -9,28 +9,27 @@ class BuildCommonWordsHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Text(
-          'Common Words',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-        ),
-        AppTextButton(
-          buttonText: 'See All',
-          backgroundColor: Colors.transparent,
-          buttonWidth: 80,
-          buttonHeight: 80,
-          textStyle: const TextStyle(
-            fontSize: 20,
-            color: ColorsManager.green,
-          ),
-          onPressed: () {
-            Navigator.pushNamed(context, Routes.dictionaryScreen);
-          },
-        )
-      ],
-    ));
+    return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+    const Text(
+      'Common Words',
+      style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+    ),
+    AppTextButton(
+      buttonText: 'See All',
+      backgroundColor: Colors.transparent,
+      buttonWidth: 80,
+      buttonHeight: 80,
+      textStyle: const TextStyle(
+        fontSize: 20,
+        color: ColorsManager.green,
+      ),
+      onPressed: () {
+        Navigator.pushNamed(context, Routes.dictionaryScreen);
+      },
+    )
+          ],
+        );
   }
 }
