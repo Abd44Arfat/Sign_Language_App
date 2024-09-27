@@ -19,10 +19,14 @@ final int itemCount;
     return BlocBuilder<FetchDictionaryListCubit, FetchDictionaryListState>(
       builder: (context, state) {
         if (state is FetchDictionaryListSuccess) {
+
+    
+
           // Filter the dictionary list based on searchText
           final displayItems = itemCount > 0 ? state.dictionaryList.take(itemCount).toList()
              : state.dictionaryList.where((item) => item.mainTitle.toLowerCase().startsWith(searchText.toLowerCase()))
               .toList();
+
 
           if (displayItems.isEmpty) {
             return Center(child: Text('No results found for "$searchText"',style: TextStyles.font16GraySemibold,));

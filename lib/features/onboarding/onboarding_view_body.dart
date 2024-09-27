@@ -36,7 +36,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                       TextButton(
                         onPressed: () {
                           Navigator.pushReplacementNamed(
-                              context, Routes.bottomNavigationScreen);
+                              context, Routes.registerScreen);
                         },
                         child: Text(
                           'Skip',
@@ -87,7 +87,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                       duration: const Duration(milliseconds: 150),
                       curve: Curves.easeIn)
                   : Navigator.pushReplacementNamed(
-                      context, Routes.bottomNavigationScreen);
+                      context, Routes.registerScreen);
             },
           ),
         ],
