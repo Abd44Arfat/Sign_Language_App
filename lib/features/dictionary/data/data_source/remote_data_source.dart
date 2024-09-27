@@ -3,7 +3,6 @@ import 'package:sign_lang_app/core/errors/failure.dart';
 import 'package:sign_lang_app/core/utils/api_service.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/features/dictionary/data/models/dictionary_model/dectionary.dart';
-import 'package:sign_lang_app/features/dictionary/data/models/dictionary_model/dictionary_model.dart';
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 
 abstract class DictionaryRemoteDataSource {
@@ -12,20 +11,25 @@ abstract class DictionaryRemoteDataSource {
 
 class DictionaryRemoteDataSourceImpl extends DictionaryRemoteDataSource {
   @override
-  final ApiService apiService;
+  final DioClient dioClient; // Use DioClient
 
-  DictionaryRemoteDataSourceImpl({required this.apiService});
+  DictionaryRemoteDataSourceImpl({required this.dioClient});
 
+  @override
   Future<List<DictionaryEntity>> fetchDictionaryList() async {
-    var data = await apiService.get(endPoint: "/dectionary");
+    try {
+      var response = await dioClient.get("http://10.0.2.2:3000/dectionary"); // Use DioClient's get method
+      List<DictionaryEntity> dictionary = getDictionarysList(response.data);
 
-    List<DictionaryEntity> dictionary = getDictionarysList(data);
-
-    saveBooksData(dictionary, KDictionaryBox);
-    return dictionary;
+      saveBooksData(dictionary, KDictionaryBox);
+      return dictionary;
+    } catch (e) {
+      // Handle errors appropriately
+      print('Error fetching dictionary list: $e');
+      throw Failure('Error fetching dictionary list: $e');
+    }
   }
 
-//but this in function i will refactor this
   void saveBooksData(List<DictionaryEntity> dictionary, String boxName) {
     var box = Hive.box<DictionaryEntity>(boxName);
     box.addAll(dictionary);

@@ -78,7 +78,7 @@ class AppTextFormField extends StatelessWidget {
         hintText: hintText,
         suffixIcon: suffixIcon,
 
-        fillColor: backgroundColor ?? Color(0xfff5f9fe),
+        // fillColor: backgroundColor ?? Color(0xfff5f9fe),
 
         prefixIcon: prefixIcon,
         fillColor: backgroundColor ?? Color(0xffF5F9FE),

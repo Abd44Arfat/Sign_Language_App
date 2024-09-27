@@ -9,15 +9,15 @@ import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictiona
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
-  getIt.registerSingleton<ApiService>(
-    ApiService(Dio()),
+  getIt.registerSingleton<DioClient>(
+    DioClient(),
   );
 
   getIt.registerSingleton<DictionaryRepoImpl>(
     DictionaryRepoImpl(
       dictionaryLocalDataSource: DictionaryLocalDataSourceImpl(),
       dictionaryRemoteDataSource: DictionaryRemoteDataSourceImpl(
-        apiService: getIt.get<ApiService>(),
+        dioClient: getIt.get<DioClient>(),
       ),
     ),
   );
