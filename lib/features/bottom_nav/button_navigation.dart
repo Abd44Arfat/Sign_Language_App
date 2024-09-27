@@ -36,6 +36,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           highlightColor: Colors.transparent, // Disable highlight effect
         ),
         child: BottomNavigationBar(
+          backgroundColor: Colors.white,
           currentIndex: selectedIndex,
           onTap: (value) {
             setState(() {

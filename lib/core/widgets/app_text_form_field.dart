@@ -13,6 +13,7 @@ class AppTextFormField extends StatelessWidget {
   final String hintText;
   final bool? isObscureText;
   final Widget? suffixIcon;
+  final Widget ? prefixIcon;
   final Color? backgroundColor;
   final TextEditingController? controller;
   // final Function(String?) validator;
@@ -27,7 +28,7 @@ class AppTextFormField extends StatelessWidget {
     this.isObscureText,
     this.suffixIcon,
     this.backgroundColor,
-    this.controller,
+    this.controller, this.prefixIcon,
     // required this.validator,
   });
 
@@ -42,7 +43,7 @@ class AppTextFormField extends StatelessWidget {
         focusedBorder: focusedBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
-                color: ColorsManager.itembackground,
+                color: Color(0xffF5F9FE),
                 width: 1.3,
               ),
               borderRadius: BorderRadius.circular(16.0),
@@ -50,7 +51,11 @@ class AppTextFormField extends StatelessWidget {
         enabledBorder: enabledBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
+
                 color: Color(0xfff5f9fe) , //ColorsManager.itembackground,
+
+              
+
                 width: 1.3,
               ),
               borderRadius: BorderRadius.circular(16.0),
@@ -72,7 +77,12 @@ class AppTextFormField extends StatelessWidget {
         hintStyle: hintStyle ?? TextStyles.font16GraySemibold,
         hintText: hintText,
         suffixIcon: suffixIcon,
+
         fillColor: backgroundColor ?? Color(0xfff5f9fe),
+
+        prefixIcon: prefixIcon,
+        fillColor: backgroundColor ?? Color(0xffF5F9FE),
+
         filled: true,
       ),
       obscuringCharacter :  '*',  //'●',
