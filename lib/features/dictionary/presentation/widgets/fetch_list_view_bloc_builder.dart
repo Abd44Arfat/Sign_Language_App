@@ -17,8 +17,8 @@ class FetchDictionaryListViewBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         if (state is FetchDictionaryListSuccess) {
           // Use itemCount to slice the dictionary list
-          final displayItems = itemCount > 0 
-              ? state.dictionaryList.take(itemCount).toList() 
+          final displayItems = itemCount > 0
+              ? state.dictionaryList.take(itemCount).toList()
               : state.dictionaryList;
 
           return DictionaryListView(dictionary: displayItems);

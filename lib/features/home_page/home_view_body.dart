@@ -45,7 +45,6 @@ class HomeViewBody extends StatelessWidget {
           ),
      
          BuildCommonWordsHeader(),
-   
        SliverToBoxAdapter(
             child: FetchDictionaryListViewBlocBuilder(itemCount: 5), // Show first 5 items
           ),
