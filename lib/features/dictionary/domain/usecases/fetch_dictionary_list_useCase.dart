@@ -4,8 +4,7 @@ import 'package:sign_lang_app/core/usecase/usecase.dart';
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 import 'package:sign_lang_app/features/dictionary/domain/repos/dictionary_repo.dart';
 
-class FetchDictionaryListUsecase
-    extends UseCase<List<DictionaryEntity>, NoParam> {
+class FetchDictionaryListUsecase extends UseCase<List<DictionaryEntity>, NoParam> {
   final DictionaryRepo dictionaryRepo;
 
   FetchDictionaryListUsecase({required this.dictionaryRepo});

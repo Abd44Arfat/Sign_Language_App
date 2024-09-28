@@ -14,44 +14,58 @@ class LoginViewBody extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-
-          children: [
-            SizedBox(height: 60,),
-            SizedBox(height: 55 ,
-            child: Text('Login' ,textAlign: TextAlign.center, style: TextStyles.font24BlackBold.copyWith(fontSize: 32 ),) ,),
-        Text('Sign in for your account now' ,textAlign: TextAlign.center , style: TextStyles.font18BlackLight.copyWith(color: Colors.grey[600] , fontWeight: FontWeight.w600),),
-        const SizedBox(height: 50,),
-        const AppTextFormField(hintText: 'Email'),
-            const SizedBox(height: 30,),
-            const PasswordTextFormField(),
-            SizedBox(
-             height: 60,
-             child: Align(
-               alignment: Alignment.centerRight,
-               child: GestureDetector(
-                      child:  Text( 'Did you forget your password ?' , style: TextStyles.font20MediumLightBlueRegular.copyWith(fontSize: 15), ), onTap: () {
-                            Navigator.pushNamed(context, Routes.resetPassword);
-               },),
+        child: Form(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              SizedBox(height: 60,),
+              SizedBox(height: 55 ,
+              child: Text('Login' ,textAlign: TextAlign.center, style: TextStyles.font24BlackBold.copyWith(fontSize: 32 ),) ,),
+          Text('Sign in for your account now' ,textAlign: TextAlign.center , style: TextStyles.font18BlackLight.copyWith(color: Colors.grey[600] , fontWeight: FontWeight.w600),),
+          const SizedBox(height: 50,),
+          AppTextFormField(
+            validator: emailValidator,
+              hintText: 'Email'),
+              const SizedBox(height: 30,),
+              const PasswordTextFormField(hintText: 'Password',),
+              SizedBox(
+               height: 60,
+               child: Align(
+                 alignment: Alignment.centerRight,
+                 child: GestureDetector(
+                        child:  Text( 'Did you forget your password ?' , style: TextStyles.font20MediumLightBlueRegular.copyWith(fontSize: 15), ), onTap: () {
+                              Navigator.pushNamed(context, Routes.resetPassword);
+                 },),
+               ),
              ),
-           ),
-            const SizedBox(height: 25,),
-            AppTextButton(buttonText: 'Login'  ,textStyle: TextStyles.font18WhiteSemiBold.copyWith(fontWeight: FontWeight.w700), onPressed: (){}),
-            Padding(
-              padding: const EdgeInsets.only(top: 18.0),
-                 child:Row(children: [
-                   Text('new in Sign Talk ?' , style: TextStyles.font18BlackLight.copyWith(fontSize: 16 ,color: Colors.black , fontWeight: FontWeight.w300)),
-                   TextButton(child: Text('Sign up' ,  style: TextStyles.font20MediumLightBlueRegular.copyWith(fontSize: 16)) , onPressed: () {
-                     Navigator.pushReplacementNamed(context, Routes.registerScreen);
-            },)
-                 ],),
+              const SizedBox(height: 25,),
+              AppTextButton(buttonText: 'Login'  ,textStyle: TextStyles.font18WhiteSemiBold.copyWith(fontWeight: FontWeight.w700), onPressed: (){}),
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0),
+                   child:Row(children: [
+                     Text('new in Sign Talk ?' , style: TextStyles.font18BlackLight.copyWith(fontSize: 16 ,color: Colors.black , fontWeight: FontWeight.w300)),
+                     TextButton(child: Text('Sign up' ,  style: TextStyles.font20MediumLightBlueRegular.copyWith(fontSize: 16)) , onPressed: () {
+                       Navigator.pushReplacementNamed(context, Routes.registerScreen);
+              },)
+                   ],),
 
-              ),
-            const SizedBox(height: 40,),
-            const GoogleFacebookAuth(),
+                ),
+              const SizedBox(height: 40,),
+              const GoogleFacebookAuth(),
 
-          ],
+            ],
+          ),
         ),);
+  }
+  String? emailValidator(String? value) {
+    final String emailPattern = r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$";
+    RegExp regex = RegExp(emailPattern);
+    if (value == null || value.isEmpty) {
+      return 'Please enter your email';
+    }
+    if (!regex.hasMatch(value)) {
+      return 'Please enter a valid email';
+    }
+    return null;
   }
 }

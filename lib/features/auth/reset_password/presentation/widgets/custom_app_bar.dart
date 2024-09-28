@@ -14,7 +14,10 @@ class CustomAppBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           color: Colors.grey[100]
         ),
-        child: Icon(Icons.arrow_back_ios_new , color: Colors.black87,),
+        child: IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon: const Icon(Icons.arrow_back_ios_new , color: Colors.black87,),),
+
 
       ),
     );

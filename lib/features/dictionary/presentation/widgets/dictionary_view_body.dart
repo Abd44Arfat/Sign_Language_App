@@ -9,14 +9,19 @@ class DictionaryViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
 //list
 
       children: [
         AppTextFormField(
+          validator: (data) {
+            if(data!.isEmpty){
+              return 'this field is required';
+            }
+          },
           hintText: 'Search for a Word',
         ),
-        FetchDictionaryListViewBlocBuilder()
+        const FetchDictionaryListViewBlocBuilder()
       ],
     );
   }

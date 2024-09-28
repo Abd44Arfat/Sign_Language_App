@@ -4,9 +4,10 @@ class Routes {
   static const String bottomNavigationScreen = '/buttonNavigationScreen';
   static const String commonWordsScreen = '/commonWordsScreen';
   static const String dictionaryScreen = '/dictionary';
-    static const String homescreen = '/homescreen';
-    static const String loginScreen = '/loginView';
+  static const String homescreen = '/homescreen';
+  static const String loginScreen = '/loginView';
     static const String registerScreen  = '/registerScreen';
     static const String resetPassword = '/resetPassword';
-
+    static const String getVerificationCode = '/getVerificationCode';
+  static const String createNewPassword = '/createNewPassword';
 }

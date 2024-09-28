@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/utils/api_service.dart';
+import 'package:sign_lang_app/features/auth/reset_password/presentation/create_new_password_view.dart';
+import 'package:sign_lang_app/features/auth/reset_password/presentation/get_verification_code_view.dart';
 import 'package:sign_lang_app/features/auth/reset_password/presentation/reset_password_view.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/remote_data_source.dart';
@@ -43,6 +45,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.resetPassword:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
+      case Routes.getVerificationCode :
+        return MaterialPageRoute(builder: (_) => const GetVerificationCodeView());
+      case Routes.createNewPassword :
+        return MaterialPageRoute(builder: (_) => const CreateNewPasswordView());
       case Routes.bottomNavigationScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
