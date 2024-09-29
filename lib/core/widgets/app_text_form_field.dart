@@ -16,6 +16,7 @@ class AppTextFormField extends StatelessWidget {
   final Widget ? prefixIcon;
   final Color? backgroundColor;
   final TextEditingController? controller;
+  final Function(String?)? onSaved;
   // final Function(String?) validator;
   const AppTextFormField({
     super.key,
@@ -28,7 +29,7 @@ class AppTextFormField extends StatelessWidget {
     this.isObscureText,
     this.suffixIcon,
     this.backgroundColor,
-    this.controller, this.prefixIcon,
+    this.controller, this.prefixIcon, this.onSaved,
     // required this.validator,
   });
 
@@ -74,7 +75,7 @@ class AppTextFormField extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
-        hintStyle: hintStyle ?? TextStyles.font16GraySemibold,
+        hintStyle: hintStyle ?? TextStyles.font14BGreyRegular,
         hintText: hintText,
         suffixIcon: suffixIcon,
 
@@ -87,10 +88,15 @@ class AppTextFormField extends StatelessWidget {
       ),
       obscuringCharacter :  '*',  //'●',
       obscureText: isObscureText ?? false,
-      style: TextStyles.font16GraySemibold.copyWith(color: Colors.black87),
-      validator: (value) {
-        // return validator(value);
+      style: TextStyles.font14BlackMedium.copyWith(color: Colors.black87),
+ validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'this field is required';
+        }
+        return null;
       },
+onSaved: onSaved,
+
     );
   }
 }

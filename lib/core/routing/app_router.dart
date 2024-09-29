@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/utils/api_service.dart';
+import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sign_lang_app/features/auth/reset_password/presentation/reset_password_view.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/remote_data_source.dart';
@@ -16,8 +17,8 @@ import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
 
 import 'package:sign_lang_app/features/splash/splash_view.dart';
 
-import '../../features/auth/login/presentation/login_view.dart';
-import '../../features/auth/register/register_view.dart';
+import '../../features/auth/presentation/login_view.dart';
+import '../../features/auth/presentation/register_view.dart';
 import '../../features/bottom_nav/button_navigation.dart';
 
 class AppRouter {
@@ -35,25 +36,26 @@ class AppRouter {
         );
       case Routes.homescreen:
         return MaterialPageRoute(
-          builder: (_) => const HomeView(),
+          builder: (_) =>
+       
+          
+     const HomeView(),
         );
       case Routes.registerScreen:
-        return MaterialPageRoute(builder: (_) => const RegisterView());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => SignupCubit(),
+                  child: const RegisterView(),
+                ));
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.resetPassword:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
       case Routes.bottomNavigationScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => FetchDictionaryListCubit(
-              FetchDictionaryListUsecase(
-                dictionaryRepo:
-                    getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
-              ),
-            )..fetchDictionaryList(),
-            child: const BottomNavigation(),
-          ),
+          builder: (_) => 
+        const BottomNavigation(),
+          
         );
 
       case Routes.dictionaryScreen:

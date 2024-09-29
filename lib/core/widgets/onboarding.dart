@@ -18,7 +18,7 @@ class Onboarding extends StatelessWidget {
         Expanded(child: Image.asset(imageUrl, width: double.infinity)),
         Text(
           title,
-          style: TextStyles.font20MediumLightBlueRegular,
+          style: TextStyles.font14BlackMedium,
         ),
         SizedBox(
           height: 30,
@@ -27,7 +27,7 @@ class Onboarding extends StatelessWidget {
             width: 340,
             child: Text(
               subTitle,
-              style: TextStyles.font18BlackLight,
+              style: TextStyles.font14BlackMedium,
               textAlign: TextAlign.center,
             )),
       ],

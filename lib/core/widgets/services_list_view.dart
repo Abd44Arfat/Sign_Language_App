@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sign_lang_app/core/widgets/services_item.dart';
-import 'package:sign_lang_app/models/service_model.dart';
+import 'package:sign_lang_app/features/home_page/models/service_model.dart';
 
 class ServicesListView extends StatefulWidget {
   const ServicesListView({super.key});

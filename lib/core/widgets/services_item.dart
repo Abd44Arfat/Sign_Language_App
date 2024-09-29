@@ -1,4 +1,4 @@
-import 'package:sign_lang_app/models/service_model.dart';
+import 'package:sign_lang_app/features/home_page/models/service_model.dart';
 import 'package:flutter/material.dart';
 
 class ServiceItem extends StatelessWidget {

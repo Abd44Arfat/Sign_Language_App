@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sign_lang_app/core/theming/colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sign_lang_app/core/di/dependency_injection.dart';
+import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/signup_cubit.dart'; // Import your Bloc
+import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
+import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
-
-
+import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 import '../home_page/home_view.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -15,13 +18,22 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigationState extends State<BottomNavigation> {
   int selectedIndex = 0;
   late List<Widget> screens;
+
   @override
   void initState() {
     super.initState();
-    screens = const [
-      HomeView(),
-      HomeView(),
-      HomeView(),
+    screens = [
+        BlocProvider(
+            create: (context) => FetchDictionaryListCubit(
+              FetchDictionaryListUsecase(
+                dictionaryRepo:
+                    getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
+              ),
+            )..fetchDictionaryList(),
+
+            child: HomeView(),),
+      const DictionaryView(),
+      const DictionaryView(), // Replace with your actual settings page
     ];
   }
 

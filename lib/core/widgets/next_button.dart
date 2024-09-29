@@ -19,7 +19,7 @@ class NextButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Text(
         'Next',
-        style: TextStyles.font18WhiteSemiBold,
+        style: TextStyles.font14BlackMedium,
       ),
     );
   }

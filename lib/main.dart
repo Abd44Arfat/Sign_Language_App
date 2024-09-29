@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
           fontFamily: 'Cairo',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.dictionaryScreen,
+        initialRoute: Routes.registerScreen,
         onGenerateRoute: AppRouter.generateRoute,
       ),
     );

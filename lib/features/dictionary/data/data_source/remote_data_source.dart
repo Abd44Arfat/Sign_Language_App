@@ -18,7 +18,7 @@ class DictionaryRemoteDataSourceImpl extends DictionaryRemoteDataSource {
   @override
   Future<List<DictionaryEntity>> fetchDictionaryList() async {
     try {
-      var response = await dioClient.get("http://10.0.2.2:3000/dectionary"); // Use DioClient's get method
+      var response = await dioClient.get(ApiUrls.dictionary); // Use DioClient's get method
       List<DictionaryEntity> dictionary = getDictionarysList(response.data);
 
       saveBooksData(dictionary, KDictionaryBox);

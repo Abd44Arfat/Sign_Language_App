@@ -29,7 +29,7 @@ final int itemCount;
 
 
           if (displayItems.isEmpty) {
-            return Center(child: Text('No results found for "$searchText"',style: TextStyles.font16GraySemibold,));
+            return Center(child: Text('No results found for "$searchText"',style: TextStyles.font14BlackMedium,));
           } else {
             return DictionaryListView(dictionary: displayItems);
           }

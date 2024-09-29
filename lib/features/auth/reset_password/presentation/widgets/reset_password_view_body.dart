@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/core/widgets/app_text_button.dart';
 import 'package:sign_lang_app/core/widgets/app_text_form_field.dart';
 import 'package:sign_lang_app/features/auth/reset_password/presentation/widgets/custom_app_bar.dart';
 
-import '../../../../../core/theming/styles.dart';
-import '../../../../../core/widgets/app_text_button.dart';
 class ResetPasswordViewBody extends StatelessWidget {
   const ResetPasswordViewBody({super.key});
 
@@ -22,7 +22,7 @@ class ResetPasswordViewBody extends StatelessWidget {
           SizedBox(height: 40,),
           const AppTextFormField(hintText: 'Email'),
           SizedBox(height: 80,),
-          AppTextButton(buttonText: 'Login'  ,textStyle: TextStyles.font18WhiteSemiBold.copyWith(fontWeight: FontWeight.w700), onPressed: (){}),
+          AppTextButton(buttonText: 'Login'  ,textStyle: TextStyles.font14BlackMedium.copyWith(fontWeight: FontWeight.w700), onPressed: (){}),
           
         ],
       ),

@@ -39,7 +39,7 @@ final String title ;
 
             Text(
               title,
-              style: TextStyles.font16GraySemibold,
+              style: TextStyles.font14BlackMedium,
             )
           ],
         ),
