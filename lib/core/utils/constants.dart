@@ -10,3 +10,10 @@ static const dictionary= "${baseURL}/dectionary";
 
 
 }
+
+
+bool isLoggedInUser = false;
+
+class SharedPrefKeys {
+  static const String userToken = 'userToken';
+}

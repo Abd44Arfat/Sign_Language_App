@@ -139,12 +139,12 @@ params:  SignupReqParams(
                             color: Colors.black,
                             fontWeight: FontWeight.w300)),
                     TextButton(
-                      child: Text('Sign up',
+                      child: Text('login',
                           style: TextStyles.font14BlackMedium
                               .copyWith(fontSize: 16)),
                       onPressed: () {
                         Navigator.pushReplacementNamed(
-                            context, Routes.registerScreen);
+                            context, Routes.loginScreen);
                       },
                     )
                   ],

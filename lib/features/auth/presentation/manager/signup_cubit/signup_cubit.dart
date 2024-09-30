@@ -7,7 +7,7 @@ import 'package:sign_lang_app/core/errors/failure.dart';
 import 'package:sign_lang_app/core/usecase/usecase.dart';
 import 'package:sign_lang_app/core/widgets/custom_button_animation.dart';
 import 'package:sign_lang_app/features/auth/data/models/signup_req.dart';
-import 'package:sign_lang_app/features/auth/data/models/signup_response_test.dart';
+import 'package:sign_lang_app/features/auth/data/models/signup_response.dart';
 import 'package:sign_lang_app/features/auth/domain/usecases/signup_usecase.dart';
 
 part 'signup_state.dart';

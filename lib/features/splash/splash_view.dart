@@ -19,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
       Duration(seconds: 2),
       () => Navigator.pushReplacementNamed(
         context,
-        Routes.onBoardingScreen,
+        Routes.loginScreen,
       ),
     );
     super.initState();

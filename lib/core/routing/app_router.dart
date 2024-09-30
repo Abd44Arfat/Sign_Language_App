@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/utils/api_service.dart';
+import 'package:sign_lang_app/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sign_lang_app/features/auth/reset_password/presentation/reset_password_view.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
@@ -36,10 +37,7 @@ class AppRouter {
         );
       case Routes.homescreen:
         return MaterialPageRoute(
-          builder: (_) =>
-       
-          
-     const HomeView(),
+          builder: (_) => const HomeView(),
         );
       case Routes.registerScreen:
         return MaterialPageRoute(
@@ -48,14 +46,16 @@ class AppRouter {
                   child: const RegisterView(),
                 ));
       case Routes.loginScreen:
-        return MaterialPageRoute(builder: (_) => const LoginView());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => LoginCubit(dioClient: DioClient()),
+                  child: const LoginView(),
+                ));
       case Routes.resetPassword:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
       case Routes.bottomNavigationScreen:
         return MaterialPageRoute(
-          builder: (_) => 
-        const BottomNavigation(),
-          
+          builder: (_) => const BottomNavigation(),
         );
 
       case Routes.dictionaryScreen:
