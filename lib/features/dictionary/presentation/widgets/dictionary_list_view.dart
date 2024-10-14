@@ -1,19 +1,60 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
+import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/dictionary_list_view_item.dart';
 
-class DictionaryListView extends StatelessWidget {
+class DictionaryListView extends StatefulWidget {
   const DictionaryListView({super.key, required this.dictionary});
-final List<DictionaryEntity> dictionary;
+  final List<DictionaryEntity> dictionary;
+
+  @override
+  State<DictionaryListView> createState() => _DictionaryListViewState();
+}
+
+class _DictionaryListViewState extends State<DictionaryListView> {
+  late ScrollController _scrollController;
+  var nextPage = 2;
+var isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+   _scrollController= ScrollController();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose(); // Dispose of the controller
+    super.dispose();
+  }
+
+  void _scrollListener()async {
+    if (_scrollController.position.pixels >= 0.7 * _scrollController.position.maxScrollExtent) {
+      if (!isLoading) {
+        isLoading = true;
+ await BlocProvider.of<FetchDictionaryListCubit>(context).fetchDictionaryList(
+  
+  pageNumber: nextPage++
+
+  );
+    isLoading = false;
+}
+   
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-padding: EdgeInsets.all(0.0),
-      shrinkWrap: true, // Important to allow for proper sizing
-      physics: NeverScrollableScrollPhysics(), // Prevents scrolling conflicts
-      itemCount: dictionary.length,
+      controller: _scrollController,
+      // shrinkWrap: true, // use it
+      physics: BouncingScrollPhysics(), // Allows scrolling
+      itemCount: widget.dictionary.length,
       itemBuilder: (context, index) {
-        return DictionaryListViewItem(title: dictionary[index].mainTitle,);
+        return DictionaryListViewItem(title: widget.dictionary[index].mainTitle);
       },
     );
   }

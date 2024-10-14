@@ -12,13 +12,20 @@ class DictionaryRepoImpl extends DictionaryRepo {
       {required this.dictionaryRemoteDataSource,
       required this.dictionaryLocalDataSource});
   @override
-  Future<Either<Failure, List<DictionaryEntity>>> fetchDictionaryList() async {
+  Future<Either<Failure, List<DictionaryEntity>>> fetchDictionaryList({int pageNumber=1}) async {
     try {
-      var dictionaryList = dictionaryLocalDataSource.fetchDictionaryList();
+      var dictionaryList = dictionaryLocalDataSource.fetchDictionaryList(
+pageNumber: pageNumber
+
+      );
       if (dictionaryList.isNotEmpty) {
         return right(dictionaryList);
       }
-      var dictionary = await dictionaryRemoteDataSource.fetchDictionaryList();
+      var dictionary = await dictionaryRemoteDataSource.fetchDictionaryList(
+
+pageNumber: pageNumber
+
+      );
       return right(dictionary);
     } catch (e) {
       return left((Failure(e.toString())));

@@ -11,13 +11,24 @@ class FetchDictionaryListCubit extends Cubit<FetchDictionaryListState> {
 
   final FetchDictionaryListUsecase fetchDictionaryListUsecase;
 
-  Future<void> fetchDictionaryList() async {
-    emit(FetchDictionaryListLoading());
+  Future<void> fetchDictionaryList({int pageNumber=1}) async {
+    
+    if (pageNumber == 1) {
+  emit(FetchDictionaryListLoading());
+}else{
+  emit(FetchDictionaryListPaginationLoading());
+}
 
-    var result = await fetchDictionaryListUsecase.call();
+    var result = await fetchDictionaryListUsecase.call(pageNumber);
     result.fold(
       (failure) {
-        emit(FetchDictionaryListFailure(failure.toString()));
+        if (pageNumber==1) {
+  emit(FetchDictionaryListFailure(failure.toString()));
+}else{
+
+
+  emit(FetchDictionaryListPaginationFailure(errMessage: failure.toString()));
+}
         print(failure.toString());
       },
       (dictionaryList) {
@@ -25,7 +36,6 @@ class FetchDictionaryListCubit extends Cubit<FetchDictionaryListState> {
       },
     );
 
-    // Optionally return a value or just complete the method
-    return; // This ensures the function completes properly.
+    return; 
   }
 }

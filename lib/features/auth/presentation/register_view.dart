@@ -18,7 +18,7 @@ class RegisterView extends StatelessWidget {
       listener: (context, state) {
        if (state is SignupSuccess){
 
-context.pushReplacementNamed(Routes.bottomNavigationScreen);
+context.pushReplacementNamed(Routes.loginScreen);
 buildErrorBar(context,state.message);
 
        }

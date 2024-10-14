@@ -50,7 +50,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 height: 55,
                 child: Text(
                   'create an account',
-                  style: TextStyles.font14BlackMedium.copyWith(fontSize: 32),
+                  style: TextStyles.font14DarkBlueMedium.copyWith(fontSize: 32),
                 ),
               ),
               const SizedBox(
@@ -134,13 +134,13 @@ params:  SignupReqParams(
                 child: Row(
                   children: [
                     Text('new in Sign Talk ?',
-                        style: TextStyles.font14BlackMedium.copyWith(
+                        style: TextStyles.font14DarkBlueMedium.copyWith(
                             fontSize: 16,
                             color: Colors.black,
                             fontWeight: FontWeight.w300)),
                     TextButton(
                       child: Text('login',
-                          style: TextStyles.font14BlackMedium
+                          style: TextStyles.font14DarkBlueMedium
                               .copyWith(fontSize: 16)),
                       onPressed: () {
                         Navigator.pushReplacementNamed(

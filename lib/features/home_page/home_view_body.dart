@@ -4,6 +4,7 @@ import 'package:sign_lang_app/core/widgets/services_list_view.dart';
 import 'package:sign_lang_app/core/widgets/speak_with_hands.dart';
 import 'package:sign_lang_app/core/widgets/words_cards_list.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/fetch_list_view_bloc_builder.dart';
+import 'package:sign_lang_app/features/dictionary/presentation/widgets/fetch_list_view_bloc_builder.dart';
 import '../../core/widgets/build_common_words_header.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -46,14 +47,14 @@ class HomeViewBody extends StatelessWidget {
 // Show first 5 items
 
           SliverToBoxAdapter(child: BuildCommonWordsHeader()),
-          SliverToBoxAdapter(
-   
-              child: SizedBox(
-              
-                child: FetchDictionaryListViewBlocBuilder(itemCount: 5,)),
+          SliverFillRemaining(
+
+                  child: FetchDictionaryListViewBlocConsumer(itemCount: 10,)),
+            
+            
             
 
-          ),
+       
         ],
       ),
     );

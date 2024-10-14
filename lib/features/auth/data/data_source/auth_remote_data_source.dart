@@ -31,7 +31,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       final signupResponse = SignupResponse.fromJson(response.data);
 
       // Check if the user is null, indicating failure
-      if (signupResponse.user == null) {
+      if (signupResponse.users == null) {
         return Left(Failure(signupResponse.message)); // Return error message
       }
 

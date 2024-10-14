@@ -47,13 +47,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 child: Text(
                   'Login',
                   textAlign: TextAlign.center,
-                  style: TextStyles.font14BlackMedium.copyWith(fontSize: 32),
+                  style: TextStyles.font14DarkBlueMedium.copyWith(fontSize: 32),
                 ),
               ),
               Text(
                 'Sign in for your account now',
                 textAlign: TextAlign.center,
-                style: TextStyles.font14BlackMedium.copyWith(
+                style: TextStyles.font14DarkBlueMedium.copyWith(
                     color: Colors.grey[600], fontWeight: FontWeight.w600),
               ),
               const SizedBox(
@@ -77,7 +77,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   child: GestureDetector(
                     child: Text(
                       'Did you forget your password ?',
-                      style: TextStyles.font14BlackMedium.copyWith(fontSize: 15),
+                      style: TextStyles.font14DarkBlueMedium.copyWith(fontSize: 15),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, Routes.resetPassword);
@@ -113,13 +113,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 child: Row(
                   children: [
                     Text('new in Sign Talk ?',
-                        style: TextStyles.font14BlackMedium.copyWith(
+                        style: TextStyles.font14DarkBlueMedium.copyWith(
                             fontSize: 16,
                             color: Colors.black,
                             fontWeight: FontWeight.w300)),
                     TextButton(
                       child: Text('Sign up',
-                          style: TextStyles.font14BlackMedium
+                          style: TextStyles.font14DarkBlueMedium
                               .copyWith(fontSize: 16)),
                       onPressed: () {
                         Navigator.pushReplacementNamed(

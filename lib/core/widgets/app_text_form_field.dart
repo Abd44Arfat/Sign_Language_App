@@ -75,7 +75,7 @@ class AppTextFormField extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(16.0),
         ),
-        hintStyle: hintStyle ?? TextStyles.font14BGreyRegular,
+        hintStyle: hintStyle ?? TextStyles.font14LightGrayRegular,
         hintText: hintText,
         suffixIcon: suffixIcon,
 
@@ -88,7 +88,7 @@ class AppTextFormField extends StatelessWidget {
       ),
       obscuringCharacter :  '*',  //'●',
       obscureText: isObscureText ?? false,
-      style: TextStyles.font14BlackMedium.copyWith(color: Colors.black87),
+      style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.black87),
  validator: (value) {
         if (value == null || value.isEmpty) {
           return 'this field is required';

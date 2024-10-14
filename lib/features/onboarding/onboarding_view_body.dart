@@ -40,7 +40,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                         },
                         child: Text(
                           'Skip',
-                          style: TextStyles.font14BlackMedium,
+                          style: TextStyles.font14DarkBlueMedium,
                         ),
                       ),
                     ],

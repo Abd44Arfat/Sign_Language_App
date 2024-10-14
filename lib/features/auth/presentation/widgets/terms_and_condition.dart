@@ -36,33 +36,33 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
               children: [
                 TextSpan(
                   text: 'By creating an account you agree',
-                  style: TextStyles.font14BlackMedium.copyWith(
+                  style: TextStyles.font14DarkBlueMedium.copyWith(
                     color: const Color(0xFF949D9E),
                   ),
                 ),
                 TextSpan(
                   text: 'to our ',
-                  style: TextStyles.font14BlackMedium.copyWith(
+                  style: TextStyles.font14DarkBlueMedium.copyWith(
                     color: Colors.black,
                   ),
                 ),
                  TextSpan(
                   text: ' ',
-                  style: TextStyles.font14BlackMedium,
+                  style: TextStyles.font14DarkBlueMedium,
                 ),
                 TextSpan(
                   text: 'terms and conditions.',
-                  style: TextStyles.font14BlackMedium.copyWith(
+                  style: TextStyles.font14DarkBlueMedium.copyWith(
                     color: Colors.amber,
                   ),
                 ),
                  TextSpan(
                   text: ' ',
-                  style: TextStyles.font14BlackMedium,
+                  style: TextStyles.font14DarkBlueMedium,
                 ),
                 TextSpan(
                   text: 'بنا',
-                  style: TextStyles.font14BlackMedium
+                  style: TextStyles.font14DarkBlueMedium
                       .copyWith(color: Colors.amberAccent),
                 ),
               ],

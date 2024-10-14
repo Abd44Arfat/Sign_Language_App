@@ -3,6 +3,8 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sign_lang_app/core/widgets/app_text_form_field.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/fetch_list_view_bloc_builder.dart';
 
+import 'dictionary_list_view.dart';
+
 class DictionaryViewBody extends StatefulWidget {
   const DictionaryViewBody({super.key});
 
@@ -32,21 +34,19 @@ class _DictionaryViewBodyState extends State<DictionaryViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric( vertical: 20),
-              child: AppTextFormField(
-                controller: _searchController,
-                hintText: 'Search for a Word',
-                prefixIcon:Icon(Iconsax.search_normal_1_copy,color: Colors.grey,) ,
-              ),
+    return SafeArea(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric( vertical: 20),
+            child: AppTextFormField(
+              controller: _searchController,
+              hintText: 'Search for a Word',
+              prefixIcon:Icon(Iconsax.search_normal_1_copy,color: Colors.grey,) ,
             ),
-            FetchDictionaryListViewBlocBuilder(searchText: _searchText),
-          ],
-        ),
+          ),
+          Expanded(child: FetchDictionaryListViewBlocConsumer(searchText: _searchText)),
+        ],
       ),
     );
   }

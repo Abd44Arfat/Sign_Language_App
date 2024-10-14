@@ -3,13 +3,22 @@ import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 
 abstract class DictionaryLocalDataSource {
-  List<DictionaryEntity> fetchDictionaryList();
+  List<DictionaryEntity> fetchDictionaryList({int pageNumber=1});
 }
 
 class DictionaryLocalDataSourceImpl implements DictionaryLocalDataSource {
+
+  
   @override
-  List<DictionaryEntity> fetchDictionaryList() {
+  List<DictionaryEntity> fetchDictionaryList({int pageNumber=1}) {
+//todo: understand this point 
+    int startIndex=pageNumber*10;
+    int endIndex=(pageNumber+1)*10;
     var box = Hive.box<DictionaryEntity>(KDictionaryBox);
-    return box.values.toList();
+    int length =box.values.length;
+    if(startIndex>length||endIndex>length){
+      return [];
+    }
+    return box.values.toList().sublist(startIndex,endIndex);
   }
 }

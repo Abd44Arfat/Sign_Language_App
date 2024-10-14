@@ -5,15 +5,15 @@ import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_ent
 import 'package:sign_lang_app/features/dictionary/domain/repos/dictionary_repo.dart';
 
 class FetchDictionaryListUsecase
-    extends UseCase<List<DictionaryEntity>, NoParam> {
+    extends UseCase<List<DictionaryEntity>, int> {
   final DictionaryRepo dictionaryRepo;
 
   FetchDictionaryListUsecase({required this.dictionaryRepo});
 
   @override
   Future<Either<Failure, List<DictionaryEntity>>> call(
-      [NoParam? params]) async {
+      [int param=1]) async {
     return await dictionaryRepo
-        .fetchDictionaryList(); // Ensure this returns Either<Failure, List<DictionaryEntity>>
+        .fetchDictionaryList(pageNumber: param); // Ensure this returns Either<Failure, List<DictionaryEntity>>
   }
 }

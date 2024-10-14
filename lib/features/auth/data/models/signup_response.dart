@@ -1,21 +1,23 @@
 class SignupResponse {
   final String message;
-  final User? user; // Make user nullable to handle error responses
+  final List<User>? users; // Change to a list of User
 
-  SignupResponse({required this.message, this.user});
-  
+  SignupResponse({required this.message, this.users});
+
   factory SignupResponse.fromJson(Map<String, dynamic> json) {
     // Check if the response contains a 'user' key
     if (json.containsKey('user') && json['user'] != null) {
+      // Cast to List and map to User
+      var usersList = json['user'] as List;
       return SignupResponse(
         message: json['message'],
-        user: User.fromJson(json['user']), // Parse the user if present
+        users: usersList.map((userJson) => User.fromJson(userJson)).toList(),
       );
     } else {
       // Handle error response
       return SignupResponse(
         message: json['message'] ?? 'Unknown error occurred.',
-        user: null, // No user on error
+        users: null, // No users on error
       );
     }
   }
@@ -30,7 +32,7 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'],
+      id: json['_id'],
       name: json['name'],
       email: json['email'],
     );

@@ -22,7 +22,7 @@ class ResetPasswordViewBody extends StatelessWidget {
           SizedBox(height: 40,),
           const AppTextFormField(hintText: 'Email'),
           SizedBox(height: 80,),
-          AppTextButton(buttonText: 'Login'  ,textStyle: TextStyles.font14BlackMedium.copyWith(fontWeight: FontWeight.w700), onPressed: (){}),
+          AppTextButton(buttonText: 'Login'  ,textStyle: TextStyles.font14DarkBlueMedium.copyWith(fontWeight: FontWeight.w700), onPressed: (){}),
           
         ],
       ),

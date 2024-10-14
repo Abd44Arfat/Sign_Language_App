@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 
@@ -9,9 +10,9 @@ final String title ;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 8),
       child: Container(
-        height: 70.h,
+        height: 80.h,
         decoration: BoxDecoration(
           color: ColorsManager.itembackground,
           borderRadius: BorderRadius.circular(15),
@@ -25,21 +26,28 @@ final String title ;
                 topRight: Radius.zero,
                 bottomRight: Radius.zero,
               ), // Rounded corners on the left only, // Match the container's radius
-              child: Image.asset(
-                "assets/images/onboarding3.png",
-                width: MediaQuery.of(context).size.width *
-                    0.40, // Adjust width as needed
-                height: 80.h, // Match the container height
-                fit: BoxFit.cover, // Ensure the image fills the space
-              ),
+    child:   Padding(
+      padding: const EdgeInsets.only(left: 25),
+      child: SizedBox(
+        height: 50,
+        width: 50,
+        child: CircleAvatar(
+          
+                          backgroundColor: Color(0xff6CC8FD),
+                          child: SvgPicture.asset(
+                            'assets/images/item.svg'
+                          
+                          )
+                        ),
+      ),
+    ),
             ),
             const SizedBox(
-                width: 16), // Add space between image and other widgets
-            // Additional widgets can be added here if needed
+                width: 16), 
 
             Text(
               title,
-              style: TextStyles.font14BlackMedium,
+              style: TextStyles.font20GrayMedium,
             )
           ],
         ),

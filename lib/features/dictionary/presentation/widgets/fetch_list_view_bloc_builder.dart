@@ -1,38 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/core/errors/build_error.dart';
+import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/dictionary_list_view.dart';
 
-class FetchDictionaryListViewBlocBuilder extends StatelessWidget {
-  final String searchText; // New parameter for search text
-final int itemCount; 
-  const FetchDictionaryListViewBlocBuilder({
+class FetchDictionaryListViewBlocConsumer extends StatefulWidget {
+  final int itemCount;
+  final String? searchText; 
+
+  const FetchDictionaryListViewBlocConsumer({
     super.key,
+    this.itemCount = 0,
     this.searchText = '',
-    this.itemCount = 0, 
-  
   });
 
   @override
+  State<FetchDictionaryListViewBlocConsumer> createState() => _FetchDictionaryListViewBlocConsumerState();
+}
+
+class _FetchDictionaryListViewBlocConsumerState extends State<FetchDictionaryListViewBlocConsumer> {
+  List<DictionaryEntity> dictionaryList = [];
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FetchDictionaryListCubit, FetchDictionaryListState>(
-      builder: (context, state) {
+    return BlocConsumer<FetchDictionaryListCubit, FetchDictionaryListState>(
+      listener: (context, state) {
         if (state is FetchDictionaryListSuccess) {
+     
+         dictionaryList .addAll(state.dictionaryList);
+        }
+        
+        if (state is FetchDictionaryListPaginationFailure) {
+          buildErrorBar(context, state.errMessage);
+        }
+      },
+      
+      builder: (context, state) {
+        List<DictionaryEntity> displayItems;
 
-    
-
+        if (state is FetchDictionaryListSuccess || state is FetchDictionaryListPaginationLoading || state is FetchDictionaryListPaginationFailure) {
           // Filter the dictionary list based on searchText
-          final displayItems = itemCount > 0 ? state.dictionaryList.take(itemCount).toList()
-             : state.dictionaryList.where((item) => item.mainTitle.toLowerCase().startsWith(searchText.toLowerCase()))
-              .toList();
+          displayItems = widget.itemCount > 0 
+              ?  dictionaryList.take(widget.itemCount).toList()
+            : dictionaryList.where((item) => item.mainTitle.toLowerCase().startsWith(widget.searchText!.toLowerCase())).toList();
 
-
+//              : dictionaryList.where((item) => item.mainTitle.toLowerCase().startsWith(widget.searchText.toLowerCase())).toList();
           if (displayItems.isEmpty) {
-            return Center(child: Text('No results found for "$searchText"',style: TextStyles.font14BlackMedium,));
-          } else {
-            return DictionaryListView(dictionary: displayItems);
+            return Center(child: Text('No results found for "${widget.searchText}"'));
           }
+          
+          return DictionaryListView(dictionary: displayItems);
         } else if (state is FetchDictionaryListFailure) {
           return Center(child: Text(state.errMessage));
         } else {

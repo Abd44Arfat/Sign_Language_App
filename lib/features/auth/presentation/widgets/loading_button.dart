@@ -63,7 +63,7 @@ class LoadingButton extends StatelessWidget {
             ),
             child: Text(
               title,
-            style: TextStyles.font16BlackRegular,
+            style: TextStyles.font16WhiteMedium,
               textAlign: TextAlign.center,
             ),
           ),
