@@ -8,5 +8,5 @@ class Routes {
     static const String loginScreen = '/loginView';
     static const String registerScreen  = '/registerScreen';
     static const String resetPassword = '/resetPassword';
-
+ static const String SettingView = '/SettingView';
 }

@@ -13,5 +13,6 @@ class ColorsManager {
   static const Color moreLightGray = Color(0xFFFDFDFF);
   static const Color moreLighterGray = Color(0xFFF5F5F5);
   static const Color itembackground = Color(0xFFF0F0F0);
+    static const Color settingBackground = Color(0xFFECECEC);
 }
 //itembackground

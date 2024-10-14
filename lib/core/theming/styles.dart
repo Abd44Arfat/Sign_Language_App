@@ -161,4 +161,19 @@ class TextStyles {
     fontWeight: FontWeightHelper.medium,
     color: Colors.black,
   );
+      static TextStyle font16Blackbold= TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.black,
+  );
+        static TextStyle font15BlackMedium= TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: Colors.black,
+  );
+          static TextStyle font20BlackExtraBold= TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.extraBold,
+    color: Colors.white,
+  );
 }

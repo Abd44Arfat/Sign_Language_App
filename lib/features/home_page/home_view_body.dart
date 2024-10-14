@@ -50,11 +50,7 @@ class HomeViewBody extends StatelessWidget {
           SliverFillRemaining(
 
                   child: FetchDictionaryListViewBlocConsumer(itemCount: 10,)),
-            
-            
-            
 
-       
         ],
       ),
     );

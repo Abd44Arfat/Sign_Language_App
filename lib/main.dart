@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Cairo',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute:isLoggedInUser? Routes.bottomNavigationScreen: Routes.loginScreen,
+        initialRoute:isLoggedInUser? Routes.SettingView: Routes.loginScreen,
         onGenerateRoute: AppRouter.generateRoute,
       ),
     );
