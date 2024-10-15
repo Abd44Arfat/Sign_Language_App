@@ -12,46 +12,56 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
-      child: CustomScrollView(
-        slivers: [
-          HomeAppBar(),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 140,
-              child: SpeakWithHands(),
-            ),
-          ),
-           SliverToBoxAdapter(
-            child: SizedBox(
-              height: 20,)),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 50,
-              child: Text(
-                'Services',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontFamily: 'Cairo',
-                  fontWeight: FontWeight.w500),
+    return const SafeArea(
+      child:  Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+        child: CustomScrollView(
+          slivers: [
+           CustomHomeAppBar(),
+             SliverToBoxAdapter(
+              child: SizedBox(
+                height: 12,)),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 140,
+                child: SpeakWithHands(),
               ),
             ),
-          ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 150,
-              child: ServicesListView(),
+             SliverToBoxAdapter(
+              child: SizedBox(
+                height: 10,)),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 40,
+                child: Text(
+                  'Services',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontFamily: 'Cairo',
+                    fontWeight: FontWeight.w500),
+                ),
+              ),
             ),
-          ),
-// Show first 5 items
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 150,
+                child: ServicesListView(),
+              ),
+            ),
 
-          SliverToBoxAdapter(child: BuildCommonWordsHeader()),
-          SliverFillRemaining(
-
-                  child: FetchDictionaryListViewBlocConsumer(itemCount: 10,)),
-
-        ],
+          
+      // Show first 5 items
+      
+            SliverToBoxAdapter(child: BuildCommonWordsHeader()),
+                SliverToBoxAdapter(
+              child: SizedBox(
+                height: 10,)),
+            SliverToBoxAdapter(
+      
+                    child: FetchDictionaryListViewBlocConsumer(itemCount: 5,shrinkWrap: true,)),
+      
+          ],
+        ),
       ),
     );
   }
