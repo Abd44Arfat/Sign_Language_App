@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-
-import '../theming/colors.dart';
-
-class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key});
+import 'package:flutter_svg/svg.dart';
+import 'package:sign_lang_app/core/theming/styles.dart';
+class CustomHomeAppBar extends StatelessWidget {
+  const CustomHomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      pinned: true,
-      floating: true,
-      expandedHeight: 70,
-      centerTitle: false,
-      backgroundColor: Colors.white,
-      shadowColor: Colors.transparent,
-      title: const Text('Welcome Back,',
-          style: TextStyle(
-              fontSize: 23,
-              fontWeight: FontWeight.w700,
-              color: ColorsManager.gray)),
-      flexibleSpace: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
+    return SliverToBoxAdapter(
+      child: ListTile(
+       
+      
+        leading: Image.asset('assets/images/image_peofile.png'),
+        title: Text(
+          'Good Morning',
+          style: TextStyles.font14GrayRegular.copyWith(
+            color: Color(0xff949D9E),
+          ),
+        ),
+        subtitle: Text(
+          ' Abdelrahman Arfat',
+          style: TextStyles.font16Blackbold.copyWith(
+            color: Colors.black,
+          ),
         ),
       ),
     );

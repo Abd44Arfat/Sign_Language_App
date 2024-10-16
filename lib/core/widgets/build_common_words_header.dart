@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sign_lang_app/core/theming/styles.dart';
 
 import '../routing/routes.dart';
 import '../theming/colors.dart';
@@ -16,19 +17,14 @@ class BuildCommonWordsHeader extends StatelessWidget {
       'Common Words',
       style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
     ),
-    AppTextButton(
-      buttonText: 'See All',
-      backgroundColor: Colors.transparent,
-      buttonWidth: 80,
-      buttonHeight: 80,
-      textStyle: const TextStyle(
-        fontSize: 20,
-        color: ColorsManager.green,
-      ),
-      onPressed: () {
-        Navigator.pushNamed(context, Routes.dictionaryScreen);
-      },
-    )
+GestureDetector(
+  
+  onTap: () {
+    Navigator.pushNamed(context,Routes.dictionaryScreen);
+  },
+  child: Text('See All',style: TextStyles.font16WhiteMedium.copyWith(color: ColorsManager.green),
+  )
+  ),
           ],
         );
   }

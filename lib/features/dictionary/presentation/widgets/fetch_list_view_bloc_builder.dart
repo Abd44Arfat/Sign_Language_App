@@ -8,11 +8,12 @@ import 'package:sign_lang_app/features/dictionary/presentation/widgets/dictionar
 class FetchDictionaryListViewBlocConsumer extends StatefulWidget {
   final int itemCount;
   final String? searchText; 
-
+  final bool shrinkWrap; // New parameter
   const FetchDictionaryListViewBlocConsumer({
     super.key,
     this.itemCount = 0,
     this.searchText = '',
+     this.shrinkWrap =false,
   });
 
   @override
@@ -50,7 +51,7 @@ class _FetchDictionaryListViewBlocConsumerState extends State<FetchDictionaryLis
             return Center(child: Text('No results found for "${widget.searchText}"'));
           }
           
-          return DictionaryListView(dictionary: displayItems);
+          return DictionaryListView(dictionary: displayItems,shrinkWrap: widget.shrinkWrap,);
         } else if (state is FetchDictionaryListFailure) {
           return Center(child: Text(state.errMessage));
         } else {

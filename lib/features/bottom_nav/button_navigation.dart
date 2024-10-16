@@ -6,6 +6,7 @@ import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
+import 'package:sign_lang_app/features/setting/presentation/setting_view.dart';
 import '../home_page/home_view.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -33,7 +34,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
             child: HomeView(),),
       const DictionaryView(),
-      const DictionaryView(), // Replace with your actual settings page
+      const SettingView(), // Replace with your actual settings page
     ];
   }
 
