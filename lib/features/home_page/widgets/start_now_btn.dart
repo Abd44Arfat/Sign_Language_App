@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../theming/colors.dart';
 
-class AppTextButton extends StatelessWidget {
+class StartNowBtn extends StatelessWidget {
   final double? borderRadius;
   final Color? backgroundColor;
   final double? horizontalPadding;
@@ -13,7 +12,7 @@ class AppTextButton extends StatelessWidget {
   final String buttonText;
   final TextStyle textStyle;
   final VoidCallback onPressed;
-  const AppTextButton({
+  const StartNowBtn({
     super.key,
     this.borderRadius,
     this.backgroundColor,
@@ -32,26 +31,28 @@ class AppTextButton extends StatelessWidget {
       style: ButtonStyle(
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 16.0),
+            borderRadius: BorderRadius.circular(borderRadius ?? 5.0),
           ),
         ),
         backgroundColor: WidgetStatePropertyAll(
-          backgroundColor ?? ColorsManager.primaryColor,
+          backgroundColor ?? Colors.white,
         ),
         padding: WidgetStateProperty.all<EdgeInsets>(
           EdgeInsets.symmetric(
-            horizontal: horizontalPadding?.w ?? 12.w,
-            vertical: verticalPadding?.h ?? 14.h,
+            horizontal: horizontalPadding?.w ?? 5.w,
+            vertical: verticalPadding?.h ?? 5.h,
           ),
         ),
         fixedSize: WidgetStateProperty.all(
-          Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 52.h),
+          Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 28.h),
         ),
       ),
       onPressed: onPressed,
-      child: Text(
-        buttonText,
-        style: textStyle,
+      child: FittedBox(
+        child: Text(
+          buttonText,
+          style: textStyle,
+        ),
       ),
     );
   }

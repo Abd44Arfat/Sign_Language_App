@@ -11,7 +11,7 @@ class DictionaryLocalDataSourceImpl implements DictionaryLocalDataSource {
   
   @override
   List<DictionaryEntity> fetchDictionaryList({int pageNumber=1}) {
-//todo: understand this point 
+
     int startIndex=pageNumber*10;
     int endIndex=(pageNumber+1)*10;
     var box = Hive.box<DictionaryEntity>(KDictionaryBox);

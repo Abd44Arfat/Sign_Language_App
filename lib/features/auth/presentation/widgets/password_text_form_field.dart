@@ -28,7 +28,8 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
             });
           },
           icon: const ImageIcon(
-            AssetImage('assets/icons/see_password.png'),
+            color: Colors.white,
+            AssetImage('assets/icons/see_password.png',),
             size: 26,
           ),
         ),

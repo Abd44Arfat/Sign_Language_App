@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
+import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/signup_cubit.dart'; // Import your Bloc
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
@@ -24,16 +25,28 @@ class _BottomNavigationState extends State<BottomNavigation> {
   void initState() {
     super.initState();
     screens = [
+      BlocProvider(
+        create: (context) => FetchDictionaryListCubit(
+          FetchDictionaryListUsecase(
+            dictionaryRepo:
+                getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
+          ),
+        )..fetchDictionaryList(),
+        child: BlocProvider(
+          create: (context) => FetchDictionaryListCubit( FetchDictionaryListUsecase(
+            dictionaryRepo:
+                getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
+          ),)..fetchDictionaryList(),
+          child: HomeView(),
+        ),
+      ),
         BlocProvider(
-            create: (context) => FetchDictionaryListCubit(
-              FetchDictionaryListUsecase(
-                dictionaryRepo:
-                    getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
-              ),
-            )..fetchDictionaryList(),
-
-            child: HomeView(),),
-      const DictionaryView(),
+          create: (context) => FetchDictionaryListCubit( FetchDictionaryListUsecase(
+            dictionaryRepo:
+                getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
+          ),)..fetchDictionaryList(),
+          child: DictionaryView(),
+        ),
       const SettingView(), // Replace with your actual settings page
     ];
   }
@@ -42,6 +55,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Widget build(BuildContext context) {
     double iconSize = 27;
     return Scaffold(
+      backgroundColor: Colors.black,
       body: screens[selectedIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
@@ -49,7 +63,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           highlightColor: Colors.transparent, // Disable highlight effect
         ),
         child: BottomNavigationBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
           currentIndex: selectedIndex,
           onTap: (value) {
             setState(() {
@@ -77,7 +91,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   const AssetImage('assets/icons/menu.png'),
                 )),
           ],
-          selectedItemColor: Colors.green,
+          selectedItemColor: ColorsManager.primaryColor,
           unselectedItemColor: Colors.grey,
         ),
       ),

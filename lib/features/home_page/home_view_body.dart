@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sign_lang_app/core/widgets/home_app_bar.dart';
-import 'package:sign_lang_app/core/widgets/services_list_view.dart';
+import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/features/home_page/widgets/home_app_bar.dart';
 import 'package:sign_lang_app/core/widgets/speak_with_hands.dart';
-import 'package:sign_lang_app/core/widgets/words_cards_list.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/fetch_list_view_bloc_builder.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/fetch_list_view_bloc_builder.dart';
+import 'package:sign_lang_app/features/home_page/widgets/Horizontal_word_list_tem.dart';
+import 'package:sign_lang_app/features/home_page/widgets/services_widget.dart';
 import '../../core/widgets/build_common_words_header.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -12,53 +13,54 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child:  Padding(
+
+
+    return  SafeArea(
+      child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-        child: CustomScrollView(
-          slivers: [
-           CustomHomeAppBar(),
-             SliverToBoxAdapter(
-              child: SizedBox(
-                height: 12,)),
-            SliverToBoxAdapter(
-              child: SizedBox(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+        CustomHomeAppBar(title: 'Good Morning', subtitle: 'Abdelrahman Arfat',)
+
+             ,  SizedBox(
                 height: 140,
                 child: SpeakWithHands(),
               ),
-            ),
-             SliverToBoxAdapter(
-              child: SizedBox(
-                height: 10,)),
-            SliverToBoxAdapter(
-              child: SizedBox(
+            
+        
+              SizedBox(
+                height: 10,),
+           
+          SizedBox(
                 height: 40,
                 child: Text(
                   'Services',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontFamily: 'Cairo',
-                    fontWeight: FontWeight.w500),
+                  style: TextStyles.font20WhiteSemiBold
+                 
+                  
+                 
                 ),
               ),
-            ),
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: 150,
-                child: ServicesListView(),
-              ),
-            ),
+            
+
+
+
+
+ServicesWidget(),
+      
+ 
+   SizedBox(
+            height: 12,),
+ BuildCommonWordsHeader(),
 
           
-      // Show first 5 items
-      
-            SliverToBoxAdapter(child: BuildCommonWordsHeader()),
-                SliverToBoxAdapter(
-              child: SizedBox(
-                height: 10,)),
-            SliverToBoxAdapter(
-      
-                    child: FetchDictionaryListViewBlocConsumer(itemCount: 5,shrinkWrap: true,)),
+   SizedBox(
+            height: 12,),
+
+ HorizontalWordList(),
+
+ 
       
           ],
         ),
@@ -66,3 +68,57 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
+
+
+
+
+ // child:  Padding(
+      //   padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+      //   child: CustomScrollView(
+      //     slivers: [
+      //      SliverToBoxAdapter(child: CustomHomeAppBar(title: 'Good Morning', subtitle: 'Abdelrahman Arfat',)),
+      //        SliverToBoxAdapter(
+      //         child: SizedBox(
+      //           height: 12,)),
+      //       SliverToBoxAdapter(
+      //         child: SizedBox(
+      //           height: 140,
+      //           child: SpeakWithHands(),
+      //         ),
+      //       ),
+      //        SliverToBoxAdapter(
+      //         child: SizedBox(
+      //           height: 10,)),
+      //       SliverToBoxAdapter(
+      //         child: SizedBox(
+      //           height: 40,
+      //           child: Text(
+      //             'Services',
+      //             style: TextStyle(
+      //               fontSize: 22,
+      //               fontFamily: 'Cairo',
+      //               fontWeight: FontWeight.w600),
+      //           ),
+      //         ),
+      //       ),
+      //       SliverToBoxAdapter(
+      //         child: SizedBox(
+      //           height: 150,
+      //           child: ServicesListView(),
+      //         ),
+      //       ),
+
+          
+      // // Show first 5 items
+      
+      //       SliverToBoxAdapter(child: BuildCommonWordsHeader()),
+      //           SliverToBoxAdapter(
+      //         child: SizedBox(
+      //           height: 10,)),
+      //       SliverToBoxAdapter(
+      
+      //               child: FetchDictionaryListViewBlocConsumer(itemCount: 5,shrinkWrap: true,)),
+      
+      //     ],
+      //   ),
+      // ),

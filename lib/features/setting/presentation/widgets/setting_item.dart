@@ -18,7 +18,7 @@ final void Function() onTap;
         child: Container(
           height: 55.h,
           decoration: BoxDecoration(
-            color: ColorsManager.itembackground,
+            color: Color(0xff19221D),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
@@ -32,14 +32,16 @@ final void Function() onTap;
                     width: 35,
                     child: CircleAvatar(
                       backgroundColor: Color(0xff7BC578),
+                      child: SvgPicture.asset('assets/images/shield-security.svg'),
                     ),
+                    
                   ),
                   SizedBox(
                     width: 16,
                   ),
                   Text(
                     title,
-                    style: TextStyles.font20GrayMedium,
+                    style: TextStyles.font20GrayMedium.copyWith(color: Colors.white),
                   ),
                 ],
               ),

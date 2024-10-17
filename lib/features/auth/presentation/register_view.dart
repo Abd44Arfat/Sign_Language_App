@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/errors/build_error.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
+import 'package:sign_lang_app/core/widgets/custom_background_color.dart';
 import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/register_view_body.dart';
 
@@ -30,7 +31,7 @@ buildErrorBar(context,state.errorMessage);
        }
     
       },
-      child: RegisterViewBody(),
+      child: CustomStack(child: RegisterViewBody()),
     ));
   }
 }

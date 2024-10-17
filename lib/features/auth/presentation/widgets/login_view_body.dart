@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
+import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
-import 'package:sign_lang_app/core/widgets/app_text_button.dart';
 import 'package:sign_lang_app/core/widgets/app_text_form_field.dart';
 import 'package:sign_lang_app/features/auth/data/models/signin_req.dart';
 import 'package:sign_lang_app/features/auth/domain/usecases/signin_usecase.dart';
 import 'package:sign_lang_app/features/auth/presentation/manager/login_cubit/login_cubit.dart';
-import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/loading_button.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/password_text_form_field.dart';
 
-import '../../../../../core/widgets/google_facebook_auth.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -37,7 +35,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           autovalidateMode: autovalidateMode,
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 60,
@@ -47,14 +45,14 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 child: Text(
                   'Login',
                   textAlign: TextAlign.center,
-                  style: TextStyles.font14DarkBlueMedium.copyWith(fontSize: 32),
+                  style: TextStyles.font32PrimaryExtraBold,
                 ),
               ),
               Text(
                 'Sign in for your account now',
-                textAlign: TextAlign.center,
-                style: TextStyles.font14DarkBlueMedium.copyWith(
-                    color: Colors.grey[600], fontWeight: FontWeight.w600),
+               
+                style: TextStyles.font20GrayMedium.copyWith(color: Color(0xffBFBFBF))
+                 
               ),
               const SizedBox(
                 height: 50,
@@ -76,8 +74,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     child: Text(
-                      'Did you forget your password ?',
-                      style: TextStyles.font14DarkBlueMedium.copyWith(fontSize: 15),
+                      'Forget your password ?',
+                      style: TextStyles.font15DarkBlueMedium.copyWith(color: ColorsManager.primaryColor),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, Routes.resetPassword);
@@ -110,29 +108,28 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0),
-                child: Row(
-                  children: [
-                    Text('new in Sign Talk ?',
-                        style: TextStyles.font14DarkBlueMedium.copyWith(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w300)),
-                    TextButton(
-                      child: Text('Sign up',
-                          style: TextStyles.font14DarkBlueMedium
-                              .copyWith(fontSize: 16)),
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(
-                            context, Routes.registerScreen);
-                      },
-                    )
-                  ],
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('new in Sign Talk ?',
+                          style: TextStyles.font15DarkBlueMedium.copyWith(color: Colors.white
+                          )),
+                      TextButton(
+                        child: Text('Sign up',
+                            style: TextStyles.font14DarkBlueMedium.copyWith(color: ColorsManager.primaryColor)
+                                .copyWith(fontSize: 16)),
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, Routes.registerScreen);
+                        },
+                      )
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(
-                height: 40,
-              ),
-              const GoogleFacebookAuth(),
+           
+              
             ],
           ),
         ),

@@ -13,16 +13,16 @@ class BuildCommonWordsHeader extends StatelessWidget {
     return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-    const Text(
+     Text(
       'Common Words',
-      style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+      style: TextStyles.font20WhiteSemiBold,
     ),
 GestureDetector(
   
   onTap: () {
     Navigator.pushNamed(context,Routes.dictionaryScreen);
   },
-  child: Text('See All',style: TextStyles.font16WhiteMedium.copyWith(color: ColorsManager.green),
+  child: Text('See All',style: TextStyles.font16WhiteMedium.copyWith(color: ColorsManager.primaryColor),
   )
   ),
           ],

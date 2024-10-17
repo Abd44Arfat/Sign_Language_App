@@ -8,7 +8,7 @@ class CustomSettingAppBar extends StatelessWidget implements PreferredSizeWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: ColorsManager.settingBackground,
+      backgroundColor: Colors.transparent,
       elevation: 0,
       toolbarHeight: 100, // Set the height of the AppBar
       title: Container(
@@ -24,11 +24,11 @@ class CustomSettingAppBar extends StatelessWidget implements PreferredSizeWidget
           ),
           title: Text(
             'Abdelrahman Arfat Mohamed', // Main title
-            style: TextStyles.font16Blackbold,
+            style: TextStyles.font16Blackbold.copyWith(color: Colors.white),
           ),
           subtitle: Text(
             'abdoarfat924@gmail.com', // Subtitle
-            style: TextStyles.font15BlackMedium,
+            style: TextStyles.font15BlackMedium.copyWith(color: Colors.white),
           ),
         ),
       ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/custom_check_box.dart';
 
@@ -17,60 +19,59 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
   bool isTermsAccepted = false;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CustomCheckBox(
-          onChecked: (value) {
-            isTermsAccepted = value;
-            widget.onChanged(value);
-            setState(() {});
-          },
-          isChecked: isTermsAccepted,
-        ),
-        const SizedBox(
-          width: 12,
-        ),
-        Expanded(
-          child: Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: 'By creating an account you agree',
-                  style: TextStyles.font14DarkBlueMedium.copyWith(
-                    color: const Color(0xFF949D9E),
-                  ),
-                ),
-                TextSpan(
-                  text: 'to our ',
-                  style: TextStyles.font14DarkBlueMedium.copyWith(
-                    color: Colors.black,
-                  ),
-                ),
-                 TextSpan(
-                  text: ' ',
-                  style: TextStyles.font14DarkBlueMedium,
-                ),
-                TextSpan(
-                  text: 'terms and conditions.',
-                  style: TextStyles.font14DarkBlueMedium.copyWith(
-                    color: Colors.amber,
-                  ),
-                ),
-                 TextSpan(
-                  text: ' ',
-                  style: TextStyles.font14DarkBlueMedium,
-                ),
-                TextSpan(
-                  text: 'بنا',
-                  style: TextStyles.font14DarkBlueMedium
-                      .copyWith(color: Colors.amberAccent),
-                ),
-              ],
-            ),
-            textAlign: TextAlign.left,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          CustomCheckBox(
+            onChecked: (value) {
+              isTermsAccepted = value;
+              widget.onChanged(value);
+              setState(() {});
+            },
+            isChecked: isTermsAccepted,
           ),
-        )
-      ],
+          const SizedBox(
+            width: 12,
+          ),
+          Expanded(
+            child: Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'I’m agree to The ',
+                    style: TextStyles.font16WhiteMedium.copyWith(
+                      color:  Colors.white,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'Tarms of Service',
+                    style: TextStyles.font16WhiteMedium.copyWith(
+                      color: ColorsManager.primaryColor,
+                    ),
+                  ),
+                   TextSpan(
+                    text: ' ',
+                    style: TextStyles.font16WhiteMedium,
+                  ),
+                  TextSpan(
+                    text: 'and ',
+                    style: TextStyles.font16WhiteMedium.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                   TextSpan(
+                    text: 'Privacy Policy ',
+                    style: TextStyles.font16WhiteMedium.copyWith(color: ColorsManager.primaryColor,
+                  ),
+               
+               ) ],
+              ),
+              textAlign: TextAlign.left,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

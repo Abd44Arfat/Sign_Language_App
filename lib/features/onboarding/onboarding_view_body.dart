@@ -3,9 +3,9 @@ import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/widgets/next_button.dart';
-import 'package:sign_lang_app/features/onboarding/views/onboarding_page1/onboarding_page1_view.dart';
-import 'package:sign_lang_app/features/onboarding/views/onboarding_page2/onboarding_page2_view.dart';
-import 'package:sign_lang_app/features/onboarding/views/onboarding_page3/onboarding_page3_view.dart';
+import 'package:sign_lang_app/features/onboarding/views/onboarding_page1/onboarding_page1_view_body.dart';
+import 'package:sign_lang_app/features/onboarding/views/onboarding_page2/onboarding_page2_view_body.dart';
+import 'package:sign_lang_app/features/onboarding/views/onboarding_page3/onboarding_page3_view_body.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingViewBody extends StatefulWidget {
@@ -40,7 +40,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                         },
                         child: Text(
                           'Skip',
-                          style: TextStyles.font14DarkBlueMedium,
+                          style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.grey),
                         ),
                       ),
                     ],
@@ -59,9 +59,9 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                 },
                 controller: _controller,
                 children: const [
-                  OnboardingPage1View(),
-                  OnboardingPage2View(),
-                  OnboardingPage3View(),
+                  OnboardingPage1ViewBody(),
+                  OnboardingPage2ViewBody(),
+                  OnboardingPage3ViewBody(),
                 ],
               ),
             ),
@@ -73,7 +73,7 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
             controller: _controller,
             count: 3,
             effect: const ExpandingDotsEffect(
-                activeDotColor: ColorsManager.lightGreen,
+                activeDotColor: ColorsManager.primaryColor,
                 dotHeight: 11,
                 dotWidth: 12),
           ),
