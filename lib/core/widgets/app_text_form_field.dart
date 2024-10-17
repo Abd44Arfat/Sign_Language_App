@@ -44,7 +44,7 @@ class AppTextFormField extends StatelessWidget {
         focusedBorder: focusedBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
-                color: Color(0xffF5F9FE),
+                color: Colors.white,
                 width: 1.3,
               ),
               borderRadius: BorderRadius.circular(16.0),
@@ -53,7 +53,7 @@ class AppTextFormField extends StatelessWidget {
             OutlineInputBorder(
               borderSide: const BorderSide(
 
-                color: Color(0xfff5f9fe) , //ColorsManager.itembackground,
+                color: Color(0xff5D5D5D) , //ColorsManager.itembackground,
 
               
 
@@ -82,13 +82,13 @@ class AppTextFormField extends StatelessWidget {
         // fillColor: backgroundColor ?? Color(0xfff5f9fe),
 
         prefixIcon: prefixIcon,
-        fillColor: backgroundColor ?? Color(0xffF5F9FE),
+        fillColor: backgroundColor ?? Color(0xff5D5D5D),
 
         filled: true,
       ),
       obscuringCharacter :  '*',  //'●',
       obscureText: isObscureText ?? false,
-      style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.black87),
+      style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.white),
  validator: (value) {
         if (value == null || value.isEmpty) {
           return 'this field is required';

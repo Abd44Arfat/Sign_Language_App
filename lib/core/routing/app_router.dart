@@ -11,6 +11,7 @@ import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_so
 import 'package:sign_lang_app/features/dictionary/data/data_source/remote_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
+import 'package:sign_lang_app/features/dictionary/presentation/dictionary_details_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 import 'package:sign_lang_app/features/home_page/home_view.dart';
@@ -36,6 +37,14 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const SettingView(),
         );
+
+
+       case Routes.DictionaryDetailsView:
+        return MaterialPageRoute(
+          builder: (_) => const DictionaryDetailsView(),
+        );
+
+
       case Routes.splashScreen:
         return MaterialPageRoute(
           builder: (_) => const SplashView(),

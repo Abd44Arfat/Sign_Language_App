@@ -5,8 +5,6 @@ import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/widgets/custom_button_animation.dart';
 
-
-
 class LoadingButton extends StatelessWidget {
   final GlobalKey<CustomButtonState> btnKey;
   final String title;
@@ -39,7 +37,8 @@ class LoadingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color border = color ?? ColorsManager.mainBlue;
+    Color border = color ?? ColorsManager.primaryColor;
+
     return Container(
       alignment: Alignment.center,
       margin: margin ?? const EdgeInsets.symmetric(vertical: 10),
@@ -51,20 +50,34 @@ class LoadingButton extends StatelessWidget {
             width: width ?? MediaQuery.of(context).size.width,
             minWidth: 56,
             height: height ?? 56,
-            color: color ?? ColorsManager.mainBlue,
             borderRadius: borderRadius ?? 10,
             borderSide: BorderSide(color: borderColor ?? border, width: 1),
             loader: Container(
               padding: const EdgeInsets.all(10),
               child: const SpinKitRotatingCircle(
-                color: Colors.white,
+                color:ColorsManager.secondaryColor,
                 size: 20,
               ),
             ),
-            child: Text(
-              title,
-            style: TextStyles.font16WhiteMedium,
-              textAlign: TextAlign.center,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    ColorsManager.primaryColor, // Starting color
+                    ColorsManager.secondaryColor, // Ending color
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+                borderRadius: BorderRadius.circular(borderRadius ?? 10),
+              ),
+              alignment: Alignment.center,
+              height: height ?? 56,
+              child: Text(
+                title,
+                style: TextStyles.font16WhiteMedium,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ],

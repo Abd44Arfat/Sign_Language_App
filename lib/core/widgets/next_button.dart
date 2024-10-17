@@ -6,20 +6,33 @@ import '../theming/styles.dart';
 class NextButton extends StatelessWidget {
   const NextButton({super.key, required this.onPressed});
   final void Function()? onPressed;
+
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onPressed: onPressed,
-      color: ColorsManager.mediumLightBlue,
-      textColor: Colors.white,
-      minWidth: 380,
-      height: 50,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      child: Text(
-        'Next',
-        style: TextStyles.font14DarkBlueMedium,
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              ColorsManager.primaryColor, // Starting color
+              ColorsManager.secondaryColor, // Ending color
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        width: 380,
+        height: 50,
+        alignment: Alignment.center,
+        child: Text(
+          'Next',
+          style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.white),
+        ),
       ),
     );
   }

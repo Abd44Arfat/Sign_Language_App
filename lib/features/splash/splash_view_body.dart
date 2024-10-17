@@ -24,7 +24,7 @@ class SplashViewBody extends StatelessWidget {
             duration: const Duration(seconds: 2),
             infinite: true,
             child: Container(
-              color: ColorsManager.mediumLightBlue,
+              color: ColorsManager.primaryColor,
               width: 100,
               height: 20,
             ))

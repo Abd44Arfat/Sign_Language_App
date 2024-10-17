@@ -36,12 +36,15 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         theme: ThemeData(
-          primaryColor: ColorsManager.mainBlue,
-          scaffoldBackgroundColor: Colors.white,
+          // primaryColor: ColorsManager.mainBlue,
+          scaffoldBackgroundColor: Colors.black,
           fontFamily: 'Cairo',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute:isLoggedInUser? Routes.bottomNavigationScreen: Routes.loginScreen,
+        initialRoute:Routes.onBoardingScreen,
+
+
+        // isLoggedInUser? Routes.bottomNavigationScreen: Routes.loginScreen,
         onGenerateRoute: AppRouter.generateRoute,
       ),
     );

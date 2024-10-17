@@ -35,18 +35,21 @@ class _DictionaryViewBodyState extends State<DictionaryViewBody> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric( vertical: 20),
-            child: AppTextFormField(
-              controller: _searchController,
-              hintText: 'Search for a Word',
-              prefixIcon:Icon(Iconsax.search_normal_1_copy,color: Colors.grey,) ,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric( vertical: 20),
+              child: AppTextFormField(
+                controller: _searchController,
+                hintText: 'Search for a Word',
+                prefixIcon:Icon(Iconsax.search_normal_1_copy,color: Colors.grey,) ,
+              ),
             ),
-          ),
-          Expanded(child: FetchDictionaryListViewBlocConsumer(searchText: _searchText)),
-        ],
+            Expanded(child: FetchDictionaryListViewBlocConsumer(searchText: _searchText)),
+          ],
+        ),
       ),
     );
   }

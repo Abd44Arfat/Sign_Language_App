@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/errors/build_error.dart';
+import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/dictionary_list_view.dart';
@@ -48,7 +49,7 @@ class _FetchDictionaryListViewBlocConsumerState extends State<FetchDictionaryLis
 
 //              : dictionaryList.where((item) => item.mainTitle.toLowerCase().startsWith(widget.searchText.toLowerCase())).toList();
           if (displayItems.isEmpty) {
-            return Center(child: Text('No results found for "${widget.searchText}"'));
+            return Center(child: Text('No results found for "${widget.searchText}"',style: TextStyles.font16WhiteMedium,));
           }
           
           return DictionaryListView(dictionary: displayItems,shrinkWrap: widget.shrinkWrap,);

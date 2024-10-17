@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/errors/build_error.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
+import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/widgets/app_text_button.dart';
 import 'package:sign_lang_app/core/widgets/app_text_form_field.dart';
@@ -26,7 +27,6 @@ class RegisterViewBody extends StatefulWidget {
 class _RegisterViewBodyState extends State<RegisterViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   late String email, userName, password, confirmPassword;
@@ -41,7 +41,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
         autovalidateMode: autovalidateMode,
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 60,
@@ -50,11 +50,14 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 height: 55,
                 child: Text(
                   'create an account',
-                  style: TextStyles.font14DarkBlueMedium.copyWith(fontSize: 32),
+                  style: TextStyles.font32PrimaryExtraBold,
                 ),
               ),
+              Text('Enter Your Details To Create Your Account',
+                  style: TextStyles.font20GrayMedium
+                      .copyWith(color: Color(0xffBFBFBF))),
               const SizedBox(
-                height: 50,
+                height: 20,
               ),
               AppTextFormField(
                 hintText: 'Name',
@@ -87,6 +90,9 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   confirmPassword = value!;
                 },
               ),
+              const SizedBox(
+                height: 25,
+              ),
               TermsAndConditionsWidget(
                 onChanged: (value) {
                   isTermsAccepted = value;
@@ -95,65 +101,56 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               const SizedBox(
                 height: 25,
               ),
-            
               BlocBuilder<SignupCubit, SignupState>(
                 builder: (context, state) {
                   return LoadingButton(
                     title: 'Login',
                     onTap: () {
- 
+                      if (formKey.currentState!.validate() && isTermsAccepted) {
+                        formKey.currentState!.save();
 
-    if (formKey.currentState!.validate()&&isTermsAccepted) {
-                    formKey.currentState!.save();
-                     
-context.read<SignupCubit>().execute(usecase:   getIt<SignupUsecase>(),
-
-params:  SignupReqParams(
-                            name: userName,
-                            email: email,
-                            password: password,
-                            repassword: confirmPassword));
-
-
-              }else {
-                      buildErrorBar(
-                          context, 'يجب عليك الموافقة على الشروط والإحكام');
-                    }
-
-
-
+                        context.read<SignupCubit>().execute(
+                            usecase: getIt<SignupUsecase>(),
+                            params: SignupReqParams(
+                                name: userName,
+                                email: email,
+                                password: password,
+                                repassword: confirmPassword));
+                      } else {
+                        buildErrorBar(
+                            context, 'يجب عليك الموافقة على الشروط والإحكام');
+                      }
                     },
-
-                    
                     btnKey: SignupCubit.get(context).btnKey,
                   );
                 },
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0),
-                child: Row(
-                  children: [
-                    Text('new in Sign Talk ?',
-                        style: TextStyles.font14DarkBlueMedium.copyWith(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w300)),
-                    TextButton(
-                      child: Text('login',
-                          style: TextStyles.font14DarkBlueMedium
-                              .copyWith(fontSize: 16)),
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(
-                            context, Routes.loginScreen);
-                      },
-                    )
-                  ],
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment:MainAxisAlignment.center,
+                    children: [
+                      Text('new in Sign Talk ?',
+                          style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.white
+                             )),
+                      TextButton(
+                        child: Text('login',
+                            style: TextStyles.font15DarkBlueMedium
+                                .copyWith(color: ColorsManager.primaryColor)),
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, Routes.loginScreen);
+                        },
+                      )
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 40,
               ),
-              const GoogleFacebookAuth(),
+       
             ],
           ),
         ),

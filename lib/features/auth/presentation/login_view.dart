@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/errors/build_error.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
+import 'package:sign_lang_app/core/widgets/custom_background_color.dart';
 import 'package:sign_lang_app/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:sign_lang_app/features/auth/presentation/register_view.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/login_view_body.dart';
@@ -29,7 +30,7 @@ if (state is LoginFailure) {
 }
 
         },
-        child: LoginViewBody(),
+        child: CustomStack(child: LoginViewBody()),
       ),
     );
   }
