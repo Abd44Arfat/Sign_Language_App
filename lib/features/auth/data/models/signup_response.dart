@@ -1,23 +1,23 @@
 class SignupResponse {
   final String message;
-  final List<User>? users; // Change to a list of User
+  final User? user; // Change to a single User object
 
-  SignupResponse({required this.message, this.users});
+  SignupResponse({required this.message, this.user});
 
   factory SignupResponse.fromJson(Map<String, dynamic> json) {
     // Check if the response contains a 'user' key
     if (json.containsKey('user') && json['user'] != null) {
-      // Cast to List and map to User
-      var usersList = json['user'] as List;
+      // Directly create a User object
+      var userJson = json['user'] as Map<String, dynamic>;
       return SignupResponse(
         message: json['message'],
-        users: usersList.map((userJson) => User.fromJson(userJson)).toList(),
+        user: User.fromJson(userJson), // Create User from JSON
       );
     } else {
       // Handle error response
       return SignupResponse(
         message: json['message'] ?? 'Unknown error occurred.',
-        users: null, // No users on error
+        user: null, // No user on error
       );
     }
   }
