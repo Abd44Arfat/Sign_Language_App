@@ -7,20 +7,14 @@ class LoginResponse {
   
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
     // Check if the response contains a 'user' key
-    if (json.containsKey('user') && json['user'] != null) {
-      return LoginResponse(
-        message: json['message'],
-        token: json['token'], // Parse the token
-        user: User.fromJson(json['user']), // Parse the user if present
-      );
-    } else {
-      // Handle error response
-      return LoginResponse(
-        message: json['message'] ?? 'Unknown error occurred.',
-        token: '', // Set token to empty string on error
-        user: null, // No user on error
-      );
-    }
+    String token = json['token'] ?? ''; // Handle missing token
+    return LoginResponse(
+      message: json['message'] ?? 'Unknown error occurred.',
+      token: token, // Use the token variable
+      user: json.containsKey('user') && json['user'] != null 
+          ? User.fromJson(json['user']) 
+          : null, // Parse the user if present
+    );
   }
 }
 
