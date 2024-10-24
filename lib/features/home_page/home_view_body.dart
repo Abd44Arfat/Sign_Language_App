@@ -9,7 +9,8 @@ import 'package:sign_lang_app/features/home_page/widgets/services_widget.dart';
 import '../../core/widgets/build_common_words_header.dart';
 
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({super.key});
+  const HomeViewBody({super.key, required this.userName});
+  final String userName; // Add this field
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class HomeViewBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-        CustomHomeAppBar(title: 'Good Morning', subtitle: 'Abdelrahman Arfat',)
+        CustomHomeAppBar(title: 'Good Morning', subtitle: userName,)
 
              ,  SizedBox(
                 height: 140,

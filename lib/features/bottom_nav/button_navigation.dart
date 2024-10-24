@@ -11,8 +11,9 @@ import 'package:sign_lang_app/features/setting/presentation/setting_view.dart';
 import '../home_page/home_view.dart';
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key});
-
+  const BottomNavigation({super.key, required this.userName, required this.userEmail});
+  final String userName; 
+  final String userEmail;
   @override
   State<BottomNavigation> createState() => _BottomNavigationState();
 }
@@ -37,7 +38,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             dictionaryRepo:
                 getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
           ),)..fetchDictionaryList(),
-          child: HomeView(),
+          child: HomeView(userName:widget.userName ,),
         ),
       ),
         BlocProvider(
@@ -47,7 +48,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),)..fetchDictionaryList(),
           child: DictionaryView(),
         ),
-      const SettingView(), // Replace with your actual settings page
+       SettingView(userName:widget.userName , userEmail: widget.userEmail,), // Replace with your actual settings page
     ];
   }
 

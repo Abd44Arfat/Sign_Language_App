@@ -7,15 +7,16 @@ import 'package:sign_lang_app/features/setting/presentation/widgets/setting_item
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingViewBody extends StatelessWidget {
-  const SettingViewBody({super.key});
-
+  const SettingViewBody({super.key, required this.userName, required this.userEmail});
+final String userName;
+final String userEmail;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          CustomSettingAppBar(),
+          CustomSettingAppBar(userName: userName, userEmail: userEmail,),
           SizedBox(
             height: 30.h,
           ),

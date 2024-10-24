@@ -3,8 +3,9 @@ import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 
 class CustomSettingAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomSettingAppBar({super.key});
-
+  const CustomSettingAppBar({super.key, required this.userName, required this.userEmail});
+final String userName;
+final String userEmail;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -23,11 +24,11 @@ class CustomSettingAppBar extends StatelessWidget implements PreferredSizeWidget
             ), // Adjust the radius for the avatar
           ),
           title: Text(
-            'Abdelrahman Arfat Mohamed', // Main title
+            userName, // Main title
             style: TextStyles.font16Blackbold.copyWith(color: Colors.white),
           ),
           subtitle: Text(
-            'abdoarfat924@gmail.com', // Subtitle
+          userEmail, // Subtitle
             style: TextStyles.font15BlackMedium.copyWith(color: Colors.white),
           ),
         ),
