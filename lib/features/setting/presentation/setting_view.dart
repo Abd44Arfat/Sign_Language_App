@@ -6,14 +6,15 @@ import 'package:sign_lang_app/features/setting/presentation/widgets/custom_setti
 import 'package:sign_lang_app/features/setting/presentation/widgets/setting_view_body.dart';
 
 class SettingView extends StatelessWidget {
-  const SettingView({super.key});
-
+  const SettingView({super.key, required this.userName, required this.userEmail});
+final String userName;
+final String userEmail;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
      
 
-      body: CustomStack(child: SettingViewBody()),
+      body: CustomStack(child: SettingViewBody(userName: userName, userEmail: userEmail,)),
     );
   }
 }

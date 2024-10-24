@@ -39,7 +39,7 @@ class LoginCubit extends Cubit<LoginState> {
         (data) async {
           await saveUserToken(data.token);
           print('Login successful: ${data.token}'); // Log success message
-          emit(LoginSuccess(message: data.message)); // Ensure you pass the user's name if available
+          emit(LoginSuccess(message: data.message, userName: data.user!.name, userEmail: data.user!.email)); // Ensure you pass the user's name if available
           btnKey.currentState!.animateReverse();
         },
       );
