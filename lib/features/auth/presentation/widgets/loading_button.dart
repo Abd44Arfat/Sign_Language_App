@@ -61,7 +61,7 @@ class LoadingButton extends StatelessWidget {
             ),
             child: Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [
                     ColorsManager.primaryColor, // Starting color
                     ColorsManager.secondaryColor, // Ending color

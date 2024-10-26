@@ -1,10 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+
 class CustomStack extends StatelessWidget {
   final Widget child;
-
-  const CustomStack({super.key, required this.child});
+  final double? width;
+  const CustomStack({super.key, required this.child , this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,9 @@ class CustomStack extends StatelessWidget {
       children: [
         // Background gradient
         Container(
-          decoration: BoxDecoration(
+          width: width ?? double.minPositive,
+
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,

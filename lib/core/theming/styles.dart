@@ -11,6 +11,11 @@ class TextStyles {
     color: Colors.black,
   );
 
+  static TextStyle font28GreenSemiBold = const TextStyle(
+      fontSize: 28 ,
+      color: Color(0xffADF592) ,
+      fontWeight: FontWeight.w600);
+
   static TextStyle font18BlackLight = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.extraLight,
