@@ -57,7 +57,12 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
                   );
                 } else {
                  
-                  return const Center(child: CircularProgressIndicator());
+                  return Column(
+                    children: [
+                         SizedBox(height: 200,),
+                      Center(child: CircularProgressIndicator(color: Colors.white)),
+                    ],
+                  );
                 }
               },
             ),
