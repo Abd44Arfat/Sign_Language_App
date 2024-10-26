@@ -19,12 +19,7 @@ class _DictionaryListViewState extends State<DictionaryListView> {
   var nextPage = 2;
   var isLoading = false;
 
-  // Define the colors
-  final List<Color> backgroundColors = [
-    Color(0xff2E8B58), // First color
-    Color(0xff7BB092),  // Second color
-    Color(0xff76CEC6),   // Third color
-  ];
+
 
   @override
   void initState() {
@@ -58,11 +53,9 @@ class _DictionaryListViewState extends State<DictionaryListView> {
       itemCount: widget.dictionary.length,
       itemBuilder: (context, index) {
         // Get the color based on the index
-        Color avatarColor = backgroundColors[index % backgroundColors.length];
         
         return DictionaryListViewItem(
           title: widget.dictionary[index].mainTitle,
-          itemBackground: avatarColor, // Pass the color
         );
       },
     );
