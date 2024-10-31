@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 
 class DictionaryListViewItem extends StatelessWidget {
@@ -36,11 +37,14 @@ class DictionaryListViewItem extends StatelessWidget {
                   title,
                   style: TextStyles.font20WhiteSemiBold,
                 ),
-                IconButton(
-                  icon: Icon(isSaved ? Icons.check : Icons.save), // Change icon based on saved state
-                  color: Colors.white,
-                  onPressed: isSaved ? null : onSave, // Disable save action if already saved
-                ),
+
+GestureDetector(
+  onTap:isSaved ? null : onSave ,
+  
+  child: SvgPicture.asset(isSaved?'assets/images/Vector.svg':'assets/images/frame.svg'))
+
+
+        
               ],
             ),
           ),
