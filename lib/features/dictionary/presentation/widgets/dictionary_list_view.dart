@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/dictionary_list_view_item.dart';
@@ -44,18 +45,24 @@ class _DictionaryListViewState extends State<DictionaryListView> {
     }
   }
 
+
+void _saveItem(DictionaryEntity item) {
+    final localDataSource = DictionaryLocalDataSourceImpl(); // Ideally, inject this
+    localDataSource.saveDictionaryItem(item);
+    print("Saved: ${item.mainTitle}"); // Confirm the save
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       controller: _scrollController,
-      physics:  widget.shrinkWrap ? NeverScrollableScrollPhysics() : BouncingScrollPhysics(),
-      shrinkWrap:widget.shrinkWrap ,
+      physics: widget.shrinkWrap ? NeverScrollableScrollPhysics() : BouncingScrollPhysics(),
+      shrinkWrap: widget.shrinkWrap,
       itemCount: widget.dictionary.length,
       itemBuilder: (context, index) {
-        // Get the color based on the index
-        
         return DictionaryListViewItem(
           title: widget.dictionary[index].mainTitle,
+          onTap: () => _saveItem(widget.dictionary[index]), // Pass save action
         );
       },
     );

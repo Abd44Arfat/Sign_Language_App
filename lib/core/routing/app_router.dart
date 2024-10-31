@@ -17,6 +17,7 @@ import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionar
 import 'package:sign_lang_app/features/home_page/home_view.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
 import 'package:sign_lang_app/features/setting/presentation/about_us_view.dart';
+import 'package:sign_lang_app/features/setting/presentation/saved_words.dart';
 import 'package:sign_lang_app/features/setting/presentation/views/setting_view.dart';
 import 'package:sign_lang_app/features/splash/splash_view.dart';
 import '../../features/auth/presentation/login_view.dart';
@@ -44,7 +45,10 @@ class AppRouter {
           builder: (_) => const DictionaryDetailsView(),
         );
 
-
+ case Routes.SavedWordsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SavedWordsScreen(),
+        );
       case Routes.splashScreen:
         return MaterialPageRoute(
           builder: (_) => const SplashView(),

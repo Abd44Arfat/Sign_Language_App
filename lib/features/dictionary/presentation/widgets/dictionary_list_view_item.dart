@@ -6,10 +6,10 @@ import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 class DictionaryListViewItem extends StatelessWidget {
-  const DictionaryListViewItem({super.key, required this.title, });
+  const DictionaryListViewItem({super.key, required this.title, this.onTap, });
   
   final String title;
-
+final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,10 @@ class DictionaryListViewItem extends StatelessWidget {
                       title,
                       style: TextStyles.font20WhiteSemiBold,
                     ),
-                   SvgPicture.asset('assets/images/frame.svg')
+                   GestureDetector(
+                    onTap:onTap ,
+                    
+                    child: SvgPicture.asset('assets/images/frame.svg'))
                   ],
                 ),
               ],

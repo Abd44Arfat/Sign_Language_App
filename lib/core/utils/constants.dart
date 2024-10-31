@@ -1,4 +1,5 @@
 const KDictionaryBox = 'dictionaryBox';
+const KSavedwordsBox = 'SavedwordsBox';
 
 
 class ApiUrls{

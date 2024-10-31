@@ -11,6 +11,8 @@ class Routes {
     static const String aboutUsView = '/aboutUsView';
     static const String SettingView = '/SettingView';
  static const String DictionaryDetailsView = '/DictionaryDetailsView';
+ static const String SavedWordsScreen = '/SavedWordsScreen';
+
 
 
 }
