@@ -10,16 +10,15 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/routing/routes.dart';
 
 class SettingViewBody extends StatelessWidget {
-  const SettingViewBody({super.key, required this.userName, required this.userEmail});
-final String userName;
-final String userEmail;
+  const SettingViewBody({super.key, });
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          CustomSettingAppBar(userName: userName, userEmail: userEmail,),
+          CustomSettingAppBar(),
           SizedBox(
             height: 30.h,
           ),

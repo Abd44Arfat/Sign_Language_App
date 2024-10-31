@@ -13,8 +13,18 @@ import 'package:sign_lang_app/core/utils/simple_bloc_observer.dart';
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   // Initialize SharedPreferences
-await checkIfLoggedInUser();
+
+  // Retrieve user token from SharedPreferences
+  String? userToken = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
+
+  // Check if the user is logged in
+  bool isLoggedInUser = userToken != null && userToken.isNotEmpty;
+
+  // Check if onboarding has been completed
+  bool isOnboardingCompleted = await SharedPrefHelper.getBool(SharedPrefKeys.onboardingCompleted);
+
+
+
   Hive.registerAdapter(DictionaryEntityAdapter());
   await Hive.initFlutter();
   await Hive.openBox<DictionaryEntity>(KDictionaryBox);
@@ -23,11 +33,14 @@ await checkIfLoggedInUser();
 
   setupServiceLocator();
 
-  runApp(const MyApp());
+  runApp(MyApp(isLoggedInUser: isLoggedInUser, isOnboardingCompleted: isOnboardingCompleted));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isLoggedInUser;
+  final bool isOnboardingCompleted;
+
+  const MyApp({Key? key, required this.isLoggedInUser, required this.isOnboardingCompleted}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,28 +49,16 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         theme: ThemeData(
-          // primaryColor: ColorsManager.mainBlue,
           scaffoldBackgroundColor: Colors.black,
           fontFamily: 'Cairo',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute:Routes.onBoardingScreen,
-
-
-        // isLoggedInUser? Routes.bottomNavigationScreen: Routes.loginScreen,
+        initialRoute: isLoggedInUser
+            ? Routes.bottomNavigation
+            : (isOnboardingCompleted ? Routes.loginScreen : Routes.onBoardingScreen),
         onGenerateRoute: AppRouter.generateRoute,
       ),
     );
   }
 }
 
-
-checkIfLoggedInUser() async {
-  String? userToken =
-      await SharedPrefHelper.getString(SharedPrefKeys.userToken);
-  if (!userToken.isNullOrEmpty()) {
-    isLoggedInUser = true;
-  } else {
-    isLoggedInUser = false;
-  }
-}

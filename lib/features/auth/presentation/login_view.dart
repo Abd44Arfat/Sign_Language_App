@@ -21,7 +21,7 @@ class LoginView extends StatelessWidget {
               'userEmail': state.userEmail, // Ensure you have this in your LoginSuccess state
             };
             context.pushReplacementNamed(
-              Routes.bottomNavigationScreen,
+              Routes.bottomNavigation,
           
               arguments: args,
               

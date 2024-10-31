@@ -7,13 +7,13 @@ import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
-import 'package:sign_lang_app/features/setting/presentation/setting_view.dart';
+import 'package:sign_lang_app/features/setting/presentation/views/setting_view.dart';
 import '../home_page/home_view.dart';
-
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key, required this.userName, required this.userEmail});
-  final String userName; 
+  final String userName;
   final String userEmail;
+
   @override
   State<BottomNavigation> createState() => _BottomNavigationState();
 }
@@ -26,42 +26,28 @@ class _BottomNavigationState extends State<BottomNavigation> {
   void initState() {
     super.initState();
     screens = [
+      HomeView(),
       BlocProvider(
         create: (context) => FetchDictionaryListCubit(
           FetchDictionaryListUsecase(
-            dictionaryRepo:
-                getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
+            dictionaryRepo: getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
           ),
         )..fetchDictionaryList(),
-        child: BlocProvider(
-          create: (context) => FetchDictionaryListCubit( FetchDictionaryListUsecase(
-            dictionaryRepo:
-                getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
-          ),)..fetchDictionaryList(),
-          child: HomeView(userName:widget.userName ,),
-        ),
+        child: const DictionaryView(),
       ),
-        BlocProvider(
-          create: (context) => FetchDictionaryListCubit( FetchDictionaryListUsecase(
-            dictionaryRepo:
-                getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
-          ),)..fetchDictionaryList(),
-          child: DictionaryView(),
-        ),
-       SettingView(userName:widget.userName , userEmail: widget.userEmail,), // Replace with your actual settings page
+      SettingView(),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
-    double iconSize = 27;
     return Scaffold(
       backgroundColor: Colors.black,
       body: screens[selectedIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
-          splashColor: Colors.transparent, // Disable splash effect
-          highlightColor: Colors.transparent, // Disable highlight effect
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
         ),
         child: BottomNavigationBar(
           backgroundColor: Colors.black,
@@ -74,23 +60,26 @@ class _BottomNavigationState extends State<BottomNavigation> {
           type: BottomNavigationBarType.fixed,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                label: 'Home',
-                icon: ImageIcon(
-                    size: iconSize + 2,
-                    const AssetImage('assets/icons/home.png'))),
+              label: 'Home',
+              icon: ImageIcon(
+                size: 29,
+                const AssetImage('assets/icons/home.png'),
+              ),
+            ),
             BottomNavigationBarItem(
               label: 'Learn',
               icon: ImageIcon(
-                size: iconSize,
+                size: 27,
                 const AssetImage('assets/icons/learning_icon.png'),
               ),
             ),
             BottomNavigationBarItem(
-                label: 'Settings',
-                icon: ImageIcon(
-                  size: iconSize,
-                  const AssetImage('assets/icons/menu.png'),
-                )),
+              label: 'Settings',
+              icon: ImageIcon(
+                size: 27,
+                const AssetImage('assets/icons/menu.png'),
+              ),
+            ),
           ],
           selectedItemColor: ColorsManager.primaryColor,
           unselectedItemColor: Colors.grey,

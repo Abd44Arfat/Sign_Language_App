@@ -33,10 +33,9 @@ class AppRouter {
           builder: (_) => const OnboardingView(),
         );
           case Routes.SettingView:
-            final userName = arguments as String; 
-              final userEmail = arguments as String; 
+        
         return MaterialPageRoute(
-          builder: (_) =>  SettingView(userName: 'userName', userEmail: 'userEmail',),
+          builder: (_) =>  SettingView(),
         );
 
 
@@ -52,7 +51,7 @@ class AppRouter {
         );
       case Routes.homescreen:
         return MaterialPageRoute(
-          builder: (_) => const HomeView(userName: '',),
+          builder: (_) => const HomeView(),
         );
       case Routes.aboutUsView :
         return MaterialPageRoute(
@@ -72,18 +71,27 @@ class AppRouter {
                 ));
       case Routes.resetPassword:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
-       case Routes.bottomNavigationScreen:
-        if (arguments is Map<String, String>) {
-          final userName = arguments['userName'];
-          final userEmail = arguments['userEmail'];
-          return MaterialPageRoute(
-            builder: (_) => BottomNavigation(
-              userName: userName ?? '',
-              userEmail: userEmail ?? '',
-            ),
-          );
-        }
+
+
+      //  case Routes.bottomNavigation:
+      //   if (arguments is Map<String, String>) {
+      //     final userName = arguments['userName'];
+      //     final userEmail = arguments['userEmail'];
+      //     return MaterialPageRoute(
+      //       builder: (_) => BottomNavigation(
+      //         userName: userName ?? '',
+      //         userEmail: userEmail ?? '',
+      //       ),
+      //     );
+      //   }
     
+case Routes.bottomNavigation:
+  return MaterialPageRoute(
+    builder: (_) => const BottomNavigation(  userName:  '',
+               userEmail:  '', ),
+  );
+
+
       case Routes.dictionaryScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(

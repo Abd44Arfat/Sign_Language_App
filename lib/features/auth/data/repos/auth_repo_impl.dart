@@ -11,18 +11,14 @@ import 'package:sign_lang_app/features/auth/data/models/signup_req.dart';
 import 'package:sign_lang_app/features/auth/data/models/signup_response.dart';
 import 'package:sign_lang_app/features/auth/domain/repos/auth_repo.dart';
 
-
 class AuthRepoImpl extends AuthRepo {
   @override
-  Future<Either<Failure, SignupResponse>>signUp(SignupReqParams signupReq) {
-
-return getIt<AuthRemoteDataSource>().signUp(signupReq);
-
-
-
+  Future<Either<Failure, SignupResponse>> signUp(SignupReqParams signupReq) {
+    return getIt<AuthRemoteDataSource>().signUp(signupReq);
   }
 
- Future<Either<Failure, LoginResponse>> signIn(SigninReqParams signInReq) async {
+  Future<Either<Failure, LoginResponse>> signIn(
+      SigninReqParams signInReq) async {
     try {
       final result = await getIt<AuthRemoteDataSource>().signIn(signInReq);
 
@@ -30,16 +26,13 @@ return getIt<AuthRemoteDataSource>().signUp(signupReq);
       return result.fold(
         (failure) => Left(failure), // Return the failure
         (loginResponse) async {
-      
-    
-    
+          return Right(loginResponse);
 
-          return Right(loginResponse); // Return the successful response
+          // Return the successful response
         },
       );
     } catch (e) {
       return Left(Failure(e.toString())); // Handle the exception as a failure
     }
   }
-  
 }
