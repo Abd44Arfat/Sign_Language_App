@@ -23,6 +23,7 @@ import 'package:sign_lang_app/features/splash/splash_view.dart';
 import '../../features/auth/presentation/login_view.dart';
 import '../../features/auth/presentation/register_view.dart';
 import '../../features/bottom_nav/button_navigation.dart';
+import '../../features/setting/presentation/about_us_view.dart';
 
 class AppRouter {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -55,6 +56,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const HomeView(userName: '',),
         );
+      case Routes.aboutUsView :
+        return MaterialPageRoute(
+            builder: (_) => const AboutUsView(),
+            );
       case Routes.registerScreen:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(

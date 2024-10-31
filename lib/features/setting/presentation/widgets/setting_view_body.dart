@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sign_lang_app/core/routing/app_router.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/widgets/app_text_button.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/custom_setting_app_bar.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/setting_item.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../core/routing/routes.dart';
 
 class SettingViewBody extends StatelessWidget {
   const SettingViewBody({super.key, required this.userName, required this.userEmail});
@@ -30,7 +33,10 @@ final String userEmail;
           ),
           SettingItem(
             title: 'About us',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(
+                  context, Routes.aboutUsView);
+            },
           ),
           SettingItem(
             title: 'Help and Support',

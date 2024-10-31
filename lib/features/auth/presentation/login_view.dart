@@ -32,7 +32,7 @@ class LoginView extends StatelessWidget {
             buildErrorBar(context, state.errorMessage);
           }
         },
-        child: CustomStack(child: LoginViewBody()),
+        child: const CustomStack(width : double.maxFinite , child: LoginViewBody()),
       ),
     );
   }

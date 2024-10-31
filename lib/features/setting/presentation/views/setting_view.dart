@@ -12,8 +12,6 @@ final String userEmail;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
-
       body: CustomStack(child: SettingViewBody(userName: userName, userEmail: userEmail,)),
     );
   }
