@@ -10,7 +10,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/routing/routes.dart';
 
 class SettingViewBody extends StatelessWidget {
-  const SettingViewBody({super.key, });
+  const SettingViewBody({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +26,25 @@ class SettingViewBody extends StatelessWidget {
           ),
           SettingItem(
             title: 'Saved words',
-            onTap: () {},
+            onTap: () {
+
+Navigator.pushNamed(context, Routes.SavedWordsScreen);
+
+            },
           ),
           SettingItem(
             title: 'Edit Profile',
-            onTap: () {},
+            onTap: () {
+
+   Navigator.pushNamed(context, Routes.editInfoview);
+
+
+            },
           ),
           SettingItem(
             title: 'About us',
             onTap: () {
-              Navigator.pushNamed(
-                  context, Routes.aboutUsView);
+              Navigator.pushNamed(context, Routes.aboutUsView);
             },
           ),
           SettingItem(
@@ -51,19 +61,20 @@ class SettingViewBody extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Wrap(
-                      
                       children: [
                         Center(
                             child: Text(
                           'Contact via',
-                          style: TextStyles.font18DarkBlueBold.copyWith(color: Colors.white),
+                          style: TextStyles.font18DarkBlueBold
+                              .copyWith(color: Colors.white),
                         )),
                         SizedBox(
                           height: 30,
                         ),
                         AppTextButton(
                             buttonText: 'whatsapp',
-                            textStyle: TextStyles.font16WhiteMedium.copyWith(color: Colors.black),
+                            textStyle: TextStyles.font16WhiteMedium
+                                .copyWith(color: Colors.black),
                             onPressed: () {
                               final Uri whatsapp = Uri.parse(
                                   'https://chat.whatsapp.com/KKPzTOm0qml6TOow6NC97F');
