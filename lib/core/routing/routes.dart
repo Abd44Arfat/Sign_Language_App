@@ -13,6 +13,6 @@ class Routes {
  static const String DictionaryDetailsView = '/DictionaryDetailsView';
  static const String SavedWordsScreen = '/SavedWordsScreen';
 
-
+ static const String editInfoview = '/editInfoview';
 
 }

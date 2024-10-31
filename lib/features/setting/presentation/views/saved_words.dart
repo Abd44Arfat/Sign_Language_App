@@ -77,8 +77,6 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             color: Color(0xff232229),
                             borderRadius: BorderRadius.circular(15),
                           ),
-                    
-                  
                 ),
               );
             },

@@ -41,10 +41,7 @@ class DictionaryListViewItem extends StatelessWidget {
 GestureDetector(
   onTap:isSaved ? null : onSave ,
   
-  child: SvgPicture.asset(isSaved?'assets/images/Vector.svg':'assets/images/frame.svg'))
-
-
-        
+  child: SvgPicture.asset(isSaved?'assets/images/Vector.svg':'assets/images/frame.svg')) 
               ],
             ),
           ),

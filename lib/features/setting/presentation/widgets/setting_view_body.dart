@@ -34,7 +34,12 @@ Navigator.pushNamed(context, Routes.SavedWordsScreen);
           ),
           SettingItem(
             title: 'Edit Profile',
-            onTap: () {},
+            onTap: () {
+
+   Navigator.pushNamed(context, Routes.editInfoview);
+
+
+            },
           ),
           SettingItem(
             title: 'About us',

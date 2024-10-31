@@ -16,8 +16,10 @@ import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.d
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 import 'package:sign_lang_app/features/home_page/home_view.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
-import 'package:sign_lang_app/features/setting/presentation/about_us_view.dart';
-import 'package:sign_lang_app/features/setting/presentation/saved_words.dart';
+import 'package:sign_lang_app/features/setting/presentation/Edit_info_cubit/edit_info_cubit.dart';
+import 'package:sign_lang_app/features/setting/presentation/views/about_us_view.dart';
+import 'package:sign_lang_app/features/setting/presentation/views/edit_info_view.dart';
+import 'package:sign_lang_app/features/setting/presentation/views/saved_words.dart';
 import 'package:sign_lang_app/features/setting/presentation/views/setting_view.dart';
 import 'package:sign_lang_app/features/splash/splash_view.dart';
 import '../../features/auth/presentation/login_view.dart';
@@ -33,19 +35,25 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const OnboardingView(),
         );
-          case Routes.SettingView:
-        
+      case Routes.SettingView:
         return MaterialPageRoute(
-          builder: (_) =>  SettingView(),
+          builder: (_) => SettingView(),
         );
 
-
-       case Routes.DictionaryDetailsView:
+      case Routes.DictionaryDetailsView:
         return MaterialPageRoute(
           builder: (_) => const DictionaryDetailsView(),
         );
 
- case Routes.SavedWordsScreen:
+      case Routes.editInfoview:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => EditInfoCubit( DioClient()),
+            child: const EditInfoView(),
+          ),
+        );
+
+      case Routes.SavedWordsScreen:
         return MaterialPageRoute(
           builder: (_) => const SavedWordsScreen(),
         );
@@ -57,10 +65,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const HomeView(),
         );
-      case Routes.aboutUsView :
+      case Routes.aboutUsView:
         return MaterialPageRoute(
-            builder: (_) => const AboutUsView(),
-            );
+          builder: (_) => const AboutUsView(),
+        );
       case Routes.registerScreen:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
@@ -76,7 +84,6 @@ class AppRouter {
       case Routes.resetPassword:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
 
-
       //  case Routes.bottomNavigation:
       //   if (arguments is Map<String, String>) {
       //     final userName = arguments['userName'];
@@ -88,13 +95,14 @@ class AppRouter {
       //       ),
       //     );
       //   }
-    
-case Routes.bottomNavigation:
-  return MaterialPageRoute(
-    builder: (_) => const BottomNavigation(  userName:  '',
-               userEmail:  '', ),
-  );
 
+      case Routes.bottomNavigation:
+        return MaterialPageRoute(
+          builder: (_) => const BottomNavigation(
+            userName: '',
+            userEmail: '',
+          ),
+        );
 
       case Routes.dictionaryScreen:
         return MaterialPageRoute(
