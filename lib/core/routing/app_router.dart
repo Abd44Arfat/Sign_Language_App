@@ -14,8 +14,14 @@ import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictiona
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_details_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
+import 'package:sign_lang_app/features/setting/data/repo_impl/edit_info_repo_iml.dart';
+import 'package:sign_lang_app/features/setting/domain/usecase/edit_info_usecase.dart';
+import 'package:sign_lang_app/features/setting/edit_profile_view.dart';
 import 'package:sign_lang_app/features/home_page/home_view.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
+
+import 'package:sign_lang_app/features/setting/presentation/manager/edit_profile_cubit/edit_profile_cubit.dart';
+
 
 
 import 'package:sign_lang_app/features/splash/splash_view.dart';
@@ -41,6 +47,16 @@ class AppRouter {
           builder: (_) =>  SettingView(userName: 'userName', userEmail: 'userEmail',),
         );
 
+      case Routes.EditProfileView:
+        print(arguments);
+        var arg = arguments as Map<String , String>;
+        final userName = arg["name"] as String ;
+        final userEmail = arg["email"] as String ;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<EditProfileCubit>(
+            create: (context) => EditProfileCubit(),
+            child: EditProfileView(name: userName , email: userEmail,),
+          ),);
 
        case Routes.DictionaryDetailsView:
         return MaterialPageRoute(
@@ -81,7 +97,7 @@ class AppRouter {
             ),
           );
         }
-    
+
       case Routes.dictionaryScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -94,6 +110,7 @@ class AppRouter {
             child: const DictionaryView(),
           ),
         );
+
       default:
         return null;
     }

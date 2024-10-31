@@ -30,9 +30,6 @@ return getIt<AuthRemoteDataSource>().signUp(signupReq);
       return result.fold(
         (failure) => Left(failure), // Return the failure
         (loginResponse) async {
-      
-    
-    
 
           return Right(loginResponse); // Return the successful response
         },

@@ -49,7 +49,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),)..fetchDictionaryList(),
           child: DictionaryView(),
         ),
-       SettingView(userName:widget.userName , userEmail: widget.userEmail,), // Replace with your actual settings page
+
+       SettingView(userName:widget.userName , userEmail: widget.userEmail ), // Replace with your actual settings page
     ];
   }
 

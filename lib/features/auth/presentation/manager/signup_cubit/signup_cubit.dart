@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:sign_lang_app/core/errors/failure.dart';
-import 'package:sign_lang_app/core/usecase/usecase.dart';
 import 'package:sign_lang_app/core/widgets/custom_button_animation.dart';
 import 'package:sign_lang_app/features/auth/data/models/signup_req.dart';
 import 'package:sign_lang_app/features/auth/data/models/signup_response.dart';

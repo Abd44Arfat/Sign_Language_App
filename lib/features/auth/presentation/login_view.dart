@@ -22,9 +22,7 @@ class LoginView extends StatelessWidget {
             };
             context.pushReplacementNamed(
               Routes.bottomNavigationScreen,
-          
               arguments: args,
-              
             );
             buildErrorBar(context, state.message);
           }

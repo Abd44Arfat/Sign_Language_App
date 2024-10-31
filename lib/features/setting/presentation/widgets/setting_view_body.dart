@@ -6,12 +6,15 @@ import 'package:sign_lang_app/features/setting/presentation/widgets/custom_setti
 import 'package:sign_lang_app/features/setting/presentation/widgets/setting_item.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/routing/routes.dart';
+
 class SettingViewBody extends StatelessWidget {
   const SettingViewBody({super.key, required this.userName, required this.userEmail});
-final String userName;
-final String userEmail;
+  final String userName;
+  final String userEmail;
   @override
   Widget build(BuildContext context) {
+    List<String> list = [userName , userEmail];
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -26,7 +29,9 @@ final String userEmail;
           ),
           SettingItem(
             title: 'Edit Profile',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, Routes.EditProfileView , arguments: {"name" : list[0] , "email" : list[1] } );
+            },
           ),
           SettingItem(
             title: 'About us',
@@ -46,14 +51,14 @@ final String userEmail;
                   return Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Wrap(
-                      
+
                       children: [
                         Center(
                             child: Text(
-                          'Contact via',
-                          style: TextStyles.font18DarkBlueBold.copyWith(color: Colors.white),
-                        )),
-                        SizedBox(
+                              'Contact via',
+                              style: TextStyles.font18DarkBlueBold.copyWith(color: Colors.white),
+                            )),
+                        const SizedBox(
                           height: 30,
                         ),
                         AppTextButton(

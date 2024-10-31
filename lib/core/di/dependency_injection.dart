@@ -8,6 +8,11 @@ import 'package:sign_lang_app/features/auth/domain/usecases/signup_usecase.dart'
 import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/remote_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
+import 'package:sign_lang_app/features/setting/data/data_source/remote_data_source/edit_info_remote_data_source.dart';
+import 'package:sign_lang_app/features/setting/data/repo_impl/edit_info_repo_iml.dart';
+import 'package:sign_lang_app/features/setting/domain/repo/edit_info_repo.dart';
+
+import '../../features/setting/domain/usecase/edit_info_usecase.dart';
 
 final getIt = GetIt.instance;
 
@@ -33,6 +38,19 @@ getIt.registerSingleton<SignInUsecase>(SignInUsecase());
         dioClient: getIt.get<DioClient>(),
       ),
     ),
+  );
+
+
+
+
+  getIt.registerLazySingleton<EditInfoRemoteDataSource>(() => EditInfoRemoteDataSource( getIt.get<DioClient>() ));
+
+
+  getIt.registerLazySingleton<EditInformationRepo>( () =>
+      EditInfoRepoImpl(remoteDataSource: getIt<EditInfoRemoteDataSource>())
+  );
+  getIt.registerLazySingleton<EditInfoUseCase>( ()=>
+    EditInfoUseCase( )
   );
 
 }

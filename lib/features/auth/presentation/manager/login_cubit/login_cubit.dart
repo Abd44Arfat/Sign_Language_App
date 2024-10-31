@@ -26,7 +26,6 @@ class LoginCubit extends Cubit<LoginState> {
   void execute({required SigninReqParams params, required SignInUsecase usecase}) async {
     emit(LoginLoading());
     btnKey.currentState!.animateForward();
-
     try {
       final Either<Failure, LoginResponse> result = await usecase.call(params);
 
