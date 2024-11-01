@@ -37,9 +37,21 @@ class LoginCubit extends Cubit<LoginState> {
         },
         (data) async {
           await saveUserToken(data.token);
+          await saveUserdata(data.user!.email, data.user!.name,data.user!.id);
+          
+        
+           // Save email and username
           print('Login successful: ${data.token}'); // Log success message
-          emit(LoginSuccess(message: data.message, userName: data.user!.name, userEmail: data.user!.email)); // Ensure you pass the user's name if available
+          emit(LoginSuccess(
+            message: data.message,
+            userName: data.user!.name,
+            userEmail: data.user!.email,
+             id: data.user!.id,
+         
+          )); // Ensure you pass the user's name if available
           btnKey.currentState!.animateReverse();
+
+     
         },
       );
     } catch (e) {
@@ -52,4 +64,15 @@ class LoginCubit extends Cubit<LoginState> {
     await SharedPrefHelper.setData(SharedPrefKeys.userToken, token);
     dioClient.setTokenIntoHeaderAfterLogin(token); // Use the injected DioClient instance
   }
+
+  Future<void> saveUserdata(String email, String name,String id) async {
+    await SharedPrefHelper.setData(SharedPrefKeys.userEmail, email);
+    await SharedPrefHelper.setData(SharedPrefKeys.username, name);
+    await SharedPrefHelper.setData(SharedPrefKeys.userid, id);
+
+
+
+  }
+
+  
 }

@@ -10,8 +10,10 @@ final class LoginSuccess extends LoginState {
 final String message;
   final String userName;
     final String userEmail;
+  
+  final String id;
 
-  LoginSuccess(  {required this.userName,required this.message,required this.userEmail,});
+  LoginSuccess(  {required this.userName,required this.message,required this.userEmail,required this.id,});
 
 }
 final class LoginFailure extends LoginState {

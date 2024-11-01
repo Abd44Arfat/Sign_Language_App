@@ -23,7 +23,9 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   Future<Either<Failure, SignupResponse>> signUp(SignupReqParams signupReq) async {
     try {
       var response = await getIt<DioClient>().post(
+
        ApiUrls.register,
+
         data: signupReq.toMap(),
       );
 
@@ -61,6 +63,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   Future<Either<Failure, LoginResponse >> signIn(SigninReqParams signInReq)async {
  try {
       var response = await getIt<DioClient>().post(
+
     ApiUrls.login,
         data: signInReq.toMap(),
       );

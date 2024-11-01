@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sign_lang_app/core/routing/app_router.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/widgets/app_text_button.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/custom_setting_app_bar.dart';
@@ -9,33 +10,46 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/routing/routes.dart';
 
 class SettingViewBody extends StatelessWidget {
-  const SettingViewBody({super.key, required this.userName, required this.userEmail});
-  final String userName;
-  final String userEmail;
+
+  const SettingViewBody({
+    super.key,
+  });
+
+
   @override
   Widget build(BuildContext context) {
-    List<String> list = [userName , userEmail];
+   // List<String> list = [userName , userEmail];
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          CustomSettingAppBar(userName: userName, userEmail: userEmail,),
+          CustomSettingAppBar(),
           SizedBox(
             height: 30.h,
           ),
           SettingItem(
             title: 'Saved words',
-            onTap: () {},
+            onTap: () {
+
+Navigator.pushNamed(context, Routes.SavedWordsScreen);
+
+            },
           ),
           SettingItem(
             title: 'Edit Profile',
             onTap: () {
-              Navigator.pushNamed(context, Routes.EditProfileView , arguments: {"name" : list[0] , "email" : list[1] } );
+
+   Navigator.pushNamed(context, Routes.editInfoview);
+
+
+
             },
           ),
           SettingItem(
             title: 'About us',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, Routes.aboutUsView);
+            },
           ),
           SettingItem(
             title: 'Help and Support',
@@ -59,11 +73,13 @@ class SettingViewBody extends StatelessWidget {
                               style: TextStyles.font18DarkBlueBold.copyWith(color: Colors.white),
                             )),
                         const SizedBox(
+
                           height: 30,
                         ),
                         AppTextButton(
                             buttonText: 'whatsapp',
-                            textStyle: TextStyles.font16WhiteMedium.copyWith(color: Colors.black),
+                            textStyle: TextStyles.font16WhiteMedium
+                                .copyWith(color: Colors.black),
                             onPressed: () {
                               final Uri whatsapp = Uri.parse(
                                   'https://chat.whatsapp.com/KKPzTOm0qml6TOow6NC97F');

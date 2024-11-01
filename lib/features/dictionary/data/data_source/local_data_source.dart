@@ -4,6 +4,8 @@ import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_ent
 
 abstract class DictionaryLocalDataSource {
   List<DictionaryEntity> fetchDictionaryList({int pageNumber=1});
+    void saveDictionaryItem(DictionaryEntity item);
+  List<DictionaryEntity> fetchSavedItems();
 }
 
 class DictionaryLocalDataSourceImpl implements DictionaryLocalDataSource {
@@ -20,5 +22,18 @@ class DictionaryLocalDataSourceImpl implements DictionaryLocalDataSource {
       return [];
     }
     return box.values.toList().sublist(startIndex,endIndex);
+  }
+  
+  @override
+ List<DictionaryEntity> fetchSavedItems() {
+    var box = Hive.box<DictionaryEntity>(KSavedwordsBox);
+    return box.values.toList(); // Fetch all saved items
+  }
+
+  
+  @override
+  void saveDictionaryItem(DictionaryEntity item) {
+    var box = Hive.box<DictionaryEntity>(KSavedwordsBox);
+    box.add(item); // Save the item to the Hive box
   }
 }

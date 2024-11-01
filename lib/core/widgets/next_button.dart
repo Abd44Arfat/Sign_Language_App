@@ -4,9 +4,10 @@ import '../theming/colors.dart';
 import '../theming/styles.dart';
 
 class NextButton extends StatelessWidget {
-  const NextButton({super.key, required this.onPressed});
+  const NextButton({super.key, required this.onPressed , this.text , this.textStyle});
   final void Function()? onPressed;
-
+  final TextStyle? textStyle;
+  final String? text ;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -30,8 +31,8 @@ class NextButton extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         child: Text(
-          'Next',
-          style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.white),
+         text ??  'Next',
+          style: textStyle ?? TextStyles.font14DarkBlueMedium.copyWith(color: Colors.white),
         ),
       ),
     );

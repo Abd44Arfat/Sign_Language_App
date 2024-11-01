@@ -73,9 +73,11 @@ class ServicesWidget extends StatelessWidget {
                 background: ColorsManager.primaryColor,
                 image: 'assets/images/Calendar.svg',
                 text: 'Daily Sign\nLanguage words ',
+                onTap: () {
+                  context.pushNamed(Routes.learnInstructionsWelcomeMsgView);
+                },
               ),
               ServicesHorizontalWidget(
-                
                 background: Color(0xffE3E8FF),
                 image: 'assets/images/book.svg',
                 text: 'Sign Language\nDictionary',

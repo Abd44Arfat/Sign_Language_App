@@ -17,7 +17,9 @@ class DictionaryRemoteDataSourceImpl extends DictionaryRemoteDataSource {
   DictionaryRemoteDataSourceImpl({required this.dioClient});
 
   Future<List<DictionaryEntity>> fetchDictionaryList({int pageNumber=1}) async {
+
     var response = await dioClient.get( "${ApiUrls.dictionary}?page=$pageNumber");
+
 
     List<DictionaryEntity> dictionary = getDictionarysList(response.data);
 

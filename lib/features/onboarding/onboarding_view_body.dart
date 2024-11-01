@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/core/utils/constants.dart';
+import 'package:sign_lang_app/core/utils/sharedprefrence.dart';
 import 'package:sign_lang_app/core/widgets/next_button.dart';
-import 'package:sign_lang_app/features/onboarding/views/onboarding_page1/onboarding_page1_view_body.dart';
-import 'package:sign_lang_app/features/onboarding/views/onboarding_page2/onboarding_page2_view_body.dart';
-import 'package:sign_lang_app/features/onboarding/views/onboarding_page3/onboarding_page3_view_body.dart';
+import 'package:sign_lang_app/features/onboarding/views/onboarding_page1_view_body.dart';
+import 'package:sign_lang_app/features/onboarding/views/onboarding_page2_view_body.dart';
+import 'package:sign_lang_app/features/onboarding/views/onboarding_page3_view_body.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingViewBody extends StatefulWidget {
@@ -80,16 +82,19 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           const SizedBox(
             height: 50,
           ),
-          NextButton(
-            onPressed: () {
-              currentIndex < 2
-                  ? _controller.nextPage(
-                      duration: const Duration(milliseconds: 150),
-                      curve: Curves.easeIn)
-                  : Navigator.pushReplacementNamed(
-                      context, Routes.registerScreen);
-            },
-          ),
+        NextButton(
+  onPressed: () {
+    if (currentIndex < 2) {
+      _controller.nextPage(
+        duration: const Duration(milliseconds: 150),
+        curve: Curves.easeIn,
+      );
+    } else {
+      SharedPrefHelper.setData(SharedPrefKeys.onboardingCompleted, true); // Mark onboarding as completed
+      Navigator.pushReplacementNamed(context, Routes.registerScreen);
+    }
+  },
+),
         ],
       ),
     );
@@ -97,7 +102,8 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
 
   dynamic Function()? skipAction(context) {
     return () {
-      Navigator.pushReplacementNamed(context, Routes.bottomNavigationScreen);
+   SharedPrefHelper.setData(SharedPrefKeys.onboardingCompleted, true); // Mark onboarding as completed
+      Navigator.pushReplacementNamed(context, Routes.loginScreen);
     };
   }
 }

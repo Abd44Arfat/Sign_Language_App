@@ -21,7 +21,9 @@ class LoginView extends StatelessWidget {
               'userEmail': state.userEmail, // Ensure you have this in your LoginSuccess state
             };
             context.pushReplacementNamed(
-              Routes.bottomNavigationScreen,
+
+              Routes.bottomNavigation,
+
               arguments: args,
             );
             buildErrorBar(context, state.message);
@@ -30,7 +32,7 @@ class LoginView extends StatelessWidget {
             buildErrorBar(context, state.errorMessage);
           }
         },
-        child: CustomStack(child: LoginViewBody()),
+        child: const CustomStack(width : double.maxFinite , child: LoginViewBody()),
       ),
     );
   }
