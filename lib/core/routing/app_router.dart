@@ -16,6 +16,7 @@ import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.d
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_lets_start_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_welcome_msg_view.dart';
+import 'package:sign_lang_app/features/learn/presentation/widgets/achievements_view_body.dart';
 import 'package:sign_lang_app/features/setting/data/repo_impl/edit_info_repo_iml.dart';
 import 'package:sign_lang_app/features/setting/domain/usecase/edit_info_usecase.dart';
 import 'package:sign_lang_app/features/setting/edit_profile_view.dart';
@@ -25,6 +26,8 @@ import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
 import '../../features/auth/presentation/login_view.dart';
 import '../../features/auth/presentation/register_view.dart';
 import '../../features/bottom_nav/button_navigation.dart';
+import '../../features/learn/presentation/achievements_view.dart';
+import '../../features/learn/presentation/widgets/achievment2.dart';
 import '../../features/setting/presentation/Edit_info_cubit/edit_info_cubit.dart';
 import '../../features/setting/presentation/views/about_us_view.dart';
 import '../../features/setting/presentation/views/edit_info_view.dart';
@@ -106,7 +109,8 @@ class AppRouter {
       //       ),
       //     );
       //   }
-
+      case Routes.AchievementsView :
+        return MaterialPageRoute(builder: (_) => const AchievementsView());
       case Routes.bottomNavigation:
         return MaterialPageRoute(
           builder: (_) => const BottomNavigation(
@@ -115,6 +119,9 @@ class AppRouter {
           ),
         );
 
+
+      case Routes.Achievement2 :
+        return MaterialPageRoute(builder: (_)=>  Achievement2());
 
       case Routes.dictionaryScreen:
         return MaterialPageRoute(

@@ -54,6 +54,7 @@ dependencies:
   url_launcher: ^6.3.1
   typewritertext: ^3.0.9
   chat_bubbles: ^1.6.0
+  percent_indicator: ^4.2.3
 
   
 dev_dependencies:

@@ -31,10 +31,11 @@ class LearnInstructionsLetsStartViewBody extends StatelessWidget {
         ),
         SideAvatar(screenWidth: screenWidth, screenHeight: screenHeight),
 
-        //SizedBox(height: screenHeight * 0.05,),
         ContinueButton(
           text: 'Continue',
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, Routes.AchievementsView);
+          },
         ),
 
         SizedBox(

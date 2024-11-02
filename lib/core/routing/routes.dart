@@ -15,5 +15,6 @@ class Routes {
   static const String learnInstructionsWelcomeMsgView = '/LearnInstructionsWelcomeMsgView';
   static const String learnInstructionsLetsStartView = '/LearnInstructionsLetsStartView';
   static const String editInfoview = '/editInfoview';
-
+  static const String AchievementsView = '/achievementsView';
+  static const String Achievement2 = '/achievement2';
 }
