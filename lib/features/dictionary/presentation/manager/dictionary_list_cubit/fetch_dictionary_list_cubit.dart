@@ -25,8 +25,6 @@ class FetchDictionaryListCubit extends Cubit<FetchDictionaryListState> {
         if (pageNumber==1) {
   emit(FetchDictionaryListFailure(failure.toString()));
 }else{
-
-
   emit(FetchDictionaryListPaginationFailure(errMessage: failure.toString()));
 }
         print(failure.toString());

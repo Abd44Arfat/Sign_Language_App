@@ -7,8 +7,12 @@ import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
-import 'package:sign_lang_app/features/setting/presentation/views/setting_view.dart';
+
+import 'package:sign_lang_app/features/learn/presentation/learn_instructions_welcome_msg_view.dart';
+
 import '../home_page/home_view.dart';
+import '../setting/presentation/views/setting_view.dart';
+
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key, required this.userName, required this.userEmail});
   final String userName;
@@ -26,7 +30,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
   void initState() {
     super.initState();
     screens = [
-      HomeView(),
+
+      const HomeView(),
+
+
+    //  const LearnInstructionsWelcomeMsgView(),
+
+
       BlocProvider(
         create: (context) => FetchDictionaryListCubit(
           FetchDictionaryListUsecase(
@@ -35,7 +45,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
         )..fetchDictionaryList(),
         child: const DictionaryView(),
       ),
-      SettingView(),
+
+
+      const SettingView(),
+
     ];
   }
 
@@ -58,12 +71,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
             });
           },
           type: BottomNavigationBarType.fixed,
-          items: <BottomNavigationBarItem>[
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               label: 'Home',
+
               icon: ImageIcon(
                 size: 29,
-                const AssetImage('assets/icons/home.png'),
+                 AssetImage('assets/icons/home.png'),
               ),
             ),
             BottomNavigationBarItem(
@@ -78,6 +92,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               icon: ImageIcon(
                 size: 27,
                 const AssetImage('assets/icons/menu.png'),
+
               ),
             ),
           ],

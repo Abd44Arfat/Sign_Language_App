@@ -14,17 +14,25 @@ import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictiona
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_details_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
+import 'package:sign_lang_app/features/learn/presentation/learn_instructions_lets_start_view.dart';
+import 'package:sign_lang_app/features/learn/presentation/learn_instructions_welcome_msg_view.dart';
+import 'package:sign_lang_app/features/learn/presentation/widgets/achievements_view_body.dart';
+import 'package:sign_lang_app/features/setting/data/repo_impl/edit_info_repo_iml.dart';
+import 'package:sign_lang_app/features/setting/domain/usecase/edit_info_usecase.dart';
+import 'package:sign_lang_app/features/setting/edit_profile_view.dart';
 import 'package:sign_lang_app/features/home_page/home_view.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
-import 'package:sign_lang_app/features/setting/presentation/Edit_info_cubit/edit_info_cubit.dart';
-import 'package:sign_lang_app/features/setting/presentation/views/about_us_view.dart';
-import 'package:sign_lang_app/features/setting/presentation/views/edit_info_view.dart';
-import 'package:sign_lang_app/features/setting/presentation/views/saved_words.dart';
-import 'package:sign_lang_app/features/setting/presentation/views/setting_view.dart';
-import 'package:sign_lang_app/features/splash/splash_view.dart';
+
 import '../../features/auth/presentation/login_view.dart';
 import '../../features/auth/presentation/register_view.dart';
 import '../../features/bottom_nav/button_navigation.dart';
+import '../../features/learn/presentation/achievements_view.dart';
+import '../../features/setting/presentation/Edit_info_cubit/edit_info_cubit.dart';
+import '../../features/setting/presentation/views/about_us_view.dart';
+import '../../features/setting/presentation/views/edit_info_view.dart';
+import '../../features/setting/presentation/views/saved_words.dart';
+import '../../features/setting/presentation/views/setting_view.dart';
+import '../../features/splash/splash_view.dart';
 
 class AppRouter {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
@@ -84,6 +92,13 @@ class AppRouter {
       case Routes.resetPassword:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
 
+
+      case Routes.learnInstructionsLetsStartView:
+        return MaterialPageRoute(builder: (_) => const LearnInstructionsLetsStartView());
+
+      case Routes.learnInstructionsWelcomeMsgView:
+        return MaterialPageRoute(builder: (builder) => const LearnInstructionsWelcomeMsgView());
+
       //  case Routes.bottomNavigation:
       //   if (arguments is Map<String, String>) {
       //     final userName = arguments['userName'];
@@ -95,6 +110,9 @@ class AppRouter {
       //       ),
       //     );
       //   }
+
+      case Routes.AchievementsView :
+        return MaterialPageRoute(builder: (_) => const AchievementsView());
 
       case Routes.bottomNavigation:
         return MaterialPageRoute(
@@ -116,6 +134,7 @@ class AppRouter {
             child: const DictionaryView(),
           ),
         );
+
       default:
         return null;
     }

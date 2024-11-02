@@ -10,12 +10,14 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/routing/routes.dart';
 
 class SettingViewBody extends StatelessWidget {
+
   const SettingViewBody({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+   // List<String> list = [userName , userEmail];
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -61,6 +63,7 @@ Navigator.pushNamed(context, Routes.SavedWordsScreen);
                   return Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Wrap(
+
                       children: [
                         Center(
                             child: Text(

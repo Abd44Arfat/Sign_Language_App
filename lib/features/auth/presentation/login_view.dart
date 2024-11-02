@@ -21,10 +21,13 @@ class LoginView extends StatelessWidget {
               'userEmail': state.userEmail, // Ensure you have this in your LoginSuccess state
             };
             context.pushReplacementNamed(
+
+
               Routes.bottomNavigation,
-          
+
+
+
               arguments: args,
-              
             );
             buildErrorBar(context, state.message);
           }

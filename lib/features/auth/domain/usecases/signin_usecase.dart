@@ -8,13 +8,9 @@ import 'package:sign_lang_app/features/auth/data/models/signup_req.dart';
 import 'package:sign_lang_app/features/auth/data/models/signup_response.dart';
 import 'package:sign_lang_app/features/auth/domain/repos/auth_repo.dart';
 
-
-class SignInUsecase implements UseCase<LoginResponse,SigninReqParams> {
+class SignInUsecase implements UseCase<LoginResponse, SigninReqParams> {
   @override
-  Future<Either<Failure, LoginResponse>> call([SigninReqParams? param])async {
-return await getIt<AuthRepo>().signIn(param!);
-
-
-
+  Future<Either<Failure, LoginResponse>> call([SigninReqParams? param]) async {
+    return await getIt<AuthRepo>().signIn(param!);
   }
 }
