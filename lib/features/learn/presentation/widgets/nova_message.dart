@@ -1,11 +1,26 @@
 import 'package:chat_bubbles/bubbles/bubble_special_two.dart';
 import 'package:flutter/material.dart';
-class NovaMessage extends StatelessWidget {
-  const NovaMessage({super.key});
+import 'package:typewritertext/typewritertext.dart';
+class NovaMessage extends StatefulWidget {
+  const NovaMessage({super.key, required this.text});
+   final String text ;
+
+  @override
+  State<NovaMessage> createState() => _NovaMessageState();
+}
+
+class _NovaMessageState extends State<NovaMessage> {
 
   @override
   Widget build(BuildContext context) {
-    return BubbleSpecialTwo(
-      text:  'Hi there! i\'m Nova' , isSender: false,color: Colors.green[200]!, textStyle: const TextStyle(color: Colors.black87 , fontSize: 20),);
+   return TypeWriter(
+        controller: TypeWriterController(text: widget.text , duration: const Duration(milliseconds: 50)),
+        builder: (context, value) {
+          return BubbleSpecialTwo(
+            text:  value.text , isSender: false , color: Colors.green[200]!, textStyle: const TextStyle(color: Colors.black87 , fontSize: 20),);
+
+        }
+    );
+
   }
 }
