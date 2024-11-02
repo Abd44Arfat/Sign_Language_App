@@ -26,7 +26,6 @@ static const EditInfo= "${baseURL}/user/67238199dbb8f29faf211d6a";
   }
 
 
-
 }
 
 

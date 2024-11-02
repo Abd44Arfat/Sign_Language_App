@@ -7,6 +7,7 @@ import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
+
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_welcome_msg_view.dart';
 
 import '../home_page/home_view.dart';
@@ -29,10 +30,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
   void initState() {
     super.initState();
     screens = [
+
       const HomeView(),
 
 
     //  const LearnInstructionsWelcomeMsgView(),
+
+
       BlocProvider(
         create: (context) => FetchDictionaryListCubit(
           FetchDictionaryListUsecase(
@@ -41,6 +45,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         )..fetchDictionaryList(),
         child: const DictionaryView(),
       ),
+
 
       const SettingView(),
 
@@ -69,23 +74,25 @@ class _BottomNavigationState extends State<BottomNavigation> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               label: 'Home',
+
               icon: ImageIcon(
                 size: 29,
-                AssetImage('assets/icons/home.png'),
+                 AssetImage('assets/icons/home.png'),
               ),
             ),
             BottomNavigationBarItem(
               label: 'Learn',
               icon: ImageIcon(
                 size: 27,
-                AssetImage('assets/icons/learning_icon.png'),
+                const AssetImage('assets/icons/learning_icon.png'),
               ),
             ),
             BottomNavigationBarItem(
               label: 'Settings',
               icon: ImageIcon(
                 size: 27,
-                AssetImage('assets/icons/menu.png'),
+                const AssetImage('assets/icons/menu.png'),
+
               ),
             ),
           ],

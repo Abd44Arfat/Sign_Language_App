@@ -15,7 +15,6 @@ class SettingViewBody extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
    // List<String> list = [userName , userEmail];
@@ -40,7 +39,6 @@ Navigator.pushNamed(context, Routes.SavedWordsScreen);
             onTap: () {
 
    Navigator.pushNamed(context, Routes.editInfoview);
-
 
 
             },
@@ -69,11 +67,11 @@ Navigator.pushNamed(context, Routes.SavedWordsScreen);
                       children: [
                         Center(
                             child: Text(
-                              'Contact via',
-                              style: TextStyles.font18DarkBlueBold.copyWith(color: Colors.white),
-                            )),
-                        const SizedBox(
-
+                          'Contact via',
+                          style: TextStyles.font18DarkBlueBold
+                              .copyWith(color: Colors.white),
+                        )),
+                        SizedBox(
                           height: 30,
                         ),
                         AppTextButton(

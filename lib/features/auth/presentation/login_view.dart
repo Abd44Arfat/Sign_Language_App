@@ -22,7 +22,10 @@ class LoginView extends StatelessWidget {
             };
             context.pushReplacementNamed(
 
+
               Routes.bottomNavigation,
+
+
 
               arguments: args,
             );

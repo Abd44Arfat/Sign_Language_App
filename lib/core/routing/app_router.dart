@@ -27,7 +27,6 @@ import '../../features/auth/presentation/login_view.dart';
 import '../../features/auth/presentation/register_view.dart';
 import '../../features/bottom_nav/button_navigation.dart';
 import '../../features/learn/presentation/achievements_view.dart';
-import '../../features/learn/presentation/widgets/achievment2.dart';
 import '../../features/setting/presentation/Edit_info_cubit/edit_info_cubit.dart';
 import '../../features/setting/presentation/views/about_us_view.dart';
 import '../../features/setting/presentation/views/edit_info_view.dart';
@@ -93,11 +92,13 @@ class AppRouter {
       case Routes.resetPassword:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
 
+
       case Routes.learnInstructionsLetsStartView:
         return MaterialPageRoute(builder: (_) => const LearnInstructionsLetsStartView());
 
       case Routes.learnInstructionsWelcomeMsgView:
         return MaterialPageRoute(builder: (builder) => const LearnInstructionsWelcomeMsgView());
+
       //  case Routes.bottomNavigation:
       //   if (arguments is Map<String, String>) {
       //     final userName = arguments['userName'];
@@ -109,8 +110,10 @@ class AppRouter {
       //       ),
       //     );
       //   }
+
       case Routes.AchievementsView :
         return MaterialPageRoute(builder: (_) => const AchievementsView());
+
       case Routes.bottomNavigation:
         return MaterialPageRoute(
           builder: (_) => const BottomNavigation(
@@ -118,10 +121,6 @@ class AppRouter {
             userEmail: '',
           ),
         );
-
-
-      case Routes.Achievement2 :
-        return MaterialPageRoute(builder: (_)=>  Achievement2());
 
       case Routes.dictionaryScreen:
         return MaterialPageRoute(
