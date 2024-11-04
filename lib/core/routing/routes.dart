@@ -18,6 +18,9 @@ class Routes {
   static const String editInfoview = '/editInfoview';
   static const String AchievementsView = '/achievementsView';
   static const String Achievement2 = '/achievement2';
+    static const String CategoriesView = '/CategoriesView';
+        static const String LevelsView = '/LevelsView';
+
 
 
 }

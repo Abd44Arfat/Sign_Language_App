@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
@@ -7,20 +6,18 @@ import 'package:sign_lang_app/core/utils/api_service.dart';
 import 'package:sign_lang_app/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sign_lang_app/features/auth/reset_password/presentation/reset_password_view.dart';
-import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
-import 'package:sign_lang_app/features/dictionary/data/data_source/remote_data_source.dart';
+
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_details_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
+import 'package:sign_lang_app/features/learn/presentation/categories_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_lets_start_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_welcome_msg_view.dart';
-import 'package:sign_lang_app/features/learn/presentation/widgets/achievements_view_body.dart';
-import 'package:sign_lang_app/features/setting/data/repo_impl/edit_info_repo_iml.dart';
-import 'package:sign_lang_app/features/setting/domain/usecase/edit_info_usecase.dart';
-import 'package:sign_lang_app/features/setting/edit_profile_view.dart';
+
 import 'package:sign_lang_app/features/home_page/home_view.dart';
+import 'package:sign_lang_app/features/learn/presentation/levels/levels_view.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
 
 import '../../features/auth/presentation/login_view.dart';
@@ -65,6 +62,18 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const SavedWordsScreen(),
         );
+
+    case Routes.CategoriesView:
+        return MaterialPageRoute(
+          builder: (_) => const CategoriesView(),
+        );
+
+  case Routes.LevelsView:
+        return MaterialPageRoute(
+          builder: (_) =>  LevelsViewBody(),
+        );
+
+
       case Routes.splashScreen:
         return MaterialPageRoute(
           builder: (_) => const SplashView(),
