@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/core/utils/extentions.dart';
 
 class CategoriesViewBody extends StatelessWidget {
   const CategoriesViewBody({super.key});
@@ -40,34 +42,42 @@ class CategoriesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 190,
-      width: 140,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: const Color(0xffD2FFC1),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-      
-        crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+    return GestureDetector(
+
+onTap: (){
+context.pushNamed(Routes.LevelsView);
+
+},
+
+      child: Container(
+        height: 190,
+        width: 140,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: const Color(0xff202F36),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
         
-            Text('Introduce \nYour Self',style: TextStyles.font16GraySemibold.copyWith(color:const Color(0xff325A4B)),),
+          crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           
-          SizedBox(height: 14,),
-            Align(
-              alignment: Alignment.center,
-              child: SizedBox(
-                height: 75,
-                width: 75,
-                child: SvgPicture.asset(imagePath,
-                  
+              Text('Introduce \nYour Self',style: TextStyles.font16GraySemibold.copyWith(color: Colors.white)),
+            
+            SizedBox(height: 14,),
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  height: 75,
+                  width: 75,
+                  child: SvgPicture.asset(imagePath,
+                    
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

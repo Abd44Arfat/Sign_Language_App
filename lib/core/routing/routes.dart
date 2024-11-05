@@ -20,7 +20,7 @@ class Routes {
   static const String Achievement2 = '/achievement2';
     static const String CategoriesView = '/CategoriesView';
         static const String LevelsView = '/LevelsView';
-
+  static const String Guidebook = '/Guidebook';
 
 
 }

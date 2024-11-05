@@ -13,6 +13,7 @@ import 'package:sign_lang_app/features/dictionary/presentation/dictionary_detail
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 import 'package:sign_lang_app/features/learn/presentation/categories_view.dart';
+import 'package:sign_lang_app/features/learn/presentation/guidebook/guide_book_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_lets_start_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_welcome_msg_view.dart';
 
@@ -86,6 +87,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const AboutUsView(),
         );
+
+
+    case Routes.Guidebook:
+        return MaterialPageRoute(
+          builder: (_) => const GuideBookView(),
+        );
+
       case Routes.registerScreen:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
