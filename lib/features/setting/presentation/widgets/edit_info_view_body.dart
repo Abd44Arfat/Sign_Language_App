@@ -54,7 +54,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                 userName = value!;
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             AppTextFormField(

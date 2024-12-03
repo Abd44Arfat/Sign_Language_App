@@ -40,14 +40,19 @@ class _DictionaryViewBodyState extends State<DictionaryViewBody> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric( vertical: 20),
+              padding: const EdgeInsets.symmetric(vertical: 20),
               child: AppTextFormField(
                 controller: _searchController,
                 hintText: 'Search for a Word',
-                prefixIcon:Icon(Iconsax.search_normal_1_copy,color: Colors.grey,) ,
+                prefixIcon: const Icon(
+                  Iconsax.search_normal_1_copy,
+                  color: Colors.grey,
+                ),
               ),
             ),
-            Expanded(child: FetchDictionaryListViewBlocConsumer(searchText: _searchText)),
+            Expanded(
+                child: FetchDictionaryListViewBlocConsumer(
+                    searchText: _searchText)),
           ],
         ),
       ),

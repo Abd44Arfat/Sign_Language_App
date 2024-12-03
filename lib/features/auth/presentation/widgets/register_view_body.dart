@@ -35,7 +35,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(24),
+      padding: const EdgeInsets.all(24),
       child: Form(
         key: formKey,
         autovalidateMode: autovalidateMode,
@@ -43,7 +43,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 60,
               ),
               SizedBox(
@@ -55,7 +55,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               ),
               Text('Enter Your Details To Create Your Account',
                   style: TextStyles.font20GrayMedium
-                      .copyWith(color: Color(0xffBFBFBF))),
+                      .copyWith(color: const Color(0xffBFBFBF))),
               const SizedBox(
                 height: 20,
               ),
@@ -129,11 +129,11 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 padding: const EdgeInsets.only(top: 18.0),
                 child: Center(
                   child: Row(
-                    mainAxisAlignment:MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('new in Sign Talk ?',
-                          style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.white
-                             )),
+                          style: TextStyles.font14DarkBlueMedium
+                              .copyWith(color: Colors.white)),
                       TextButton(
                         child: Text('login',
                             style: TextStyles.font15DarkBlueMedium
@@ -150,7 +150,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               const SizedBox(
                 height: 40,
               ),
-       
             ],
           ),
         ),

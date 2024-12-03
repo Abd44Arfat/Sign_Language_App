@@ -8,7 +8,7 @@ class OnboardingPage3ViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Onboarding(
+    return const Onboarding(
         imageUrl: 'assets/images/onboarding3.png',
         title: 'Learn Sign Language Basics',
         subTitle:

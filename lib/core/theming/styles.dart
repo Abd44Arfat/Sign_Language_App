@@ -12,16 +12,13 @@ class TextStyles {
   );
 
   static TextStyle font28GreenSemiBold = const TextStyle(
-      fontSize: 28 ,
-      color: Color(0xffADF592) ,
-      fontWeight: FontWeight.w600);
+      fontSize: 28, color: Color(0xffADF592), fontWeight: FontWeight.w600);
 
   static TextStyle font18BlackLight = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.extraLight,
     color: Colors.black,
   );
-
 
   static TextStyle font13DarkBlueMedium = TextStyle(
     fontSize: 13.sp,
@@ -35,7 +32,7 @@ class TextStyles {
     color: ColorsManager.darkBlue,
   );
 
- static TextStyle font32PrimaryExtraBold = TextStyle(
+  static TextStyle font32PrimaryExtraBold = TextStyle(
     fontSize: 32.sp,
     fontWeight: FontWeightHelper.extraBold,
     color: ColorsManager.primaryColor,
@@ -70,7 +67,6 @@ class TextStyles {
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.darkBlue,
   );
-
 
   static TextStyle font14GrayRegular = TextStyle(
     fontSize: 14.sp,
@@ -108,8 +104,6 @@ class TextStyles {
     color: Colors.white,
   );
 
-
-
   static TextStyle font15DarkBlueMedium = TextStyle(
     fontSize: 15.sp,
     fontWeight: FontWeightHelper.medium,
@@ -138,37 +132,31 @@ class TextStyles {
     fontWeight: FontWeightHelper.semiBold,
     color: Colors.grey,
   );
-    static TextStyle font20GrayMedium = TextStyle(
+  static TextStyle font20GrayMedium = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.medium,
     color: Colors.black,
   );
-      static TextStyle font16Blackbold= TextStyle(
+  static TextStyle font16Blackbold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.bold,
     color: Colors.black,
   );
-        static TextStyle font15BlackMedium= TextStyle(
+  static TextStyle font15BlackMedium = TextStyle(
     fontSize: 15.sp,
     fontWeight: FontWeightHelper.medium,
     color: Colors.black,
   );
-          static TextStyle font20BlackExtraBold= TextStyle(
+  static TextStyle font20BlackExtraBold = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.extraBold,
     color: Colors.white,
   );
 
-
-
-//new 
-          static TextStyle font20WhiteSemiBold= TextStyle(
+//new
+  static TextStyle font20WhiteSemiBold = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: Colors.white,
   );
-
-
-
-
 }

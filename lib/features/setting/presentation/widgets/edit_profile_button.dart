@@ -7,8 +7,8 @@ import 'package:sign_lang_app/features/setting/presentation/manager/edit_profile
 import 'package:sign_lang_app/features/setting/presentation/manager/edit_profile_cubit/edit_profile_state.dart';
 
 import '../../../../core/widgets/custom_button_animation.dart';
-import '../../../auth/data/models/signIn_response.dart';
 import '../../../auth/presentation/widgets/loading_button.dart';
+
 class EditProfileButton extends StatefulWidget {
   const EditProfileButton({super.key, this.name, this.email});
   final String? name, email;
@@ -36,34 +36,33 @@ class _EditProfileButtonState extends State<EditProfileButton> {
     emailController.dispose();
     super.dispose();
   }
+
   //final User user;
   @override
   Widget build(BuildContext context) {
-
     return BlocConsumer<EditProfileCubit, EditProfileState>(
         builder: (context, state) {
-          return LoadingButton(
-            title: 'Edit Profile',
-            onTap: () {
+      return LoadingButton(
+        title: 'Edit Profile',
+        onTap: () {
+          final String name = nameController.text;
+          final String email = emailController.text;
 
-              final String name = nameController.text;
-              final String email = emailController.text;
-
-              final editInformationEntity = EditInformationEntity(name: name, email: email);
-              context.read<EditProfileCubit>().updateUserInformation(
-                  usecase: getIt<EditInfoUseCase>(),
-                  entity: editInformationEntity);
-            },
-            btnKey: EditProfileCubit.get(context).btnKey,
-          );
-        }, listener: (context, state) {
+          final editInformationEntity =
+              EditInformationEntity(name: name, email: email);
+          context.read<EditProfileCubit>().updateUserInformation(
+              usecase: getIt<EditInfoUseCase>(), entity: editInformationEntity);
+        },
+        btnKey: EditProfileCubit.get(context).btnKey,
+      );
+    }, listener: (context, state) {
       if (state is EditProfileSuccess) {
         final data = {
           'name': state.name,
           'email': state.email,
         };
 
-        Navigator.pop(context , data);
+        Navigator.pop(context, data);
       }
 
       if (state is EditProfileFailure) {

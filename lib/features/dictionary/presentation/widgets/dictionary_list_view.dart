@@ -6,7 +6,8 @@ import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionar
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/dictionary_list_view_item.dart';
 
 class DictionaryListView extends StatefulWidget {
-  const DictionaryListView({super.key, required this.dictionary, this.shrinkWrap = false});
+  const DictionaryListView(
+      {super.key, required this.dictionary, this.shrinkWrap = false});
 
   final List<DictionaryEntity> dictionary;
   final bool shrinkWrap;
@@ -36,18 +37,23 @@ class _DictionaryListViewState extends State<DictionaryListView> {
   }
 
   void _loadSavedItems() async {
-    final localDataSource = DictionaryLocalDataSourceImpl(); // Ideally, inject this
+    final localDataSource =
+        DictionaryLocalDataSourceImpl(); // Ideally, inject this
     final savedList = localDataSource.fetchSavedItems();
     setState(() {
-      savedItems = savedList.map((item) => item.mainTitle).toSet(); // Use unique field to identify items
+      savedItems = savedList
+          .map((item) => item.mainTitle)
+          .toSet(); // Use unique field to identify items
     });
   }
 
   void _scrollListener() async {
-    if (_scrollController.position.pixels >= 0.7 * _scrollController.position.maxScrollExtent) {
+    if (_scrollController.position.pixels >=
+        0.7 * _scrollController.position.maxScrollExtent) {
       if (!isLoading) {
         isLoading = true;
-        await BlocProvider.of<FetchDictionaryListCubit>(context).fetchDictionaryList(pageNumber: nextPage++);
+        await BlocProvider.of<FetchDictionaryListCubit>(context)
+            .fetchDictionaryList(pageNumber: nextPage++);
         isLoading = false;
       }
     }
@@ -55,10 +61,12 @@ class _DictionaryListViewState extends State<DictionaryListView> {
 
   void _saveItem(DictionaryEntity item) {
     if (!savedItems.contains(item.mainTitle)) {
-      final localDataSource = DictionaryLocalDataSourceImpl(); // Ideally, inject this
+      final localDataSource =
+          DictionaryLocalDataSourceImpl(); // Ideally, inject this
       localDataSource.saveDictionaryItem(item);
       setState(() {
-        savedItems.add(item.mainTitle); // Use a unique field to identify the item
+        savedItems
+            .add(item.mainTitle); // Use a unique field to identify the item
       });
       print("Saved: ${item.mainTitle}"); // Confirm the save
     } else {
@@ -70,13 +78,16 @@ class _DictionaryListViewState extends State<DictionaryListView> {
   Widget build(BuildContext context) {
     return ListView.builder(
       controller: _scrollController,
-      physics: widget.shrinkWrap ? NeverScrollableScrollPhysics() : BouncingScrollPhysics(),
+      physics: widget.shrinkWrap
+          ? const NeverScrollableScrollPhysics()
+          : const BouncingScrollPhysics(),
       shrinkWrap: widget.shrinkWrap,
       itemCount: widget.dictionary.length,
       itemBuilder: (context, index) {
         return DictionaryListViewItem(
           title: widget.dictionary[index].mainTitle,
-          isSaved: savedItems.contains(widget.dictionary[index].mainTitle), // Check if saved
+          isSaved: savedItems
+              .contains(widget.dictionary[index].mainTitle), // Check if saved
           onSave: () => _saveItem(widget.dictionary[index]), // Pass save action
         );
       },

@@ -4,10 +4,11 @@ import '../theming/colors.dart';
 import '../theming/styles.dart';
 
 class NextButton extends StatelessWidget {
-  const NextButton({super.key, required this.onPressed , this.text , this.textStyle});
+  const NextButton(
+      {super.key, required this.onPressed, this.text, this.textStyle});
   final void Function()? onPressed;
   final TextStyle? textStyle;
-  final String? text ;
+  final String? text;
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -17,7 +18,7 @@ class NextButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             colors: [
               ColorsManager.primaryColor, // Starting color
               ColorsManager.secondaryColor, // Ending color
@@ -31,8 +32,9 @@ class NextButton extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         child: Text(
-         text ??  'Next',
-          style: textStyle ?? TextStyles.font14DarkBlueMedium.copyWith(color: Colors.white),
+          text ?? 'Next',
+          style: textStyle ??
+              TextStyles.font14DarkBlueMedium.copyWith(color: Colors.white),
         ),
       ),
     );

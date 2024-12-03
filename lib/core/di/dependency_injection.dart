@@ -13,15 +13,6 @@ import 'package:sign_lang_app/features/setting/data/repo_impl/repo_impl.dart';
 import 'package:sign_lang_app/features/setting/domain/repos/repos.dart';
 import 'package:sign_lang_app/features/setting/domain/usecases/edit_info_usecase.dart';
 
-import 'package:sign_lang_app/features/setting/data/datasource/remote_data_source.dart';
-import 'package:sign_lang_app/features/setting/data/repo_impl/repo_impl.dart';
-import 'package:sign_lang_app/features/setting/domain/repos/repos.dart';
-import 'package:sign_lang_app/features/setting/domain/usecases/edit_info_usecase.dart';
-
-import '../../features/setting/data/data_source/remote_data_source/edit_info_remote_data_source.dart';
-import '../../features/setting/domain/repo/edit_info_repo.dart';
-
-
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
@@ -33,27 +24,17 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<EditRemoteDataSource>(EditRemoteDataSourceImpl());
 
-getIt.registerSingleton<EditRemoteDataSource>(EditRemoteDataSourceImpl());
-
-
+//getIt.registerSingleton<EditRemoteDataSource>(EditRemoteDataSourceImpl());
 
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl());
 
-
-
   getIt.registerSingleton<EditInfoRepo>(EditInfoRepoImpl());
-
-
 
   getIt.registerSingleton<SignupUsecase>(SignupUsecase());
 
   getIt.registerSingleton<SignInUsecase>(SignInUsecase());
 
-
   getIt.registerSingleton<EditInfoUsecase>(EditInfoUsecase());
-
-getIt.registerSingleton<EditInfoUsecase>(EditInfoUsecase());
-
 
   getIt.registerSingleton<DictionaryRepoImpl>(
     DictionaryRepoImpl(
@@ -63,5 +44,4 @@ getIt.registerSingleton<EditInfoUsecase>(EditInfoUsecase());
       ),
     ),
   );
-
 }

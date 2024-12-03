@@ -3,7 +3,6 @@ import 'package:sign_lang_app/core/theming/styles.dart';
 
 import '../routing/routes.dart';
 import '../theming/colors.dart';
-import 'app_text_button.dart';
 
 class BuildCommonWordsHeader extends StatelessWidget {
   const BuildCommonWordsHeader({super.key});
@@ -11,21 +10,23 @@ class BuildCommonWordsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-     Text(
-      'Common Words',
-      style: TextStyles.font20WhiteSemiBold,
-    ),
-GestureDetector(
-  
-  onTap: () {
-    Navigator.pushNamed(context,Routes.dictionaryScreen);
-  },
-  child: Text('See All',style: TextStyles.font16WhiteMedium.copyWith(color: ColorsManager.primaryColor),
-  )
-  ),
-          ],
-        );
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          'Common Words',
+          style: TextStyles.font20WhiteSemiBold
+              .copyWith(color: Theme.of(context).colorScheme.onPrimary),
+        ),
+        GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, Routes.dictionaryScreen);
+            },
+            child: Text(
+              'See All',
+              style: TextStyles.font16WhiteMedium
+                  .copyWith(color: ColorsManager.primaryColor),
+            )),
+      ],
+    );
   }
 }

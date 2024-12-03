@@ -11,6 +11,8 @@ import 'package:sign_lang_app/features/onboarding/views/onboarding_page3_view_bo
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingViewBody extends StatefulWidget {
+  const OnboardingViewBody({super.key});
+
   @override
   State<OnboardingViewBody> createState() => _OnboardingViewBodyState();
 }
@@ -42,7 +44,8 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
                         },
                         child: Text(
                           'Skip',
-                          style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.grey),
+                          style: TextStyles.font14DarkBlueMedium
+                              .copyWith(color: Colors.grey),
                         ),
                       ),
                     ],
@@ -82,19 +85,20 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
           const SizedBox(
             height: 50,
           ),
-        NextButton(
-  onPressed: () {
-    if (currentIndex < 2) {
-      _controller.nextPage(
-        duration: const Duration(milliseconds: 150),
-        curve: Curves.easeIn,
-      );
-    } else {
-      SharedPrefHelper.setData(SharedPrefKeys.onboardingCompleted, true); // Mark onboarding as completed
-      Navigator.pushReplacementNamed(context, Routes.registerScreen);
-    }
-  },
-),
+          NextButton(
+            onPressed: () {
+              if (currentIndex < 2) {
+                _controller.nextPage(
+                  duration: const Duration(milliseconds: 150),
+                  curve: Curves.easeIn,
+                );
+              } else {
+                SharedPrefHelper.setData(SharedPrefKeys.onboardingCompleted,
+                    true); // Mark onboarding as completed
+                Navigator.pushReplacementNamed(context, Routes.registerScreen);
+              }
+            },
+          ),
         ],
       ),
     );
@@ -102,7 +106,8 @@ class _OnboardingViewBodyState extends State<OnboardingViewBody> {
 
   dynamic Function()? skipAction(context) {
     return () {
-   SharedPrefHelper.setData(SharedPrefKeys.onboardingCompleted, true); // Mark onboarding as completed
+      SharedPrefHelper.setData(SharedPrefKeys.onboardingCompleted,
+          true); // Mark onboarding as completed
       Navigator.pushReplacementNamed(context, Routes.loginScreen);
     };
   }
