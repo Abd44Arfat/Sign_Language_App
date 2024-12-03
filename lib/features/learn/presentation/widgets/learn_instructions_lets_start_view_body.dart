@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/side_avatar.dart';
 import '../../../../core/routing/routes.dart';
 import 'continue_button.dart';
@@ -30,14 +29,12 @@ class LearnInstructionsLetsStartViewBody extends StatelessWidget {
           ),
         ),
         SideAvatar(screenWidth: screenWidth, screenHeight: screenHeight),
-
         ContinueButton(
           text: 'Continue',
           onPressed: () {
             Navigator.pushNamed(context, Routes.AchievementsView);
           },
         ),
-
         SizedBox(
           height: screenHeight * 0.15,
         )

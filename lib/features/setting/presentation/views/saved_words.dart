@@ -26,17 +26,21 @@ class _SavedWordsScreenState extends State<SavedWordsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Saved Words'),
+        title: const Text('Saved Words'),
       ),
       body: FutureBuilder<List<DictionaryEntity>>(
         future: _savedWordsFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}', style: TextStyle(color: Colors.white)));
+            return Center(
+                child: Text('Error: ${snapshot.error}',
+                    style: const TextStyle(color: Colors.white)));
           } else if (snapshot.data!.isEmpty) {
-            return Center(child: Text('No saved words found.', style: TextStyle(color: Colors.white)));
+            return const Center(
+                child: Text('No saved words found.',
+                    style: TextStyle(color: Colors.white)));
           }
 
           final savedWords = snapshot.data!;
@@ -48,35 +52,35 @@ class _SavedWordsScreenState extends State<SavedWordsScreen> {
                 child: Container(
                   width: 330.w,
                   height: 64.h,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Row(
-mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(savedWords[index].mainTitle,  style: TextStyles.font20WhiteSemiBold,),
-                     
-                     GestureDetector(
-                      onTap: () async {
-                    await _deleteSavedWord(savedWords[index].mainTitle); // Use the id for deletion
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Word deleted')),
-                    );
-                    setState(() {
-                      _savedWordsFuture = _fetchSavedWords(); // Refresh the future
-                    });
-                  },
-                      
-                      
-                      child: SvgPicture.asset('assets/images/Vector.svg')
-      
-                    )],
-                    )
+                  decoration: BoxDecoration(
+                    color: const Color(0xff232229),
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                             
-                    decoration: BoxDecoration(
-                            color: Color(0xff232229),
-                            borderRadius: BorderRadius.circular(15),
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            savedWords[index].mainTitle,
+                            style: TextStyles.font20WhiteSemiBold,
                           ),
+                          GestureDetector(
+                              onTap: () async {
+                                await _deleteSavedWord(savedWords[index]
+                                    .mainTitle); // Use the id for deletion
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('Word deleted')),
+                                );
+                                setState(() {
+                                  _savedWordsFuture =
+                                      _fetchSavedWords(); // Refresh the future
+                                });
+                              },
+                              child:
+                                  SvgPicture.asset('assets/images/Vector.svg'))
+                        ],
+                      )),
                 ),
               );
             },
@@ -86,15 +90,14 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
     );
   }
 
-
   //         onPressed: () async {
-                    // await _deleteSavedWord(savedWords[index].mainTitle); // Use the id for deletion
-                    // ScaffoldMessenger.of(context).showSnackBar(
-                    //   SnackBar(content: Text('Word deleted')),
-                    // );
-                    // setState(() {
-                    //   _savedWordsFuture = _fetchSavedWords(); // Refresh the future
-                    // });
+  // await _deleteSavedWord(savedWords[index].mainTitle); // Use the id for deletion
+  // ScaffoldMessenger.of(context).showSnackBar(
+  //   SnackBar(content: Text('Word deleted')),
+  // );
+  // setState(() {
+  //   _savedWordsFuture = _fetchSavedWords(); // Refresh the future
+  // });
 
   Future<List<DictionaryEntity>> _fetchSavedWords() async {
     var box = Hive.box<DictionaryEntity>(KSavedwordsBox);
@@ -103,12 +106,10 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
   Future<void> _deleteSavedWord(String title) async {
     var box = Hive.box<DictionaryEntity>(KSavedwordsBox);
-    final index = box.values.toList().indexWhere((item) => item.mainTitle == title);
+    final index =
+        box.values.toList().indexWhere((item) => item.mainTitle == title);
     if (index != -1) {
       await box.deleteAt(index); // Delete the item by index
     }
   }
 }
-
-
-

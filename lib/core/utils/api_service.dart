@@ -7,17 +7,17 @@ class DioClient {
   late final Dio _dio;
 
   // Private constructor
-  DioClient._internal() 
-    : _dio = Dio(
-        BaseOptions(
-          responseType: ResponseType.json,
-          sendTimeout: const Duration(seconds: 10),
-          receiveTimeout: const Duration(seconds: 10),
-        ),
-      )..interceptors.addAll([LoggerInterceptor()]) {
-        // Initialize headers in the constructor
-        _initializeHeaders();
-      }
+  DioClient._internal()
+      : _dio = Dio(
+          BaseOptions(
+            responseType: ResponseType.json,
+            sendTimeout: const Duration(seconds: 10),
+            receiveTimeout: const Duration(seconds: 10),
+          ),
+        )..interceptors.addAll([LoggerInterceptor()]) {
+    // Initialize headers in the constructor
+    _initializeHeaders();
+  }
 
   // Static field to hold the single instance
   static final DioClient _instance = DioClient._internal();
@@ -36,7 +36,8 @@ class DioClient {
   Future<void> addDioHeaders() async {
     final token = await SharedPrefHelper.getString(SharedPrefKeys.userToken);
     if (token.isNotEmpty) {
-      _dio.options.headers['token'] = token; // Use 'Authorization' for bearer token
+      _dio.options.headers['token'] =
+          token; // Use 'Authorization' for bearer token
     } else {
       _dio.options.headers.remove('Authorization'); // Remove if no token
     }
@@ -45,17 +46,17 @@ class DioClient {
   // Instance method to set token into headers after login
   void setTokenIntoHeaderAfterLogin(String token) {
     _dio.options.headers['token'] = token; // Update the token
-    addDioHeaders(); 
+    addDioHeaders();
   }
 
   // GET METHOD
   Future<Response> get(
     String url, {
-      Map<String, dynamic>? queryParameters,
-      Options? options,
-      CancelToken? cancelToken,
-      ProgressCallback? onReceiveProgress,
-    }) async {
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final Response response = await _dio.get(
         url,
@@ -65,7 +66,7 @@ class DioClient {
         onReceiveProgress: onReceiveProgress,
       );
       return response;
-    } on DioException catch (e) {
+    } on DioException {
       rethrow;
     }
   }
@@ -73,12 +74,12 @@ class DioClient {
   // POST METHOD
   Future<Response> post(
     String url, {
-      data,
-      Map<String, dynamic>? queryParameters,
-      Options? options,
-      ProgressCallback? onSendProgress,
-      ProgressCallback? onReceiveProgress,
-    }) async {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final Response response = await _dio.post(
         url,
@@ -96,13 +97,13 @@ class DioClient {
   // PUT METHOD
   Future<Response> put(
     String url, {
-      dynamic data,
-      Map<String, dynamic>? queryParameters,
-      Options? options,
-      CancelToken? cancelToken,
-      ProgressCallback? onSendProgress,
-      ProgressCallback? onReceiveProgress,
-    }) async {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final Response response = await _dio.put(
         url,
@@ -122,11 +123,11 @@ class DioClient {
   // DELETE METHOD
   Future<dynamic> delete(
     String url, {
-      data,
-      Map<String, dynamic>? queryParameters,
-      Options? options,
-      CancelToken? cancelToken,
-    }) async {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
     try {
       final Response response = await _dio.delete(
         url,

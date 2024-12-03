@@ -17,6 +17,7 @@ class AuthRepoImpl extends AuthRepo {
     return getIt<AuthRemoteDataSource>().signUp(signupReq);
   }
 
+  @override
   Future<Either<Failure, LoginResponse>> signIn(
       SigninReqParams signInReq) async {
     try {
@@ -26,8 +27,6 @@ class AuthRepoImpl extends AuthRepo {
       return result.fold(
         (failure) => Left(failure), // Return the failure
         (loginResponse) async {
-
-
           return Right(loginResponse);
 
           // Return the successful response

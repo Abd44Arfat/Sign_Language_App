@@ -45,7 +45,7 @@ class AppRouter {
         );
       case Routes.SettingView:
         return MaterialPageRoute(
-          builder: (_) => SettingView(),
+          builder: (_) => const SettingView(),
         );
 
       case Routes.DictionaryDetailsView:
@@ -56,7 +56,7 @@ class AppRouter {
       case Routes.editInfoview:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => EditInfoCubit( DioClient()),
+            create: (context) => EditInfoCubit(DioClient()),
             child: const EditInfoView(),
           ),
         );
@@ -92,12 +92,13 @@ class AppRouter {
       case Routes.resetPassword:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
 
-
       case Routes.learnInstructionsLetsStartView:
-        return MaterialPageRoute(builder: (_) => const LearnInstructionsLetsStartView());
+        return MaterialPageRoute(
+            builder: (_) => const LearnInstructionsLetsStartView());
 
       case Routes.learnInstructionsWelcomeMsgView:
-        return MaterialPageRoute(builder: (builder) => const LearnInstructionsWelcomeMsgView());
+        return MaterialPageRoute(
+            builder: (builder) => const LearnInstructionsWelcomeMsgView());
 
       //  case Routes.bottomNavigation:
       //   if (arguments is Map<String, String>) {
@@ -111,7 +112,7 @@ class AppRouter {
       //     );
       //   }
 
-      case Routes.AchievementsView :
+      case Routes.AchievementsView:
         return MaterialPageRoute(builder: (_) => const AchievementsView());
 
       case Routes.bottomNavigation:

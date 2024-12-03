@@ -59,10 +59,9 @@ class CustomButtonAnimation extends StatefulWidget {
     this.disabledElevation,
     this.disabledColor,
     this.disabledTextColor,
-    Key? key,
+    super.key,
   })  : assert(elevation == null || elevation >= 0.0),
-        assert(disabledElevation == null || disabledElevation >= 0.0),
-        super(key: key);
+        assert(disabledElevation == null || disabledElevation >= 0.0);
 
   @override
   CustomButtonState createState() => CustomButtonState();

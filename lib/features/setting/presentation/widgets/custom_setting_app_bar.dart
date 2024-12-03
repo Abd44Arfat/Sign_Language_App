@@ -3,7 +3,8 @@ import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/core/utils/sharedprefrence.dart';
 
-class CustomSettingAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomSettingAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
   const CustomSettingAppBar({super.key});
 
   @override
@@ -16,27 +17,31 @@ class CustomSettingAppBar extends StatelessWidget implements PreferredSizeWidget
         future: _getUserInfo(), // Fetch user info
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else {
-            final userInfo = snapshot.data ?? {'username': 'User', 'email': 'user@example.com'};
+            final userInfo = snapshot.data ??
+                {'username': 'User', 'email': 'user@example.com'};
             return ListTile(
               leading: CircleAvatar(
                 backgroundColor: Colors.blue[200],
                 radius: 30,
                 child: Text(
-                  userInfo['username']?.substring(0, 2).toUpperCase() ?? "AA", // Use initials
+                  userInfo['username']?.substring(0, 2).toUpperCase() ??
+                      "AA", // Use initials
                   style: TextStyles.font20BlackExtraBold,
                 ),
               ),
               title: Text(
                 userInfo['username'] ?? 'User', // Main title
-                style: TextStyles.font16Blackbold.copyWith(color: Colors.white),
+                style: TextStyles.font16Blackbold
+                    .copyWith(color: Theme.of(context).colorScheme.onPrimary),
               ),
               subtitle: Text(
                 userInfo['email'] ?? 'user@example.com', // Subtitle
-                style: TextStyles.font15BlackMedium.copyWith(color: Colors.white),
+                style: TextStyles.font15BlackMedium
+                    .copyWith(color: Theme.of(context).colorScheme.onPrimary),
               ),
             );
           }
@@ -46,8 +51,10 @@ class CustomSettingAppBar extends StatelessWidget implements PreferredSizeWidget
   }
 
   Future<Map<String, String?>> _getUserInfo() async {
-    final username = await SharedPrefHelper.getStringNullable(SharedPrefKeys.username);
-    final email = await SharedPrefHelper.getStringNullable(SharedPrefKeys.userEmail);
+    final username =
+        await SharedPrefHelper.getStringNullable(SharedPrefKeys.username);
+    final email =
+        await SharedPrefHelper.getStringNullable(SharedPrefKeys.userEmail);
     return {
       'username': username,
       'email': email,
@@ -55,5 +62,6 @@ class CustomSettingAppBar extends StatelessWidget implements PreferredSizeWidget
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(100); // Provide the preferred size here
+  Size get preferredSize =>
+      const Size.fromHeight(100); // Provide the preferred size here
 }

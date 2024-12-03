@@ -1,11 +1,8 @@
-import 'dart:convert';
-
 class SigninReqParams {
-final String email;
-final String password;
+  final String email;
+  final String password;
 
   SigninReqParams({required this.email, required this.password});
-
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -13,5 +10,4 @@ final String password;
       'password': password,
     };
   }
-
 }

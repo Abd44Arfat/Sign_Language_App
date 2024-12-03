@@ -36,64 +36,60 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-        
-            CustomHomeAppBar(title: 'the sentence is :', subtitle: 'How are you'),
-            SizedBox(height: 60,),
-            FutureBuilder<void>(
-              future: _initializeVideoPlayerFuture,
-              builder: (context, snapshot) {
-                // Check for errors
-                if (snapshot.connectionState == ConnectionState.done) {
-                  return Center(
-                   
+        body: SafeArea(
+          child: Column(
+            children: [
+              const CustomHomeAppBar(
+                  title: 'the sentence is :', subtitle: 'How are you'),
+              const SizedBox(
+                height: 60,
+              ),
+              FutureBuilder<void>(
+                future: _initializeVideoPlayerFuture,
+                builder: (context, snapshot) {
+                  // Check for errors
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    return Center(
                       child: AspectRatio(
-                        aspectRatio: 380/400,
+                        aspectRatio: 380 / 400,
                         child: VideoPlayer(_controller),
                       ),
-                    
-                  );
-                } else {
-                 
-                  return Column(
-                    children: [
-                         SizedBox(height: 200,),
-                      Center(child: CircularProgressIndicator(color: Colors.white)),
-                    ],
-                  );
-                }
-              },
-            ),
-               SizedBox(height: 60,),
-          
-          ],
+                    );
+                  } else {
+                    return const Column(
+                      children: [
+                        SizedBox(
+                          height: 200,
+                        ),
+                        Center(
+                            child:
+                                CircularProgressIndicator(color: Colors.white)),
+                      ],
+                    );
+                  }
+                },
+              ),
+              const SizedBox(
+                height: 60,
+              ),
+            ],
+          ),
         ),
-
-      
-      ),
-      floatingActionButton: FloatingActionButton(
-        
-        backgroundColor: Colors.green,
-        onPressed: (){
-
-
-         
-          setState(() {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
-          });
-        },
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-          color: Colors.white,
-        ),
-
-     
-    ));
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.green,
+          onPressed: () {
+            setState(() {
+              _controller.value.isPlaying
+                  ? _controller.pause()
+                  : _controller.play();
+            });
+          },
+          child: Icon(
+            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+            color: Colors.white,
+          ),
+        ));
   }
 }
 
-//  
+//

@@ -25,7 +25,7 @@ class DictionaryListViewItem extends StatelessWidget {
         child: Container(
           height: 70,
           decoration: BoxDecoration(
-            color: Color(0xff232229),
+            color: const Color(0xff232229),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
@@ -37,11 +37,11 @@ class DictionaryListViewItem extends StatelessWidget {
                   title,
                   style: TextStyles.font20WhiteSemiBold,
                 ),
-
-GestureDetector(
-  onTap:isSaved ? null : onSave ,
-  
-  child: SvgPicture.asset(isSaved?'assets/images/Vector.svg':'assets/images/frame.svg')) 
+                GestureDetector(
+                    onTap: isSaved ? null : onSave,
+                    child: SvgPicture.asset(isSaved
+                        ? 'assets/images/Vector.svg'
+                        : 'assets/images/frame.svg'))
               ],
             ),
           ),

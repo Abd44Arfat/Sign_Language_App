@@ -14,7 +14,8 @@ import '../home_page/home_view.dart';
 import '../setting/presentation/views/setting_view.dart';
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key, required this.userName, required this.userEmail});
+  const BottomNavigation(
+      {super.key, required this.userName, required this.userEmail});
   final String userName;
   final String userEmail;
 
@@ -30,32 +31,28 @@ class _BottomNavigationState extends State<BottomNavigation> {
   void initState() {
     super.initState();
     screens = [
-
       const HomeView(),
 
-
-    //  const LearnInstructionsWelcomeMsgView(),
-
+      //  const LearnInstructionsWelcomeMsgView(),
 
       BlocProvider(
         create: (context) => FetchDictionaryListCubit(
           FetchDictionaryListUsecase(
-            dictionaryRepo: getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
+            dictionaryRepo:
+                getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
           ),
         )..fetchDictionaryList(),
         child: const DictionaryView(),
       ),
 
-
       const SettingView(),
-
     ];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      //backgroundColor: Colors.black,
       body: screens[selectedIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
@@ -63,7 +60,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           highlightColor: Colors.transparent,
         ),
         child: BottomNavigationBar(
-          backgroundColor: Colors.black,
+          //backgroundColor: Colors.black,
           currentIndex: selectedIndex,
           onTap: (value) {
             setState(() {
@@ -74,30 +71,28 @@ class _BottomNavigationState extends State<BottomNavigation> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               label: 'Home',
-
               icon: ImageIcon(
                 size: 29,
-                 AssetImage('assets/icons/home.png'),
+                AssetImage('assets/icons/home.png'),
               ),
             ),
             BottomNavigationBarItem(
               label: 'Learn',
               icon: ImageIcon(
                 size: 27,
-                const AssetImage('assets/icons/learning_icon.png'),
+                AssetImage('assets/icons/learning_icon.png'),
               ),
             ),
             BottomNavigationBarItem(
               label: 'Settings',
               icon: ImageIcon(
                 size: 27,
-                const AssetImage('assets/icons/menu.png'),
-
+                AssetImage('assets/icons/menu.png'),
               ),
             ),
           ],
-          selectedItemColor: ColorsManager.primaryColor,
-          unselectedItemColor: Colors.grey,
+          //selectedItemColor: ColorsManager.primaryColor,
+          //unselectedItemColor: Colors.grey,
         ),
       ),
     );

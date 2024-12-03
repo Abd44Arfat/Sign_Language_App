@@ -3,7 +3,7 @@ import 'package:sign_lang_app/features/learn/presentation/widgets/avatar_with_tx
 import 'package:sign_lang_app/features/learn/presentation/widgets/continue_button.dart';
 
 class Achievement2 extends StatelessWidget {
-  Achievement2({super.key});
+  const Achievement2({super.key});
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
@@ -21,14 +21,15 @@ class Achievement2 extends StatelessWidget {
               screenHeight: screenHeight,
               text:
                   'After starting a test,a sign language representation appears, followed by related questions.'),
-          const Divider(
-            color: Colors.white,
+          Divider(
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
           const Expanded(child: SizedBox()),
           const ContinueButton(text: "Start a Test"),
-          SizedBox(height: screenHeight * 0.10,)
+          SizedBox(
+            height: screenHeight * 0.10,
+          )
         ],
-        
       ),
     ));
   }

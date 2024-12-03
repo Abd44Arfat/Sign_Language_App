@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
@@ -55,7 +54,7 @@ class LoadingButton extends StatelessWidget {
             loader: Container(
               padding: const EdgeInsets.all(10),
               child: const SpinKitRotatingCircle(
-                color:ColorsManager.secondaryColor,
+                color: ColorsManager.secondaryColor,
                 size: 20,
               ),
             ),

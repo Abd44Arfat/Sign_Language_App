@@ -1,8 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:sign_lang_app/core/errors/failure.dart';
 import 'package:sign_lang_app/core/utils/api_service.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';
@@ -23,7 +21,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   final GlobalKey<CustomButtonState> btnKey = GlobalKey();
 
-  void execute({required SigninReqParams params, required SignInUsecase usecase}) async {
+  void execute(
+      {required SigninReqParams params, required SignInUsecase usecase}) async {
     emit(LoginLoading());
     btnKey.currentState!.animateForward();
     try {
@@ -37,21 +36,17 @@ class LoginCubit extends Cubit<LoginState> {
         },
         (data) async {
           await saveUserToken(data.token);
-          await saveUserdata(data.user!.email, data.user!.name,data.user!.id);
-          
-        
-           // Save email and username
+          await saveUserdata(data.user!.email, data.user!.name, data.user!.id);
+
+          // Save email and username
           print('Login successful: ${data.token}'); // Log success message
           emit(LoginSuccess(
             message: data.message,
             userName: data.user!.name,
             userEmail: data.user!.email,
-             id: data.user!.id,
-         
+            id: data.user!.id,
           )); // Ensure you pass the user's name if available
           btnKey.currentState!.animateReverse();
-
-     
         },
       );
     } catch (e) {
@@ -62,17 +57,13 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> saveUserToken(String token) async {
     await SharedPrefHelper.setData(SharedPrefKeys.userToken, token);
-    dioClient.setTokenIntoHeaderAfterLogin(token); // Use the injected DioClient instance
+    dioClient.setTokenIntoHeaderAfterLogin(
+        token); // Use the injected DioClient instance
   }
 
-  Future<void> saveUserdata(String email, String name,String id) async {
+  Future<void> saveUserdata(String email, String name, String id) async {
     await SharedPrefHelper.setData(SharedPrefKeys.userEmail, email);
     await SharedPrefHelper.setData(SharedPrefKeys.username, name);
     await SharedPrefHelper.setData(SharedPrefKeys.userid, id);
-
-
-
   }
-
-  
 }

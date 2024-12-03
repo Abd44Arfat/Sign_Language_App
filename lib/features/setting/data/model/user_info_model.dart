@@ -2,13 +2,15 @@ import 'package:sign_lang_app/features/setting/domain/entity/edit_info_entity.da
 
 class UserInfo extends EditInformationEntity {
   String id;
+  @override
   String name;
+  @override
   String email;
   String password;
   bool confirmEmail;
   String role;
   UserInfo(
-      { required this.name,
+      {required this.name,
       required this.email,
       required this.password,
       required this.id,
@@ -18,8 +20,8 @@ class UserInfo extends EditInformationEntity {
 
   factory UserInfo.fromJson(Map<String, dynamic> json) {
     return UserInfo(
-      //name: json["name"]  == null ? null : json["name"] as String,
-        name: json["name"] as String ,
+        //name: json["name"]  == null ? null : json["name"] as String,
+        name: json["name"] as String,
         email: json["email"] as String,
         password: json["password"] as String,
         id: json["_id"] as String,
@@ -27,11 +29,11 @@ class UserInfo extends EditInformationEntity {
         role: json["role"] as String);
   }
 
-  Map<String , dynamic> toJson ()=> {
-    "email" : email ,
-    "password" :password ,
-    "_id" : id ,
-    "confirmEmail" : confirmEmail ,
-    "role" : role
-  };
+  Map<String, dynamic> toJson() => {
+        "email": email,
+        "password": password,
+        "_id": id,
+        "confirmEmail": confirmEmail,
+        "role": role
+      };
 }
