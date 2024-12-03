@@ -26,7 +26,7 @@ class _QuestionsTrackerState extends State<QuestionsTracker> {
           width: MediaQuery.sizeOf(context).width * 0.85,
           lineHeight: 25,
           percent: progress / context.read<ScoreTrackerCubit>().totalQuestions,
-          progressColor: Colors.green[300],
+          progressColor: Color(0xff58CC02),
 
       ); });
 

@@ -19,6 +19,8 @@ import 'package:sign_lang_app/features/learn/presentation/learn_instructions_wel
 
 import 'package:sign_lang_app/features/home_page/home_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/levels/levels_view.dart';
+import 'package:sign_lang_app/features/learn/presentation/quizs.dart/avatar_sign_before_quiz_view.dart';
+import 'package:sign_lang_app/features/learn/presentation/quizs.dart/quiz_view.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
 
 import '../../features/auth/presentation/login_view.dart';
@@ -93,6 +95,20 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const GuideBookView(),
         );
+
+
+
+ case Routes.signbeforeQuiz:
+        return MaterialPageRoute(
+          builder: (_) => const AvatarSignBeforeQuizView(),
+        );
+
+
+ case Routes.quiz:
+        return MaterialPageRoute(
+          builder: (_) => const QuizView(),
+        );
+
 
       case Routes.registerScreen:
         return MaterialPageRoute(

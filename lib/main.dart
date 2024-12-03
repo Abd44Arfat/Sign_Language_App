@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Cairo',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute:Routes.CategoriesView,
+        initialRoute:Routes.quiz,
         
         
         

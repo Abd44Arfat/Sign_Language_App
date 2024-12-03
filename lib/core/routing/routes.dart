@@ -22,5 +22,9 @@ class Routes {
         static const String LevelsView = '/LevelsView';
   static const String Guidebook = '/Guidebook';
 
+  static const String signbeforeQuiz = '/signbeforeQuiz';
+  static const String quiz = '/quiz';
+
+
 
 }
