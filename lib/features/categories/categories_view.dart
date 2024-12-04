@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 
-import 'package:sign_lang_app/features/learn/presentation/widgets/categories_view_body.dart';
+import 'package:sign_lang_app/features/categories/presentation/categories_view_body.dart';
 
 class CategoriesView extends StatelessWidget {
   const CategoriesView({super.key});

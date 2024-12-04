@@ -12,6 +12,7 @@ static const register= "${baseURL}/auth/signup";
 static const login= "${baseURL}/auth/signin";
 static const dictionary= "${baseURL}/dectionary";
 static const EditInfo= "${baseURL}/user/67238199dbb8f29faf211d6a";
+static const category= "${baseURL}/category";
 
 
   static Future<String> getEditInfoUrl() async {

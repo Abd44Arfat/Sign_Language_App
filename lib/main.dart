@@ -51,11 +51,11 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Cairo',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute:Routes.quiz,
+        initialRoute:Routes.LevelsView,
         
         
         
-        
+        //    initialRoute:
         //  isLoggedInUser
         //     ? Routes.bottomNavigation
         //     : (isOnboardingCompleted ? Routes.loginScreen : Routes.onBoardingScreen),

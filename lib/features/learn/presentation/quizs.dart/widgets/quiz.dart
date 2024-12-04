@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
+import 'package:sign_lang_app/features/learn/presentation/manager/score_tracker_cubit/score_tracker_cubit.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/widgets/answer.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/continue_button.dart';
+import 'package:sign_lang_app/features/learn/presentation/widgets/questions_tracker.dart';
 import './question.dart';
 
 class Quiz extends StatelessWidget {
@@ -18,25 +21,36 @@ class Quiz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Update the score tracker with the current question index
+    context.read<ScoreTrackerCubit>().emit(questionIndex + 1); // Increment to match user-friendly indexing
+
     return Column(
       children: [
+        Row(
+          children: [
+             IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios_new,
+                  color: Colors.grey[200],
+                )),
+            QuestionsTracker(totalQ: questions.length+1),
+          ],
+        ), // Add the QuestionsTracker here
         Question(
           questions[questionIndex]['questionText'].toString(),
         ),
         ...(questions[questionIndex]['answers'] as List<Map<String, Object>>)
             .map((answer) {
           return Answer(
-            () => answerQuestion(answer['score']), // This will only be called on button press
+            () => answerQuestion(answer['score']),
             answer['text'].toString(),
           );
         }).toList(),
-        Spacer(),
-                  ContinueButton(
-          text: 'Continue',
-          onPressed: () {
-            Navigator.pushNamed(context, Routes.AchievementsView);
-          },
-        ),
+    
+ 
       ],
     );
   }

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
+import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/features/learn/presentation/widgets/continue_button.dart';
 
 class Result extends StatelessWidget {
   final int resultScore;
@@ -18,28 +22,47 @@ class Result extends StatelessWidget {
     }
   }
 
+  String get animationPath {
+    if (resultScore <= 8) {
+      return 'assets/animations/fail.json';
+    } else if (resultScore <= 12) {
+      return 'assets/animations/fail.json';
+    } else if (resultScore <= 16) {
+      return 'assets/animations/check_hand.json';
+    } else {
+      return 'assets/animations/bird_success.json';  // Adjust as needed
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          resultPhrase,
-          style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
-        ),
-        Text(
-          'Score: $resultScore',
-          style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 20), // Add some spacing
-        TextButton(
-          onPressed: resetHandler,
-          child: const Text(
-            'Restart Quiz!',
-            style: TextStyle(fontSize: 20),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          Center(
+            child: SizedBox(
+              height: 400.h,  // Increased height
+              width: 400.w,   // Increased width
+              child: Lottie.asset(
+                animationPath,  // Use the selected animation
+                fit: BoxFit.contain,  // Maintain aspect ratio
+              ),
+            ),
           ),
-        ),
-      ],
+          Text(
+            resultPhrase,
+            style: TextStyles.font20WhiteSemiBold,
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            'Score: $resultScore',
+            style: TextStyles.font24WhiteBold,
+          ),
+          const SizedBox(height: 20), // Add some spacing
+          ContinueButton(text: 'Restart Quiz!', onPressed: resetHandler),
+        ],
+      ),
     );
   }
 }

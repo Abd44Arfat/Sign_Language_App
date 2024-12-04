@@ -9,7 +9,7 @@ class QuizView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-
+backgroundColor: Color(0xff141F23),
 
 body:  CustomStack(child: QuizViewBody()),
 

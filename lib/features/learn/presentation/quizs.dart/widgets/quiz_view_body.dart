@@ -93,16 +93,18 @@ final _questions = const [
   @override
   Widget build(BuildContext context) {
     return  SafeArea(
-      child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            child: _questionIndex < _questions.length
-                ? Quiz(
-                    answerQuestion: _answerQuestion,
-                    questionIndex: _questionIndex,
-                    questions: _questions,
-                  )
-                : Result(_totalScore, _resetQuiz),
-          ),
+      child: SingleChildScrollView(
+        child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: _questionIndex < _questions.length
+                  ? Quiz(
+                      answerQuestion: _answerQuestion,
+                      questionIndex: _questionIndex,
+                      questions: _questions,
+                    )
+                  : Result(_totalScore, _resetQuiz),
+            ),
+      ),
     );
 
     

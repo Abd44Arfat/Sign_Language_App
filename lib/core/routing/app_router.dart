@@ -6,19 +6,22 @@ import 'package:sign_lang_app/core/utils/api_service.dart';
 import 'package:sign_lang_app/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/signup_cubit.dart';
 import 'package:sign_lang_app/features/auth/reset_password/presentation/reset_password_view.dart';
+import 'package:sign_lang_app/features/categories/domain/usecase/fetch_categories_usecase.dart';
+import 'package:sign_lang_app/features/categories/presentation/manager/cubit/categories_cubit.dart';
 
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_details_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
-import 'package:sign_lang_app/features/learn/presentation/categories_view.dart';
+import 'package:sign_lang_app/features/categories/categories_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/guidebook/guide_book_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_lets_start_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_welcome_msg_view.dart';
 
 import 'package:sign_lang_app/features/home_page/home_view.dart';
-import 'package:sign_lang_app/features/learn/presentation/levels/levels_view.dart';
+import 'package:sign_lang_app/features/levels/presentation/levels_view.dart';
+import 'package:sign_lang_app/features/learn/presentation/manager/score_tracker_cubit/score_tracker_cubit.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/avatar_sign_before_quiz_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/quiz_view.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
@@ -56,7 +59,7 @@ class AppRouter {
       case Routes.editInfoview:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => EditInfoCubit( DioClient()),
+            create: (context) => EditInfoCubit(DioClient()),
             child: const EditInfoView(),
           ),
         );
@@ -66,16 +69,18 @@ class AppRouter {
           builder: (_) => const SavedWordsScreen(),
         );
 
-    case Routes.CategoriesView:
+      case Routes.CategoriesView:
         return MaterialPageRoute(
-          builder: (_) => const CategoriesView(),
+          builder: (_) => BlocProvider(
+            create: (context) => CategoriesCubit(getIt<FetchCategoriesListUsecase>()),
+            child: const CategoriesView(),
+          ),
         );
 
-  case Routes.LevelsView:
+      case Routes.LevelsView:
         return MaterialPageRoute(
-          builder: (_) =>  LevelsViewBody(),
+          builder: (_) => LevelsView(),
         );
-
 
       case Routes.splashScreen:
         return MaterialPageRoute(
@@ -90,25 +95,23 @@ class AppRouter {
           builder: (_) => const AboutUsView(),
         );
 
-
-    case Routes.Guidebook:
+      case Routes.Guidebook:
         return MaterialPageRoute(
           builder: (_) => const GuideBookView(),
         );
 
-
-
- case Routes.signbeforeQuiz:
+      case Routes.signbeforeQuiz:
         return MaterialPageRoute(
           builder: (_) => const AvatarSignBeforeQuizView(),
         );
 
-
- case Routes.quiz:
+      case Routes.quiz:
         return MaterialPageRoute(
-          builder: (_) => const QuizView(),
+          builder: (_) => BlocProvider(
+            create: (context) => ScoreTrackerCubit(totalQuestions: 6),
+            child: const QuizView(),
+          ),
         );
-
 
       case Routes.registerScreen:
         return MaterialPageRoute(
@@ -125,12 +128,13 @@ class AppRouter {
       case Routes.resetPassword:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
 
-
       case Routes.learnInstructionsLetsStartView:
-        return MaterialPageRoute(builder: (_) => const LearnInstructionsLetsStartView());
+        return MaterialPageRoute(
+            builder: (_) => const LearnInstructionsLetsStartView());
 
       case Routes.learnInstructionsWelcomeMsgView:
-        return MaterialPageRoute(builder: (builder) => const LearnInstructionsWelcomeMsgView());
+        return MaterialPageRoute(
+            builder: (builder) => const LearnInstructionsWelcomeMsgView());
 
       //  case Routes.bottomNavigation:
       //   if (arguments is Map<String, String>) {
@@ -144,7 +148,7 @@ class AppRouter {
       //     );
       //   }
 
-      case Routes.AchievementsView :
+      case Routes.AchievementsView:
         return MaterialPageRoute(builder: (_) => const AchievementsView());
 
       case Routes.bottomNavigation:
