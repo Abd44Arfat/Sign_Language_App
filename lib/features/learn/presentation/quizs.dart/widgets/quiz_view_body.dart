@@ -12,11 +12,31 @@ class QuizViewBody extends StatefulWidget {
 }
 
 class _QuizViewBodyState extends State<QuizViewBody> {
-
   var _questionIndex = 0;
   var _totalScore = 0;
+  int? _selectedAnswerIndex; // To track the selected answer
+  bool _showFeedback = false; // Whether to show feedback or not
 
-  void _resetQuiz() {
+  void _answerQuestion(int score, int answerIndex) {
+    setState(() {
+      _selectedAnswerIndex = answerIndex;
+      _showFeedback = true;
+
+      if (score == 10) {
+        _totalScore += score; // Update score only for correct answers
+      }
+    });
+  }
+
+  void _goToNextQuestion() {
+    setState(() {
+      _selectedAnswerIndex = null;
+      _showFeedback = false;
+      _questionIndex += 1; // Move to the next question
+    });
+  }
+
+ void _resetQuiz() {
   // Use addPostFrameCallback to ensure this runs after the current frame
   WidgetsBinding.instance.addPostFrameCallback((_) {
     setState(() {
@@ -26,30 +46,22 @@ class _QuizViewBodyState extends State<QuizViewBody> {
   });
 }
 
-  void _answerQuestion(int score) {
-    _totalScore += score;
-
-    // Only update the question index after the user has answered
-    setState(() {
-      _questionIndex += 1;
-    });
-  }
 final _questions = const [
     {
       'questionText': 'Q1. Who created Flutter?',
       'answers': [
-        {'text': 'Facebook', 'score': -2},
-        {'text': 'Adobe', 'score': -2},
+        {'text': 'Facebook', 'score': 0},
+        {'text': 'Adobe', 'score': 0},
         {'text': 'Google', 'score': 10},
-        {'text': 'Microsoft', 'score': -2},
+
       ],
     },
     {
       'questionText': 'Q2. What is Flutter?',
       'answers': [
-        {'text': 'Android Development Kit', 'score': -2},
-        {'text': 'IOS Development Kit', 'score': -2},
-        {'text': 'Web Development Kit', 'score': -2},
+        {'text': 'Android Development Kit', 'score': 0},
+        {'text': 'IOS Development Kit', 'score': 0},
+
         {
           'text': 'SDK to build beautiful IOS, Android, Web & Desktop Native Apps',
           'score': 10
@@ -59,25 +71,25 @@ final _questions = const [
     {
       'questionText': 'Q3. Which programming language is used by Flutter?',
       'answers': [
-        {'text': 'Ruby', 'score': -2},
+        {'text': 'Ruby', 'score': 0},
         {'text': 'Dart', 'score': 10},
-        {'text': 'C++', 'score': -2},
-        {'text': 'Kotlin', 'score': -2},
+        {'text': 'C++', 'score': 0},
+    
       ],
     },
     {
       'questionText': 'Q4. Who created Dart programming language?',
       'answers': [
         {'text': 'Lars Bak and Kasper Lund', 'score': 10},
-        {'text': 'Brendan Eich', 'score': -2},
-        {'text': 'Bjarne Stroustrup', 'score': -2},
-        {'text': 'Jeremy Ashkenas', 'score': -2},
+        {'text': 'Brendan Eich', 'score': 0},
+        {'text': 'Bjarne Stroustrup', 'score': 0},
+     
       ],
     },
     {
       'questionText': 'Q5. Is Flutter for Web and Desktop available in stable version?',
       'answers': [
-        {'text': 'Yes', 'score': -2},
+        {'text': 'Yes', 'score': 0},
         {'text': 'No', 'score': 10},
       ],
     },
@@ -89,24 +101,24 @@ final _questions = const [
 
 
 
-
-  @override
+ @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: SingleChildScrollView(
         child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: _questionIndex < _questions.length
-                  ? Quiz(
-                      answerQuestion: _answerQuestion,
-                      questionIndex: _questionIndex,
-                      questions: _questions,
-                    )
-                  : Result(_totalScore, _resetQuiz),
-            ),
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: _questionIndex < _questions.length
+              ? Quiz(
+                  answerQuestion: (score, index) => _answerQuestion(score, index),
+                  questionIndex: _questionIndex,
+                  questions: _questions,
+                  selectedAnswerIndex: _selectedAnswerIndex,
+                  showFeedback: _showFeedback,
+                  onNextQuestion: _goToNextQuestion,
+                )
+              : Result(_totalScore, _resetQuiz),
+        ),
       ),
     );
-
-    
   }
 }

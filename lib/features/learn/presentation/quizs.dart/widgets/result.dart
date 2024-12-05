@@ -11,14 +11,14 @@ class Result extends StatelessWidget {
   const Result(this.resultScore, this.resetHandler, {Key? key}) : super(key: key);
 
   String get resultPhrase {
-    if (resultScore <= 8) {
-      return 'You did it!';
-    } else if (resultScore <= 12) {
+    if (resultScore <= 10) {
+      return 'failed';
+    } else if (resultScore <= 20) {
       return 'Pretty likeable!';
-    } else if (resultScore <= 16) {
+    } else if (resultScore <= 30) {
       return 'You are strange!';
     } else {
-      return 'You are terrible!';
+      return 'ou did it!';
     }
   }
 
