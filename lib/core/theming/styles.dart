@@ -149,7 +149,7 @@ class TextStyles {
     fontWeight: FontWeightHelper.bold,
     color: Colors.white,
   );
-      static TextStyle font16Blackbold= TextStyle(
+  
 
   static TextStyle font16Blackbold = TextStyle(
 

@@ -31,11 +31,6 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<CategoriesRemoteDataSource>(CategoriesRemoteDataSourceImpl(dioClient: getIt.get<DioClient>()));
 
-  
-
-
-
-
 
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl());
 
@@ -45,7 +40,6 @@ void setupServiceLocator() {
 
 //getIt.registerSingleton<EditRemoteDataSource>(EditRemoteDataSourceImpl());
 
-  getIt.registerSingleton<AuthRepo>(AuthRepoImpl());
 
 
   getIt.registerSingleton<EditInfoRepo>(EditInfoRepoImpl());
@@ -63,7 +57,6 @@ void setupServiceLocator() {
 
 
 
-  getIt.registerSingleton<EditInfoUsecase>(EditInfoUsecase());
 
   getIt.registerSingleton<DictionaryRepoImpl>(
     DictionaryRepoImpl(
