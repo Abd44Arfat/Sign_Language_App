@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (context) => ThemesCubit(),
       child:
@@ -70,6 +71,7 @@ class MyApp extends StatelessWidget {
           ),
         );
       }),
+
     );
   }
 }

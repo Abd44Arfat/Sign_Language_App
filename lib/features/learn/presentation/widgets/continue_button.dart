@@ -7,6 +7,8 @@ class ContinueButton extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return NextButton(onPressed: onPressed , text: text, textStyle: const TextStyle(fontSize: 22 , fontWeight: FontWeight.w600 , color: Colors.black87), );
+    return NextButton(
+
+      onPressed: onPressed , text: text, textStyle: const TextStyle(fontSize: 22 , fontWeight: FontWeight.w600 , color: Colors.black87), );
   }
 }

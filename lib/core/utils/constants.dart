@@ -4,7 +4,15 @@ const KDictionaryBox = 'dictionaryBox';
 const KSavedwordsBox = 'SavedwordsBox';
 
 class ApiUrls {
-  static const baseURL = "http://127.0.0.1:3000";
+
+static const baseURL="http://10.0.2.2:3000";
+
+static const register= "${baseURL}/auth/signup";
+static const login= "${baseURL}/auth/signin";
+static const dictionary= "${baseURL}/dectionary";
+static const EditInfo= "${baseURL}/user/67238199dbb8f29faf211d6a";
+static const category= "${baseURL}/category";
+
 
   static const register = "$baseURL/auth/signup";
   static const login = "$baseURL/auth/signin";
