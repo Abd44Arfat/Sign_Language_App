@@ -22,8 +22,9 @@ class ServicesWidget extends StatelessWidget {
             child: Container(
               height: 227.h,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                gradient: LinearGradient(
+                  borderRadius: BorderRadius.circular(10),
+                  color: const Color(0xffe6effd)
+                  /*gradient: const LinearGradient(
                   begin: Alignment.bottomLeft,
                   end: Alignment.topRight,
                   colors: [
@@ -31,19 +32,20 @@ class ServicesWidget extends StatelessWidget {
                     ColorsManager.primaryColor, // Bottom color
                   ],
                   stops: [0.2, 0.8],
-                ),
-              ),
+                ),*/
+                  ),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
+                    SizedBox(
                       height: 40.h,
                       width: 40.w,
                       child: CircleAvatar(
-                        backgroundColor: ColorsManager.lightGray.withOpacity(0.3),
+                        backgroundColor:
+                            ColorsManager.lightGray.withOpacity(0.3),
                         child: SvgPicture.asset(
                           'assets/images/ai_icon.svg',
                         ),
@@ -55,8 +57,10 @@ class ServicesWidget extends StatelessWidget {
                           .copyWith(color: Colors.black),
                     ),
                     StartNowBtn(
+                      backgroundColor: Colors.blue[700],
                       buttonText: 'Start Now',
-                      textStyle: TextStyles.font15BlackMedium,
+                      textStyle: TextStyles.font15BlackMedium.copyWith(
+                          color: Colors.white, fontWeight: FontWeight.w600),
                       onPressed: () {},
                     ),
                   ],
@@ -70,7 +74,7 @@ class ServicesWidget extends StatelessWidget {
           child: Column(
             children: [
               ServicesHorizontalWidget(
-                background: ColorsManager.primaryColor,
+                background: Color(0xfffbff8b),
                 image: 'assets/images/Calendar.svg',
                 text: 'Daily Sign\nLanguage words ',
                 onTap: () {
@@ -78,14 +82,11 @@ class ServicesWidget extends StatelessWidget {
                 },
               ),
               ServicesHorizontalWidget(
-                background: Color(0xffE3E8FF),
+                background: const Color(0xffe6effd),
                 image: 'assets/images/book.svg',
                 text: 'Sign Language\nDictionary',
-
-                onTap: (){
-
-context.pushNamed( Routes.dictionaryScreen);
-
+                onTap: () {
+                  context.pushNamed(Routes.dictionaryScreen);
                 },
               ),
             ],
@@ -101,19 +102,19 @@ class ServicesHorizontalWidget extends StatelessWidget {
     super.key,
     required this.background,
     required this.image,
-    required this.text, this.onTap,
-
+    required this.text,
+    this.onTap,
   });
 
   final Color background;
   final String image;
   final String text;
-  final void Function()? onTap ;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:onTap ,
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
@@ -128,7 +129,7 @@ class ServicesHorizontalWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   height: 40.h,
                   width: 40.w,
                   child: CircleAvatar(

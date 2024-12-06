@@ -13,7 +13,7 @@ class AppTextFormField extends StatelessWidget {
   final String hintText;
   final bool? isObscureText;
   final Widget? suffixIcon;
-  final Widget ? prefixIcon;
+  final Widget? prefixIcon;
   final Color? backgroundColor;
   final TextEditingController? controller;
   final Function(String?)? onSaved;
@@ -29,7 +29,9 @@ class AppTextFormField extends StatelessWidget {
     this.isObscureText,
     this.suffixIcon,
     this.backgroundColor,
-    this.controller, this.prefixIcon, this.onSaved,
+    this.controller,
+    this.prefixIcon,
+    this.onSaved,
     // required this.validator,
   });
 
@@ -42,61 +44,31 @@ class AppTextFormField extends StatelessWidget {
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
         focusedBorder: focusedBorder ??
-            OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.white,
-                width: 1.3,
-              ),
-              borderRadius: BorderRadius.circular(16.0),
-            ),
+            Theme.of(context).inputDecorationTheme.focusedBorder,
         enabledBorder: enabledBorder ??
-            OutlineInputBorder(
-              borderSide: const BorderSide(
-
-                color: Color(0xff5D5D5D) , //ColorsManager.itembackground,
-
-              
-
-                width: 1.3,
-              ),
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-        errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
-          ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        hintStyle: hintStyle ?? TextStyles.font14LightGrayRegular,
+            Theme.of(context).inputDecorationTheme.enabledBorder,
+        errorBorder: Theme.of(context).inputDecorationTheme.errorBorder,
+        focusedErrorBorder:
+            Theme.of(context).inputDecorationTheme.focusedErrorBorder,
+        hintStyle:
+            hintStyle ?? Theme.of(context).inputDecorationTheme.hintStyle,
         hintText: hintText,
         suffixIcon: suffixIcon,
-
-        // fillColor: backgroundColor ?? Color(0xfff5f9fe),
-
         prefixIcon: prefixIcon,
-        fillColor: backgroundColor ?? Color(0xff5D5D5D),
-
+        fillColor:
+            backgroundColor ?? Theme.of(context).inputDecorationTheme.fillColor,
         filled: true,
       ),
-      obscuringCharacter :  '*',  //'●',
+      obscuringCharacter: '*', //'●',
       obscureText: isObscureText ?? false,
       style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.white),
- validator: (value) {
+      validator: (value) {
         if (value == null || value.isEmpty) {
           return 'this field is required';
         }
         return null;
       },
-onSaved: onSaved,
-
+      onSaved: onSaved,
     );
   }
 }

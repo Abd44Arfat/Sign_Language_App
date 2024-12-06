@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sign_lang_app/core/widgets/onboarding.dart';
-import 'package:sign_lang_app/core/widgets/skip_button.dart';
 
 class OnboardingPage2ViewBody extends StatelessWidget {
   const OnboardingPage2ViewBody({super.key});

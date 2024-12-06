@@ -48,7 +48,7 @@ class AppRouter {
         );
       case Routes.SettingView:
         return MaterialPageRoute(
-          builder: (_) => SettingView(),
+          builder: (_) => const SettingView(),
         );
 
       case Routes.DictionaryDetailsView:

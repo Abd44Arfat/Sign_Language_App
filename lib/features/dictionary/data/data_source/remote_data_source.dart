@@ -7,7 +7,7 @@ import 'package:sign_lang_app/features/dictionary/data/models/dictionary_model/d
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 
 abstract class DictionaryRemoteDataSource {
-  Future<List<DictionaryEntity>> fetchDictionaryList({int pageNumber=1});
+  Future<List<DictionaryEntity>> fetchDictionaryList({int pageNumber = 1});
 }
 
 class DictionaryRemoteDataSourceImpl extends DictionaryRemoteDataSource {
@@ -16,10 +16,11 @@ class DictionaryRemoteDataSourceImpl extends DictionaryRemoteDataSource {
 
   DictionaryRemoteDataSourceImpl({required this.dioClient});
 
-  Future<List<DictionaryEntity>> fetchDictionaryList({int pageNumber=1}) async {
-
-    var response = await dioClient.get( "${ApiUrls.dictionary}?page=$pageNumber");
-
+  @override
+  Future<List<DictionaryEntity>> fetchDictionaryList(
+      {int pageNumber = 1}) async {
+    var response =
+        await dioClient.get("${ApiUrls.dictionary}?page=$pageNumber");
 
     List<DictionaryEntity> dictionary = getDictionarysList(response.data);
 

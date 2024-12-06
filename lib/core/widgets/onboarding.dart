@@ -20,7 +20,7 @@ class Onboarding extends StatelessWidget {
           title,
           style: TextStyles.font24PrimarySemibold,
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         SizedBox(

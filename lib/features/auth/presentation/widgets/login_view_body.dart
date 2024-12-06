@@ -11,7 +11,6 @@ import 'package:sign_lang_app/features/auth/presentation/manager/login_cubit/log
 import 'package:sign_lang_app/features/auth/presentation/widgets/loading_button.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/password_text_form_field.dart';
 
-
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
 
@@ -32,12 +31,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
       padding: const EdgeInsets.all(24),
       child: Form(
         key: formKey,
-          autovalidateMode: autovalidateMode,
+        autovalidateMode: autovalidateMode,
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 60,
               ),
               SizedBox(
@@ -48,26 +47,26 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   style: TextStyles.font32PrimaryExtraBold,
                 ),
               ),
-              Text(
-                'Sign in for your account now',
-               
-                style: TextStyles.font20GrayMedium.copyWith(color: Color(0xffBFBFBF))
-                 
-              ),
+              Text('Sign in for your account now',
+                  style: TextStyles.font20GrayMedium
+                      .copyWith(color: const Color(0xffBFBFBF))),
               const SizedBox(
                 height: 50,
               ),
-               AppTextFormField(hintText: 'Email',onSaved:(value){
-
-  email = value!;
-              } ,),
+              AppTextFormField(
+                hintText: 'Email',
+                onSaved: (value) {
+                  email = value!;
+                },
+              ),
               const SizedBox(
                 height: 30,
               ),
-               PasswordTextFormField(onSaved:(value){
-
-  password = value!;
-              } ,),
+              PasswordTextFormField(
+                onSaved: (value) {
+                  password = value!;
+                },
+              ),
               SizedBox(
                 height: 60,
                 child: Align(
@@ -75,7 +74,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   child: GestureDetector(
                     child: Text(
                       'Forget your password ?',
-                      style: TextStyles.font15DarkBlueMedium.copyWith(color: ColorsManager.primaryColor),
+                      style: TextStyles.font15DarkBlueMedium
+                          .copyWith(color: ColorsManager.primaryColor),
                     ),
                     onTap: () {
                       Navigator.pushNamed(context, Routes.resetPassword);
@@ -93,7 +93,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
-          
+
                         context.read<LoginCubit>().execute(
                             usecase: getIt<SignInUsecase>(),
                             params: SigninReqParams(
@@ -113,11 +113,12 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('new in Sign Talk ?',
-                          style: TextStyles.font15DarkBlueMedium.copyWith(color: Colors.white
-                          )),
+                          style: TextStyles.font15DarkBlueMedium
+                              .copyWith(color: Colors.white)),
                       TextButton(
                         child: Text('Sign up',
-                            style: TextStyles.font14DarkBlueMedium.copyWith(color: ColorsManager.primaryColor)
+                            style: TextStyles.font14DarkBlueMedium
+                                .copyWith(color: ColorsManager.primaryColor)
                                 .copyWith(fontSize: 16)),
                         onPressed: () {
                           Navigator.pushReplacementNamed(
@@ -128,8 +129,6 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   ),
                 ),
               ),
-           
-              
             ],
           ),
         ),

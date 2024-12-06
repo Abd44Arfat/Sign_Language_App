@@ -8,12 +8,9 @@ class OnboardingView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color(0xff343434),
-             Colors.black 
-            ],
+            colors: [Color(0xff343434), Colors.black],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),

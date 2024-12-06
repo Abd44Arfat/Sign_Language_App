@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/custom_check_box.dart';
-
 
 class TermsAndConditionsWidget extends StatefulWidget {
   const TermsAndConditionsWidget({super.key, required this.onChanged});
@@ -41,7 +38,7 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                   TextSpan(
                     text: 'I’m agree to The ',
                     style: TextStyles.font16WhiteMedium.copyWith(
-                      color:  Colors.white,
+                      color: Colors.white,
                     ),
                   ),
                   TextSpan(
@@ -50,7 +47,7 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                       color: ColorsManager.primaryColor,
                     ),
                   ),
-                   TextSpan(
+                  TextSpan(
                     text: ' ',
                     style: TextStyles.font16WhiteMedium,
                   ),
@@ -60,12 +57,13 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                       color: Colors.white,
                     ),
                   ),
-                   TextSpan(
+                  TextSpan(
                     text: 'Privacy Policy ',
-                    style: TextStyles.font16WhiteMedium.copyWith(color: ColorsManager.primaryColor,
-                  ),
-               
-               ) ],
+                    style: TextStyles.font16WhiteMedium.copyWith(
+                      color: ColorsManager.primaryColor,
+                    ),
+                  )
+                ],
               ),
               textAlign: TextAlign.left,
             ),

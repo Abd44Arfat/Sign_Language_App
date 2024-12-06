@@ -4,7 +4,7 @@ import '../../../../../core/widgets/app_text_form_field.dart';
 class PasswordTextFormField extends StatefulWidget {
   final Function(String?)? onSaved;
 
-  const PasswordTextFormField({Key? key, this.onSaved}) : super(key: key);
+  const PasswordTextFormField({super.key, this.onSaved});
 
   @override
   State<PasswordTextFormField> createState() => _PasswordTextFormFieldState();
@@ -29,7 +29,9 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
           },
           icon: const ImageIcon(
             color: Colors.white,
-            AssetImage('assets/icons/see_password.png',),
+            AssetImage(
+              'assets/icons/see_password.png',
+            ),
             size: 26,
           ),
         ),

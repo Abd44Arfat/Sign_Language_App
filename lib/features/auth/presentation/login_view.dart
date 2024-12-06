@@ -5,8 +5,8 @@ import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/core/widgets/custom_background_color.dart';
 import 'package:sign_lang_app/features/auth/presentation/manager/login_cubit/login_cubit.dart';
-import 'package:sign_lang_app/features/auth/presentation/register_view.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/login_view_body.dart';
+
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
 
@@ -16,17 +16,13 @@ class LoginView extends StatelessWidget {
       body: BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-               final args = {
+            final args = {
               'userName': state.userName,
-              'userEmail': state.userEmail, // Ensure you have this in your LoginSuccess state
+              'userEmail': state
+                  .userEmail, // Ensure you have this in your LoginSuccess state
             };
             context.pushReplacementNamed(
-
-
               Routes.bottomNavigation,
-
-
-
               arguments: args,
             );
             buildErrorBar(context, state.message);
@@ -35,7 +31,8 @@ class LoginView extends StatelessWidget {
             buildErrorBar(context, state.errorMessage);
           }
         },
-        child: const CustomStack(width : double.maxFinite , child: LoginViewBody()),
+        child:
+            const CustomStack(width: double.maxFinite, child: LoginViewBody()),
       ),
     );
   }
