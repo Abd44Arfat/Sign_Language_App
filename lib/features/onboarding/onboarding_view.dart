@@ -6,17 +6,26 @@ class OnboardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xff343434), Colors.black],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: OnboardingViewBody(),
-      ),
+      body: isDarkTheme ? _isDark(context) : _isLight(context),
     );
   }
+}
+
+Widget _isDark(context) {
+  return Container(
+    decoration: const BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Color(0xff343434), Colors.black],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+    ),
+    child: const OnboardingViewBody(),
+  );
+}
+
+Widget _isLight(context) {
+  return const OnboardingViewBody();
 }

@@ -48,8 +48,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 ),
               ),
               Text('Sign in for your account now',
-                  style: TextStyles.font20GrayMedium
-                      .copyWith(color: const Color(0xffBFBFBF))),
+                  style: TextStyles.font20GrayMedium.copyWith(
+                      color: Theme.of(context).colorScheme.secondaryContainer)),
               const SizedBox(
                 height: 50,
               ),
@@ -113,8 +113,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('new in Sign Talk ?',
-                          style: TextStyles.font15DarkBlueMedium
-                              .copyWith(color: Colors.white)),
+                          style: TextStyles.font15DarkBlueMedium.copyWith(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .secondaryContainer)),
                       TextButton(
                         child: Text('Sign up',
                             style: TextStyles.font14DarkBlueMedium

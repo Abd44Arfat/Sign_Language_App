@@ -17,6 +17,7 @@ class SettingViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
     // List<String> list = [userName , userEmail];
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -50,6 +51,7 @@ class SettingViewBody extends StatelessWidget {
           ),
           SettingItem(
             title: 'Contact us',
+            backIcon: false,
             onTap: () {
               showModalBottomSheet(
                 backgroundColor: const Color(0xff19221D),
@@ -85,12 +87,15 @@ class SettingViewBody extends StatelessWidget {
             },
           ),
           SettingItem(
-              title: "Light Theme",
-              onTap: () {
-                context.read<ThemesCubit>().toggleTheme();
-              }),
+            title: isDarkTheme ? "Light Mode" : "Dark Mode",
+            onTap: () {
+              context.read<ThemesCubit>().toggleTheme();
+            },
+            backIcon: false,
+          ),
           SettingItem(
             title: 'Logout',
+            backIcon: false,
             onTap: () {},
           ),
         ],

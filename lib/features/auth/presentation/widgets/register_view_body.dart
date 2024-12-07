@@ -54,8 +54,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                 ),
               ),
               Text('Enter Your Details To Create Your Account',
-                  style: TextStyles.font20GrayMedium
-                      .copyWith(color: const Color(0xffBFBFBF))),
+                  style: TextStyles.font20GrayMedium.copyWith(
+                      color: Theme.of(context).colorScheme.secondaryContainer)),
               const SizedBox(
                 height: 20,
               ),
@@ -131,9 +131,9 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('new in Sign Talk ?',
-                          style: TextStyles.font14DarkBlueMedium
-                              .copyWith(color: Colors.white)),
+                      Text('Already Have An Account ? ',
+                          style: TextStyles.font14DarkBlueMedium.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary)),
                       TextButton(
                         child: Text('login',
                             style: TextStyles.font15DarkBlueMedium

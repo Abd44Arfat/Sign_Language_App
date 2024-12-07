@@ -61,6 +61,8 @@ class MyApp extends StatelessWidget {
             theme: themeState,
             //darkTheme: AppThemes.darkTheme,
             debugShowCheckedModeBanner: false,
+            //initialRoute: Routes.onBoardingScreen,
+
             initialRoute: isLoggedInUser
                 ? Routes.bottomNavigation
                 : (isOnboardingCompleted

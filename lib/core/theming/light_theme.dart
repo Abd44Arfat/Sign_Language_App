@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-ColorScheme colorScheme = const ColorScheme.light(
-  //primary: Color(0xffA1F598),
-  onPrimary: Colors.black,
-  onPrimaryContainer: Colors.black38,
-  primaryContainer: Color(0xfff5f9fe),
-  surface: Color(0xffececec),
-  //secondary: Colors.grey
-  //secondary: Color.fromARGB(255, 8, 40, 48),
-  //surface: Colors.white,
-  //onSurface: Colors.black,
-  //error: Colors.red,
-  //onError: Colors.white,
-  //onSecondary: Color(0xFFf5f5f5),
-);
+ColorScheme colorScheme = ColorScheme.light(
+    //primary: Color(0xffA1F598),
+    onPrimary: Colors.black,
+    onPrimaryContainer: Colors.black38,
+    primaryContainer: Color(0xfff5f9fe),
+    surface: Color(0xffececec),
+    onSecondary: Colors.white,
+    secondary: Colors.green[400]!,
+    secondaryContainer: Colors.grey[700]
+    //secondary: Colors.grey
+    //secondary: Color.fromARGB(255, 8, 40, 48),
+    //surface: Colors.white,
+    //onSurface: Colors.black,
+    //error: Colors.red,
+    //onError: Colors.white,
+    //onSecondary: Color(0xFFf5f5f5),
+    );
 
 InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   filled: true,

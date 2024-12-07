@@ -6,9 +6,14 @@ import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 
 class SettingItem extends StatelessWidget {
-  const SettingItem({super.key, required this.title, required this.onTap});
+  const SettingItem(
+      {super.key,
+      required this.title,
+      required this.onTap,
+      this.backIcon = true});
   final String title;
   final void Function() onTap;
+  final bool backIcon;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -47,7 +52,9 @@ class SettingItem extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Icon(Iconsax.arrow_right_3_copy)
+                  backIcon
+                      ? const Icon(Iconsax.arrow_right_3_copy)
+                      : const SizedBox()
                 ]),
           ),
         ),

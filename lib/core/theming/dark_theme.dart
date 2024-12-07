@@ -6,7 +6,10 @@ ColorScheme colorScheme = const ColorScheme.dark(
     onPrimary: Colors.white,
     primaryContainer: Color(0xff5D5D5D),
     onPrimaryContainer: ColorsManager.lightGray,
-    surface: Color(0xff19221D));
+    surface: Color(0xff19221D),
+    onSecondary: Colors.black,
+    secondary: Color(0xffaef593),
+    secondaryContainer: Colors.grey);
 
 InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   filled: true,
