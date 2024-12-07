@@ -18,7 +18,8 @@ class Onboarding extends StatelessWidget {
         Expanded(child: Image.asset(imageUrl, width: double.infinity)),
         Text(
           title,
-          style: TextStyles.font24PrimarySemibold,
+          style: TextStyles.font24PrimarySemibold
+              .copyWith(color: Theme.of(context).colorScheme.secondary),
         ),
         const SizedBox(
           height: 30,
@@ -27,7 +28,8 @@ class Onboarding extends StatelessWidget {
             width: 340,
             child: Text(
               subTitle,
-              style: TextStyles.font17WhiteMedium,
+              style: TextStyles.font17WhiteMedium
+                  .copyWith(color: Theme.of(context).colorScheme.onPrimary),
               textAlign: TextAlign.center,
             )),
       ],

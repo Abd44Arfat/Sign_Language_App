@@ -38,7 +38,7 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                   TextSpan(
                     text: 'I’m agree to The ',
                     style: TextStyles.font16WhiteMedium.copyWith(
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                   TextSpan(
@@ -52,9 +52,9 @@ class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
                     style: TextStyles.font16WhiteMedium,
                   ),
                   TextSpan(
-                    text: 'and ',
+                    text: ' and ',
                     style: TextStyles.font16WhiteMedium.copyWith(
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                   TextSpan(
