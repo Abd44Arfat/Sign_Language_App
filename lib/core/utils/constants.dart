@@ -7,11 +7,12 @@ class ApiUrls {
 
 static const baseURL="http://10.0.2.2:3000";
 
-static const register= "${baseURL}/auth/signup";
-static const login= "${baseURL}/auth/signin";
-static const dictionary= "${baseURL}/dectionary";
+static const register= "${baseURL}/api/auth/signup";
+static const login= "${baseURL}/api/auth/signin";
+static const dictionary= "${baseURL}/api/dectionary";
 static const EditInfo= "${baseURL}/user/67238199dbb8f29faf211d6a";
-static const category= "${baseURL}/category";
+
+static const category= "${baseURL}/api/category";
 
 
 
