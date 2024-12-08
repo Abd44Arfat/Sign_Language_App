@@ -19,7 +19,7 @@ class FetchQuestionCubit extends Cubit<FetchQuestionState> {
     result.fold(
       (failure) {
 
-              debugPrint('Fetch failed: ${failure.toString()}');
+              debugPrint('Fetch failed: ${failure.message}');
 
         emit(FetchQuestionFailure(errmessage: failure.message));
       },
