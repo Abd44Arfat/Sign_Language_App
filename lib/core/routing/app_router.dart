@@ -8,24 +8,23 @@ import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/si
 import 'package:sign_lang_app/features/auth/reset_password/presentation/reset_password_view.dart';
 import 'package:sign_lang_app/features/categories/domain/usecase/fetch_categories_usecase.dart';
 import 'package:sign_lang_app/features/categories/presentation/manager/cubit/categories_cubit.dart';
-
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_details_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 import 'package:sign_lang_app/features/categories/categories_view.dart';
+import 'package:sign_lang_app/features/learn/domain/usecase/fetch_question_usecase.dart';
 import 'package:sign_lang_app/features/learn/presentation/guidebook/guide_book_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_lets_start_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_welcome_msg_view.dart';
-
 import 'package:sign_lang_app/features/home_page/home_view.dart';
+import 'package:sign_lang_app/features/learn/presentation/manager/fetch_question_cubit.dart/fetch_question_cubit.dart';
 import 'package:sign_lang_app/features/levels/presentation/levels_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/manager/score_tracker_cubit/score_tracker_cubit.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/avatar_sign_before_quiz_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/quiz_view.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
-
 import '../../features/auth/presentation/login_view.dart';
 import '../../features/auth/presentation/register_view.dart';
 import '../../features/bottom_nav/button_navigation.dart';
@@ -105,13 +104,22 @@ class AppRouter {
           builder: (_) => const AvatarSignBeforeQuizView(),
         );
 
-      case Routes.quiz:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => ScoreTrackerCubit(totalQuestions: 6),
-            child: const QuizView(),
+case Routes.quiz:
+  return MaterialPageRoute(
+    builder: (_) => MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ScoreTrackerCubit(totalQuestions: 6),
+        ),
+        BlocProvider(
+          create: (context) => FetchQuestionCubit(
+            fetchQuestionListUsecase: getIt<FetchQuestionListUsecase>(), // Ensure the parameter name matches
           ),
-        );
+        ),
+      ],
+      child: const QuizView(),
+    ),
+  );
 
       case Routes.registerScreen:
         return MaterialPageRoute(

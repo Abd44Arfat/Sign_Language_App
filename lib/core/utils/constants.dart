@@ -11,6 +11,7 @@ static const register= "${baseURL}/api/auth/signup";
 static const login= "${baseURL}/api/auth/signin";
 static const dictionary= "${baseURL}/api/dectionary";
 static const EditInfo= "${baseURL}/user/67238199dbb8f29faf211d6a";
+static const questions= "${baseURL}/api/level/674f5b1f6437ec5728c295e9/";
 
 static const category= "${baseURL}/api/category";
 

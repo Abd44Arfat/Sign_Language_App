@@ -12,6 +12,10 @@ import 'package:sign_lang_app/features/categories/domain/usecase/fetch_categorie
 import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/remote_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
+import 'package:sign_lang_app/features/learn/data/data_source/learn_remote_datasource.dart';
+import 'package:sign_lang_app/features/learn/data/repo/repo_impl.dart';
+import 'package:sign_lang_app/features/learn/domain/repo/question_repo.dart';
+import 'package:sign_lang_app/features/learn/domain/usecase/fetch_question_usecase.dart';
 import 'package:sign_lang_app/features/setting/data/datasource/remote_data_source.dart';
 import 'package:sign_lang_app/features/setting/data/repo_impl/repo_impl.dart';
 import 'package:sign_lang_app/features/setting/domain/repos/repos.dart';
@@ -37,6 +41,13 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<CategoryRepo>(CategoriesRepoImpl());
 
+
+//learn
+  getIt.registerSingleton<LearnRepo>(LearnRepoImpl());
+
+  getIt.registerSingleton<LearnRemoteDataSource>(LearnRemoteDataSourceImpl(dioClient: getIt.get<DioClient>()));
+
+  getIt.registerSingleton<FetchQuestionListUsecase>(FetchQuestionListUsecase( learnRepo: getIt.get<LearnRepo>()));
 
 //getIt.registerSingleton<EditRemoteDataSource>(EditRemoteDataSourceImpl());
 
