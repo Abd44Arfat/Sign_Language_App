@@ -31,7 +31,6 @@ void main() async {
   await Hive.openBox<DictionaryEntity>(KDictionaryBox);
   await Hive.openBox<DictionaryEntity>(KSavedwordsBox);
   Bloc.observer = SimpleBlocObserver();
-
   setupServiceLocator();
 
   runApp(MyApp(
@@ -50,7 +49,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
       create: (context) => ThemesCubit(),
       child:
@@ -73,7 +71,6 @@ class MyApp extends StatelessWidget {
           ),
         );
       }),
-
     );
   }
 }

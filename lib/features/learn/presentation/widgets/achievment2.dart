@@ -27,12 +27,14 @@ class Achievement2 extends StatelessWidget {
             color: Theme.of(context).colorScheme.onPrimary,
           ),
           const Expanded(child: SizedBox()),
-           ContinueButton(text: "Start a Test",onPressed: (){
-context.pushNamed(Routes.CategoriesView);
-
-           }),
-          SizedBox(height: screenHeight * 0.10,)
-
+          ContinueButton(
+              text: "Start a Test",
+              onPressed: () {
+                context.pushNamed(Routes.CategoriesView);
+              }),
+          SizedBox(
+            height: screenHeight * 0.10,
+          )
         ],
       ),
     ));

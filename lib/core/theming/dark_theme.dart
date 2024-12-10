@@ -3,13 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 
 ColorScheme colorScheme = const ColorScheme.dark(
-    onPrimary: Colors.white,
-    primaryContainer: Color(0xff5D5D5D),
-    onPrimaryContainer: ColorsManager.lightGray,
-    surface: Color(0xff19221D),
-    onSecondary: Colors.black,
-    secondary: Color(0xffaef593),
-    secondaryContainer: Colors.grey);
+  onPrimary: Colors.white,
+  primaryContainer: Color(0xff5D5D5D),
+  onPrimaryContainer: ColorsManager.lightGray,
+  surface: Color(0xff19221D),
+  onSecondary: Colors.black,
+  secondary: Color(0xffaef593),
+  secondaryContainer: Colors.grey,
+  onSurface: const Color(0xff141F23),
+  primaryFixed: Color(0xff202F36), //backfround color
+);
 
 InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   filled: true,

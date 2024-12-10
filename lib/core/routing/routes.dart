@@ -7,24 +7,23 @@ class Routes {
 
   static const String homescreen = '/homescreen';
   static const String loginScreen = '/loginView';
-  static const String registerScreen  = '/registerScreen';
+  static const String registerScreen = '/registerScreen';
   static const String resetPassword = '/resetPassword';
   static const String aboutUsView = '/aboutUsView';
   static const String SettingView = '/SettingView';
   static const String DictionaryDetailsView = '/DictionaryDetailsView';
   static const String SavedWordsScreen = '/SavedWordsScreen';
-  static const String learnInstructionsWelcomeMsgView = '/LearnInstructionsWelcomeMsgView';
-  static const String learnInstructionsLetsStartView = '/LearnInstructionsLetsStartView';
+  static const String learnInstructionsWelcomeMsgView =
+      '/LearnInstructionsWelcomeMsgView';
+  static const String learnInstructionsLetsStartView =
+      '/LearnInstructionsLetsStartView';
   static const String editInfoview = '/editInfoview';
   static const String AchievementsView = '/achievementsView';
   static const String Achievement2 = '/achievement2';
-    static const String CategoriesView = '/CategoriesView';
-        static const String LevelsView = '/LevelsView';
+  static const String CategoriesView = '/CategoriesView';
+  static const String LevelsView = '/LevelsView';
   static const String Guidebook = '/Guidebook';
 
   static const String signbeforeQuiz = '/signbeforeQuiz';
   static const String quiz = '/quiz';
-
-
-
 }

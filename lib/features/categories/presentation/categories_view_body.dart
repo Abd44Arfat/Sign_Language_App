@@ -7,6 +7,7 @@ import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/features/categories/data/models/category_res.dart';
 import 'package:sign_lang_app/features/categories/presentation/manager/cubit/categories_cubit.dart';
+import 'package:sign_lang_app/features/levels/presentation/manager/levels_cubit.dart';
 
 class CategoriesViewBody extends StatelessWidget {
   const CategoriesViewBody({super.key});
@@ -58,7 +59,7 @@ class _GridViewBlocConsumerState extends State<GridViewBlocConsumer> {
       },
       builder: (context, state) {
         if (state is CategoriesLoading) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (state is CategoriesSuccess) {
           return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -68,11 +69,18 @@ class _GridViewBlocConsumerState extends State<GridViewBlocConsumer> {
             ),
             itemCount: state.categories.length,
             itemBuilder: (BuildContext context, int index) {
-              return CategoriesItem(category: state.categories[index], imagePath: widget.imagePaths[index % widget.imagePaths.length],);
+              return CategoriesItem(
+                category: state.categories[index],
+                imagePath: widget.imagePaths[index % widget.imagePaths.length],
+              );
             },
           );
         } else {
-          return Center(child: Text('No categories available.'));
+          return Center(
+              child: Text(
+            'No categories available.',
+            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+          ));
         }
       },
     );
@@ -81,33 +89,37 @@ class _GridViewBlocConsumerState extends State<GridViewBlocConsumer> {
 
 class CategoriesItem extends StatelessWidget {
   final String imagePath;
-    final CategoryModel category;
+  final CategoryModel category;
 
-
-  const CategoriesItem({super.key, required this.imagePath, required this.category});
+  const CategoriesItem(
+      {super.key, required this.imagePath, required this.category});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.LevelsView);
+        context
+            .pushNamed(Routes.LevelsView, arguments: {'categoryId': category.id}
+                // Pass category ID as an argument
+                );
       },
       child: Container(
         height: 190,
         width: 140,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: const Color(0xff202F36),
-        ),
+            borderRadius: BorderRadius.circular(10),
+            color: Theme.of(context).colorScheme.primaryFixed
+            //const Color(0xff202F36),
+            ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(category.name,
-                  style: TextStyles.font16GraySemibold
-                      .copyWith(color: Colors.white)),
-              SizedBox(
+                  style: TextStyles.font16GraySemibold.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary)),
+              const SizedBox(
                 height: 14,
               ),
               Align(
