@@ -39,7 +39,7 @@ class GuideBookListViewItem extends StatelessWidget {
       padding: const EdgeInsets.only(top: 80, bottom: 0),
       child: GestureDetector(
         onTap: () {
-          context.pushNamed(Routes.quiz);
+          context.pushNamed(Routes.signbeforeQuiz);
         },
         child: Container(
           height: 115,
