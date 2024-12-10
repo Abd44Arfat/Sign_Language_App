@@ -22,6 +22,7 @@ import 'package:sign_lang_app/features/setting/data/repo_impl/repo_impl.dart';
 import 'package:sign_lang_app/features/setting/domain/repos/repos.dart';
 import 'package:sign_lang_app/features/setting/domain/usecases/edit_info_usecase.dart';
 
+
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {

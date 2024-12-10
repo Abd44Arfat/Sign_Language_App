@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sign_lang_app/features/learn/data/models/question_response.dart';
 import 'package:sign_lang_app/features/learn/presentation/manager/score_tracker_cubit/score_tracker_cubit.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/widgets/answer.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/continue_button.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/questions_tracker.dart';
 import './question.dart';
 class Quiz extends StatelessWidget {
-  final List<Map<String, Object>> questions;
+final List<Questions> questions; 
   final int questionIndex;
-  final Function(int, int) answerQuestion; // Pass index and score
+  final Function(int, int) answerQuestion; 
   final int? selectedAnswerIndex;
   final bool showFeedback;
   final VoidCallback onNextQuestion;
@@ -25,30 +26,29 @@ class Quiz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final answers = questions[questionIndex]['answers'] as List<Map<String, Object>>;
-    final correctAnswerIndex = answers.indexWhere((answer) => answer['score'] == 10);
-    context.read<ScoreTrackerCubit>().emit(questionIndex + 1); // Increment to match user-friendly indexing
+    final currentQuestion = questions[questionIndex];
+    final answers = currentQuestion.options;
+
+    final correctAnswerIndex = answers.indexWhere((answer) => answer.score == 10);
+    context.read<ScoreTrackerCubit>().emit(questionIndex + 1);
 
     return Column(
       children: [
-
-       Row(
+        Row(
           children: [
-             IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.arrow_back_ios_new,
-                  color: Colors.grey[200],
-                )),
-            QuestionsTracker(totalQ: questions.length+1),
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back_ios_new,
+                color: Colors.grey[200],
+              )),
+            QuestionsTracker(totalQ: questions.length + 1),
           ],
-        ), // Add the QuestionsTracker here
-
-
-
-        Question(questions[questionIndex]['questionText'].toString()),
+        ),
+        Question(currentQuestion.question), 
+        
         ...answers.asMap().entries.map((entry) {
           final idx = entry.key;
           final answer = entry.value;
@@ -62,13 +62,14 @@ class Quiz extends StatelessWidget {
           }
 
           return Answer(
-            () => answerQuestion(answer['score'] as int, idx),
-            answer['text'].toString(),
+            () => answerQuestion(answer.score, idx),
+            answer.text,
             backgroundColor: backgroundColor,
           );
         }).toList(),
+
         if (showFeedback)
-      ContinueButton(text: 'Countinue', onPressed:onNextQuestion),
+          ContinueButton(text: 'Continue', onPressed: onNextQuestion),
       ],
     );
   }

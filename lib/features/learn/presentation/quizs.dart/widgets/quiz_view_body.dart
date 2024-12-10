@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_lang_app/core/widgets/custom_background_color.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sign_lang_app/features/learn/presentation/manager/fetch_question_cubit.dart/fetch_question_cubit.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/widgets/quiz.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/widgets/result.dart';
 
@@ -14,8 +14,14 @@ class QuizViewBody extends StatefulWidget {
 class _QuizViewBodyState extends State<QuizViewBody> {
   var _questionIndex = 0;
   var _totalScore = 0;
-  int? _selectedAnswerIndex; // To track the selected answer
-  bool _showFeedback = false; // Whether to show feedback or not
+  int? _selectedAnswerIndex; 
+  bool _showFeedback = false; 
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<FetchQuestionCubit>().fetchDictionaryList();
+  }
 
   void _answerQuestion(int score, int answerIndex) {
     setState(() {
@@ -23,7 +29,7 @@ class _QuizViewBodyState extends State<QuizViewBody> {
       _showFeedback = true;
 
       if (score == 10) {
-        _totalScore += score; // Update score only for correct answers
+        _totalScore += score; 
       }
     });
   }
@@ -32,93 +38,50 @@ class _QuizViewBodyState extends State<QuizViewBody> {
     setState(() {
       _selectedAnswerIndex = null;
       _showFeedback = false;
-      _questionIndex += 1; // Move to the next question
+      _questionIndex += 1; 
     });
   }
 
- void _resetQuiz() {
-  // Use addPostFrameCallback to ensure this runs after the current frame
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    setState(() {
-      _questionIndex = 0;
-      _totalScore = 0;
+  void _resetQuiz() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _questionIndex = 0;
+        _totalScore = 0;
+      });
     });
-  });
-}
+  }
 
-final _questions = const [
-    {
-      'questionText': 'Q1. Who created Flutter?',
-      'answers': [
-        {'text': 'Facebook', 'score': 0},
-        {'text': 'Adobe', 'score': 0},
-        {'text': 'Google', 'score': 10},
+  @override
+  @override
+Widget build(BuildContext context) {
+  return SafeArea(
+    child: SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: BlocBuilder<FetchQuestionCubit, FetchQuestionState>(
+          builder: (context, state) {
+            if (state is FetchQuestionLoading) {
+              return Center(child: CircularProgressIndicator());
+            } else if (state is FetchQuestionFailure) {
+              return Center(child: Text('Error: ${state.errmessage}'));
+            } else if (state is FetchQuestionSuccess) {
+              final questions = state.questions;
 
-      ],
-    },
-    {
-      'questionText': 'Q2. What is Flutter?',
-      'answers': [
-        {'text': 'Android Development Kit', 'score': 0},
-        {'text': 'IOS Development Kit', 'score': 0},
-
-        {
-          'text': 'SDK to build beautiful IOS, Android, Web & Desktop Native Apps',
-          'score': 10
-        },
-      ],
-    },
-    {
-      'questionText': 'Q3. Which programming language is used by Flutter?',
-      'answers': [
-        {'text': 'Ruby', 'score': 0},
-        {'text': 'Dart', 'score': 10},
-        {'text': 'C++', 'score': 0},
-    
-      ],
-    },
-    {
-      'questionText': 'Q4. Who created Dart programming language?',
-      'answers': [
-        {'text': 'Lars Bak and Kasper Lund', 'score': 10},
-        {'text': 'Brendan Eich', 'score': 0},
-        {'text': 'Bjarne Stroustrup', 'score': 0},
-     
-      ],
-    },
-    {
-      'questionText': 'Q5. Is Flutter for Web and Desktop available in stable version?',
-      'answers': [
-        {'text': 'Yes', 'score': 0},
-        {'text': 'No', 'score': 10},
-      ],
-    },
-  ];
-
-
-
-
-
-
-
- @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          child: _questionIndex < _questions.length
-              ? Quiz(
-                  answerQuestion: (score, index) => _answerQuestion(score, index),
-                  questionIndex: _questionIndex,
-                  questions: _questions,
-                  selectedAnswerIndex: _selectedAnswerIndex,
-                  showFeedback: _showFeedback,
-                  onNextQuestion: _goToNextQuestion,
-                )
-              : Result(_totalScore, _resetQuiz),
+              return _questionIndex < questions.length
+                  ? Quiz(
+                      answerQuestion: (score, index) => _answerQuestion(score, index),
+                      questionIndex: _questionIndex,
+                      questions: questions,
+                      selectedAnswerIndex: _selectedAnswerIndex,
+                      showFeedback: _showFeedback,
+                      onNextQuestion: _goToNextQuestion,
+                    )
+                  : Result(_totalScore, _resetQuiz);
+            }
+            return Container(); 
+          },
         ),
       ),
-    );
-  }
-}
+    ),
+  );
+}}

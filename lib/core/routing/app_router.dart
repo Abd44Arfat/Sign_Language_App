@@ -108,13 +108,22 @@ class AppRouter {
           builder: (_) => const AvatarSignBeforeQuizView(),
         );
 
-      case Routes.quiz:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => ScoreTrackerCubit(totalQuestions: 6),
-            child: const QuizView(),
+case Routes.quiz:
+  return MaterialPageRoute(
+    builder: (_) => MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ScoreTrackerCubit(totalQuestions: 6),
+        ),
+        BlocProvider(
+          create: (context) => FetchQuestionCubit(
+            fetchQuestionListUsecase: getIt<FetchQuestionListUsecase>(), // Ensure the parameter name matches
           ),
-        );
+        ),
+      ],
+      child: const QuizView(),
+    ),
+  );
 
       case Routes.registerScreen:
         return MaterialPageRoute(
