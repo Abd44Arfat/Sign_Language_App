@@ -9,14 +9,19 @@ class CategoriesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-backgroundColor: Color(0xff141F23),
-appBar: AppBar(
-  backgroundColor: Color(0xff202F36),title: Center(child: Text('Sections',style: TextStyles.font20WhiteSemiBold,)),)    ,
-body:  Padding(
-  padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 12),
-  child: CategoriesViewBody(),
-)
-
-    );
+        backgroundColor: Theme.of(context).colorScheme.onSurface,
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.primaryFixed,
+          title: Center(
+              child: Text(
+            'Sections',
+            style: TextStyles.font20WhiteSemiBold
+                .copyWith(color: Theme.of(context).colorScheme.onPrimary),
+          )),
+        ),
+        body: const Padding(
+          padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+          child: CategoriesViewBody(),
+        ));
   }
 }

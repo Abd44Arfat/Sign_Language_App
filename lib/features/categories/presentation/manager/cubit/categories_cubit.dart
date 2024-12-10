@@ -8,29 +8,21 @@ part 'categories_state.dart';
 class CategoriesCubit extends Cubit<CategoriesState> {
   CategoriesCubit(this.fetchCategoriesListUsecase) : super(CategoriesInitial());
 
-
-
   final FetchCategoriesListUsecase fetchCategoriesListUsecase;
 
   Future<void> fetchDictionaryList() async {
-    
-  
-  emit(CategoriesLoading());
-
-
+    emit(CategoriesLoading());
 
     var result = await fetchCategoriesListUsecase.call();
     result.fold(
       (failure) {
-    
-  emit(CategoriesFailure( errMessage:failure .toString()));
-
+        emit(CategoriesFailure(errMessage: failure.toString()));
       },
       (categoriesList) {
         emit(CategoriesSuccess(categories: categoriesList));
       },
     );
 
-    return; 
+    return;
   }
 }
