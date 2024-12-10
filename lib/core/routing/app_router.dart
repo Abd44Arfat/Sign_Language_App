@@ -20,10 +20,12 @@ import 'package:sign_lang_app/features/learn/presentation/learn_instructions_let
 import 'package:sign_lang_app/features/learn/presentation/learn_instructions_welcome_msg_view.dart';
 
 import 'package:sign_lang_app/features/home_page/home_view.dart';
+import 'package:sign_lang_app/features/levels/domain/usecase/fetch_levels_usecase.dart';
 import 'package:sign_lang_app/features/levels/presentation/levels_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/manager/score_tracker_cubit/score_tracker_cubit.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/avatar_sign_before_quiz_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/quiz_view.dart';
+import 'package:sign_lang_app/features/levels/presentation/manager/levels_cubit.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
 
 import '../../features/auth/presentation/login_view.dart';
@@ -72,15 +74,16 @@ class AppRouter {
       case Routes.CategoriesView:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => CategoriesCubit(getIt<FetchCategoriesListUsecase>()),
+            create: (context) =>
+                CategoriesCubit(getIt<FetchCategoriesListUsecase>()),
             child: const CategoriesView(),
           ),
         );
 
-      case Routes.LevelsView:
+      /*case Routes.LevelsView:
         return MaterialPageRoute(
           builder: (_) => LevelsView(),
-        );
+        ); */
 
       case Routes.splashScreen:
         return MaterialPageRoute(
@@ -136,6 +139,44 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (builder) => const LearnInstructionsWelcomeMsgView());
 
+      case Routes.LevelsView:
+        final arguments = settings.arguments
+            as Map<String, dynamic>?; // Safely cast arguments
+        final String categoryId = arguments?['categoryId'];
+        /* final String categoryId =
+            settings.arguments['categoryId'] ?? "" ; */ // Extract the argument
+        return MaterialPageRoute(
+          builder: (builder) => BlocProvider(
+            create: (context) => LevelsCubit(
+              getIt<FetchLevelsUsecase>(),
+            )..fetchLevels(
+                categoryId), // Call a method to fetch levels for the new category
+            child: LevelsView(), // Pass the categoryId to the view
+          ),
+          settings: settings,
+        );
+
+      /*case Routes.LevelsView:
+        final String categoryId =
+            settings.arguments.toString() as String; // Extract the argument
+        return MaterialPageRoute(
+          builder: (builder) => BlocProvider(
+            create: (context) => LevelsCubit(
+              getIt<FetchLevelsUsecase>(),
+            )..fetchLevels(
+                categoryId), // Call a method to fetch levels for the new category
+            child: LevelsView(), // Pass the categoryId to the view
+          ),
+          settings: settings,
+        ); */
+      /*return MaterialPageRoute(
+            builder: (builder) => BlocProvider(
+                  create: (context) => getIt<LevelsCubit>(),
+                  //context.read<FetchLevelsUsecase>()),
+                  //getIt<LevelsCubit>(),
+                  child: const LevelsView(),
+                ),
+            settings: settings);*/
       //  case Routes.bottomNavigation:
       //   if (arguments is Map<String, String>) {
       //     final userName = arguments['userName'];
@@ -147,7 +188,6 @@ class AppRouter {
       //       ),
       //     );
       //   }
-
       case Routes.AchievementsView:
         return MaterialPageRoute(builder: (_) => const AchievementsView());
 

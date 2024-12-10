@@ -7,7 +7,6 @@ import 'package:sign_lang_app/features/setting/presentation/manager/theme_cubit/
 import 'package:sign_lang_app/features/setting/presentation/widgets/custom_setting_app_bar.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/setting_item.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../../../core/routing/routes.dart';
 
 class SettingViewBody extends StatelessWidget {

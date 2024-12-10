@@ -68,7 +68,7 @@ class _AchievementsViewBodyState extends State<AchievementsViewBody>
           padding:
               EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.08),
           //color: Colors.white,
-          color: Theme.of(context).colorScheme.primaryContainer,
+          color: Theme.of(context).colorScheme.onSecondary,
           child: Row(
             children: [
               IconButton(

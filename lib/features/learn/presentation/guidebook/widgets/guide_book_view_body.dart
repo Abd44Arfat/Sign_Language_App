@@ -24,7 +24,7 @@ class GuideBookListViewItem extends StatelessWidget {
     'Good Morning',
     'Good Afternoon',
   ];
-  
+
   final int index; // Add index as a parameter
 
   GuideBookListViewItem({super.key, required this.index}); // Update constructor
@@ -34,13 +34,14 @@ class GuideBookListViewItem extends StatelessWidget {
     return Container(
       height: 230,
       width: 100,
-      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0), // Optional: Add some margin
+      margin: const EdgeInsets.symmetric(
+          vertical: 8.0, horizontal: 16.0), // Optional: Add some margin
       decoration: BoxDecoration(
         color: Color(0xff202F36),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           width: 3.0,
-          color: Color(0xff39464E),
+          color: const Color(0xff39464E),
         ),
       ),
       child: Stack(
@@ -53,7 +54,7 @@ class GuideBookListViewItem extends StatelessWidget {
               height: 50,
               width: 100,
               decoration: BoxDecoration(
-                color: Color(0xff141F23),
+                color: const Color(0xff141F23),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Center(
@@ -80,8 +81,8 @@ class GuideBookListViewItem extends StatelessWidget {
               width: 150,
               height: 150,
               child: NovaMessage(
-                text: items[index % items.length], // Use index to get the correct item
-              
+                text: items[
+                    index % items.length], // Use index to get the correct item
               ),
             ),
           ),

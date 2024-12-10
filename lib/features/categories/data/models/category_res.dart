@@ -11,7 +11,8 @@ class CategoryRes {
 
   factory CategoryRes.fromJson(Map<String, dynamic> json) {
     var categoriesFromJson = json['Categorys'] as List;
-    List<CategoryModel> categoryList = categoriesFromJson.map((i) => CategoryModel.fromJson(i)).toList();
+    List<CategoryModel> categoryList =
+        categoriesFromJson.map((i) => CategoryModel.fromJson(i)).toList();
 
     return CategoryRes(
       message: json['message'],
@@ -34,5 +35,9 @@ class CategoryModel {
       id: json['_id'],
       name: json['name'],
     );
+  }
+
+  String getCategoryId() {
+    return this.id;
   }
 }

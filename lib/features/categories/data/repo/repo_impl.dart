@@ -10,12 +10,14 @@ class CategoriesRepoImpl extends CategoryRepo {
   Future<Either<Failure, List<CategoryModel>>> getCategories() async {
     try {
       // Fetch category results from remote data source
-      final result = await getIt<CategoriesRemoteDataSource>().fetchCategoryList();
+      final result =
+          await getIt<CategoriesRemoteDataSource>().fetchCategoryList();
 
       // Use fold to handle success and failure
       return result.fold(
         (failure) => Left(failure), // Return the failure as is
-        (categoryRes) => Right(categoryRes.categories), // Extract and return the list of categories
+        (categoryRes) => Right(categoryRes
+            .categories), // Extract and return the list of categories
       );
     } catch (e) {
       // Handle any unforeseen errors

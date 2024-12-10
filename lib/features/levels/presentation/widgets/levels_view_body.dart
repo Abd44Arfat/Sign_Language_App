@@ -1,16 +1,50 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/core/utils/api_service.dart';
+import 'package:sign_lang_app/core/utils/constants.dart';
+import 'package:sign_lang_app/features/learn/presentation/guidebook/widgets/guide_book_view_body.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/nova_message.dart';
+import 'package:sign_lang_app/features/levels/data/models/level_model.dart';
+import 'package:sign_lang_app/features/levels/presentation/manager/levels_cubit.dart';
+import 'package:sign_lang_app/features/levels/presentation/manager/levels_state.dart';
+import 'package:sign_lang_app/core/utils/constants.dart';
 
-class LevelsViewBody extends StatelessWidget {
-  const LevelsViewBody({super.key});
+class LevelsViewBody extends StatefulWidget {
+  const LevelsViewBody({super.key, required this.categoryId});
+  final String? categoryId;
 
   @override
+  State<LevelsViewBody> createState() => _LevelsViewBodyState();
+}
+
+class _LevelsViewBodyState extends State<LevelsViewBody> {
+  @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 6,
-      itemBuilder: (BuildContext context, int index) {
-        return GuideBookListViewItem(index: index); // Pass the index
+    context.read<LevelsCubit>().fetchLevels(widget.categoryId!);
+    return BlocConsumer<LevelsCubit, LevelsState>(
+      listener: (context, state) {
+        if (state is LevelsFailure) {
+          print("Error: ${state.e}");
+          //const Center(child: Text('error happens'));
+        }
+      },
+      builder: (context, state) {
+        if (state is LevelsLoading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is LevelsSuccess && state.levels.isNotEmpty) {
+          return ListView.builder(
+            itemCount: state.levels.length,
+            itemBuilder: (BuildContext context, int index) {
+              return GuideBookListViewItem(
+                index: index,
+                levelModel: state.levels[index],
+              );
+            },
+          );
+        }
+        return const Center(child: Text('No Levels Available'));
       },
     );
   }
@@ -27,8 +61,11 @@ class GuideBookListViewItem extends StatelessWidget {
   ];
 
   final int index; // Add index as a parameter
-
-  GuideBookListViewItem({super.key, required this.index}); // Update constructor
+  final LevelModel levelModel;
+  GuideBookListViewItem(
+      {super.key,
+      required this.index,
+      required this.levelModel}); // Update constructor
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +74,8 @@ class GuideBookListViewItem extends StatelessWidget {
       child: Container(
         height: 115,
         width: double.infinity, // Use full width
-        margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0), // Optional: Add some margin
+        margin: const EdgeInsets.symmetric(
+            vertical: 8.0, horizontal: 16.0), // Optional: Add some margin
         decoration: BoxDecoration(
           color: bgcolors[index],
           borderRadius: BorderRadius.circular(10),
@@ -59,11 +97,15 @@ class GuideBookListViewItem extends StatelessWidget {
 
             // Centering the text vertically
             Align(
-              alignment: index % 2 == 0 ? Alignment.centerRight : Alignment.centerLeft,
+              alignment:
+                  index % 2 == 0 ? Alignment.centerRight : Alignment.centerLeft,
               child: Padding(
-                padding: EdgeInsets.only(right: index % 2 == 0 ? 30 : 0, left: index % 2 == 0 ? 0 : 30),
+                padding: EdgeInsets.only(
+                    right: index % 2 == 0 ? 30 : 0,
+                    left: index % 2 == 0 ? 0 : 30),
                 child: Text(
-                  'Level ${index + 1}',
+                  levelModel.name,
+                  //'Level ${index + 1}',
                   style: TextStyles.font30WhiteBold,
                 ),
               ),

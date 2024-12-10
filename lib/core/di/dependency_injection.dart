@@ -12,6 +12,11 @@ import 'package:sign_lang_app/features/categories/domain/usecase/fetch_categorie
 import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/remote_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
+import 'package:sign_lang_app/features/levels/data/data_source/remote_data_source.dart';
+import 'package:sign_lang_app/features/levels/data/repo/repo_impl.dart';
+import 'package:sign_lang_app/features/levels/domain/repo/repo.dart';
+import 'package:sign_lang_app/features/levels/domain/usecase/fetch_levels_usecase.dart';
+import 'package:sign_lang_app/features/levels/presentation/manager/levels_cubit.dart';
 import 'package:sign_lang_app/features/setting/data/datasource/remote_data_source.dart';
 import 'package:sign_lang_app/features/setting/data/repo_impl/repo_impl.dart';
 import 'package:sign_lang_app/features/setting/domain/repos/repos.dart';
@@ -28,19 +33,14 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<EditRemoteDataSource>(EditRemoteDataSourceImpl());
 
-
-  getIt.registerSingleton<CategoriesRemoteDataSource>(CategoriesRemoteDataSourceImpl(dioClient: getIt.get<DioClient>()));
-
+  getIt.registerSingleton<CategoriesRemoteDataSource>(
+      CategoriesRemoteDataSourceImpl(dioClient: getIt.get<DioClient>()));
 
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl());
 
-
   getIt.registerSingleton<CategoryRepo>(CategoriesRepoImpl());
 
-
 //getIt.registerSingleton<EditRemoteDataSource>(EditRemoteDataSourceImpl());
-
-
 
   getIt.registerSingleton<EditInfoRepo>(EditInfoRepoImpl());
 
@@ -48,15 +48,10 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<SignInUsecase>(SignInUsecase());
 
-
-
-  getIt.registerSingleton<FetchCategoriesListUsecase>(FetchCategoriesListUsecase( categoryRepo: getIt.get<CategoryRepo>()));
-
+  getIt.registerSingleton<FetchCategoriesListUsecase>(
+      FetchCategoriesListUsecase(categoryRepo: getIt.get<CategoryRepo>()));
 
   getIt.registerSingleton<EditInfoUsecase>(EditInfoUsecase());
-
-
-
 
   getIt.registerSingleton<DictionaryRepoImpl>(
     DictionaryRepoImpl(
@@ -65,5 +60,15 @@ void setupServiceLocator() {
         dioClient: getIt.get<DioClient>(),
       ),
     ),
+  );
+
+  getIt.registerSingleton<LevelsRemoteDataSource>(
+      RemoteDataSourceImpl(dio: getIt.get<DioClient>()));
+  getIt.registerSingleton<LevelsRepo>(LevelsRepoImpl());
+
+  getIt.registerSingleton<FetchLevelsUsecase>(
+      FetchLevelsUsecase(levelsRepo: getIt.get<LevelsRepo>()));
+  getIt.registerSingleton<LevelsCubit>(
+    LevelsCubit(getIt<FetchLevelsUsecase>()),
   );
 }

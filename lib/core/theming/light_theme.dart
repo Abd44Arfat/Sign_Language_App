@@ -9,7 +9,10 @@ ColorScheme colorScheme = ColorScheme.light(
     surface: Color(0xffececec),
     onSecondary: Colors.white,
     secondary: Colors.green[400]!,
-    secondaryContainer: Colors.grey[700]
+    secondaryContainer: Colors.grey[700],
+    primaryFixed: Colors.white,
+    onSurface: Colors.grey[100]!
+
     //secondary: Colors.grey
     //secondary: Color.fromARGB(255, 8, 40, 48),
     //surface: Colors.white,
