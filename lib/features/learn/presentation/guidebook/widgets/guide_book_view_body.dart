@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/features/learn/data/models/question_response.dart';
+import 'package:sign_lang_app/features/learn/presentation/manager/fetch_avatar_signbefore_quiz_cubit/fetch_avatar_signbefore_quiz_cubit.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/nova_message.dart';
 
 class GuideBookViewBody extends StatelessWidget {
@@ -7,27 +10,37 @@ class GuideBookViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 9,
-      itemBuilder: (BuildContext context, int index) {
-        return GuideBookListViewItem(index: index); // Pass the index
+    
+    
+    // Fetch signs when the widget is built
+    
+    context.read<FetchAvatarSignbeforeQuizCubit>().fetchAvatarSignBeforeQuerList();
+
+    
+    return BlocBuilder<FetchAvatarSignbeforeQuizCubit, FetchAvatarSignbeforeQuizState>(
+      builder: (context, state) {
+        if (state is FetchAvatarSignbeforeQuizLoading) {
+          return Center(child: CircularProgressIndicator());
+        } else if (state is FetchAvatarSignbeforeQuizFaliure) {
+          return Center(child: Text('Error: ${state.errMessage}'));
+        } else if (state is FetchAvatarSignbeforeQuizSuccess) {
+          return ListView.builder(
+            itemCount: state.AvatarList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return GuideBookListViewItem(sign: state.AvatarList[index]); // Pass the sign object
+            },
+          );
+        }
+        return Center(child: Text('No signs available.'));
       },
     );
   }
 }
 
 class GuideBookListViewItem extends StatelessWidget {
-  final List<String> items = [
-    'Welcome',
-    'How Are You',
-    'Bye',
-    'Good Morning',
-    'Good Afternoon',
-  ];
+  final Signs sign; // Change to accept Sign object
 
-  final int index; // Add index as a parameter
-
-  GuideBookListViewItem({super.key, required this.index}); // Update constructor
+  GuideBookListViewItem({super.key, required this.sign}); // Update constructor
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +72,7 @@ class GuideBookListViewItem extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Section 1', // Display section number based on index
+                  sign.text, // Display the sign text
                   style: TextStyles.font20WhiteSemiBold,
                 ),
               ),
@@ -71,7 +84,7 @@ class GuideBookListViewItem extends StatelessWidget {
             child: SizedBox(
               width: 150,
               height: 150,
-              child: Image.asset('assets/images/avatar.png'),
+              child: Image.asset('assets/images/avatar.png'), // Display the avatar
             ),
           ),
           Positioned(
@@ -81,8 +94,7 @@ class GuideBookListViewItem extends StatelessWidget {
               width: 150,
               height: 150,
               child: NovaMessage(
-                text: items[
-                    index % items.length], // Use index to get the correct item
+                text: sign.text, // Use sign text for NovaMessage
               ),
             ),
           ),

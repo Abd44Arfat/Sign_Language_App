@@ -10,16 +10,29 @@ class LearnRepoImpl extends LearnRepo {
   @override
   Future<Either<Failure, List<Questions>>> fetchQuestionsList() async {
     try {
-      // Fetch question list from remote data source
       final result = await getIt<LearnRemoteDataSource>().fetchQuestionList();
-
-      // Use fold to handle success and failure
       return result.fold(
-        (failure) => Left(failure), // Return the failure as is
-        (questions) => Right(questions), // Return the list of questions
+        (failure) => Left(failure), 
+        (questions) => Right(questions),
       );
     } catch (e) {
-      // Handle any unforeseen errors
+      return Left(Failure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, LearnRes>> avatarSignBeforeQuiz() async {
+    try {
+      final result = await getIt<LearnRemoteDataSource>().avatarSignBeforeQuizView();
+
+      // Ensure the type matches
+      return result.fold(
+        (failure) => Left(failure), 
+        (signs) {
+          return Right(signs);
+        },
+      );
+    } catch (e) {
       return Left(Failure(e.toString()));
     }
   }
