@@ -20,7 +20,7 @@ class LearnRemoteDataSourceImpl extends LearnRemoteDataSource {
   @override
   Future<Either<Failure, List<Questions>>> fetchQuestionList() async {
     try {
-      var response = await dioClient.get(ApiUrls.questions);
+      var response = await dioClient.get(ApiUrls.questions2);
       var questions = (response.data['level']['Questions'] as List)
           .map((json) => Questions.fromJson(json))
           .toList();
