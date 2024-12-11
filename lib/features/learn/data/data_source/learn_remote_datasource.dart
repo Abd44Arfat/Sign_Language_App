@@ -8,7 +8,7 @@ import 'package:sign_lang_app/features/learn/presentation/quizs.dart/avatar_sign
 
 abstract class LearnRemoteDataSource {
   Future<Either<Failure, List<Questions>>> fetchQuestionList();
-  Future<Either<Failure, LearnRes>> avatarSignBeforeQuizView();
+  Future<Either<Failure, LearnRes>> avatarSignBeforeQuizList(String id);
 }
 
 class LearnRemoteDataSourceImpl extends LearnRemoteDataSource {
@@ -31,9 +31,9 @@ class LearnRemoteDataSourceImpl extends LearnRemoteDataSource {
   }
 
   @override
-  Future<Either<Failure, LearnRes>> avatarSignBeforeQuizView() async {
+  Future<Either<Failure, LearnRes>> avatarSignBeforeQuizList(String id) async {
     try {
-      var response = await dioClient.get(ApiUrls.questions);
+      var response = await dioClient.get('${ApiUrls.questions}/${id}');
       var questions = (response.data['level']['Questions'] as List)
           .map((json) => Questions.fromJson(json))
           .toList();

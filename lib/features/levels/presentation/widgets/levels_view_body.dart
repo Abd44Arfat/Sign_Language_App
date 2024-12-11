@@ -75,8 +75,7 @@ class GuideBookListViewItem extends StatelessWidget {
       padding: const EdgeInsets.only(top: 80, bottom: 0),
 child: GestureDetector(
         onTap: () {
-          context.pushNamed(Routes.signbeforeQuiz);
-        },
+ context.pushNamed(Routes.signbeforeQuiz, arguments: levelModel.id);        },
         child: Container(
           height: 115,
           width: double.infinity, // Use full width

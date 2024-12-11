@@ -6,16 +6,16 @@ import 'package:sign_lang_app/features/categories/domain/repo/repo.dart';
 import 'package:sign_lang_app/features/learn/data/models/question_response.dart';
 import 'package:sign_lang_app/features/learn/domain/repo/question_repo.dart';
 
-class AvatarBeforeQuizUsecase extends UseCase<LearnRes, NoParam> {
+class AvatarBeforeQuizUsecase extends UseCase<LearnRes, String> {
   final LearnRepo learnRepo;
 
   AvatarBeforeQuizUsecase({required this.learnRepo});
 
   @override
-  Future<Either<Failure, LearnRes>> call([NoParam? param]) async {
+  Future<Either<Failure, LearnRes>> call([String? param]) async {
 
 
 
-    return await learnRepo.avatarSignBeforeQuiz();
+    return await learnRepo.avatarSignBeforeQuiz(param!);
   }
 }

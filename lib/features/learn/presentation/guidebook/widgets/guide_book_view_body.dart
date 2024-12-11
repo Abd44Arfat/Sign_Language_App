@@ -14,7 +14,7 @@ class GuideBookViewBody extends StatelessWidget {
     
     // Fetch signs when the widget is built
     
-    context.read<FetchAvatarSignbeforeQuizCubit>().fetchAvatarSignBeforeQuerList();
+    // context.read<FetchAvatarSignbeforeQuizCubit>().fetchAvatarSignBeforeQuerList();
 
     
     return BlocBuilder<FetchAvatarSignbeforeQuizCubit, FetchAvatarSignbeforeQuizState>(

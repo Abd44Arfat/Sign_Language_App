@@ -10,7 +10,8 @@ import 'package:sign_lang_app/features/learn/presentation/widgets/continue_butto
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AvatarSignBeforeQuizView extends StatefulWidget {
-  const AvatarSignBeforeQuizView({super.key});
+  const AvatarSignBeforeQuizView({super.key, required this.levelId});
+  final String levelId; // Add this line
 
   @override
   State<AvatarSignBeforeQuizView> createState() => _AvatarSignBeforeQuizViewState();
@@ -23,7 +24,7 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
   void initState() {
     super.initState();
     // Fetch questions when the widget is initialized
-    context.read<FetchAvatarSignbeforeQuizCubit>().fetchAvatarSignBeforeQuerList();
+    context.read<FetchAvatarSignbeforeQuizCubit>().fetchAvatarSignBeforeQuerList(widget.levelId);
   }
 
   @override

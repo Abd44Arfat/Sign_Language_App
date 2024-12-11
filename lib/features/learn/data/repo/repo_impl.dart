@@ -21,9 +21,9 @@ class LearnRepoImpl extends LearnRepo {
   }
   
   @override
-  Future<Either<Failure, LearnRes>> avatarSignBeforeQuiz() async {
+  Future<Either<Failure, LearnRes>> avatarSignBeforeQuiz(String levelId) async {
     try {
-      final result = await getIt<LearnRemoteDataSource>().avatarSignBeforeQuizView();
+      final result = await getIt<LearnRemoteDataSource>().avatarSignBeforeQuizList(levelId);
 
       // Ensure the type matches
       return result.fold(

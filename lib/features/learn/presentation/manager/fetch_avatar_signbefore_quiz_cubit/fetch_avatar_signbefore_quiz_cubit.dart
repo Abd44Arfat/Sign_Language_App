@@ -11,10 +11,10 @@ class FetchAvatarSignbeforeQuizCubit extends Cubit<FetchAvatarSignbeforeQuizStat
   FetchAvatarSignbeforeQuizCubit(this.avatarBeforeQuizUsecase) 
       : super(FetchAvatarSignbeforeQuizInitial());
 
-  Future<void> fetchAvatarSignBeforeQuerList() async {
+  Future<void> fetchAvatarSignBeforeQuerList(String levelId) async {
     emit(FetchAvatarSignbeforeQuizLoading());
 
-    final result = await avatarBeforeQuizUsecase.call();
+    final result = await avatarBeforeQuizUsecase.call(levelId);
     result.fold(
       (failure) {
         debugPrint('Fetch failed: ${failure.message}');

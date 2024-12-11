@@ -110,14 +110,14 @@ class AppRouter {
           ),
         );
 
-      case Routes.signbeforeQuiz:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => FetchAvatarSignbeforeQuizCubit(
-                getIt<AvatarBeforeQuizUsecase>()),
-            child: const AvatarSignBeforeQuizView(),
-          ),
-        );
+ case Routes.signbeforeQuiz:
+  return MaterialPageRoute(
+    builder: (_) => BlocProvider(
+      create: (context) => FetchAvatarSignbeforeQuizCubit(
+          getIt<AvatarBeforeQuizUsecase>()),
+      child: AvatarSignBeforeQuizView(levelId: settings.arguments as String), // Pass levelId here
+    ),
+  );
 
       case Routes.quiz:
         return MaterialPageRoute(
