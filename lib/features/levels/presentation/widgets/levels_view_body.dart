@@ -1,17 +1,11 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
-import 'package:sign_lang_app/core/utils/api_service.dart';
-import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
-import 'package:sign_lang_app/features/learn/presentation/guidebook/widgets/guide_book_view_body.dart';
-import 'package:sign_lang_app/features/learn/presentation/widgets/nova_message.dart';
 import 'package:sign_lang_app/features/levels/data/models/level_model.dart';
 import 'package:sign_lang_app/features/levels/presentation/manager/levels_cubit.dart';
 import 'package:sign_lang_app/features/levels/presentation/manager/levels_state.dart';
-import 'package:sign_lang_app/core/utils/constants.dart';
 
 class LevelsViewBody extends StatefulWidget {
   const LevelsViewBody({super.key, required this.categoryId});

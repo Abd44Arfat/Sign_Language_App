@@ -12,10 +12,10 @@ class FetchQuestionCubit extends Cubit<FetchQuestionState> {
   FetchQuestionCubit( {required this.fetchQuestionListUsecase}) 
       : super(FetchQuestionInitial());
 
-  Future<void> fetchDictionaryList() async {
+  Future<void> fetchDictionaryList(String levelId) async {
     emit(FetchQuestionLoading());
 
-    var result = await fetchQuestionListUsecase.call();
+    var result = await fetchQuestionListUsecase.call(levelId);
     result.fold(
       (failure) {
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 
 class DictionaryListViewItem extends StatelessWidget {
@@ -20,7 +21,8 @@ class DictionaryListViewItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8),
       child: GestureDetector(
         onTap: () {
-          // Add any navigation logic here if needed
+
+          Navigator.pushNamed(context, Routes.DictionaryDetailsView);
         },
         child: Container(
           height: 70,

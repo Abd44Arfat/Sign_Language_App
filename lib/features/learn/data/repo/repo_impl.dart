@@ -8,9 +8,9 @@ import 'package:sign_lang_app/features/learn/domain/repo/question_repo.dart';
 
 class LearnRepoImpl extends LearnRepo {
   @override
-  Future<Either<Failure, List<Questions>>> fetchQuestionsList() async {
+  Future<Either<Failure, List<Questions>>> fetchQuestionsList(String levelId) async {
     try {
-      final result = await getIt<LearnRemoteDataSource>().fetchQuestionList();
+      final result = await getIt<LearnRemoteDataSource>().fetchQuestionList(levelId);
       return result.fold(
         (failure) => Left(failure), 
         (questions) => Right(questions),

@@ -133,7 +133,7 @@ class AppRouter {
                 ),
               ),
             ],
-            child: const QuizView(),
+            child:  QuizView(levelId: settings.arguments as String),
           ),
         );
 

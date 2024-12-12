@@ -6,6 +6,8 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/features/learn/presentation/manager/fetch_avatar_signbefore_quiz_cubit/fetch_avatar_signbefore_quiz_cubit.dart';
+import 'package:sign_lang_app/features/learn/presentation/quizs.dart/quiz_view.dart';
+import 'package:sign_lang_app/features/learn/presentation/quizs.dart/widgets/quiz_view_body.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/continue_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -104,7 +106,10 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
         if (_currentStep < state.AvatarList.length - 1) {
           _currentStep++;
         } else {
-          Navigator.pushNamed(context, Routes.quiz);
+         Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => QuizView(levelId: widget.levelId)));
         }
       });
     }

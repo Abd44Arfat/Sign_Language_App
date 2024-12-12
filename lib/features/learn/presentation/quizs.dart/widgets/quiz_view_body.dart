@@ -5,7 +5,8 @@ import 'package:sign_lang_app/features/learn/presentation/quizs.dart/widgets/qui
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/widgets/result.dart';
 
 class QuizViewBody extends StatefulWidget {
-  const QuizViewBody({super.key});
+  const QuizViewBody({super.key, required this.levelId});
+  final String levelId; // Store the levelId
 
   @override
   State<QuizViewBody> createState() => _QuizViewBodyState();
@@ -20,7 +21,7 @@ class _QuizViewBodyState extends State<QuizViewBody> {
   @override
   void initState() {
     super.initState();
-    context.read<FetchQuestionCubit>().fetchDictionaryList();
+    context.read<FetchQuestionCubit>().fetchDictionaryList(widget.levelId);
   }
 
   void _answerQuestion(int score, int answerIndex) {
