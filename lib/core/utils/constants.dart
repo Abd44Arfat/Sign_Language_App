@@ -11,7 +11,7 @@ class ApiUrls {
   static const login = "${baseURL}/api/auth/signin";
   static const dictionary = "${baseURL}/api/dectionary";
   static const questions = "${baseURL}/api/level";
-  static const questions2 = "${baseURL}/api/level/674f5b3f6437ec5728c295ed";
+  static const questions2 = "${baseURL}/api/level/67599f435beef41c2da40fb1";
   static const EditInfo = "${baseURL}/user/67238199dbb8f29faf211d6a";
 
 
