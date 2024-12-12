@@ -8,7 +8,8 @@ class Result extends StatelessWidget {
   final int resultScore;
   final VoidCallback resetHandler;
 
-  const Result(this.resultScore, this.resetHandler, {Key? key}) : super(key: key);
+  const Result(this.resultScore, this.resetHandler, {Key? key})
+      : super(key: key);
 
   String get resultPhrase {
     if (resultScore <= 10) {
@@ -30,7 +31,7 @@ class Result extends StatelessWidget {
     } else if (resultScore <= 16) {
       return 'assets/animations/check_hand.json';
     } else {
-      return 'assets/animations/bird_success.json';  // Adjust as needed
+      return 'assets/animations/bird_success.json'; // Adjust as needed
     }
   }
 
@@ -42,22 +43,24 @@ class Result extends StatelessWidget {
         children: [
           Center(
             child: SizedBox(
-              height: 400.h,  // Increased height
-              width: 400.w,   // Increased width
+              height: 400.h, // Increased height
+              width: 400.w, // Increased width
               child: Lottie.asset(
-                animationPath,  // Use the selected animation
-                fit: BoxFit.contain,  // Maintain aspect ratio
+                animationPath, // Use the selected animation
+                fit: BoxFit.contain, // Maintain aspect ratio
               ),
             ),
           ),
           Text(
             resultPhrase,
-            style: TextStyles.font20WhiteSemiBold,
+            style: TextStyles.font20WhiteSemiBold
+                .copyWith(color: Theme.of(context).colorScheme.onPrimary),
             textAlign: TextAlign.center,
           ),
           Text(
             'Score: $resultScore',
-            style: TextStyles.font24WhiteBold,
+            style: TextStyles.font24WhiteBold
+                .copyWith(color: Theme.of(context).colorScheme.onPrimary),
           ),
           const SizedBox(height: 20), // Add some spacing
           ContinueButton(text: 'Restart Quiz!', onPressed: resetHandler),

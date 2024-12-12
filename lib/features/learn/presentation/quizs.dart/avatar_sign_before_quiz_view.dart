@@ -16,7 +16,8 @@ class AvatarSignBeforeQuizView extends StatefulWidget {
   final String levelId; // Add this line
 
   @override
-  State<AvatarSignBeforeQuizView> createState() => _AvatarSignBeforeQuizViewState();
+  State<AvatarSignBeforeQuizView> createState() =>
+      _AvatarSignBeforeQuizViewState();
 }
 
 class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
@@ -26,23 +27,29 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
   void initState() {
     super.initState();
     // Fetch questions when the widget is initialized
-    context.read<FetchAvatarSignbeforeQuizCubit>().fetchAvatarSignBeforeQuerList(widget.levelId);
+    context
+        .read<FetchAvatarSignbeforeQuizCubit>()
+        .fetchAvatarSignBeforeQuerList(widget.levelId);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Color(0xff141F23),
-      body: BlocBuilder<FetchAvatarSignbeforeQuizCubit, FetchAvatarSignbeforeQuizState>(
+      backgroundColor: Theme.of(context).colorScheme.primaryFixed,
+      //Color(0xff141F23),
+      body: BlocBuilder<FetchAvatarSignbeforeQuizCubit,
+          FetchAvatarSignbeforeQuizState>(
         builder: (context, state) {
           if (state is FetchAvatarSignbeforeQuizLoading) {
-            return Center(child: CircularProgressIndicator()); // Loading state
+            return const Center(
+                child: CircularProgressIndicator()); // Loading state
           } else if (state is FetchAvatarSignbeforeQuizSuccess) {
             final questions = state.AvatarList; // Get questions from the state
 
             // Ensure we don't go out of bounds
             if (_currentStep >= questions.length) {
-              _currentStep = questions.length - 1; // Reset to last question if needed
+              _currentStep =
+                  questions.length - 1; // Reset to last question if needed
             }
 
             double screenHeight = MediaQuery.of(context).size.height;
@@ -52,13 +59,15 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
               child: Column(
                 children: [
                   SizedBox(height: screenHeight * 0.20),
-                  CustomRefreshBtn(),
+                  const CustomRefreshBtn(),
                   Image.asset(
                     "assets/images/avatar.png",
                     width: MediaQuery.of(context).size.width * 0.90,
                     height: screenHeight * 0.44,
                   ),
-                  SignName(name: questions[_currentStep].text), // Update to fetch question text
+                  SignName(
+                      name: questions[_currentStep]
+                          .text), // Update to fetch question text
                   Spacer(),
                   Row(
                     children: [
@@ -78,7 +87,9 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
                         ),
                       Expanded(
                         child: ContinueButton(
-                          text: _currentStep < questions.length - 1 ? 'Next Sign' : 'Start Quiz',
+                          text: _currentStep < questions.length - 1
+                              ? 'Next Sign'
+                              : 'Start Quiz',
                           onPressed: _goToNextQuestion,
                         ),
                       ),
@@ -89,9 +100,12 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
               ),
             );
           } else if (state is FetchAvatarSignbeforeQuizFaliure) {
-            return Center(child: Text('Error: ${state.errMessage}')); // Handle error state
+            return Center(
+                child:
+                    Text('Error: ${state.errMessage}')); // Handle error state
           } else {
-            return Center(child: Text('Unexpected state')); // Handle unexpected state
+            return const Center(
+                child: Text('Unexpected state')); // Handle unexpected state
           }
         },
       ),
@@ -100,16 +114,16 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
 
   void _goToNextQuestion() {
     final state = context.read<FetchAvatarSignbeforeQuizCubit>().state;
-    
+
     if (state is FetchAvatarSignbeforeQuizSuccess) {
       setState(() {
         if (_currentStep < state.AvatarList.length - 1) {
           _currentStep++;
         } else {
-         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => QuizView(levelId: widget.levelId)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => QuizView(levelId: widget.levelId)));
         }
       });
     }
@@ -135,10 +149,15 @@ class SignName extends StatelessWidget {
       width: 200.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(width: 2, color: Colors.white),
+        border: Border.all(
+            width: 2,
+            color: Theme.of(context).colorScheme.onPrimary), // Colors.white),
         color: Colors.transparent,
       ),
-      child: Center(child: Text(name, style: TextStyles.font20WhiteSemiBold)),
+      child: Center(
+          child: Text(name,
+              style: TextStyles.font20WhiteSemiBold
+                  .copyWith(color: Theme.of(context).colorScheme.onPrimary))),
     );
   }
 }

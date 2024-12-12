@@ -6,10 +6,11 @@ import 'package:sign_lang_app/features/learn/presentation/quizs.dart/widgets/ans
 import 'package:sign_lang_app/features/learn/presentation/widgets/continue_button.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/questions_tracker.dart';
 import './question.dart';
+
 class Quiz extends StatelessWidget {
-final List<Questions> questions; 
+  final List<Questions> questions;
   final int questionIndex;
-  final Function(int, int) answerQuestion; 
+  final Function(int, int) answerQuestion;
   final int? selectedAnswerIndex;
   final bool showFeedback;
   final VoidCallback onNextQuestion;
@@ -29,7 +30,8 @@ final List<Questions> questions;
     final currentQuestion = questions[questionIndex];
     final answers = currentQuestion.options;
 
-    final correctAnswerIndex = answers.indexWhere((answer) => answer.score == 10);
+    final correctAnswerIndex =
+        answers.indexWhere((answer) => answer.score == 10);
     context.read<ScoreTrackerCubit>().emit(questionIndex + 1);
 
     return Column(
@@ -37,18 +39,19 @@ final List<Questions> questions;
         Row(
           children: [
             IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Icons.arrow_back_ios_new,
-                color: Colors.grey[200],
-              )),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios_new,
+                  color: Theme.of(context)
+                      .colorScheme
+                      .primaryContainer, // Colors.grey[200],
+                )),
             QuestionsTracker(totalQ: questions.length + 1),
           ],
         ),
-        Question(currentQuestion.question), 
-        
+        Question(currentQuestion.question),
         ...answers.asMap().entries.map((entry) {
           final idx = entry.key;
           final answer = entry.value;
@@ -57,7 +60,8 @@ final List<Questions> questions;
 
           Color backgroundColor = Colors.transparent;
           if (showFeedback) {
-            if (isSelected) backgroundColor = isCorrect ? Colors.green : Colors.red;
+            if (isSelected)
+              backgroundColor = isCorrect ? Colors.green : Colors.red;
             if (isCorrect && !isSelected) backgroundColor = Colors.green;
           }
 
@@ -67,7 +71,6 @@ final List<Questions> questions;
             backgroundColor: backgroundColor,
           );
         }).toList(),
-
         if (showFeedback)
           ContinueButton(text: 'Continue', onPressed: onNextQuestion),
       ],

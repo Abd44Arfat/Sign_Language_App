@@ -19,22 +19,24 @@ class LevelsView extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.onSurface,
       //Color(0xff141F23),
       appBar: AppBar(
-        actions: [
-
-Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 22.0),
-  child: GestureDetector(
-
-    onTap:(){ context.pushNamed(Routes.Guidebook);},
-    child: SizedBox(
-      
-      height: 30,
-      width: 30,
-      child: SvgPicture.asset('assets/images/Guidebook.svg')),
-  ),
-)
-
-        ],
+          forceMaterialTransparency: true,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 22.0),
+              child: GestureDetector(
+                onTap: () {
+                  context.pushNamed(Routes.Guidebook);
+                },
+                child: SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: SvgPicture.asset(
+                      'assets/images/Guidebook.svg',
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    )),
+              ),
+            )
+          ],
           leading: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();

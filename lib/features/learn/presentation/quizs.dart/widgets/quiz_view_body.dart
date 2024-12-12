@@ -15,8 +15,8 @@ class QuizViewBody extends StatefulWidget {
 class _QuizViewBodyState extends State<QuizViewBody> {
   var _questionIndex = 0;
   var _totalScore = 0;
-  int? _selectedAnswerIndex; 
-  bool _showFeedback = false; 
+  int? _selectedAnswerIndex;
+  bool _showFeedback = false;
 
   @override
   void initState() {
@@ -30,7 +30,7 @@ class _QuizViewBodyState extends State<QuizViewBody> {
       _showFeedback = true;
 
       if (score == 10) {
-        _totalScore += score; 
+        _totalScore += score;
       }
     });
   }
@@ -39,7 +39,7 @@ class _QuizViewBodyState extends State<QuizViewBody> {
     setState(() {
       _selectedAnswerIndex = null;
       _showFeedback = false;
-      _questionIndex += 1; 
+      _questionIndex += 1;
     });
   }
 
@@ -54,35 +54,41 @@ class _QuizViewBodyState extends State<QuizViewBody> {
 
   @override
   @override
-Widget build(BuildContext context) {
-  return SafeArea(
-    child: SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: BlocBuilder<FetchQuestionCubit, FetchQuestionState>(
-          builder: (context, state) {
-            if (state is FetchQuestionLoading) {
-              return Center(child: CircularProgressIndicator());
-            } else if (state is FetchQuestionFailure) {
-              return Center(child: Text('Error: ${state.errmessage}'));
-            } else if (state is FetchQuestionSuccess) {
-              final questions = state.questions;
-
-              return _questionIndex < questions.length
-                  ? Quiz(
-                      answerQuestion: (score, index) => _answerQuestion(score, index),
-                      questionIndex: _questionIndex,
-                      questions: questions,
-                      selectedAnswerIndex: _selectedAnswerIndex,
-                      showFeedback: _showFeedback,
-                      onNextQuestion: _goToNextQuestion,
-                    )
-                  : Result(_totalScore, _resetQuiz);
-            }
-            return Container(); 
-          },
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          child: BlocBuilder<FetchQuestionCubit, FetchQuestionState>(
+            builder: (context, state) {
+              if (state is FetchQuestionLoading) {
+                return Center(child: CircularProgressIndicator());
+              } else if (state is FetchQuestionFailure) {
+                return Center(
+                    child: Text(
+                  'Error: ${state.errmessage}',
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+                ));
+              } else if (state is FetchQuestionSuccess) {
+                final questions = state.questions;
+                return _questionIndex < questions.length
+                    ? Quiz(
+                        answerQuestion: (score, index) =>
+                            _answerQuestion(score, index),
+                        questionIndex: _questionIndex,
+                        questions: questions,
+                        selectedAnswerIndex: _selectedAnswerIndex,
+                        showFeedback: _showFeedback,
+                        onNextQuestion: _goToNextQuestion,
+                      )
+                    : Result(_totalScore, _resetQuiz);
+              }
+              return Container();
+            },
+          ),
         ),
       ),
-    ),
-  );
-}}
+    );
+  }
+}
