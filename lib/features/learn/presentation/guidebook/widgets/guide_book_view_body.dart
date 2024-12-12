@@ -6,6 +6,7 @@ import 'package:sign_lang_app/features/learn/presentation/manager/fetch_avatar_s
 import 'package:sign_lang_app/features/learn/presentation/widgets/nova_message.dart';
 
 class GuideBookViewBody extends StatelessWidget {
+  
   const GuideBookViewBody({super.key});
 
   @override
@@ -14,7 +15,7 @@ class GuideBookViewBody extends StatelessWidget {
     
     // Fetch signs when the widget is built
     
-    // context.read<FetchAvatarSignbeforeQuizCubit>().fetchAvatarSignBeforeQuerList();
+    context.read<FetchAvatarSignbeforeQuizCubit>().fetchAvatarSignBeforeQuerList("67599f435beef41c2da40fb1");
 
     
     return BlocBuilder<FetchAvatarSignbeforeQuizCubit, FetchAvatarSignbeforeQuizState>(

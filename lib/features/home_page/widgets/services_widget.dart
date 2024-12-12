@@ -130,8 +130,8 @@ class ServicesHorizontalWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 40.h,
-                  width: 40.w,
+                  height: 30.h,
+                  width: 30.w,
                   child: CircleAvatar(
                     backgroundColor: ColorsManager.lightGray.withOpacity(0.3),
                     child: SvgPicture.asset(

@@ -14,45 +14,47 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        child: FutureBuilder<String?>(
-          future: SharedPrefHelper.getStringNullable(
-              SharedPrefKeys.username), // Now returns Future<String?>
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
-            } else {
-              String userName =
-                  snapshot.data ?? 'User'; // Defaults to 'User' if null
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomHomeAppBar(
-                    title: 'Good Morning',
-                    subtitle: userName,
-                  ),
-                  const SizedBox(height: 160, child: SpeakWithHands()),
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    height: 40,
-                    child: Text(
-                      'Services',
-                      style: TextStyles.font20WhiteSemiBold.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary),
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          child: FutureBuilder<String?>(
+            future: SharedPrefHelper.getStringNullable(
+                SharedPrefKeys.username), 
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error: ${snapshot.error}'));
+              } else {
+                String userName =
+                    snapshot.data ?? 'User'; 
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomHomeAppBar(
+                      title: 'Good Morning',
+                      subtitle: userName,
                     ),
-                  ),
-                  const ServicesWidget(),
-                  const SizedBox(height: 12),
-                  const BuildCommonWordsHeader(),
-                  const SizedBox(height: 12),
-                  const HorizontalWordList(),
-                ],
-              );
-            }
-          },
+                    const SizedBox(height: 160, child: SpeakWithHands()),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      height: 40,
+                      child: Text(
+                        'Services',
+                        style: TextStyles.font20WhiteSemiBold.copyWith(
+                            color: Theme.of(context).colorScheme.onPrimary),
+                      ),
+                    ),
+                    const ServicesWidget(),
+                    const SizedBox(height: 12),
+                    const BuildCommonWordsHeader(),
+                    const SizedBox(height: 12),
+                    const HorizontalWordList(),
+                  ],
+                );
+              }
+            },
+          ),
         ),
       ),
     );

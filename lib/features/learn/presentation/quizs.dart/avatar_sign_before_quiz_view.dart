@@ -30,6 +30,7 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:  Color(0xff141F23),
       body: BlocBuilder<FetchAvatarSignbeforeQuizCubit, FetchAvatarSignbeforeQuizState>(
         builder: (context, state) {
           if (state is FetchAvatarSignbeforeQuizLoading) {
@@ -44,43 +45,46 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
 
             double screenHeight = MediaQuery.of(context).size.height;
 
-            return Column(
-              children: [
-                SizedBox(height: screenHeight * 0.20),
-                CustomRefreshBtn(),
-                Image.asset(
-                  "assets/images/avatar.png",
-                  width: MediaQuery.of(context).size.width * 0.90,
-                  height: screenHeight * 0.44,
-                ),
-                SignName(name: questions[_currentStep].text), // Update to fetch question text
-                Spacer(),
-                Row(
-                  children: [
-                    if (_currentStep > 0)
-                      GestureDetector(
-                        onTap: _goToPreviousQuestion,
-                        child: Container(
-                          height: 50.h,
-                          width: 60.h,
-                          decoration: BoxDecoration(
-                            border: Border.all(width: 2, color: Color(0xffCCA000)),
-                            color: Color(0xffFFC800),
-                            borderRadius: BorderRadius.circular(10),
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  SizedBox(height: screenHeight * 0.20),
+                  CustomRefreshBtn(),
+                  Image.asset(
+                    "assets/images/avatar.png",
+                    width: MediaQuery.of(context).size.width * 0.90,
+                    height: screenHeight * 0.44,
+                  ),
+                  SignName(name: questions[_currentStep].text), // Update to fetch question text
+                  Spacer(),
+                  Row(
+                    children: [
+                      if (_currentStep > 0)
+                        GestureDetector(
+                          onTap: _goToPreviousQuestion,
+                          child: Container(
+                            height: 50.h,
+                            width: 60.h,
+                            decoration: BoxDecoration(
+                              border: Border.all(width: 2, color: Colors.grey),
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Icon(Iconsax.arrow_left_1),
                           ),
-                          child: Icon(Iconsax.back_square),
+                        ),
+                      Expanded(
+                        child: ContinueButton(
+                          text: _currentStep < questions.length - 1 ? 'Next Sign' : 'Start Quiz',
+                          onPressed: _goToNextQuestion,
                         ),
                       ),
-                    Expanded(
-                      child: ContinueButton(
-                        text: _currentStep < questions.length - 1 ? 'Next Question' : 'Start Quiz',
-                        onPressed: _goToNextQuestion,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: screenHeight * 0.05),
-              ],
+                    ],
+                  ),
+                  SizedBox(height: screenHeight * 0.05),
+                ],
+              ),
             );
           } else if (state is FetchAvatarSignbeforeQuizFaliure) {
             return Center(child: Text('Error: ${state.errMessage}')); // Handle error state

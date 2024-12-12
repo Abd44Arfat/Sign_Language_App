@@ -44,6 +44,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
         )..fetchDictionaryList(),
         child: const DictionaryView(),
       ),
+   const LearnInstructionsWelcomeMsgView(),
+
 
       const SettingView(),
     ];
@@ -77,12 +79,20 @@ class _BottomNavigationState extends State<BottomNavigation> {
               ),
             ),
             BottomNavigationBarItem(
-              label: 'Learn',
+              label: 'dictionary',
               icon: ImageIcon(
                 size: 27,
                 AssetImage('assets/icons/learning_icon.png'),
               ),
             ),
+BottomNavigationBarItem(
+              label: 'Learn',
+              icon: ImageIcon(
+                size: 27,
+                AssetImage('assets/images/menu-board.png'),
+              ),
+            ),
+
             BottomNavigationBarItem(
               label: 'Settings',
               icon: ImageIcon(
@@ -91,8 +101,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               ),
             ),
           ],
-          //selectedItemColor: ColorsManager.primaryColor,
-          //unselectedItemColor: Colors.grey,
+      
         ),
       ),
     );

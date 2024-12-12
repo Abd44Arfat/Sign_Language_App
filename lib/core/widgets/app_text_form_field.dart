@@ -61,7 +61,7 @@ class AppTextFormField extends StatelessWidget {
       ),
       obscuringCharacter: '*', //'●',
       obscureText: isObscureText ?? false,
-      style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.white),
+      style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.black),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'this field is required';

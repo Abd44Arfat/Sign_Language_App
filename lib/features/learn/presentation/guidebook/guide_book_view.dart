@@ -3,7 +3,7 @@ import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/features/learn/presentation/guidebook/widgets/guide_book_view_body.dart';
 
 class GuideBookView extends StatelessWidget {
-  const GuideBookView({super.key});
+  const GuideBookView({super.key, });
 
   @override
   Widget build(BuildContext context) {
