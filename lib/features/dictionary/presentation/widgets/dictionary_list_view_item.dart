@@ -21,13 +21,12 @@ class DictionaryListViewItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8),
       child: GestureDetector(
         onTap: () {
-
           Navigator.pushNamed(context, Routes.DictionaryDetailsView);
         },
         child: Container(
           height: 70,
           decoration: BoxDecoration(
-            color: const Color(0xff232229),
+            color: Theme.of(context).colorScheme.surfaceContainer,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
@@ -37,13 +36,19 @@ class DictionaryListViewItem extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyles.font20WhiteSemiBold,
+                  style: TextStyles.font20WhiteSemiBold
+                      .copyWith(color: Theme.of(context).colorScheme.onPrimary),
                 ),
                 GestureDetector(
                     onTap: isSaved ? null : onSave,
-                    child: SvgPicture.asset(isSaved
-                        ? 'assets/images/Vector.svg'
-                        : 'assets/images/frame.svg'))
+                    child: SvgPicture.asset(
+                      isSaved
+                          ? 'assets/images/Vector.svg'
+                          : 'assets/images/frame.svg',
+                      color: isSaved
+                          ? Colors.green
+                          : Theme.of(context).colorScheme.onPrimary,
+                    ))
               ],
             ),
           ),

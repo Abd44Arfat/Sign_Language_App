@@ -11,8 +11,11 @@ ColorScheme colorScheme = ColorScheme.light(
     secondary: Colors.green[400]!,
     secondaryContainer: Colors.grey[700],
     primaryFixed: Colors.white,
-    onSurface: Colors.grey[100]!
-
+    onSurface: Colors.grey[100]!,
+    onPrimaryFixed: Colors.white70,
+    onSecondaryFixed: Colors.grey[700],
+    primaryFixedDim: Colors.green[800],
+    surfaceContainer: Colors.grey[200]
     //secondary: Colors.grey
     //secondary: Color.fromARGB(255, 8, 40, 48),
     //surface: Colors.white,

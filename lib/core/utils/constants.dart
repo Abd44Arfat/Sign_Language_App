@@ -4,8 +4,7 @@ const KDictionaryBox = 'dictionaryBox';
 const KSavedwordsBox = 'SavedwordsBox';
 
 class ApiUrls {
-  static const baseURL = "http://10.0.2.2:3000";
-
+  static const baseURL = "http://127.0.0.1:3000";
 
   static const register = "${baseURL}/api/auth/signup";
   static const login = "${baseURL}/api/auth/signin";
@@ -13,7 +12,6 @@ class ApiUrls {
   static const questions = "${baseURL}/api/level";
   static const questions2 = "${baseURL}/api/level/67599f435beef41c2da40fb1";
   static const EditInfo = "${baseURL}/user/67238199dbb8f29faf211d6a";
-
 
   static const category = "${baseURL}/api/category";
 
