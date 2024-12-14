@@ -32,6 +32,7 @@ class LearnInstructionsLetsStartViewBody extends StatelessWidget {
         ContinueButton(
           text: 'Continue',
           onPressed: () {
+            //Navigator.pushReplacementNamed(context, Routes.AchievementsView);
             Navigator.pushNamed(context, Routes.AchievementsView);
           },
         ),

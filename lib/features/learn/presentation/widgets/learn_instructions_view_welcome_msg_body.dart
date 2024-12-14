@@ -39,6 +39,7 @@ class LearnInstructionsWelcomeMsgViewBody extends StatelessWidget {
           text: 'Continue',
           onPressed: () {
             context.pushNamed(Routes.learnInstructionsLetsStartView);
+            //context.pushReplacementNamed(Routes.learnInstructionsLetsStartView);
           },
         ),
       ],
