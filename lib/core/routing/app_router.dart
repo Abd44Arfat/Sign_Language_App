@@ -8,6 +8,7 @@ import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/si
 import 'package:sign_lang_app/features/auth/reset_password/presentation/reset_password_view.dart';
 import 'package:sign_lang_app/features/categories/domain/usecase/fetch_categories_usecase.dart';
 import 'package:sign_lang_app/features/categories/presentation/manager/cubit/categories_cubit.dart';
+import 'package:sign_lang_app/features/common_words/presentation/common_words_view.dart';
 
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
@@ -105,19 +106,21 @@ class AppRouter {
       case Routes.Guidebook:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => FetchAvatarSignbeforeQuizCubit( getIt<AvatarBeforeQuizUsecase>()),
+            create: (context) => FetchAvatarSignbeforeQuizCubit(
+                getIt<AvatarBeforeQuizUsecase>()),
             child: const GuideBookView(),
           ),
         );
 
- case Routes.signbeforeQuiz:
-  return MaterialPageRoute(
-    builder: (_) => BlocProvider(
-      create: (context) => FetchAvatarSignbeforeQuizCubit(
-          getIt<AvatarBeforeQuizUsecase>()),
-      child: AvatarSignBeforeQuizView(levelId: settings.arguments as String), // Pass levelId here
-    ),
-  );
+      case Routes.signbeforeQuiz:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => FetchAvatarSignbeforeQuizCubit(
+                getIt<AvatarBeforeQuizUsecase>()),
+            child: AvatarSignBeforeQuizView(
+                levelId: settings.arguments as String), // Pass levelId here
+          ),
+        );
 
       case Routes.quiz:
         return MaterialPageRoute(
@@ -133,7 +136,7 @@ class AppRouter {
                 ),
               ),
             ],
-            child:  QuizView(levelId: settings.arguments as String),
+            child: QuizView(levelId: settings.arguments as String),
           ),
         );
 
@@ -232,6 +235,9 @@ class AppRouter {
             child: const DictionaryView(),
           ),
         );
+      case Routes.commonWordsScreen:
+        return MaterialPageRoute(
+            builder: (_) => CommonWordsView(), settings: settings);
 
       default:
         return null;
