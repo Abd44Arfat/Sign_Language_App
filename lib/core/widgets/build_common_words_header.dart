@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/core/utils/extentions.dart';
 
 import '../routing/routes.dart';
 import '../theming/colors.dart';
@@ -21,10 +22,13 @@ class BuildCommonWordsHeader extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, Routes.dictionaryScreen);
             },
-            child: Text(
-              'See All',
-              style: TextStyles.font16WhiteMedium
-                  .copyWith(color: ColorsManager.primaryColor),
+            child: GestureDetector(
+              onTap: () => context.pushNamed(Routes.dictionaryScreen),
+              child: Text(
+                'See All',
+                style: TextStyles.font16WhiteMedium
+                    .copyWith(color: ColorsManager.primaryColor),
+              ),
             )),
       ],
     );
