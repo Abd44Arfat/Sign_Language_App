@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
@@ -33,9 +34,12 @@ class _LevelsViewBodyState extends State<LevelsViewBody> {
           return ListView.builder(
             itemCount: state.levels.length,
             itemBuilder: (BuildContext context, int index) {
-              return GuideBookListViewItem(
-                index: index,
-                levelModel: state.levels[index],
+              return FadeInRight(
+                from: index * 300,
+                child: GuideBookListViewItem(
+                  index: index,
+                  levelModel: state.levels[index],
+                ),
               );
             },
           );
@@ -67,9 +71,10 @@ class GuideBookListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 80, bottom: 0),
-child: GestureDetector(
+      child: GestureDetector(
         onTap: () {
- context.pushNamed(Routes.signbeforeQuiz, arguments: levelModel.id);        },
+          context.pushNamed(Routes.signbeforeQuiz, arguments: levelModel.id);
+        },
         child: Container(
           height: 115,
           width: double.infinity, // Use full width
