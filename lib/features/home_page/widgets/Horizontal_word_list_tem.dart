@@ -58,7 +58,7 @@ class HorizontalWordList extends StatefulWidget {
 
 class _HorizontalWordListState extends State<HorizontalWordList> {
   final Map<String, String> listOfModels = {
-    "hello": "assets/3d_models/DamagedHelmet.glb",
+    "hello": "assets/3d_models/uploads_files_3775116_waitress_chr_lp.glb",
     "good": "assets/3d_models/DamagedHelmet.glb",
     "bad": "assets/3d_models/DamagedHelmet.glb"
   };

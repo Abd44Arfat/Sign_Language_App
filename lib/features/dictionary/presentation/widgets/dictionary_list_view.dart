@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
@@ -84,11 +85,15 @@ class _DictionaryListViewState extends State<DictionaryListView> {
       shrinkWrap: widget.shrinkWrap,
       itemCount: widget.dictionary.length,
       itemBuilder: (context, index) {
-        return DictionaryListViewItem(
-          title: widget.dictionary[index].mainTitle,
-          isSaved: savedItems
-              .contains(widget.dictionary[index].mainTitle), // Check if saved
-          onSave: () => _saveItem(widget.dictionary[index]), // Pass save action
+        return FadeInLeft(
+          from: index * 30,
+          child: DictionaryListViewItem(
+            title: widget.dictionary[index].mainTitle,
+            isSaved: savedItems
+                .contains(widget.dictionary[index].mainTitle), // Check if saved
+            onSave: () =>
+                _saveItem(widget.dictionary[index]), // Pass save action
+          ),
         );
       },
     );
