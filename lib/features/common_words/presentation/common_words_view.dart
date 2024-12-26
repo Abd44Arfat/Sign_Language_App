@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:sign_lang_app/features/common_words/presentation/widgets/common_words_view_body.dart';
 
-class CommonWordsView extends StatelessWidget {
+class CommonWordsView extends StatefulWidget {
   const CommonWordsView({super.key});
+
+  @override
+  State<CommonWordsView> createState() => _CommonWordsViewState();
+}
+
+class _CommonWordsViewState extends State<CommonWordsView> {
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
