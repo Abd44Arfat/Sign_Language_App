@@ -22,13 +22,10 @@ class BuildCommonWordsHeader extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, Routes.dictionaryScreen);
             },
-            child: GestureDetector(
-              onTap: () => context.pushNamed(Routes.dictionaryScreen),
-              child: Text(
-                'See All',
-                style: TextStyles.font16WhiteMedium
-                    .copyWith(color: ColorsManager.primaryColor),
-              ),
+            child: Text(
+              'See All',
+              style: TextStyles.font16WhiteMedium
+                  .copyWith(color: ColorsManager.primaryColor),
             )),
       ],
     );

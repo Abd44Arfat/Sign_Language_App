@@ -1,5 +1,9 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sign_lang_app/core/animations/page_nav_animation.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/utils/api_service.dart';
@@ -44,6 +48,14 @@ import '../../features/setting/presentation/views/saved_words.dart';
 import '../../features/setting/presentation/views/setting_view.dart';
 import '../../features/splash/splash_view.dart';
 
+bool isIos(BuildContext context) {
+  return Theme.of(context).platform == TargetPlatform.iOS;
+}
+
+bool isAndroid(BuildContext context) {
+  return Theme.of(context).platform == TargetPlatform.android;
+}
+
 class AppRouter {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     final arguments = settings.arguments;
@@ -54,36 +66,64 @@ class AppRouter {
           builder: (_) => const OnboardingView(),
         );
       case Routes.SettingView:
-        return MaterialPageRoute(
-          builder: (_) => const SettingView(),
-        );
+        return MaterialPageRoute(builder: (_) => const SettingView());
 
       case Routes.DictionaryDetailsView:
-        return MaterialPageRoute(
-          builder: (_) => const DictionaryDetailsView(),
-        );
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (_) => const DictionaryDetailsView());
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: const DictionaryDetailsView());
+        }
 
       case Routes.editInfoview:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => EditInfoCubit(DioClient()),
-            child: const EditInfoView(),
-          ),
-        );
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (_) => BlocProvider(
+                    create: (context) => EditInfoCubit(DioClient()),
+                    child: const EditInfoView(),
+                  ),
+              settings: settings);
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              settings: settings,
+              screen: BlocProvider(
+                create: (context) => EditInfoCubit(DioClient()),
+                child: const EditInfoView(),
+              ));
+        }
+
+      /* PageNavAnimation.applyPageAnimation(
+            screen: BlocProvider(
+          create: (context) => EditInfoCubit(DioClient()),
+          child: const EditInfoView(),
+        ));*/
 
       case Routes.SavedWordsScreen:
-        return MaterialPageRoute(
-          builder: (_) => const SavedWordsScreen(),
-        );
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(builder: (_) => const SavedWordsScreen());
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: const SavedWordsScreen());
+        }
 
       case Routes.CategoriesView:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (_) => BlocProvider(
+                    create: (context) =>
+                        CategoriesCubit(getIt<FetchCategoriesListUsecase>()),
+                    child: const CategoriesView(),
+                  ));
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: BlocProvider(
             create: (context) =>
                 CategoriesCubit(getIt<FetchCategoriesListUsecase>()),
             child: const CategoriesView(),
-          ),
-        );
+          ));
+        }
 
       /*case Routes.LevelsView:
         return MaterialPageRoute(
@@ -91,77 +131,162 @@ class AppRouter {
         ); */
 
       case Routes.splashScreen:
-        return MaterialPageRoute(
-          builder: (_) => const SplashView(),
-        );
+        return PageNavAnimation.applyPageAnimation(screen: const SplashView());
       case Routes.homescreen:
-        return MaterialPageRoute(
-          builder: (_) => const HomeView(),
-        );
+        return MaterialPageRoute(builder: (_) => const HomeView());
+      //return PageNavAnimation.applyPageAnimation(screen: const HomeView());
       case Routes.aboutUsView:
-        return MaterialPageRoute(
-          builder: (_) => const AboutUsView(),
-        );
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(builder: (_) => const AboutUsView());
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: const AboutUsView());
+        }
 
       case Routes.Guidebook:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (builder) => BlocProvider(
+                    create: (context) => FetchAvatarSignbeforeQuizCubit(
+                        getIt<AvatarBeforeQuizUsecase>()),
+                    child: const GuideBookView(),
+                  ));
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: BlocProvider(
             create: (context) => FetchAvatarSignbeforeQuizCubit(
                 getIt<AvatarBeforeQuizUsecase>()),
             child: const GuideBookView(),
-          ),
-        );
+          ));
+        }
 
       case Routes.signbeforeQuiz:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (_) => BlocProvider(
+                    create: (context) => FetchAvatarSignbeforeQuizCubit(
+                        getIt<AvatarBeforeQuizUsecase>()),
+                    child: AvatarSignBeforeQuizView(
+                        levelId:
+                            settings.arguments as String), // Pass levelId here
+                  ));
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: BlocProvider(
             create: (context) => FetchAvatarSignbeforeQuizCubit(
                 getIt<AvatarBeforeQuizUsecase>()),
             child: AvatarSignBeforeQuizView(
                 levelId: settings.arguments as String), // Pass levelId here
-          ),
-        );
+          ));
+        }
 
       case Routes.quiz:
-        return MaterialPageRoute(
-          builder: (_) => MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) => ScoreTrackerCubit(totalQuestions: 6),
-              ),
-              BlocProvider(
-                create: (context) => FetchQuestionCubit(
-                  fetchQuestionListUsecase: getIt<
-                      FetchQuestionListUsecase>(), // Ensure the parameter name matches
+        if (Platform.isIOS) {
+          CupertinoPageRoute(
+            builder: (_) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => ScoreTrackerCubit(totalQuestions: 6),
                 ),
-              ),
-            ],
-            child: QuizView(levelId: settings.arguments as String),
-          ),
-        );
+                BlocProvider(
+                  create: (context) => FetchQuestionCubit(
+                    fetchQuestionListUsecase: getIt<
+                        FetchQuestionListUsecase>(), // Ensure the parameter name matches
+                  ),
+                ),
+              ],
+              child: QuizView(levelId: settings.arguments as String),
+            ),
+          );
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+            screen: MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => ScoreTrackerCubit(totalQuestions: 6),
+                ),
+                BlocProvider(
+                  create: (context) => FetchQuestionCubit(
+                    fetchQuestionListUsecase: getIt<
+                        FetchQuestionListUsecase>(), // Ensure the parameter name matches
+                  ),
+                ),
+              ],
+              child: QuizView(levelId: settings.arguments as String),
+            ),
+          );
+        }
 
       case Routes.registerScreen:
-        return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => SignupCubit(),
-                  child: const RegisterView(),
-                ));
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (builder) => BlocProvider(
+                    create: (context) => SignupCubit(),
+                    child: const RegisterView(),
+                  ));
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: BlocProvider(
+            create: (context) => SignupCubit(),
+            child: const RegisterView(),
+          ));
+        }
+
       case Routes.loginScreen:
-        return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                  create: (context) => LoginCubit(dioClient: DioClient()),
-                  child: const LoginView(),
-                ));
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (builder) => BlocProvider(
+                    create: (context) => LoginCubit(dioClient: DioClient()),
+                    child: const LoginView(),
+                  ));
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: BlocProvider(
+            create: (context) => LoginCubit(dioClient: DioClient()),
+            child: const LoginView(),
+          ));
+        }
       case Routes.resetPassword:
-        return MaterialPageRoute(builder: (_) => const ResetPasswordView());
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (builder) => const ResetPasswordView());
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: const ResetPasswordView());
+        }
 
       case Routes.learnInstructionsLetsStartView:
-        return MaterialPageRoute(
-            builder: (_) => const LearnInstructionsLetsStartView());
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (_) => const LearnInstructionsLetsStartView());
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: const LearnInstructionsLetsStartView());
+        }
 
       case Routes.learnInstructionsWelcomeMsgView:
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (_) => const LearnInstructionsWelcomeMsgView());
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: LearnInstructionsWelcomeMsgView());
+        }
+
+      /*case Routes.LevelsView:
+        final arguments = settings.arguments
+            as Map<String, dynamic>?; // Safely cast arguments
+        final String categoryId = arguments?['categoryId'];
         return MaterialPageRoute(
-            builder: (builder) => const LearnInstructionsWelcomeMsgView());
+          builder: (builder) => BlocProvider(
+            create: (context) => LevelsCubit(
+              getIt<FetchLevelsUsecase>(),
+            )..fetchLevels(
+                categoryId), // Call a method to fetch levels for the new category
+            child: LevelsView(), // Pass the categoryId to the view
+          ),
+          settings: settings,
+        );*/
 
       case Routes.LevelsView:
         final arguments = settings.arguments
@@ -179,6 +304,28 @@ class AppRouter {
           ),
           settings: settings,
         );
+      /* Platform.isIOS
+            ? CupertinoPageRoute(
+                settings: settings,
+                builder: (builder) => BlocProvider(
+                  create: (context) => LevelsCubit(
+                    getIt<FetchLevelsUsecase>(),
+                  )..fetchLevels(
+                      categoryId), // Call a method to fetch levels for the new category
+                  child: LevelsView(), // Pass the categoryId to the view
+                ),
+              )
+            :*/
+      /*return PageNavAnimation.applyPageAnimation(
+          screen: BlocProvider(
+            create: (context) => LevelsCubit(
+              getIt<FetchLevelsUsecase>(),
+            )..fetchLevels(
+                categoryId), // Call a method to fetch levels for the new category
+            child: LevelsView(), // Pass the categoryId to the view
+          ),
+          settings: settings,
+        );*/
 
       /*case Routes.LevelsView:
         final String categoryId =
@@ -213,7 +360,11 @@ class AppRouter {
       //     );
       //   }
       case Routes.AchievementsView:
-        return MaterialPageRoute(builder: (_) => const AchievementsView());
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(builder: (_) => const AchievementsView());
+        } else {
+          return MaterialPageRoute(builder: (_) => const AchievementsView());
+        }
 
       case Routes.bottomNavigation:
         return MaterialPageRoute(
@@ -224,20 +375,58 @@ class AppRouter {
         );
 
       case Routes.dictionaryScreen:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => FetchDictionaryListCubit(
-              FetchDictionaryListUsecase(
-                dictionaryRepo:
-                    getIt<DictionaryRepoImpl>(), // Use GetIt to fetch the repo
-              ),
-            )..fetchDictionaryList(),
-            child: const DictionaryView(),
-          ),
-        );
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (context) => BlocProvider(
+                    create: (context) => FetchDictionaryListCubit(
+                      FetchDictionaryListUsecase(
+                        dictionaryRepo: getIt<
+                            DictionaryRepoImpl>(), // Use GetIt to fetch the repo
+                      ),
+                    )..fetchDictionaryList(),
+                    child: const DictionaryView(),
+                  ),
+              settings: settings);
+        } else {
+          return MaterialPageRoute(
+              builder: (_) => BlocProvider(
+                    create: (context) => FetchDictionaryListCubit(
+                      FetchDictionaryListUsecase(
+                        dictionaryRepo: getIt<
+                            DictionaryRepoImpl>(), // Use GetIt to fetch the repo
+                      ),
+                    )..fetchDictionaryList(),
+                    child: const DictionaryView(),
+                  ),
+              settings: settings);
+        }
       case Routes.commonWordsScreen:
         return MaterialPageRoute(
             builder: (_) => CommonWordsView(), settings: settings);
+
+      /*case Routes.commonWordsScreen:
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              CommonWordsView(
+            key: UniqueKey(),
+          ),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            var begin = const Offset(1.0, 0.0);
+            var end = Offset.zero;
+            var curve = Curves.ease;
+            var tween =
+                Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+            var offsetAnimation = animation.drive(tween);
+            return SlideTransition(
+              position: offsetAnimation,
+              child: Offstage(
+                offstage: animation.value == 0,
+                child: child,
+              ),
+            );
+          },
+        );*/
 
       default:
         return null;
