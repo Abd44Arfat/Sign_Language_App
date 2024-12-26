@@ -11,7 +11,7 @@ class ApiUrls {
   static const dictionary = "${baseURL}/api/dectionary";
   static const questions = "${baseURL}/api/level";
   static const questions2 = "${baseURL}/api/level/67599f435beef41c2da40fb1";
-  static const EditInfo = "${baseURL}/user/67238199dbb8f29faf211d6a";
+  static const EditInfo = "${baseURL}/api/user/67238199dbb8f29faf211d6a";
 
   static const category = "${baseURL}/api/category";
 
@@ -21,9 +21,9 @@ class ApiUrls {
     final prefs = await SharedPreferences.getInstance();
     final userId = prefs.getString(SharedPrefKeys.userid);
     if (userId != null) {
-      return '$baseURL/user/$userId';
+      return '$baseURL/api/user/$userId';
     } else {
-      return '$baseURL/user/dummy_id';
+      return '$baseURL/api/user/dummy_id';
     }
   }
 }
