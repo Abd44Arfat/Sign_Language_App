@@ -53,15 +53,18 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.primaryFixed,
       body: screens[selectedIndex],
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
+          
         ),
         child: BottomNavigationBar(
-          //backgroundColor: Colors.black,
+           backgroundColor:   Theme.of(context).colorScheme.primaryFixed,
+ // Set background color
+
           currentIndex: selectedIndex,
           onTap: (value) {
             setState(() {

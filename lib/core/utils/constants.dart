@@ -4,6 +4,7 @@ const KDictionaryBox = 'dictionaryBox';
 const KSavedwordsBox = 'SavedwordsBox';
 
 class ApiUrls {
+
   //static const baseURL = "http://10.0.2.2:3000";
   static const baseURL = 'http://127.0.0.1:3000';
   static const register = "$baseURL/api/auth/signup";
@@ -21,9 +22,9 @@ class ApiUrls {
     final prefs = await SharedPreferences.getInstance();
     final userId = prefs.getString(SharedPrefKeys.userid);
     if (userId != null) {
-      return '$baseURL/user/$userId';
+      return '$baseURL/api/user/$userId';
     } else {
-      return '$baseURL/user/dummy_id';
+      return '$baseURL/api/user/dummy_id';
     }
   }
 }

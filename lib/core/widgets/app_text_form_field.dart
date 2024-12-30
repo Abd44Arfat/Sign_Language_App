@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 
@@ -16,7 +15,8 @@ class AppTextFormField extends StatelessWidget {
   final Color? backgroundColor;
   final TextEditingController? controller;
   final Function(String?)? onSaved;
-  // final Function(String?) validator;
+  final String? initialValue; // New nullable initialValue parameter
+
   const AppTextFormField({
     super.key,
     this.contentPadding,
@@ -31,13 +31,14 @@ class AppTextFormField extends StatelessWidget {
     this.controller,
     this.prefixIcon,
     this.onSaved,
-    // required this.validator,
+    this.initialValue, // Include initialValue in the constructor
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      initialValue: initialValue, // Set initialValue here
       decoration: InputDecoration(
         isDense: true,
         contentPadding: contentPadding ??
@@ -58,7 +59,7 @@ class AppTextFormField extends StatelessWidget {
             backgroundColor ?? Theme.of(context).inputDecorationTheme.fillColor,
         filled: true,
       ),
-      obscuringCharacter: '*', //'●',
+      obscuringCharacter: '*',
       obscureText: isObscureText ?? false,
       style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.black),
       validator: (value) {

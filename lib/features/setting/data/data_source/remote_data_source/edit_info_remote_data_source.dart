@@ -18,7 +18,7 @@ class EditInfoRemoteDataSource{
   Future<Either <Failure ,UserInfo>>  saveUserInfo(EditInformationEntity entity) async {
 
     try{
-      var response = await getIt<DioClient>().put('$baseUrl/user/${user?.id}' , data: entity.toMap());
+      var response = await getIt<DioClient>().put('$baseUrl/api/user/${user?.id}' , data: entity.toMap());
       final userInfoResponse = UserInfo.fromJson(response.data);
       final id= userInfoResponse.id ;
         return right(userInfoResponse) ;
