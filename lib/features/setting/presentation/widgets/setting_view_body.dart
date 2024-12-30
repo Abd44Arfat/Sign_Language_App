@@ -44,10 +44,7 @@ class SettingViewBody extends StatelessWidget {
               Navigator.pushNamed(context, Routes.aboutUsView);
             },
           ),
-          SettingItem(
-            title: 'Help and Support',
-            onTap: () {},
-          ),
+       
           SettingItem(
             title: 'Contact us',
             backIcon: false,
