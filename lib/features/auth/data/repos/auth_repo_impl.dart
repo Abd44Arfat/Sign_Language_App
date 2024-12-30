@@ -1,9 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/errors/failure.dart';
-import 'package:sign_lang_app/core/utils/sharedprefrence.dart';
 import 'package:sign_lang_app/features/auth/data/data_source/auth_remote_data_source.dart';
 import 'package:sign_lang_app/features/auth/data/models/signIn_response.dart';
 import 'package:sign_lang_app/features/auth/data/models/signin_req.dart';

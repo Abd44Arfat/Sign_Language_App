@@ -62,7 +62,7 @@ class _QuizViewBodyState extends State<QuizViewBody> {
           child: BlocBuilder<FetchQuestionCubit, FetchQuestionState>(
             builder: (context, state) {
               if (state is FetchQuestionLoading) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (state is FetchQuestionFailure) {
                 return Center(
                     child: Text(

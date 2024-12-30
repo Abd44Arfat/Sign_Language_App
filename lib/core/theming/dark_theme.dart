@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 
 ColorScheme colorScheme = const ColorScheme.dark(

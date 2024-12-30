@@ -14,7 +14,7 @@ class RemoteDataSourceImpl extends LevelsRemoteDataSource {
   @override
   Future<Either<Failure, LevelsModel>> fetchLevels(String CategoryId) async {
     try {
-      var response = await dio.get('${ApiUrls.category}/${CategoryId}/level');
+      var response = await dio.get('${ApiUrls.category}/$CategoryId/level');
       LevelsModel levels = LevelsModel.fromJson(response.data);
       return Right(levels);
     } catch (e) {

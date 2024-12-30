@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sign_lang_app/core/routing/routes.dart';
-import 'package:sign_lang_app/features/bottom_nav/button_navigation.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/questions_tracker.dart';
 
 import '../manager/score_tracker_cubit/score_tracker_cubit.dart';
@@ -61,7 +59,7 @@ class _AchievementsViewBodyState extends State<AchievementsViewBody>
       Achievement1(
         onPressed: navigateToNextPage,
       ),
-      Achievement2(),
+      const Achievement2(),
     ]);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

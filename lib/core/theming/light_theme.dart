@@ -5,8 +5,8 @@ ColorScheme colorScheme = ColorScheme.light(
     //primary: Color(0xffA1F598),
     onPrimary: Colors.black,
     onPrimaryContainer: Colors.black38,
-    primaryContainer: Color(0xfff5f9fe),
-    surface: Color(0xffececec),
+    primaryContainer: const Color(0xfff5f9fe),
+    surface: const Color(0xffececec),
     onSecondary: Colors.white,
     secondary: Colors.green[400]!,
     secondaryContainer: Colors.grey[700],
@@ -41,7 +41,7 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   ),
   enabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(15.0),
-    borderSide: BorderSide(
+    borderSide: const BorderSide(
       color: Colors.transparent,
       //color: colorScheme.onPrimaryContainer,
     ),

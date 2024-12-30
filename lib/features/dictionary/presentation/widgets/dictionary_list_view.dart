@@ -86,7 +86,7 @@ class _DictionaryListViewState extends State<DictionaryListView> {
       itemCount: widget.dictionary.length,
       itemBuilder: (context, index) {
         return FadeInLeft(
-          from: index * 30,
+          from: index * 10,
           child: DictionaryListViewItem(
             title: widget.dictionary[index].mainTitle,
             isSaved: savedItems

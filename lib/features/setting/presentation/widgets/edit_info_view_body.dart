@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/widgets/app_text_form_field.dart';
-import 'package:sign_lang_app/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/loading_button.dart';
 import 'package:sign_lang_app/features/setting/data/models/edit_info_request.dart';
 import 'package:sign_lang_app/features/setting/domain/usecases/edit_info_usecase.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_3d_controller/flutter_3d_controller.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/avatar_sign_before_quiz_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/continue_button.dart';
 
@@ -32,8 +32,10 @@ class _CommonWordsViewBodyState extends State<CommonWordsViewBody> {
             children: [
               Expanded(
                 child: ContinueButton(
-                  text: 'OK',
-                  onPressed: () {},
+                  text: 'Done',
+                  onPressed: () {
+                    context.pop();
+                  },
                 ),
               ),
             ],
@@ -42,6 +44,5 @@ class _CommonWordsViewBodyState extends State<CommonWordsViewBody> {
         ],
       ),
     );
-    ;
   }
 }

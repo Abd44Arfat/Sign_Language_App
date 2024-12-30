@@ -1,7 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
-import 'package:get_it/get_it.dart';
-import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/errors/failure.dart';
 import 'package:sign_lang_app/core/utils/api_service.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';

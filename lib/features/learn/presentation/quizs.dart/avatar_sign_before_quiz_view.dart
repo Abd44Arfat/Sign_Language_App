@@ -1,13 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/features/learn/presentation/manager/fetch_avatar_signbefore_quiz_cubit/fetch_avatar_signbefore_quiz_cubit.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/quiz_view.dart';
-import 'package:sign_lang_app/features/learn/presentation/quizs.dart/widgets/quiz_view_body.dart';
 import 'package:sign_lang_app/features/learn/presentation/widgets/continue_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -68,7 +65,7 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
                   SignName(
                       name: questions[_currentStep]
                           .text), // Update to fetch question text
-                  Spacer(),
+                  const Spacer(),
                   Row(
                     children: [
                       if (_currentStep > 0)
@@ -82,7 +79,7 @@ class _AvatarSignBeforeQuizViewState extends State<AvatarSignBeforeQuizView> {
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Icon(Iconsax.arrow_left_1),
+                            child: const Icon(Iconsax.arrow_left_1),
                           ),
                         ),
                       Expanded(
@@ -175,8 +172,8 @@ class CustomRefreshBtn extends StatelessWidget {
           height: 50.h,
           width: 60.h,
           decoration: BoxDecoration(
-            border: Border.all(width: 2, color: Color(0xffCCA000)),
-            color: Color(0xffFFC800),
+            border: Border.all(width: 2, color: const Color(0xffCCA000)),
+            color: const Color(0xffFFC800),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(child: SvgPicture.asset('assets/images/refresh.svg')),

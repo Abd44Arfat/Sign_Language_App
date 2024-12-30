@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theming/colors.dart';
 import '../theming/styles.dart';
 
 class Onboarding extends StatelessWidget {
