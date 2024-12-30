@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/routing/routes.dart';
 import 'avatar_with_txt.dart';
 import 'continue_button.dart';
 import 'custom_listile.dart';
-import 'nova_message.dart';
 
 class Achievement1 extends StatelessWidget {
   const Achievement1({super.key, this.onPressed});

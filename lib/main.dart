@@ -5,7 +5,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/routing/app_router.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
-import 'package:sign_lang_app/core/theming/dark_theme.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/core/utils/sharedprefrence.dart';
 import 'package:sign_lang_app/core/utils/simple_bloc_observer.dart';

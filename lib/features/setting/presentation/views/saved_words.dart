@@ -87,7 +87,8 @@ class _SavedWordsScreenState extends State<SavedWordsScreen> {
                                   await _deleteSavedWord(savedWords[index]
                                       .mainTitle); // Use the id for deletion
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Word deleted')),
+                                    const SnackBar(
+                                        content: Text('Word deleted')),
                                   );
                                   setState(() {
                                     _savedWordsFuture =

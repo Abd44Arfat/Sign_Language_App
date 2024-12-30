@@ -8,8 +8,7 @@ class Result extends StatelessWidget {
   final int resultScore;
   final VoidCallback resetHandler;
 
-  const Result(this.resultScore, this.resetHandler, {Key? key})
-      : super(key: key);
+  const Result(this.resultScore, this.resetHandler, {super.key});
 
   String get resultPhrase {
     if (resultScore <= 10) {

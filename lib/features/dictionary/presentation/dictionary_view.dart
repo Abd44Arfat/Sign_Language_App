@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/widgets/custom_background_color.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/dictionary_view_body.dart';
 

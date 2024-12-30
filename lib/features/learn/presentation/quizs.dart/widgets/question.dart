@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/avatar_sign_before_quiz_view.dart';
-import 'package:sign_lang_app/features/learn/presentation/widgets/continue_button.dart';
 
 class Question extends StatelessWidget {
   final String questionText;
 
-  const Question(this.questionText, {Key? key}) : super(key: key);
+  const Question(this.questionText, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +16,7 @@ class Question extends StatelessWidget {
       SizedBox(
         height: screenHeight * 0.05,
       ),
-      CustomRefreshBtn(),
+      const CustomRefreshBtn(),
 
       Image.asset("assets/images/avatar.png",
           width: screenWidth * 0.90, height: screenHeight * 0.30),

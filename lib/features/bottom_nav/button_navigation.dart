@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
-import 'package:sign_lang_app/core/theming/colors.dart';
-import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/signup_cubit.dart'; // Import your Bloc
+// Import your Bloc
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
 import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictionary_list_useCase.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
@@ -30,9 +29,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   void initState() {
     super.initState();
+
     screens = [
       const HomeView(),
-
       //  const LearnInstructionsWelcomeMsgView(),
 
       BlocProvider(
@@ -44,8 +43,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
         )..fetchDictionaryList(),
         child: const DictionaryView(),
       ),
-   const LearnInstructionsWelcomeMsgView(),
 
+      const LearnInstructionsWelcomeMsgView(),
 
       const SettingView(),
     ];
@@ -88,14 +87,13 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 AssetImage('assets/icons/learning_icon.png'),
               ),
             ),
-BottomNavigationBarItem(
+            BottomNavigationBarItem(
               label: 'Learn',
               icon: ImageIcon(
                 size: 27,
                 AssetImage('assets/images/menu-board.png'),
               ),
             ),
-
             BottomNavigationBarItem(
               label: 'Settings',
               icon: ImageIcon(
@@ -104,7 +102,6 @@ BottomNavigationBarItem(
               ),
             ),
           ],
-      
         ),
       ),
     );

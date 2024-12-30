@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+
 class Answer extends StatelessWidget {
   final VoidCallback selectHandler;
   final String answerText;
   final Color backgroundColor;
 
-  const Answer(this.selectHandler, this.answerText, {Key? key, this.backgroundColor = Colors.transparent})
-      : super(key: key);
+  const Answer(this.selectHandler, this.answerText,
+      {super.key, this.backgroundColor = Colors.transparent});
 
   @override
   Widget build(BuildContext context) {

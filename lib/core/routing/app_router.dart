@@ -270,7 +270,7 @@ class AppRouter {
               builder: (_) => const LearnInstructionsWelcomeMsgView());
         } else {
           return PageNavAnimation.applyPageAnimation(
-              screen: LearnInstructionsWelcomeMsgView());
+              screen: const LearnInstructionsWelcomeMsgView());
         }
 
       /*case Routes.LevelsView:
@@ -300,7 +300,7 @@ class AppRouter {
               getIt<FetchLevelsUsecase>(),
             )..fetchLevels(
                 categoryId), // Call a method to fetch levels for the new category
-            child: LevelsView(), // Pass the categoryId to the view
+            child: const LevelsView(), // Pass the categoryId to the view
           ),
           settings: settings,
         );
@@ -402,7 +402,7 @@ class AppRouter {
         }
       case Routes.commonWordsScreen:
         return MaterialPageRoute(
-            builder: (_) => CommonWordsView(), settings: settings);
+            builder: (_) => const CommonWordsView(), settings: settings);
 
       /*case Routes.commonWordsScreen:
         return PageRouteBuilder(
@@ -431,5 +431,6 @@ class AppRouter {
       default:
         return null;
     }
+    return null;
   }
 }

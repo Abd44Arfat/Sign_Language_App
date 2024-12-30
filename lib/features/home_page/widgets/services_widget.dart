@@ -7,7 +7,6 @@ import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/features/home_page/widgets/start_now_btn.dart';
-import 'package:sign_lang_app/main.dart';
 
 class ServicesWidget extends StatelessWidget {
   const ServicesWidget({super.key});
@@ -78,7 +77,7 @@ class ServicesWidget extends StatelessWidget {
             children: [
               FadeInDown(
                 child: ServicesHorizontalWidget(
-                  background: Color(0xfffbff8b),
+                  background: const Color(0xfffbff8b),
                   image: 'assets/images/Calendar.svg',
                   text: 'Daily Sign\nLanguage words ',
                   onTap: () {

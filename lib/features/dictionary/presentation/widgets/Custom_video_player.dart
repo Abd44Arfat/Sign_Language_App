@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sign_lang_app/features/home_page/widgets/home_app_bar.dart';
-import 'package:sign_lang_app/core/widgets/next_button.dart';
 import 'package:video_player/video_player.dart';
 
 class CustomVideoPlayer extends StatefulWidget {

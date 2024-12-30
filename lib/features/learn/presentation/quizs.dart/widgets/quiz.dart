@@ -16,14 +16,14 @@ class Quiz extends StatelessWidget {
   final VoidCallback onNextQuestion;
 
   const Quiz({
-    Key? key,
+    super.key,
     required this.questions,
     required this.answerQuestion,
     required this.questionIndex,
     required this.selectedAnswerIndex,
     required this.showFeedback,
     required this.onNextQuestion,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +60,9 @@ class Quiz extends StatelessWidget {
 
           Color backgroundColor = Colors.transparent;
           if (showFeedback) {
-            if (isSelected)
+            if (isSelected) {
               backgroundColor = isCorrect ? Colors.green : Colors.red;
+            }
             if (isCorrect && !isSelected) backgroundColor = Colors.green;
           }
 
@@ -70,7 +71,7 @@ class Quiz extends StatelessWidget {
             answer.text,
             backgroundColor: backgroundColor,
           );
-        }).toList(),
+        }),
         if (showFeedback)
           ContinueButton(text: 'Continue', onPressed: onNextQuestion),
       ],

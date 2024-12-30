@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:sign_lang_app/core/widgets/custom_background_color.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/custom_app_bar.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/about_us_view_body.dart';

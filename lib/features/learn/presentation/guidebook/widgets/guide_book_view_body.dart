@@ -20,7 +20,7 @@ class GuideBookViewBody extends StatelessWidget {
         FetchAvatarSignbeforeQuizState>(
       builder: (context, state) {
         if (state is FetchAvatarSignbeforeQuizLoading) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (state is FetchAvatarSignbeforeQuizFaliure) {
           return Center(child: Text('Error: ${state.errMessage}'));
         } else if (state is FetchAvatarSignbeforeQuizSuccess) {
@@ -32,7 +32,7 @@ class GuideBookViewBody extends StatelessWidget {
             },
           );
         }
-        return Center(child: Text('No signs available.'));
+        return const Center(child: Text('No signs available.'));
       },
     );
   }
@@ -41,7 +41,8 @@ class GuideBookViewBody extends StatelessWidget {
 class GuideBookListViewItem extends StatelessWidget {
   final Signs sign; // Change to accept Sign object
 
-  GuideBookListViewItem({super.key, required this.sign}); // Update constructor
+  const GuideBookListViewItem(
+      {super.key, required this.sign}); // Update constructor
 
   @override
   Widget build(BuildContext context) {
