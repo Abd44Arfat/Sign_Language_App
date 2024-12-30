@@ -21,8 +21,10 @@ class _EditInfoViewState extends State<EditInfoView> {
   }
 
   Future<void> _loadUserData() async {
-    currentUserEmail = await SharedPrefHelper.getString(SharedPrefKeys.userEmail) ?? '';
-    currentUserName = await SharedPrefHelper.getString(SharedPrefKeys.username) ?? '';
+    currentUserEmail =
+        await SharedPrefHelper.getString(SharedPrefKeys.userEmail) ?? '';
+    currentUserName =
+        await SharedPrefHelper.getString(SharedPrefKeys.username) ?? '';
 
     // To update the UI after loading data
     setState(() {});
@@ -36,7 +38,9 @@ class _EditInfoViewState extends State<EditInfoView> {
               currentUserName: currentUserName,
               currentUserEmail: currentUserEmail,
             )
-          : Center(child: CircularProgressIndicator()), // Show loading indicator while fetching
+          : const Center(
+              child:
+                  CircularProgressIndicator()), // Show loading indicator while fetching
     );
   }
 }

@@ -9,10 +9,15 @@ class SettingItem extends StatelessWidget {
       {super.key,
       required this.title,
       required this.onTap,
-      this.backIcon = true});
+      this.backIcon = true,
+      required this.imagePath,
+      this.iconWidth,
+      this.iconHeight});
+  final String imagePath;
   final String title;
   final void Function() onTap;
   final bool backIcon;
+  final double? iconWidth, iconHeight;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -33,12 +38,17 @@ class SettingItem extends StatelessWidget {
                   Row(
                     children: [
                       SizedBox(
-                        height: 35,
-                        width: 35,
+                        height: 40,
+                        width: 40,
                         child: CircleAvatar(
-                          backgroundColor: const Color(0xff7BC578),
-                          child: SvgPicture.asset(
-                              'assets/images/shield-security.svg'),
+                          backgroundColor: Colors.transparent,
+                          // const Color(0xff7BC578),
+                          child: Image.asset(
+                            imagePath,
+                            width: iconWidth ?? 32,
+                            height: iconHeight ?? 32,
+                            color: Theme.of(context).colorScheme.onPrimary,
+                          ),
                         ),
                       ),
                       const SizedBox(

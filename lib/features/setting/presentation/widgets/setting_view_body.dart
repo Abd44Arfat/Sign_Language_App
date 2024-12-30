@@ -28,25 +28,31 @@ class SettingViewBody extends StatelessWidget {
           ),
           SettingItem(
             title: 'Saved words',
+            imagePath: 'assets/icons/saved_words.png',
+            iconWidth: 29,
+            iconHeight: 29,
             onTap: () {
               Navigator.pushNamed(context, Routes.SavedWordsScreen);
             },
           ),
           SettingItem(
             title: 'Edit Profile',
+            //imagePath: 'assets/icons/edit_info.png',
+            imagePath: 'assets/icons/edit-profile.png',
             onTap: () {
               Navigator.pushNamed(context, Routes.editInfoview);
             },
           ),
           SettingItem(
             title: 'About us',
+            imagePath: 'assets/icons/about.png',
             onTap: () {
               Navigator.pushNamed(context, Routes.aboutUsView);
             },
           ),
-       
           SettingItem(
             title: 'Contact us',
+            imagePath: 'assets/icons/contact_us.png',
             backIcon: false,
             onTap: () {
               showModalBottomSheet(
@@ -84,6 +90,9 @@ class SettingViewBody extends StatelessWidget {
           ),
           SettingItem(
             title: isDarkTheme ? "Light Mode" : "Dark Mode",
+            imagePath: isDarkTheme
+                ? 'assets/icons/brightness.png'
+                : 'assets/icons/night-mode.png',
             onTap: () {
               context.read<ThemesCubit>().toggleTheme();
             },
@@ -91,6 +100,9 @@ class SettingViewBody extends StatelessWidget {
           ),
           SettingItem(
             title: 'Logout',
+            iconWidth: 29,
+            iconHeight: 29,
+            imagePath: 'assets/icons/logout.png',
             backIcon: false,
             onTap: () {},
           ),
