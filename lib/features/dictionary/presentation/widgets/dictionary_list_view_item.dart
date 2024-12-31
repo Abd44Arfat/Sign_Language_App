@@ -43,7 +43,7 @@ class DictionaryListViewItem extends StatelessWidget {
                     onTap: isSaved ? null : onSave,
                     child: SvgPicture.asset(
                       isSaved
-                          ? 'assets/images/Vector.svg'
+                          ? 'assets/images/frame.svg'
                           : 'assets/images/frame.svg',
                       color: isSaved
                           ? Colors.green

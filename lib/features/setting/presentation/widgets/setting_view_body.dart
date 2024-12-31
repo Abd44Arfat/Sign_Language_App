@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/widgets/app_text_button.dart';
 import 'package:sign_lang_app/features/setting/presentation/manager/theme_cubit/theme_cubit.dart';
@@ -17,15 +18,13 @@ class SettingViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDarkTheme = Theme.of(context).brightness == Brightness.dark;
-    // List<String> list = [userName , userEmail];
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
           const CustomSettingAppBar(),
-          SizedBox(
-            height: 30.h,
-          ),
+          SizedBox(height: 30.h),
           SettingItem(
             title: 'Saved words',
             onTap: () {
@@ -44,7 +43,6 @@ class SettingViewBody extends StatelessWidget {
               Navigator.pushNamed(context, Routes.aboutUsView);
             },
           ),
-       
           SettingItem(
             title: 'Contact us',
             backIcon: false,
@@ -58,23 +56,23 @@ class SettingViewBody extends StatelessWidget {
                     child: Wrap(
                       children: [
                         Center(
-                            child: Text(
-                          'Contact via',
-                          style: TextStyles.font18DarkBlueBold
-                              .copyWith(color: Colors.white),
-                        )),
-                        const SizedBox(
-                          height: 30,
+                          child: Text(
+                            'Contact via',
+                            style: TextStyles.font18DarkBlueBold
+                                .copyWith(color: Colors.white),
+                          ),
                         ),
+                        const SizedBox(height: 30),
                         AppTextButton(
-                            buttonText: 'whatsapp',
-                            textStyle: TextStyles.font16WhiteMedium
-                                .copyWith(color: Colors.black),
-                            onPressed: () {
-                              final Uri whatsapp = Uri.parse(
-                                  'https://chat.whatsapp.com/KKPzTOm0qml6TOow6NC97F');
-                              launchUrl(whatsapp);
-                            })
+                          buttonText: 'whatsapp',
+                          textStyle: TextStyles.font16WhiteMedium
+                              .copyWith(color: Colors.black),
+                          onPressed: () {
+                            final Uri whatsapp = Uri.parse(
+                                'https://chat.whatsapp.com/KKPzTOm0qml6TOow6NC97F');
+                            launchUrl(whatsapp);
+                          },
+                        )
                       ],
                     ),
                   );
@@ -92,7 +90,11 @@ class SettingViewBody extends StatelessWidget {
           SettingItem(
             title: 'Logout',
             backIcon: false,
-            onTap: () {},
+            onTap: () async {
+              final SharedPreferences prefs = await SharedPreferences.getInstance();
+              await prefs.clear(); // Clear all saved data
+              // Navigator.pushReplacementNamed(context, Routes.loginScreen); // Navigate to login screen
+            },
           ),
         ],
       ),
