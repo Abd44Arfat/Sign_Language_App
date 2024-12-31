@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/core/utils/constants.dart';
+import 'package:sign_lang_app/core/utils/extentions.dart';
+import 'package:sign_lang_app/core/utils/sharedprefrence.dart';
 import 'package:sign_lang_app/core/widgets/app_text_button.dart';
 import 'package:sign_lang_app/features/setting/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/custom_setting_app_bar.dart';
@@ -104,7 +108,12 @@ class SettingViewBody extends StatelessWidget {
             iconHeight: 29,
             imagePath: 'assets/icons/logout.png',
             backIcon: false,
-            onTap: () {},
+            onTap: () async {
+              await SharedPrefHelper.removeData(SharedPrefKeys.userToken);
+              context.pushNamedAndRemoveUntil(Routes.loginScreen,
+                  predicate: (Route<dynamic> route) =>
+                      false); // Remove all previous routes)
+            },
           ),
         ],
       ),
