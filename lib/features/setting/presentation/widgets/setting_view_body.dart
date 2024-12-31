@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/core/widgets/app_text_button.dart';
 import 'package:sign_lang_app/features/setting/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/custom_setting_app_bar.dart';
@@ -69,7 +70,7 @@ class SettingViewBody extends StatelessWidget {
                               .copyWith(color: Colors.black),
                           onPressed: () {
                             final Uri whatsapp = Uri.parse(
-                                'https://chat.whatsapp.com/KKPzTOm0qml6TOow6NC97F');
+                                'https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSPFqskLSSnHFVDMQgHzSQhZHGTCGPpBlZlVPXvCBBpSMnLxhthFMJDxFmmvlJFDFMXSTlCQ');
                             launchUrl(whatsapp);
                           },
                         )
@@ -93,7 +94,8 @@ class SettingViewBody extends StatelessWidget {
             onTap: () async {
               final SharedPreferences prefs = await SharedPreferences.getInstance();
               await prefs.clear(); // Clear all saved data
-              // Navigator.pushReplacementNamed(context, Routes.loginScreen); // Navigate to login screen
+              context.pushReplacementNamed(Routes.loginScreen);
+
             },
           ),
         ],
