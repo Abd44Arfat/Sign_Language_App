@@ -35,8 +35,8 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(16.0),
     borderSide: BorderSide(
-      color: colorScheme.primary,
-      //color: Colors.transparent,
+      // color: colorScheme.primary,
+      color: Colors.green,
     ),
   ),
   enabledBorder: OutlineInputBorder(
