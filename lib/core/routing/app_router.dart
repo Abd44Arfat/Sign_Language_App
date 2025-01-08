@@ -159,27 +159,6 @@ class AppRouter {
             child: const GuideBookView(),
           ));
         }
-
-      case Routes.signbeforeQuiz:
-        if (Platform.isIOS) {
-          return CupertinoPageRoute(
-              builder: (_) => BlocProvider(
-                    create: (context) => FetchAvatarSignbeforeQuizCubit(
-                        getIt<AvatarBeforeQuizUsecase>()),
-                    child: AvatarSignBeforeQuizView(
-                        levelId:
-                            settings.arguments as String), // Pass levelId here
-                  ));
-        } else {
-          return PageNavAnimation.applyPageAnimation(
-              screen: BlocProvider(
-            create: (context) => FetchAvatarSignbeforeQuizCubit(
-                getIt<AvatarBeforeQuizUsecase>()),
-            child: AvatarSignBeforeQuizView(
-                levelId: settings.arguments as String), // Pass levelId here
-          ));
-        }
-
       case Routes.quiz:
         if (Platform.isIOS) {
           CupertinoPageRoute(
