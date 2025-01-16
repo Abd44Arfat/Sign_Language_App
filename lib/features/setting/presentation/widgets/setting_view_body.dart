@@ -8,6 +8,7 @@ import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/core/utils/sharedprefrence.dart';
 import 'package:sign_lang_app/core/widgets/app_text_button.dart';
 import 'package:sign_lang_app/features/setting/presentation/manager/theme_cubit/theme_cubit.dart';
+import 'package:sign_lang_app/features/setting/presentation/widgets/contact_us.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/custom_setting_app_bar.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/setting_item.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -60,36 +61,11 @@ class SettingViewBody extends StatelessWidget {
             backIcon: false,
             onTap: () {
               showModalBottomSheet(
-                backgroundColor: const Color(0xff19221D),
-                context: context,
-                builder: (context) {
-                  return Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Wrap(
-                      children: [
-                        Center(
-                            child: Text(
-                          'Contact via',
-                          style: TextStyles.font18DarkBlueBold
-                              .copyWith(color: Colors.white),
-                        )),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        AppTextButton(
-                            buttonText: 'whatsapp',
-                            textStyle: TextStyles.font16WhiteMedium
-                                .copyWith(color: Colors.black),
-                            onPressed: () {
-                              final Uri whatsapp = Uri.parse(
-                                  'https://chat.whatsapp.com/KKPzTOm0qml6TOow6NC97F');
-                              launchUrl(whatsapp);
-                            })
-                      ],
-                    ),
-                  );
-                },
-              );
+                  backgroundColor: const Color(0xff19221D),
+                  context: context,
+                  builder: (context) {
+                    return const ContactUs();
+                  });
             },
           ),
           SettingItem(
