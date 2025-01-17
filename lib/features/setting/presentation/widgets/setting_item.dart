@@ -24,7 +24,7 @@ class SettingItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 8),
         child: Container(
-          height: 55.h,
+          height: 51.h,
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(15),
@@ -41,13 +41,7 @@ class SettingItem extends StatelessWidget {
                         width: 40,
                         child: CircleAvatar(
                           backgroundColor: Colors.transparent,
-                          // const Color(0xff7BC578),
-                          child: Image.asset(
-                            imagePath,
-                            width: iconWidth ?? 32,
-                            height: iconHeight ?? 32,
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
+                          child: ImageIcon(AssetImage(imagePath)),
                         ),
                       ),
                       const SizedBox(
@@ -56,7 +50,8 @@ class SettingItem extends StatelessWidget {
                       Text(
                         title,
                         style: TextStyles.font20GrayMedium.copyWith(
-                            color: Theme.of(context).colorScheme.onPrimary),
+                            color: Theme.of(context).colorScheme.onPrimary,
+                            fontSize: 22),
                       ),
                     ],
                   ),

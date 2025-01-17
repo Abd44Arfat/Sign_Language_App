@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
@@ -25,7 +26,7 @@ class DictionaryListViewItem extends StatelessWidget {
           Navigator.pushNamed(context, Routes.DictionaryDetailsView);
         },
         child: Container(
-          height: 70,
+          height: 54.h,
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surfaceContainer,
             borderRadius: BorderRadius.circular(15),
@@ -37,8 +38,9 @@ class DictionaryListViewItem extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyles.font20WhiteSemiBold
-                      .copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                  style: TextStyles.font20WhiteSemiBold.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontSize: 22),
                 ),
                 GestureDetector(
                     onTap: isSaved ? onRemove : onSave,

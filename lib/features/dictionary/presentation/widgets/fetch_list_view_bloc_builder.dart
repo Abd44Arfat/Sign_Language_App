@@ -58,7 +58,8 @@ class _FetchDictionaryListViewBlocConsumerState
             return Center(
                 child: Text(
               'No results found for "${widget.searchText}"',
-              style: TextStyles.font16WhiteMedium,
+              style: TextStyles.font16WhiteMedium
+                  .copyWith(color: Theme.of(context).colorScheme.onPrimary),
             ));
           }
 

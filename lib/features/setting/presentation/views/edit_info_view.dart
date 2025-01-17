@@ -32,15 +32,17 @@ class _EditInfoViewState extends State<EditInfoView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: currentUserName.isNotEmpty && currentUserEmail.isNotEmpty
-          ? EditProfileViewBody(
-              currentUserName: currentUserName,
-              currentUserEmail: currentUserEmail,
-            )
-          : const Center(
-              child:
-                  CircularProgressIndicator()), // Show loading indicator while fetching
+    return SafeArea(
+      child: Scaffold(
+        body: currentUserName.isNotEmpty && currentUserEmail.isNotEmpty
+            ? EditProfileViewBody(
+                currentUserName: currentUserName,
+                currentUserEmail: currentUserEmail,
+              )
+            : const Center(
+                child:
+                    CircularProgressIndicator()), // Show loading indicator while fetching
+      ),
     );
   }
 }

@@ -54,7 +54,9 @@ class AppTextFormField extends StatelessWidget {
             hintStyle ?? Theme.of(context).inputDecorationTheme.hintStyle,
         hintText: hintText,
         suffixIcon: suffixIcon,
+        suffixIconColor: Theme.of(context).colorScheme.onPrimary,
         prefixIcon: prefixIcon,
+        prefixIconColor: Theme.of(context).colorScheme.onPrimary,
         fillColor:
             backgroundColor ?? Theme.of(context).inputDecorationTheme.fillColor,
         filled: true,

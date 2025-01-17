@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -13,7 +14,7 @@ import 'package:sign_lang_app/features/setting/presentation/manager/theme_cubit/
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   // Retrieve user token from SharedPreferences
   String? userToken =
       await SharedPrefHelper.getString(SharedPrefKeys.userToken);
