@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
@@ -8,13 +9,14 @@ class DictionaryListViewItem extends StatelessWidget {
     super.key,
     required this.title,
     required this.onSave,
-    required this.isSaved, // New parameter
+    required this.isSaved,
+    required this.onRemove, // New parameter
   });
 
   final String title;
-  final VoidCallback onSave; // Callback for save action
-  final bool isSaved; // Track if the item is saved
-
+  final VoidCallback onSave, onRemove; // Callback for save action
+  final bool isSaved;
+  // Track if the item is saved
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +26,7 @@ class DictionaryListViewItem extends StatelessWidget {
           Navigator.pushNamed(context, Routes.DictionaryDetailsView);
         },
         child: Container(
-          height: 70,
+          height: 54.h,
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surfaceContainer,
             borderRadius: BorderRadius.circular(15),
@@ -36,15 +38,17 @@ class DictionaryListViewItem extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: TextStyles.font20WhiteSemiBold
-                      .copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                  style: TextStyles.font20WhiteSemiBold.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontSize: 22),
                 ),
                 GestureDetector(
-                    onTap: isSaved ? null : onSave,
+                    onTap: isSaved ? onRemove : onSave,
                     child: SvgPicture.asset(
-                      isSaved
-                          ? 'assets/images/frame.svg'
-                          : 'assets/images/frame.svg',
+
+                      //isSaved? 'assets/images/Vector.svg'
+                      'assets/images/frame.svg',
+
                       color: isSaved
                           ? Colors.green
                           : Theme.of(context).colorScheme.onPrimary,

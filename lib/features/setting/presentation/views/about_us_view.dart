@@ -25,19 +25,21 @@ Widget _lightOrDark(context, bool isDarkMode) {
 }
 
 Widget _inDarkMode(context) {
-  return const Scaffold(
-    body: CustomStack(
-      width: double.maxFinite,
-      child: Column(
-        children: [
-          SizedBox(
-            height: 54,
-          ),
-          CustomAppBar(pageName: 'About Us'),
-          Expanded(
-            child: AboutUsViewBody(),
-          ),
-        ],
+  return const SafeArea(
+    child: Scaffold(
+      body: CustomStack(
+        width: double.maxFinite,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 54,
+            ),
+            CustomAppBar(pageName: 'About Us'),
+            Expanded(
+              child: AboutUsViewBody(),
+            ),
+          ],
+        ),
       ),
     ),
   );
