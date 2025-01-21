@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,7 +15,6 @@ import 'package:sign_lang_app/features/setting/presentation/manager/theme_cubit/
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   // Retrieve user token from SharedPreferences
   String? userToken =
       await SharedPrefHelper.getString(SharedPrefKeys.userToken);
@@ -53,6 +53,16 @@ class MyApp extends StatelessWidget {
       create: (context) => ThemesCubit(),
       child:
           BlocBuilder<ThemesCubit, ThemeData>(builder: (context, themeState) {
+        final isDarkTheme = themeState.brightness == Brightness.dark;
+        SystemChrome.setSystemUIOverlayStyle(
+          SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent, // Make status bar transparent
+            statusBarIconBrightness:
+                isDarkTheme ? Brightness.light : Brightness.dark,
+            statusBarBrightness:
+                isDarkTheme ? Brightness.dark : Brightness.light,
+          ),
+        );
         return ScreenUtilInit(
           designSize: const Size(375, 812),
           minTextAdapt: true,
