@@ -16,7 +16,7 @@ class Question extends StatelessWidget {
       SizedBox(
         height: screenHeight * 0.05,
       ),
-      const CustomRefreshBtn(),
+
 
       Image.asset("assets/images/avatar.png",
           width: screenWidth * 0.90, height: screenHeight * 0.30),
@@ -33,8 +33,8 @@ class Question extends StatelessWidget {
           style: TextStyles.font20WhiteSemiBold
               .copyWith(color: Theme.of(context).colorScheme.onPrimary),
           textAlign: TextAlign.center,
-        ), //Text
-      ) //Container
+        ), 
+      ) 
     ]);
   }
 }

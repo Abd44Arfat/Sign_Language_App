@@ -67,11 +67,18 @@ class MyApp extends StatelessWidget {
           designSize: const Size(375, 812),
           minTextAdapt: true,
           child: MaterialApp(
-            theme: themeState,
-            //darkTheme: AppThemes.darkTheme,
+            theme: themeState.copyWith(
+              // Update this to set the CircularProgressIndicator color
+              colorScheme: themeState.colorScheme.copyWith(
+                primary: Colors.green, // Set the primary color to green
+                secondary: Colors.green, // Optional: Set secondary color to green too
+              ),
+              // Optionally, if you want to specifically set the progress indicator color
+              progressIndicatorTheme: const ProgressIndicatorThemeData(
+                color: Colors.green, // Set CircularProgressIndicator color
+              ),
+            ),
             debugShowCheckedModeBanner: false,
-            //initialRoute: Routes.onBoardingScreen,
-
             initialRoute: isLoggedInUser
                 ? Routes.bottomNavigation
                 : (isOnboardingCompleted

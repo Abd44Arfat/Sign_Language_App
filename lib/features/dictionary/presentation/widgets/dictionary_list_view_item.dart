@@ -45,8 +45,10 @@ class DictionaryListViewItem extends StatelessWidget {
                 GestureDetector(
                     onTap: isSaved ? onRemove : onSave,
                     child: SvgPicture.asset(
+
                       //isSaved? 'assets/images/Vector.svg'
                       'assets/images/frame.svg',
+
                       color: isSaved
                           ? Colors.green
                           : Theme.of(context).colorScheme.onPrimary,

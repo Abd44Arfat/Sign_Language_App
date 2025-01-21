@@ -5,7 +5,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
+import 'package:sign_lang_app/core/utils/sharedprefrence.dart';
 import 'package:sign_lang_app/features/home_page/widgets/start_now_btn.dart';
 
 class ServicesWidget extends StatelessWidget {
@@ -15,7 +17,6 @@ class ServicesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // Use Expanded to take available space
         Expanded(
           child: Padding(
             padding: const EdgeInsets.only(right: 10),
@@ -24,17 +25,7 @@ class ServicesWidget extends StatelessWidget {
                 height: 227.h,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: const Color(0xffe6effd)
-                    /*gradient: const LinearGradient(
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.topRight,
-                    colors: [
-                      ColorsManager.secondaryColor, // Top color
-                      ColorsManager.primaryColor, // Bottom color
-                    ],
-                    stops: [0.2, 0.8],
-                  ),*/
-                    ),
+                    color: const Color(0xffe6effd)),
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Column(
@@ -71,7 +62,6 @@ class ServicesWidget extends StatelessWidget {
             ),
           ),
         ),
-        // Use Expanded for the vertical column of services
         Expanded(
           child: Column(
             children: [
@@ -80,8 +70,17 @@ class ServicesWidget extends StatelessWidget {
                   background: const Color(0xfffbff8b),
                   image: 'assets/images/Calendar.svg',
                   text: 'Daily Sign\nLanguage words ',
-                  onTap: () {
-                    context.pushNamed(Routes.learnInstructionsWelcomeMsgView);
+                  onTap: () async {
+                    // Check if the test has been completed
+                    bool testCompleted = await SharedPrefHelper.getBool(SharedPrefKeys.weclometestcomplete);
+                    
+                    if (testCompleted) {
+                      // Navigate to the desired screen if test is completed
+                      context.pushNamed(Routes.CategoriesView);
+                    } else {
+                      // Navigate to Achievement2 if test is not completed
+                      context.pushNamed(Routes.learnInstructionsLetsStartView);
+                    }
                   },
                 ),
               ),
@@ -124,7 +123,7 @@ class ServicesHorizontalWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
-          width: double.infinity, // Take full width
+          width: double.infinity,
           height: 108.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),

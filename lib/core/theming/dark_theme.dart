@@ -22,7 +22,7 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   fillColor: colorScheme.primaryContainer,
   focusedBorder: OutlineInputBorder(
     borderSide: const BorderSide(
-      //color: Colors.white,
+      color: Colors.green,
       width: 1.3,
     ),
     borderRadius: BorderRadius.circular(16.0),
