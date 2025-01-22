@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
-import 'package:sign_lang_app/features/categories/presentation/categories_view_body.dart';
 import 'package:sign_lang_app/features/levels/presentation/widgets/levels_view_body.dart';
 
 class LevelsView extends StatelessWidget {
@@ -19,22 +17,24 @@ class LevelsView extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.onSurface,
       //Color(0xff141F23),
       appBar: AppBar(
-        actions: [
-
-Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 22.0),
-  child: GestureDetector(
-
-    onTap:(){ context.pushNamed(Routes.Guidebook);},
-    child: SizedBox(
-      
-      height: 30,
-      width: 30,
-      child: SvgPicture.asset('assets/images/Guidebook.svg')),
-  ),
-)
-
-        ],
+          forceMaterialTransparency: true,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 22.0),
+              child: GestureDetector(
+                onTap: () {
+                  context.pushNamed(Routes.Guidebook);
+                },
+                child: SizedBox(
+                    height: 30,
+                    width: 30,
+                    child: SvgPicture.asset(
+                      'assets/images/Guidebook.svg',
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    )),
+              ),
+            )
+          ],
           leading: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();

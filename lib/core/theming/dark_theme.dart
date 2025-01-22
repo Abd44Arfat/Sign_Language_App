@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sign_lang_app/core/theming/colors.dart';
 
 ColorScheme colorScheme = const ColorScheme.dark(
@@ -10,8 +9,12 @@ ColorScheme colorScheme = const ColorScheme.dark(
   onSecondary: Colors.black,
   secondary: Color(0xffaef593),
   secondaryContainer: Colors.grey,
-  onSurface: const Color(0xff141F23),
-  primaryFixed: Color(0xff202F36), //backfround color
+  onSurface: Color(0xff141F23),
+  primaryFixed: Color(0xff202F36),
+  onPrimaryFixed: Color(0xff202F36), //backfround color
+  onSecondaryFixed: Color(0xff39464E), // border color
+  primaryFixedDim: Color(0xff141F23), // the color of the button
+  surfaceContainer: Color(0xff232229),
 );
 
 InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
@@ -19,7 +22,7 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   fillColor: colorScheme.primaryContainer,
   focusedBorder: OutlineInputBorder(
     borderSide: const BorderSide(
-      //color: Colors.white,
+      color: Colors.green,
       width: 1.3,
     ),
     borderRadius: BorderRadius.circular(16.0),

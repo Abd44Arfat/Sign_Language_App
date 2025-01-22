@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 
 import '../routing/routes.dart';
-import '../theming/colors.dart';
 
 class BuildCommonWordsHeader extends StatelessWidget {
   const BuildCommonWordsHeader({super.key});
@@ -24,7 +23,7 @@ class BuildCommonWordsHeader extends StatelessWidget {
             child: Text(
               'See All',
               style: TextStyles.font16WhiteMedium
-                  .copyWith(color: ColorsManager.primaryColor),
+                  .copyWith(color: Theme.of(context).colorScheme.secondary),
             )),
       ],
     );

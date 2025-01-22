@@ -3,8 +3,6 @@ import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sign_lang_app/core/widgets/app_text_form_field.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/fetch_list_view_bloc_builder.dart';
 
-import 'dictionary_list_view.dart';
-
 class DictionaryViewBody extends StatefulWidget {
   const DictionaryViewBody({super.key});
 

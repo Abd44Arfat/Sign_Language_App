@@ -59,7 +59,7 @@ class _AchievementsViewBodyState extends State<AchievementsViewBody>
       Achievement1(
         onPressed: navigateToNextPage,
       ),
-      Achievement2(),
+      const Achievement2(),
     ]);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -74,6 +74,8 @@ class _AchievementsViewBodyState extends State<AchievementsViewBody>
               IconButton(
                   onPressed: () {
                     Navigator.pop(context);
+                    //Navigator.pushReplacementNamed(context, Routes.bottomNavigation);
+                    //Navigator.pop(context);
                   },
                   icon: Icon(
                     Icons.arrow_back_ios_new,

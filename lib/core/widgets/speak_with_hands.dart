@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,50 +9,53 @@ class SpeakWithHands extends StatelessWidget {
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: SizedBox(
-        //padding: const EdgeInsets.only(top: 20),
-        width: MediaQuery.sizeOf(context).width,
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 25),
-              child: SvgPicture.asset(
-                "assets/images/Rectangle 2493.svg",
-                // ignore: deprecated_member_use
-                fit: BoxFit.fill,
-                width: MediaQuery.sizeOf(context).width,
+    return FadeInLeft(
+      from: 20,
+      child: GestureDetector(
+        onTap: onTap,
+        child: SizedBox(
+          //padding: const EdgeInsets.only(top: 20),
+          width: MediaQuery.sizeOf(context).width,
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 25),
+                child: SvgPicture.asset(
+                  "assets/images/Rectangle 2493.svg",
+                  // ignore: deprecated_member_use
+                  fit: BoxFit.fill,
+                  width: MediaQuery.sizeOf(context).width,
+                ),
               ),
-            ),
-            // ignore: prefer_const_constructors
-            Positioned(
-              top: -1,
-              right: 1,
-              left: 200,
-              bottom: 0,
-              child: Image.asset(
-                "assets/images/onboarding3.png",
+              // ignore: prefer_const_constructors
+              Positioned(
+                top: -1,
+                right: 1,
+                left: 200,
+                bottom: 0,
+                child: Image.asset(
+                  "assets/images/onboarding3.png",
+                ),
               ),
-            ),
 
-            Positioned(
-              left: 20,
-              top: 50,
-              bottom: 10,
-              child: Text(
-                'Speak With\nYour Hands',
+              Positioned(
+                left: 20,
+                top: 50,
+                bottom: 10,
+                child: Text(
+                  'Speak With\nYour Hands',
+                  style: TextStyles.font18WhiteSemiBold
+                      .copyWith(fontWeight: FontWeight.w800, fontSize: 28),
+                ),
+              )
+
+              /*Text(
+                'Speak With\n Your Hands',
                 style: TextStyles.font18WhiteSemiBold
-                    .copyWith(fontWeight: FontWeight.w800, fontSize: 28),
-              ),
-            )
-
-            /*Text(
-              'Speak With\n Your Hands',
-              style: TextStyles.font18WhiteSemiBold
-                  .copyWith(fontWeight: FontWeight.w900),
-            ),*/
-          ],
+                    .copyWith(fontWeight: FontWeight.w900),
+              ),*/
+            ],
+          ),
         ),
       ),
     );

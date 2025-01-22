@@ -1,10 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 import 'package:sign_lang_app/core/errors/failure.dart';
 import 'package:sign_lang_app/core/utils/api_service.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/features/learn/data/models/question_response.dart';
-import 'package:sign_lang_app/features/learn/presentation/quizs.dart/avatar_sign_before_quiz_view.dart';
 
 abstract class LearnRemoteDataSource {
   Future<Either<Failure, List<Questions>>> fetchQuestionList(String id);
@@ -20,7 +18,7 @@ class LearnRemoteDataSourceImpl extends LearnRemoteDataSource {
   @override
   Future<Either<Failure, List<Questions>>> fetchQuestionList(String id) async {
     try {
-      var response = await dioClient.get('${ApiUrls.questions}/${id}');
+      var response = await dioClient.get('${ApiUrls.questions}/$id');
       var questions = (response.data['level']['Questions'] as List)
           .map((json) => Questions.fromJson(json))
           .toList();
@@ -33,7 +31,7 @@ class LearnRemoteDataSourceImpl extends LearnRemoteDataSource {
   @override
   Future<Either<Failure, LearnRes>> avatarSignBeforeQuizList(String id) async {
     try {
-      var response = await dioClient.get('${ApiUrls.questions}/${id}');
+      var response = await dioClient.get('${ApiUrls.questions}/$id');
       var questions = (response.data['level']['Questions'] as List)
           .map((json) => Questions.fromJson(json))
           .toList();

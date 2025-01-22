@@ -18,16 +18,14 @@ class HomeViewBody extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: FutureBuilder<String?>(
-            future: SharedPrefHelper.getStringNullable(
-                SharedPrefKeys.username), 
+            future: SharedPrefHelper.getStringNullable(SharedPrefKeys.username),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Error: ${snapshot.error}'));
               } else {
-                String userName =
-                    snapshot.data ?? 'User'; 
+                String userName = snapshot.data ?? 'User';
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

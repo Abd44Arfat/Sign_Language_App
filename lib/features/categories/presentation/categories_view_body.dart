@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/features/categories/data/models/category_res.dart';
 import 'package:sign_lang_app/features/categories/presentation/manager/cubit/categories_cubit.dart';
-import 'package:sign_lang_app/features/levels/presentation/manager/levels_cubit.dart';
 
 class CategoriesViewBody extends StatelessWidget {
   const CategoriesViewBody({super.key});

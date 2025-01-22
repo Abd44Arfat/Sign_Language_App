@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 class CategoryRes {
   String message;
@@ -38,6 +37,6 @@ class CategoryModel {
   }
 
   String getCategoryId() {
-    return this.id;
+    return id;
   }
 }

@@ -1,9 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:sign_lang_app/core/errors/failure.dart';
 import 'package:sign_lang_app/core/utils/api_service.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/features/dictionary/data/models/dictionary_model/dectionary.dart';
-import 'package:sign_lang_app/features/dictionary/data/models/dictionary_model/dictionary_model.dart';
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 
 abstract class DictionaryRemoteDataSource {

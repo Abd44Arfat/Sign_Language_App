@@ -2,7 +2,7 @@ class Routes {
   static const String onBoardingScreen = '/onBoardingScreen';
   static const String splashScreen = '/splashScreen';
   static const String bottomNavigation = '/bottomNavigation';
-  static const String commonWordsScreen = '/commonWordsScreen';
+  static const String commonWordsScreen = '/commonWordsScreen,';
   static const String dictionaryScreen = '/dictionary';
 
   static const String homescreen = '/homescreen';
@@ -24,6 +24,7 @@ class Routes {
   static const String LevelsView = '/LevelsView';
   static const String Guidebook = '/Guidebook';
 
-  static const String signbeforeQuiz = '/signbeforeQuiz';
   static const String quiz = '/quiz';
+
+  //static const String commonWordsView = '/CommonWordsView';
 }

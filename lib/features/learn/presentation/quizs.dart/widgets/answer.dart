@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+
 class Answer extends StatelessWidget {
   final VoidCallback selectHandler;
   final String answerText;
   final Color backgroundColor;
 
-  const Answer(this.selectHandler, this.answerText, {Key? key, this.backgroundColor = Colors.transparent})
-      : super(key: key);
+  const Answer(this.selectHandler, this.answerText,
+      {super.key, this.backgroundColor = Colors.transparent});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +21,11 @@ class Answer extends StatelessWidget {
           width: 260.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(width: 2, color: Colors.white),
+            border: Border.all(width: 2, color: Theme.of(context).colorScheme.onPrimary),
             color: backgroundColor,
           ),
           child: Center(
-            child: Text(answerText, style: TextStyles.font20WhiteSemiBold),
+            child: Text(answerText, style: TextStyles.font20WhiteSemiBold.copyWith(color:  Theme.of(context).colorScheme.onPrimary)),
           ),
         ),
       ),

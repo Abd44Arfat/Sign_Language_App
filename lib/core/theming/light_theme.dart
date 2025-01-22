@@ -5,14 +5,17 @@ ColorScheme colorScheme = ColorScheme.light(
     //primary: Color(0xffA1F598),
     onPrimary: Colors.black,
     onPrimaryContainer: Colors.black38,
-    primaryContainer: Color(0xfff5f9fe),
-    surface: Color(0xffececec),
+    primaryContainer: const Color(0xfff5f9fe),
+    surface: const Color(0xffececec),
     onSecondary: Colors.white,
     secondary: Colors.green[400]!,
     secondaryContainer: Colors.grey[700],
     primaryFixed: Colors.white,
-    onSurface: Colors.grey[100]!
-
+    onSurface: Colors.grey[100]!,
+    onPrimaryFixed: Colors.white70,
+    onSecondaryFixed: Colors.grey[700],
+    primaryFixedDim: Colors.green[800],
+    surfaceContainer: Colors.grey[200]
     //secondary: Colors.grey
     //secondary: Color.fromARGB(255, 8, 40, 48),
     //surface: Colors.white,
@@ -32,13 +35,13 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(16.0),
     borderSide: BorderSide(
-      color: colorScheme.primary,
-      //color: Colors.transparent,
+      // color: colorScheme.primary,
+      color: Colors.green,
     ),
   ),
   enabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(15.0),
-    borderSide: BorderSide(
+    borderSide: const BorderSide(
       color: Colors.transparent,
       //color: colorScheme.onPrimaryContainer,
     ),
