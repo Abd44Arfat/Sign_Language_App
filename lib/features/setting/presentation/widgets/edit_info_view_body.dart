@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';
+import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/core/widgets/app_text_form_field.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/loading_button.dart';
 import 'package:sign_lang_app/features/setting/data/models/edit_info_request.dart';
@@ -78,7 +79,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               listener: (context, state) {
                 if (state is EditInfoSuccess) {
                   // Navigate to the bottom navigation bar or home screen
-                  Navigator.of(context).pushReplacementNamed(Routes.bottomNavigation); // Use the appropriate route name
+                  context.pop();
+                  // Navigator.of(context).pushReplacementNamed(Routes
+                  //     .bottomNavigation); // Use the appropriate route name
                 }
               },
               child: BlocBuilder<EditInfoCubit, EditInfoState>(
@@ -90,16 +93,18 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                         formKey.currentState!.save();
 
                         // Update shared preferences
-                        await SharedPrefHelper.setData(SharedPrefKeys.username, userName);
-                        await SharedPrefHelper.setData(SharedPrefKeys.userEmail, userEmail);
+                        await SharedPrefHelper.setData(
+                            SharedPrefKeys.username, userName);
+                        await SharedPrefHelper.setData(
+                            SharedPrefKeys.userEmail, userEmail);
 
                         context.read<EditInfoCubit>().execute(
-                          usecase: getIt<EditInfoUsecase>(),
-                          params: EditInfoReqParams(
-                            name: userName,
-                            email: userEmail,
-                          ),
-                        );
+                              usecase: getIt<EditInfoUsecase>(),
+                              params: EditInfoReqParams(
+                                name: userName,
+                                email: userEmail,
+                              ),
+                            );
                       }
                     },
                     btnKey: EditInfoCubit.get(context).btnKey,

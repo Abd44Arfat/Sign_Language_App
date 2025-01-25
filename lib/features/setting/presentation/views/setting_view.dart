@@ -10,6 +10,7 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      appBar: null,
       body: CustomStack(child: SettingViewBody()),
     );
   }

@@ -13,6 +13,7 @@ class LevelsView extends StatelessWidget {
     final Map<String, dynamic>? arguments =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
     final String categoryId = arguments!['categoryId'];
+    final String categoryName = arguments?['categoryName'];
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.onSurface,
       //Color(0xff141F23),
@@ -53,7 +54,7 @@ class LevelsView extends StatelessWidget {
           //Color(0xff141F23),
           centerTitle: true,
           title: Text(
-            'Introduce your self',
+            categoryName, //'Introduce your self',
             style: TextStyles.font20WhiteSemiBold
                 .copyWith(color: Theme.of(context).colorScheme.onPrimary),
           )),

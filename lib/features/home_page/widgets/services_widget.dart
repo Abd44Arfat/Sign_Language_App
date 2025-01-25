@@ -38,9 +38,14 @@ class ServicesWidget extends StatelessWidget {
                         child: CircleAvatar(
                           backgroundColor:
                               ColorsManager.lightGray.withOpacity(0.3),
-                          child: SvgPicture.asset(
-                            'assets/images/ai_icon.svg',
+                          child: ImageIcon(
+                            const AssetImage('assets/icons/ai.png'),
+                            color: Colors.grey[700],
                           ),
+
+                          /*SvgPicture.asset(
+                            'assets/images/ai_icon.svg',
+                          ),*/
                         ),
                       ),
                       Text(
@@ -49,7 +54,7 @@ class ServicesWidget extends StatelessWidget {
                             .copyWith(color: Colors.black),
                       ),
                       StartNowBtn(
-                        backgroundColor: Colors.blue[700],
+                        backgroundColor: Color(0xff146ee6),
                         buttonText: 'Start Now',
                         textStyle: TextStyles.font15BlackMedium.copyWith(
                             color: Colors.white, fontWeight: FontWeight.w600),
@@ -67,13 +72,17 @@ class ServicesWidget extends StatelessWidget {
             children: [
               FadeInDown(
                 child: ServicesHorizontalWidget(
-                  background: const Color(0xfffbff8b),
+                  //background: const Color(0xfffbff8b),
+                  //background: Color(0xffB6D8A0),
+                  background: Color(0xff7BCE7E),
+                  //background: Color(0xffA3D29C),
                   image: 'assets/images/Calendar.svg',
                   text: 'Daily Sign\nLanguage words ',
                   onTap: () async {
                     // Check if the test has been completed
-                    bool testCompleted = await SharedPrefHelper.getBool(SharedPrefKeys.weclometestcomplete);
-                    
+                    bool testCompleted = await SharedPrefHelper.getBool(
+                        SharedPrefKeys.weclometestcomplete);
+
                     if (testCompleted) {
                       // Navigate to the desired screen if test is completed
                       context.pushNamed(Routes.CategoriesView);
