@@ -114,8 +114,8 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                                 password: password,
                                 repassword: confirmPassword));
                       } else {
-                        buildErrorBar(
-                            context, 'يجب عليك الموافقة على الشروط والإحكام');
+                        buildErrorBar(context,
+                            'You must agree to the terms and conditions.');
                       }
                     },
                     btnKey: SignupCubit.get(context).btnKey,

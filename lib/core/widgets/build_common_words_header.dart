@@ -22,8 +22,9 @@ class BuildCommonWordsHeader extends StatelessWidget {
             },
             child: Text(
               'See All',
-              style: TextStyles.font16WhiteMedium
-                  .copyWith(color: Theme.of(context).colorScheme.secondary),
+              style: TextStyles.font16WhiteMedium.copyWith(
+                  color: Theme.of(context).colorScheme.secondary,
+                  fontWeight: FontWeight.bold),
             )),
       ],
     );

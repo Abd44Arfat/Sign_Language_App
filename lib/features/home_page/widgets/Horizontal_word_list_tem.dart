@@ -22,40 +22,42 @@ class HorizontalwordlistItem extends StatelessWidget {
           context.pushNamed(Routes.commonWordsScreen, arguments: arguments),
       //onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
         child: Container(
           width: 200.w,
-          height: 130.h,
+          height: 100.h,
           decoration: BoxDecoration(
-              /*boxShadow: [
-                BoxShadow(
-                  color: Colors.white.withOpacity(0.3), // White shadow
-                  offset: Offset(5, 5),
-                  blurRadius: 6,
-                ),
-              ],*/
-              border: Border.all(
-                color: Colors.blue[900]!,
-                //color: Colors.white,
-              ),
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.blue[600]),
+            borderRadius: BorderRadius.circular(10),
+            //color: Color(0xff3d5a67)
+            color: Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xff293d46)
+                //: Color(0xff7BCE7E)
+                : const Color(0xffe5eefd),
+          ),
           // Color(0xff131f23)),
 
           // color: Colors.blue[600]),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 44, width: 44, child: Image.asset(imagePath)),
                 SizedBox(
-                  height: 20.h,
+                  height: 30,
+                  width: 30,
+                  child: ImageIcon(AssetImage(imagePath), size: 20),
+                ),
+                SizedBox(
+                  height: 10.h,
                 ),
                 FittedBox(
                     child: Text(
                   text,
-                  style: TextStyles.font20WhiteSemiBold,
+                  style: TextStyles.font20WhiteSemiBold.copyWith(
+                      fontSize: 21,
+                      fontWeight: FontWeight.normal,
+                      color: Theme.of(context).colorScheme.onPrimary),
                 ))
               ],
             ),
@@ -84,8 +86,8 @@ class _HorizontalWordListState extends State<HorizontalWordList> {
   };
 
   final List<String> listOfIcons = [
-    "assets/icons/hello.png",
-    "assets/icons/thank_you.png",
+    "assets/icons/wave.png",
+    "assets/icons/pray.png",
     "assets/icons/helping-hand.png",
     "assets/icons/love.png",
     "assets/icons/warning.png",

@@ -23,7 +23,12 @@ class HomeViewBody extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
-                return Center(child: Text('Error: ${snapshot.error}'));
+                return Center(
+                    child: Text(
+                  'Error: ${snapshot.error}',
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+                ));
               } else {
                 String userName = snapshot.data ?? 'User';
                 return Column(

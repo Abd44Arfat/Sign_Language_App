@@ -49,11 +49,13 @@ class _SavedWordsScreenState extends State<SavedWordsScreen> {
           } else if (snapshot.hasError) {
             return Center(
                 child: Text('Error: ${snapshot.error}',
-                    style: const TextStyle(color: Colors.white)));
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary)));
           } else if (snapshot.data!.isEmpty) {
-            return const Center(
+            return Center(
                 child: Text('No saved words found.',
-                    style: TextStyle(color: Colors.white)));
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary)));
           }
 
           final savedWords = snapshot.data!;
