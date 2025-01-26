@@ -31,7 +31,9 @@ class ResetPasswordViewBody extends StatelessWidget {
           ),
           Text(
               'Enter Yor email , we will send a verification code to your Email',
-              style: TextStyle(color: Colors.grey[600], fontSize: 25)),
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  fontSize: 25)),
           const SizedBox(
             height: 40,
           ),
@@ -40,7 +42,7 @@ class ResetPasswordViewBody extends StatelessWidget {
             height: 80,
           ),
           AppTextButton(
-              buttonText: 'Login',
+              buttonText: 'Reset',
               textStyle: TextStyles.font14DarkBlueMedium
                   .copyWith(fontWeight: FontWeight.w700),
               onPressed: () {}),
