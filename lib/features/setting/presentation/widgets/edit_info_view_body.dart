@@ -86,9 +86,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               listener: (context, state) {
                 if (state is EditInfoSuccess) {
                   // Navigate to the bottom navigation bar or home screen
-                  context.pop();
-                  // Navigator.of(context).pushReplacementNamed(Routes
-                  //     .bottomNavigation); // Use the appropriate route name
+                  // context.pop();
+                  Navigator.of(context).pushReplacementNamed(Routes
+                      .bottomNavigation); // Use the appropriate route name
                 }
               },
               child: BlocBuilder<EditInfoCubit, EditInfoState>(

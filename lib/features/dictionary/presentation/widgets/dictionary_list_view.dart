@@ -6,6 +6,7 @@ import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_entity.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
+import 'package:sign_lang_app/features/dictionary/presentation/widgets/Custom_video_player.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/widgets/dictionary_list_view_item.dart';
 
 class DictionaryListView extends StatefulWidget {
@@ -113,28 +114,34 @@ class _DictionaryListViewState extends State<DictionaryListView> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: _scrollController,
-      physics: widget.shrinkWrap
-          ? const NeverScrollableScrollPhysics()
-          : const BouncingScrollPhysics(),
-      shrinkWrap: widget.shrinkWrap,
-      itemCount: widget.dictionary.length,
-      itemBuilder: (context, index) {
-        return FadeInLeft(
-          from: index * 10,
-          child: DictionaryListViewItem(
-            onRemove: () => _removeItem(
-                widget.dictionary[index], widget.dictionary[index].mainTitle),
-            title: widget.dictionary[index].mainTitle,
-            isSaved: savedItems
-                .contains(widget.dictionary[index].mainTitle), // Check if saved
-            onSave: () =>
-                _saveItem(widget.dictionary[index]), // Pass save action
-          ),
-        );
-      },
-    );
-  }
+Widget build(BuildContext context) {
+  return ListView.builder(
+    controller: _scrollController,
+    physics: widget.shrinkWrap
+        ? const NeverScrollableScrollPhysics()
+        : const BouncingScrollPhysics(),
+    shrinkWrap: widget.shrinkWrap,
+    itemCount: widget.dictionary.length,
+    itemBuilder: (context, index) {
+      final item = widget.dictionary[index];
+      return FadeInLeft(
+        from: index * 10,
+        child: DictionaryListViewItem(
+          onTap: () {
+            // Navigate to CustomVideoPlayer and pass the video URL
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => YouTubeVideoPlayer(videoId: item.Link),
+              ),
+            );
+          },
+          onRemove: () => _removeItem(item, item.mainTitle),
+          title: item.mainTitle,
+          isSaved: savedItems.contains(item.mainTitle),
+          onSave: () => _saveItem(item),
+        ),
+      );
+    },
+  );
+}
 }

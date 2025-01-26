@@ -10,21 +10,20 @@ class DictionaryListViewItem extends StatelessWidget {
     required this.title,
     required this.onSave,
     required this.isSaved,
-    required this.onRemove, // New parameter
+    required this.onRemove,
+    required this.onTap, // Add this line
   });
 
   final String title;
-  final VoidCallback onSave, onRemove; // Callback for save action
+  final VoidCallback onSave, onRemove, onTap; // Add onTap here
   final bool isSaved;
-  // Track if the item is saved
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: GestureDetector(
-        onTap: () {
-          Navigator.pushNamed(context, Routes.DictionaryDetailsView);
-        },
+        onTap: onTap, // Use the onTap callback here
         child: Container(
           height: 54.h,
           decoration: BoxDecoration(
@@ -43,16 +42,14 @@ class DictionaryListViewItem extends StatelessWidget {
                       fontSize: 22),
                 ),
                 GestureDetector(
-                    onTap: isSaved ? onRemove : onSave,
-                    child: SvgPicture.asset(
-
-                      //isSaved? 'assets/images/Vector.svg'
-                      'assets/images/frame.svg',
-
-                      color: isSaved
-                          ? Colors.green
-                          : Theme.of(context).colorScheme.onPrimary,
-                    ))
+                  onTap: isSaved ? onRemove : onSave,
+                  child: SvgPicture.asset(
+                    'assets/images/frame.svg',
+                    color: isSaved
+                        ? Colors.green
+                        : Theme.of(context).colorScheme.onPrimary,
+                  ),
+                ),
               ],
             ),
           ),

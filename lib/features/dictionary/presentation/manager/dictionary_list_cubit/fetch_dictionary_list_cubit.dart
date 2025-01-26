@@ -30,6 +30,7 @@ class FetchDictionaryListCubit extends Cubit<FetchDictionaryListState> {
         print(failure.toString());
       },
       (dictionaryList) {
+        // print();
         emit(FetchDictionaryListSuccess(dictionaryList));
       },
     );
