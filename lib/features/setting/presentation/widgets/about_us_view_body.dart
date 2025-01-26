@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theming/styles.dart';
 import 'about_us_main_features.dart';
@@ -17,8 +18,8 @@ class AboutUsViewBody extends StatelessWidget {
           Center(
               child: Text(
             'Sign Talk App',
-            style: TextStyles.font28GreenSemiBold
-                .copyWith(color: Theme.of(context).colorScheme.secondary),
+            style: TextStyles.font28GreenSemiBold.copyWith(
+                color: Theme.of(context).colorScheme.secondary, fontSize: 22.h),
           )),
           const SizedBox(
             height: 10,
@@ -26,16 +27,17 @@ class AboutUsViewBody extends StatelessWidget {
           Text(
             'Welcome to Sign Talk, an innovative app designed to bridge the communication gap between sign language users and the hearing community. Our app utilizes advanced technology to translate sign language gestures into spoken language, making communication accessible and efficient for everyone.',
             style: TextStyles.font18WhiteMedium.copyWith(
-                fontSize: 24, color: Theme.of(context).colorScheme.onPrimary),
+                fontSize: 19.h, color: Theme.of(context).colorScheme.onPrimary),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 25.h,
           ),
           Text('App Main Features:',
-              style: TextStyles.font28GreenSemiBold
-                  .copyWith(color: Theme.of(context).colorScheme.secondary)),
-          const SizedBox(
-            height: 7,
+              style: TextStyles.font28GreenSemiBold.copyWith(
+                  color: Theme.of(context).colorScheme.secondary,
+                  fontSize: 22.h)),
+          SizedBox(
+            height: 7.h,
           ),
           const AboutUsMainFeatures()
         ],

@@ -63,46 +63,6 @@ BottomNavigationBarThemeData bottomNavigationBarTheme =
   unselectedItemColor: Colors.grey, // Color for unselected items
   backgroundColor: Colors.black, // Background color of the navigation bar
 );
-/*
-  static InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
-    filled: true,
-    fillColor: colorScheme.primaryContainer,
-    focusedBorder: OutlineInputBorder(
-      borderSide: const BorderSide(
-        //color: Colors.white,
-        width: 1.3,
-      ),
-      borderRadius: BorderRadius.circular(16.0),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderSide: const BorderSide(
-        color: Color(0xff5D5D5D), //ColorsManager.itembackground,
-        width: 1.3,
-      ),
-      borderRadius: BorderRadius.circular(16.0),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderSide: const BorderSide(
-        color: Colors.red,
-        width: 1.3,
-      ),
-      borderRadius: BorderRadius.circular(16.0),
-    ),
-    //floatingLabelBehavior: FloatingLabelBehavior.never,
-
-    focusedErrorBorder: OutlineInputBorder(
-      borderSide: const BorderSide(
-        color: Colors.red,
-        width: 1.3,
-      ),
-      borderRadius: BorderRadius.circular(16.0),
-    ),
-    errorMaxLines: 2,
-    hintStyle: TextStyle(
-      color: colorScheme.onPrimaryContainer,
-    ),
-  );
-*/
 
 final ThemeData darkTheme = ThemeData(
   scaffoldBackgroundColor: Colors.black,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theming/styles.dart';
 
@@ -22,11 +23,18 @@ class AboutUsMainFeatures extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        return Text(
-          '${index + 1} . ${mainFeaturesList[index]}',
-          style: TextStyles.font18WhiteMedium.copyWith(
-              fontSize: 24, color: Theme.of(context).colorScheme.onPrimary),
-        );
+        return Column(children: [
+          Text(
+            '${index + 1} . ${mainFeaturesList[index]}',
+            style: TextStyles.font18WhiteMedium.copyWith(
+              fontSize: 19.h,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+          ),
+          SizedBox(
+            height: 14.h,
+          )
+        ]);
       },
       itemCount: mainFeaturesList.length,
     );
