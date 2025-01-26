@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sign_lang_app/core/theming/colors.dart';
 
 ColorScheme colorScheme = ColorScheme.light(
     //primary: Color(0xffA1F598),
@@ -15,7 +16,10 @@ ColorScheme colorScheme = ColorScheme.light(
     onPrimaryFixed: Colors.white70,
     onSecondaryFixed: Colors.grey[700],
     primaryFixedDim: Colors.green[800],
-    surfaceContainer: Colors.grey[200]
+    surfaceContainer: Colors.grey[200],
+    tertiary: ColorsManager
+        .primaryColor, // Starting color // const Color(0xFF91F39E),
+    onTertiary: const Color(0xFF03A9F4)
     //secondary: Colors.grey
     //secondary: Color.fromARGB(255, 8, 40, 48),
     //surface: Colors.white,

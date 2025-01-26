@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';
@@ -60,6 +61,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               'Edit your profile',
               style: TextStyles.font16GraySemibold.copyWith(fontSize: 22),
             ),
+            SizedBox(
+              height: 30.h,
+            ),
             AppTextFormField(
               hintText: 'Name',
               initialValue: userName,
@@ -74,6 +78,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               onSaved: (value) {
                 userEmail = value!;
               },
+            ),
+            SizedBox(
+              height: 20.h,
             ),
             BlocListener<EditInfoCubit, EditInfoState>(
               listener: (context, state) {

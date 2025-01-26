@@ -101,7 +101,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
               BlocBuilder<SignupCubit, SignupState>(
                 builder: (context, state) {
                   return LoadingButton(
-                    title: 'Login',
+                    title: 'Sign Up',
                     onTap: () {
                       if (formKey.currentState!.validate() && isTermsAccepted) {
                         formKey.currentState!.save();
@@ -128,7 +128,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Already Have An Account ? ',
+                      Text('Already Have An Account ?',
                           style: TextStyles.font14DarkBlueMedium.copyWith(
                               color: Theme.of(context).colorScheme.onPrimary)),
                       TextButton(

@@ -44,7 +44,11 @@ class _LevelsViewBodyState extends State<LevelsViewBody> {
             },
           );
         }
-        return const Center(child: Text('No Levels Available'));
+        return Center(
+            child: Text(
+          'No Levels Available',
+          style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+        ));
       },
     );
   }
@@ -73,7 +77,8 @@ class GuideBookListViewItem extends StatelessWidget {
       padding: const EdgeInsets.only(top: 80, bottom: 0),
       child: GestureDetector(
         onTap: () {
-          context.pushNamed(Routes.quiz, arguments: levelModel.id);
+          Navigator.pushNamed(context, Routes.quiz, arguments: levelModel.id);
+          //context.pushNamed(Routes.quiz, arguments: levelModel.id);
         },
         child: Container(
           height: 115,

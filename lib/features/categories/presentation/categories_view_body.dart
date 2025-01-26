@@ -51,7 +51,11 @@ class _GridViewBlocConsumerState extends State<GridViewBlocConsumer> {
         if (state is CategoriesFailure) {
           // Optionally show a snackbar or dialog with the error message
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.errMessage)),
+            SnackBar(
+                content: Text(
+              state.errMessage,
+              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+            )),
           );
         }
       },

@@ -6,20 +6,23 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom:  25.0),
+      padding: const EdgeInsets.only(bottom: 40),
       child: Container(
-        width: 45,
-        height: 45,
+        width: 42,
+        height: 42,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.grey[100]
-        ),
+            borderRadius: BorderRadius.circular(10),
+            color: Theme.of(context)
+                .colorScheme
+                .secondaryContainer), // Colors.grey[100]..),
         child: IconButton(
-            onPressed: (){
-             Navigator.pop(context);
-        }, icon: const Icon(Icons.arrow_back_ios_new , color: Colors.black87,))
-        ,
-
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.black87,
+            )),
       ),
     );
   }

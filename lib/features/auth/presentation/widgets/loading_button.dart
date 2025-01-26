@@ -50,7 +50,7 @@ class LoadingButton extends StatelessWidget {
             minWidth: 56,
             height: height ?? 56,
             borderRadius: borderRadius ?? 10,
-            borderSide: BorderSide(color: borderColor ?? border, width: 1),
+            //borderSide: BorderSide(color: borderColor ?? border, width: 1),
             loader: Container(
               padding: const EdgeInsets.all(10),
               child: const SpinKitRotatingCircle(
@@ -60,10 +60,14 @@ class LoadingButton extends StatelessWidget {
             ),
             child: Container(
               decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [
+                gradient: LinearGradient(
+                  /*colors: [
                     ColorsManager.primaryColor, // Starting color
                     ColorsManager.secondaryColor, // Ending color
+                  ],*/
+                  colors: [
+                    Theme.of(context).colorScheme.tertiary,
+                    Theme.of(context).colorScheme.onTertiary
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
