@@ -21,7 +21,8 @@ class ResetPasswordViewBody extends StatelessWidget {
           Text(
             'Reset Password',
             style: TextStyle(
-                color: Colors.grey[700],
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                //color: Colors.grey[700],
                 fontSize: 35,
                 fontWeight: FontWeight.w700),
           ),

@@ -27,10 +27,12 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
               isObscure = !isObscure; // Toggle the visibility
             });
           },
-          icon: const ImageIcon(
-            color: Colors.white,
+          icon: ImageIcon(
+            color: Theme.of(context).colorScheme.secondaryContainer,
             AssetImage(
-              'assets/icons/see_password.png',
+              isObscure
+                  ? 'assets/icons/view.png'
+                  : 'assets/icons/see_password.png',
             ),
             size: 26,
           ),

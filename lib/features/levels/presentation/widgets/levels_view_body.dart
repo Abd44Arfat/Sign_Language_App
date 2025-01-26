@@ -44,7 +44,11 @@ class _LevelsViewBodyState extends State<LevelsViewBody> {
             },
           );
         }
-        return const Center(child: Text('No Levels Available'));
+        return Center(
+            child: Text(
+          'No Levels Available',
+          style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+        ));
       },
     );
   }
