@@ -161,7 +161,7 @@ class AppRouter {
         }
       case Routes.quiz:
         if (Platform.isIOS) {
-          CupertinoPageRoute(
+          return CupertinoPageRoute(
             builder: (_) => MultiBlocProvider(
               providers: [
                 BlocProvider(
