@@ -17,6 +17,7 @@ class ApiUrls {
   static const category = "$baseURL/api/category";
 
   static const levels = "$baseURL/api/level";
+  static const changePass = '$baseURL/api/auth/changepassword';
 
   static Future<String> getEditInfoUrl() async {
     final prefs = await SharedPreferences.getInstance();

@@ -9,6 +9,10 @@ import 'package:sign_lang_app/features/categories/data/data_sourece/remote_data_
 import 'package:sign_lang_app/features/categories/data/repo/repo_impl.dart';
 import 'package:sign_lang_app/features/categories/domain/repo/repo.dart';
 import 'package:sign_lang_app/features/categories/domain/usecase/fetch_categories_usecase.dart';
+import 'package:sign_lang_app/features/change_password/data/data_source/remote_data_source/change_password_remote_data_source.dart';
+import 'package:sign_lang_app/features/change_password/data/repo/change_password_repo_impl.dart';
+import 'package:sign_lang_app/features/change_password/domain/repo/change_password_repo.dart';
+import 'package:sign_lang_app/features/change_password/domain/use_case/change_password_usecase.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/local_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/data_source/remote_data_source.dart';
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
@@ -26,7 +30,6 @@ import 'package:sign_lang_app/features/setting/data/datasource/remote_data_sourc
 import 'package:sign_lang_app/features/setting/data/repo_impl/repo_impl.dart';
 import 'package:sign_lang_app/features/setting/domain/repos/repos.dart';
 import 'package:sign_lang_app/features/setting/domain/usecases/edit_info_usecase.dart';
-
 
 final getIt = GetIt.instance;
 
@@ -55,10 +58,13 @@ void setupServiceLocator() {
   getIt.registerSingleton<SignInUsecase>(SignInUsecase());
 //learn
   getIt.registerSingleton<LearnRepo>(LearnRepoImpl());
-  getIt.registerSingleton<LearnRemoteDataSource>(LearnRemoteDataSourceImpl(dioClient: getIt.get<DioClient>()));
-  getIt.registerSingleton<FetchQuestionListUsecase>(FetchQuestionListUsecase( learnRepo: getIt.get<LearnRepo>()));
-//sign before test 
-  getIt.registerSingleton<AvatarBeforeQuizUsecase>(AvatarBeforeQuizUsecase( learnRepo: getIt.get<LearnRepo>()));
+  getIt.registerSingleton<LearnRemoteDataSource>(
+      LearnRemoteDataSourceImpl(dioClient: getIt.get<DioClient>()));
+  getIt.registerSingleton<FetchQuestionListUsecase>(
+      FetchQuestionListUsecase(learnRepo: getIt.get<LearnRepo>()));
+//sign before test
+  getIt.registerSingleton<AvatarBeforeQuizUsecase>(
+      AvatarBeforeQuizUsecase(learnRepo: getIt.get<LearnRepo>()));
 
   getIt.registerSingleton<FetchCategoriesListUsecase>(
       FetchCategoriesListUsecase(categoryRepo: getIt.get<CategoryRepo>()));
@@ -83,4 +89,11 @@ void setupServiceLocator() {
   getIt.registerSingleton<LevelsCubit>(
     LevelsCubit(getIt<FetchLevelsUsecase>()),
   );
+
+  getIt.registerSingleton<ChangePasswordRepo>(ChangePasswordRepoImpl());
+
+  getIt.registerSingleton<ChangePasswordRemoteDataSource>(
+      ChangePasswordRemoteDataSourceImpl());
+
+  getIt.registerSingleton<ChangePasswordUsecase>(ChangePasswordUsecase());
 }

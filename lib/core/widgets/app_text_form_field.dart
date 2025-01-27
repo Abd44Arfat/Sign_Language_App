@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sign_lang_app/core/theming/font_Weight_helper.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 
 class AppTextFormField extends StatelessWidget {
@@ -63,7 +64,9 @@ class AppTextFormField extends StatelessWidget {
       ),
       obscuringCharacter: '*',
       obscureText: isObscureText ?? false,
-      style: TextStyles.font14DarkBlueMedium.copyWith(color: Colors.black),
+      style: TextStyles.font14DarkBlueMedium.copyWith(
+          color: Theme.of(context).colorScheme.onPrimaryContainer,
+          fontWeight: FontWeightHelper.semiBold),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'this field is required';
