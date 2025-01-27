@@ -85,7 +85,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
             BlocListener<EditInfoCubit, EditInfoState>(
               listener: (context, state) {
                 if (state is EditInfoSuccess) {
+
                   context.pop();
+
                 }
               },
               child: BlocBuilder<EditInfoCubit, EditInfoState>(

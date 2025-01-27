@@ -7,7 +7,7 @@ class DictionaryDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: CustomVideoPlayer(),
+      body: YouTubeVideoPlayer(videoId: '',),
     );
   }
 }

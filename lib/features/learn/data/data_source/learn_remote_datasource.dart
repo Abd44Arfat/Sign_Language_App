@@ -31,7 +31,7 @@ class LearnRemoteDataSourceImpl extends LearnRemoteDataSource {
   @override
   Future<Either<Failure, LearnRes>> avatarSignBeforeQuizList(String id) async {
     try {
-      var response = await dioClient.get('${ApiUrls.questions}/$id');
+      var response = await dioClient.get(ApiUrls.questions2);
       var questions = (response.data['level']['Questions'] as List)
           .map((json) => Questions.fromJson(json))
           .toList();

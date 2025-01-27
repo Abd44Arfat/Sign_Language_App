@@ -1,97 +1,47 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:sign_lang_app/features/home_page/widgets/home_app_bar.dart';
-import 'package:video_player/video_player.dart';
 
-class CustomVideoPlayer extends StatefulWidget {
-  const CustomVideoPlayer({super.key});
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+
+class YouTubeVideoPlayer extends StatefulWidget {
+  final String videoId; // YouTube video ID
+
+  const YouTubeVideoPlayer({Key? key, required this.videoId}) : super(key: key);
 
   @override
-  _CustomVideoPlayerState createState() => _CustomVideoPlayerState();
+  _YouTubeVideoPlayerState createState() => _YouTubeVideoPlayerState();
 }
 
-class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
-  late VideoPlayerController _controller;
-  late Future<void> _initializeVideoPlayerFuture;
+class _YouTubeVideoPlayerState extends State<YouTubeVideoPlayer> {
+  late YoutubePlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    // Replace with your video URL
-    _controller = VideoPlayerController.network(
-      'https://simax.media/wp-content/uploads/2019/04/SiMAX-The-sign-language-avatar.mp4?_=1',
+    _controller = YoutubePlayerController(
+      initialVideoId: widget.videoId,
+      flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+      ),
     );
-
-    // Initialize the controller and store the Future for later use
-    _initializeVideoPlayerFuture = _controller.initialize();
   }
 
   @override
   void dispose() {
-    // Dispose the controller when the widget is disposed
     _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              const CustomHomeAppBar(
-                  title: 'the sentence is :', subtitle: 'How are you'),
-              const SizedBox(
-                height: 60,
-              ),
-              FutureBuilder<void>(
-                future: _initializeVideoPlayerFuture,
-                builder: (context, snapshot) {
-                  // Check for errors
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    return Center(
-                      child: AspectRatio(
-                        aspectRatio: 380 / 400,
-                        child: VideoPlayer(_controller),
-                      ),
-                    );
-                  } else {
-                    return const Column(
-                      children: [
-                        SizedBox(
-                          height: 200,
-                        ),
-                        Center(
-                            child:
-                                CircularProgressIndicator(color: Colors.white)),
-                      ],
-                    );
-                  }
-                },
-              ),
-              const SizedBox(
-                height: 60,
-              ),
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.green,
-          onPressed: () {
-            setState(() {
-              _controller.value.isPlaying
-                  ? _controller.pause()
-                  : _controller.play();
-            });
-          },
-          child: Icon(
-            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-            color: Colors.white,
-          ),
-        ));
+    return Center(
+      child: YoutubePlayer(
+        controller: _controller,
+        showVideoProgressIndicator: true,
+      ),
+    );
   }
 }
-
-//
