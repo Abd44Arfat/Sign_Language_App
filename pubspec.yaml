@@ -97,6 +97,7 @@ flutter:
     - assets/icons/
     - assets/animations/
     - assets/3d_models/
+    - assets/videos/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

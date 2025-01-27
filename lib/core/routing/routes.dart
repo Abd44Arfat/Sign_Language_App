@@ -4,7 +4,6 @@ class Routes {
   static const String bottomNavigation = '/bottomNavigation';
   static const String commonWordsScreen = '/commonWordsScreen,';
   static const String dictionaryScreen = '/dictionary';
-
   static const String homescreen = '/homescreen';
   static const String loginScreen = '/loginView';
   static const String registerScreen = '/registerScreen';
@@ -23,7 +22,7 @@ class Routes {
   static const String CategoriesView = '/CategoriesView';
   static const String LevelsView = '/LevelsView';
   static const String Guidebook = '/Guidebook';
-
+  static const String changePassword = '/ChangePassword';
   static const String quiz = '/quiz';
 
   //static const String commonWordsView = '/CommonWordsView';
