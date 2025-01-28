@@ -61,6 +61,8 @@ dependencies:
   flutter_3d_controller: ^2.0.2
   page_transition: ^2.1.0
   flutter_native_splash: ^2.4.3
+  youtube_player_flutter: ^9.1.1
+  flutter_inappwebview: ^6.0.0
   
 
 

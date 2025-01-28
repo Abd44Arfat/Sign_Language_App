@@ -17,7 +17,7 @@ class Question extends StatelessWidget {
       ),
 
 
-      Image.asset("assets/animations/Untitled.gif",
+      Image.asset("assets/animations/gifmaker_me.gif",
           width: screenWidth * 0.90, height: screenHeight * 0.30),
 
       Divider(

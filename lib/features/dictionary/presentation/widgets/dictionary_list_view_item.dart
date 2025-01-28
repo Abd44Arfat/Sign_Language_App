@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
+import 'package:sign_lang_app/features/dictionary/presentation/dictionary_details_view.dart';
 
 class DictionaryListViewItem extends StatelessWidget {
   const DictionaryListViewItem({
@@ -10,20 +11,27 @@ class DictionaryListViewItem extends StatelessWidget {
     required this.title,
     required this.onSave,
     required this.isSaved,
-    required this.onRemove, // New parameter
+    required this.onRemove,
+    required this.videoId, // New parameter
   });
 
   final String title;
-  final VoidCallback onSave, onRemove; // Callback for save action
+  final VoidCallback onSave, onRemove;
   final bool isSaved;
-  // Track if the item is saved
+  final String videoId; // Video ID for the related video
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, Routes.DictionaryDetailsView);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DictionaryDetailsView(videoId: videoId),
+            ),
+          );
         },
         child: Container(
           height: 54.h,
@@ -43,16 +51,14 @@ class DictionaryListViewItem extends StatelessWidget {
                       fontSize: 22),
                 ),
                 GestureDetector(
-                    onTap: isSaved ? onRemove : onSave,
-                    child: SvgPicture.asset(
-
-                      //isSaved? 'assets/images/Vector.svg'
-                      'assets/images/frame.svg',
-
-                      color: isSaved
-                          ? Colors.green
-                          : Theme.of(context).colorScheme.onPrimary,
-                    ))
+                  onTap: isSaved ? onRemove : onSave,
+                  child: SvgPicture.asset(
+                    'assets/images/frame.svg',
+                    color: isSaved
+                        ? Colors.green
+                        : Theme.of(context).colorScheme.onPrimary,
+                  ),
+                )
               ],
             ),
           ),

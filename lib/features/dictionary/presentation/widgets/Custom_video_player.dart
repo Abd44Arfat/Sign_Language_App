@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+class YouTubeVideoPlayer extends StatefulWidget {
+  final String videoId; // YouTube video ID
 
-class VideoPlayerScreen extends StatefulWidget {
+  const YouTubeVideoPlayer({Key? key, required this.videoId}) : super(key: key);
+
   @override
-  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+  _YouTubeVideoPlayerState createState() => _YouTubeVideoPlayerState();
 }
 
-class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
-  late VideoPlayerController _controller;
-
-  // Define the video path directly here
-  final String videoPath = 'assets/animations/12787592_3840_2160_60fps.mp4';
+class _YouTubeVideoPlayerState extends State<YouTubeVideoPlayer> {
+  late YoutubePlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset(videoPath)
-      ..initialize().then((_) {
-        setState(() {});
-      }).catchError((error) {
-        print("Error initializing video player: $error");
-      });
+    _controller = YoutubePlayerController(
+      initialVideoId: widget.videoId,
+      flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+      ),
+    );
   }
 
   @override
@@ -31,27 +32,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Video Player')),
-      body: Center(
-        child: _controller.value.isInitialized
-            ? AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: VideoPlayer(_controller),
-              )
-            : CircularProgressIndicator(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
-          });
-        },
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-        ),
+    return Center(
+      child: YoutubePlayer(
+        controller: _controller,
+        showVideoProgressIndicator: true,
       ),
     );
   }

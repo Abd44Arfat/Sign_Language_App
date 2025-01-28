@@ -68,14 +68,16 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SettingView());
 
       case Routes.DictionaryDetailsView:
-        if (Platform.isIOS) {
-          return CupertinoPageRoute(
-              builder: (_) => const DictionaryDetailsView());
-        } else {
-          return PageNavAnimation.applyPageAnimation(
-              screen: const DictionaryDetailsView());
-        }
-
+  final args = settings.arguments as String?; // Assuming you're passing a String (videoId)
+  if (Platform.isIOS) {
+    return CupertinoPageRoute(
+      builder: (_) => DictionaryDetailsView(videoId: args ?? ''), // Pass videoId
+    );
+  } else {
+    return PageNavAnimation.applyPageAnimation(
+      screen: DictionaryDetailsView(videoId: args ?? ''), // Pass videoId
+    );
+  }
       case Routes.editInfoview:
         if (Platform.isIOS) {
           return CupertinoPageRoute(
