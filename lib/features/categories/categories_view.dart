@@ -14,7 +14,7 @@ class CategoriesView extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.onSurface,
           appBar: PreferredSize(
             preferredSize:
-                const Size.fromHeight(kToolbarHeight), // Specify the height
+                Size.fromHeight(kToolbarHeight), // Specify the height
             child: Container(
               color: Theme.of(context).colorScheme.primaryFixed,
               child: Center(
