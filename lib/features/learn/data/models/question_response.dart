@@ -1,123 +1,74 @@
 class LearnRes {
   final String message;
-  final Level level;
+  final List<Question> questions;
 
-  LearnRes({required this.message, required this.level});
+  LearnRes({required this.message, required this.questions});
 
   factory LearnRes.fromJson(Map<String, dynamic> json) {
+    var questionList = json['questions'] as List;
+    List<Question> questions = questionList.map((i) => Question.fromJson(i)).toList();
+
     return LearnRes(
       message: json['message'],
-      level: Level.fromJson(json['level']),
+      questions: questions,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'message': message,
-      'level': level.toJson(),
+      'questions': questions.map((q) => q.toJson()).toList(),
     };
   }
 }
 
-class Level {
-  final String id;
-  final String name;
-  final String category;
-  final List<Questions> questions;
-
-  Level({
-    required this.id,
-    required this.name,
-    required this.category,
-    required this.questions,
-  });
-
-  factory Level.fromJson(Map<String, dynamic> json) {
-    var questionList = json['Questions'] as List;
-    List<Questions> questionsList = questionList.map((i) => Questions.fromJson(i)).toList();
-
-    return Level(
-      id: json['_id'],
-      name: json['name'],
-      category: json['category'],
-      questions: questionsList,
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      '_id': id,
-      'name': name,
-      'category': category,
-      'Questions': questions.map((q) => q.toJson()).toList(),
-    };
-  }
-}
-
-class Questions {
-  final Signs signs;
+class Question {
   final String id;
   final String level;
+  final String signUrl;
+  final String signText;
+  final String type;
   final String question;
   final List<Option> options;
   final String correctOption;
- 
- 
 
-  Questions({
-    required this.signs,
+  Question({
     required this.id,
     required this.level,
+    required this.signUrl,
+    required this.signText,
+    required this.type,
     required this.question,
     required this.options,
     required this.correctOption,
   });
 
-  factory Questions.fromJson(Map<String, dynamic> json) {
+  factory Question.fromJson(Map<String, dynamic> json) {
     var optionsList = json['options'] as List;
     List<Option> options = optionsList.map((i) => Option.fromJson(i)).toList();
 
-    return Questions(
-      signs: Signs.fromJson(json['signs']),
+    return Question(
       id: json['_id'],
       level: json['level'],
+      signUrl: json['sign_Url'].replaceFirst('http://localhost:3000', ''),
+      signText: json['sign_Text'],
+      type: json['type'],
       question: json['question'],
       options: options,
       correctOption: json['correctOption'],
-  
-
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'signs': signs.toJson(),
       '_id': id,
       'level': level,
+      'sign_Url': signUrl,
+      'sign_Text': signText,
+      'type': type,
       'question': question,
       'options': options.map((o) => o.toJson()).toList(),
       'correctOption': correctOption,
-    };
-  }
-}
-
-class Signs {
-  final String gifUrl;
-  final String text;
-
-  Signs({required this.gifUrl, required this.text});
-
-  factory Signs.fromJson(Map<String, dynamic> json) {
-    return Signs(
-      gifUrl: json['gifUrl'],
-      text: json['text'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'gifUrl': gifUrl,
-      'text': text,
     };
   }
 }

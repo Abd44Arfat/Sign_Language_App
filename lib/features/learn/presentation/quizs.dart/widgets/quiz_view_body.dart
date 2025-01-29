@@ -38,7 +38,7 @@ class _QuizViewBodyState extends State<QuizViewBody> {
     });
   }
 
-  void _checkForContinueButton(List<Questions> questions) {
+  void _checkForContinueButton(List<Question> questions) {
     // Ensure we don't access an invalid index
     if (_questionIndex < questions.length) {
       // Check if the current question has no options

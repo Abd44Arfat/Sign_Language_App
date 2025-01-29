@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
 class YouTubeVideoPlayer extends StatefulWidget {
   final String videoId; // YouTube video ID
 
@@ -35,7 +36,8 @@ class _YouTubeVideoPlayerState extends State<YouTubeVideoPlayer> {
     return Center(
       child: YoutubePlayer(
         controller: _controller,
-        showVideoProgressIndicator: true,
+        showVideoProgressIndicator: false,
+        progressIndicatorColor: Colors.transparent, // Set to transparent
       ),
     );
   }

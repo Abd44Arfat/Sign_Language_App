@@ -7,7 +7,7 @@ final class FetchQuestionInitial extends FetchQuestionState {}
 final class FetchQuestionLoading extends FetchQuestionState {}
 final class FetchQuestionSuccess extends FetchQuestionState {
 
-final List<Questions> questions;
+final List<Question> questions;
 
   FetchQuestionSuccess({required this.questions});
 

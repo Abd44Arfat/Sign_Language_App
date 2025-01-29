@@ -8,7 +8,7 @@ final class FetchAvatarSignbeforeQuizLoading extends FetchAvatarSignbeforeQuizSt
 final class FetchAvatarSignbeforeQuizSuccess extends FetchAvatarSignbeforeQuizState {
 
 
-final List<Signs> AvatarList;
+final List<Question> AvatarList;
 
   FetchAvatarSignbeforeQuizSuccess({required this.AvatarList});
 }

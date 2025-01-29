@@ -39,7 +39,7 @@ class GuideBookViewBody extends StatelessWidget {
 }
 
 class GuideBookListViewItem extends StatelessWidget {
-  final Signs sign; // Change to accept Sign object
+  final Question sign; // Change to accept Sign object
 
   const GuideBookListViewItem(
       {super.key, required this.sign}); // Update constructor
@@ -78,7 +78,7 @@ class GuideBookListViewItem extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  sign.text, // Display the sign text
+                  sign.signText, // Display the sign text
                   style: TextStyles.font20WhiteSemiBold,
                 ),
               ),
@@ -101,7 +101,7 @@ class GuideBookListViewItem extends StatelessWidget {
               width: 150,
               height: 150,
               child: NovaMessage(
-                text: sign.text, // Use sign text for NovaMessage
+                text: sign.signText, // Use sign text for NovaMessage
               ),
             ),
           ),
