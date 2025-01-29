@@ -36,7 +36,7 @@ class _YouTubeVideoPlayerState extends State<YouTubeVideoPlayer> {
     return Center(
       child: YoutubePlayer(
         controller: _controller,
-        showVideoProgressIndicator: false,
+        showVideoProgressIndicator: false, // Disable the progress indicator
         progressIndicatorColor: Colors.transparent, // Set to transparent
       ),
     );

@@ -71,11 +71,11 @@ class AppRouter {
   final args = settings.arguments as String?; // Assuming you're passing a String (videoId)
   if (Platform.isIOS) {
     return CupertinoPageRoute(
-      builder: (_) => DictionaryDetailsView(videoId: args ?? ''), // Pass videoId
+      builder: (_) => DictionaryDetailsView(videoId: args ?? '', title: '',), // Pass videoId
     );
   } else {
     return PageNavAnimation.applyPageAnimation(
-      screen: DictionaryDetailsView(videoId: args ?? ''), // Pass videoId
+      screen: DictionaryDetailsView(videoId: args ?? '', title: '',), // Pass videoId
     );
   }
       case Routes.editInfoview:
