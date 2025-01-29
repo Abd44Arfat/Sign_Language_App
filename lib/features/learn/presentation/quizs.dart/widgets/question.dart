@@ -36,7 +36,10 @@ class Question extends StatelessWidget {
             );
           },
         ),
-
+// Text(
+//   gifLink,
+//   style: TextStyles.font14DarkBlueMedium,
+// ),
         Divider(
           color: Theme.of(context).colorScheme.onPrimary,
         ),
