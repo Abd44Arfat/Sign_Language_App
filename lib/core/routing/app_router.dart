@@ -73,10 +73,10 @@ class AppRouter {
       case Routes.DictionaryDetailsView:
         if (Platform.isIOS) {
           return CupertinoPageRoute(
-              builder: (_) => const DictionaryDetailsView());
+              builder: (_) => const DictionaryDetailsView(videoId: '', title: '',));
         } else {
           return PageNavAnimation.applyPageAnimation(
-              screen: const DictionaryDetailsView());
+              screen: const DictionaryDetailsView(videoId: '', title: '',));
         }
 
       case Routes.editInfoview:
