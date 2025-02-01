@@ -29,10 +29,16 @@ class LearnInstructionsWelcomeMsgViewBody extends StatelessWidget {
             ],
           ),
         ),
-        Image.asset(
-          "assets/images/avatar.png",
-          width: screenWidth * 0.90,
-          height: screenHeight * 0.44,
+        Padding(
+          padding: EdgeInsets.only(
+            left: screenWidth * .10,
+          ),
+          child: Image.asset(
+            //"assets/images/static_wave_smile03(1)copy.png",
+            "assets/images/static_wave_smile03(1).png",
+            width: screenWidth * 0.93,
+            height: screenHeight * 0.44,
+          ),
         ),
         //SizedBox(height: screenHeight * 0.05,),
         ContinueButton(

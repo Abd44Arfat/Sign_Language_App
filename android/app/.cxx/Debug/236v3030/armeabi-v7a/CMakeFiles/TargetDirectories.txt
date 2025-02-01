@@ -1,0 +1,2 @@
+/Users/dohaibrahim/AndroidStudioProjects/Sign_Language_App/android/app/.cxx/Debug/236v3030/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/dohaibrahim/AndroidStudioProjects/Sign_Language_App/android/app/.cxx/Debug/236v3030/armeabi-v7a/CMakeFiles/rebuild_cache.dir

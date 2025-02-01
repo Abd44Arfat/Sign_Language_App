@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class SideAvatar extends StatefulWidget {
   const SideAvatar(
-      {super.key, required this.screenWidth, required this.screenHeight});
+      {super.key,
+      required this.screenWidth,
+      required this.screenHeight,
+      required this.imagePath});
   final double screenWidth, screenHeight; // 440  // 956
-
+  final String imagePath;
   @override
   State<SideAvatar> createState() => _SideAvatarState();
 }
@@ -45,18 +48,18 @@ class _SideAvatarState extends State<SideAvatar>
       child: Stack(
         children: [
           Positioned(
-            top: -33,
-            left: -170,
+            top: -9,
+            left: -112,
             child: SlideTransition(
               position: _slideAnimation,
               child: Transform.rotate(
-                angle: 0.7,
+                angle: 0.64,
                 //alignment: Alignment.topLeft,
                 //transform:  Matrix4 .rotationZ(
                 //2.9 / 4,
                 //),
                 child: Image.asset(
-                  "assets/images/avatar.png",
+                  widget.imagePath,
                   width: widget.screenWidth * 0.90,
                   height: widget.screenHeight * 0.44,
                 ),

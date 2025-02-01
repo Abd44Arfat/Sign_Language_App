@@ -18,24 +18,27 @@ class Achievement2 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(
-            height: screenHeight * 0.05,
+            height: screenHeight * 0.07,
           ),
           AvatarWithTxt(
+              imagePath:
+                  "assets/images/static_pointing_fingers.png", // "assets/images/static_point_up1.png",
               screenWidth: screenWidth,
               screenHeight: screenHeight,
               text:
                   'After starting a test,a sign language representation appears, followed by related questions.'),
           Divider(
+            height: 1,
             color: Theme.of(context).colorScheme.onPrimary,
           ),
           const Expanded(child: SizedBox()),
           ContinueButton(
               text: "Start a Test",
-              onPressed: ()async {
+              onPressed: () async {
                 context.pushNamed(Routes.CategoriesView);
 
-                await SharedPrefHelper.setData(SharedPrefKeys.weclometestcomplete, true);
-
+                await SharedPrefHelper.setData(
+                    SharedPrefKeys.weclometestcomplete, true);
               }),
           SizedBox(
             height: screenHeight * 0.10,

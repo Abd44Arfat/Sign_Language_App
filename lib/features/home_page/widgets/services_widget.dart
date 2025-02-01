@@ -49,7 +49,7 @@ class ServicesWidget extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Real-time \nCommunication\nwith feedback',
+                        'Ai Sign\nLanguage\nInterpreter ',
                         style: TextStyles.font16WhiteMedium
                             .copyWith(color: Colors.black),
                       ),
@@ -72,13 +72,16 @@ class ServicesWidget extends StatelessWidget {
             children: [
               FadeInDown(
                 child: ServicesHorizontalWidget(
-                  //background: const Color(0xfffbff8b),
+                  background: const Color(0xfffbff8b),
                   //background: Color(0xffB6D8A0),
-                  background: Color(0xff7BCE7E),
+                  //background: Color(0xff7BCE7E),
                   //background: Color(0xffA3D29C),
                   image: 'assets/images/Calendar.svg',
-                  text: 'Daily Sign\nLanguage words ',
+                  text: 'Daily Sign\nLanguage Practice ',
                   onTap: () async {
+                    await SharedPrefHelper.setData(
+                        SharedPrefKeys.weclometestcomplete,
+                        false); // temporarily
                     // Check if the test has been completed
                     bool testCompleted = await SharedPrefHelper.getBool(
                         SharedPrefKeys.weclometestcomplete);
@@ -88,7 +91,7 @@ class ServicesWidget extends StatelessWidget {
                       context.pushNamed(Routes.CategoriesView);
                     } else {
                       // Navigate to Achievement2 if test is not completed
-                      context.pushNamed(Routes.learnInstructionsLetsStartView);
+                      context.pushNamed(Routes.learnInstructionsWelcomeMsgView);
                     }
                   },
                 ),
@@ -97,7 +100,7 @@ class ServicesWidget extends StatelessWidget {
                 child: ServicesHorizontalWidget(
                   background: const Color(0xffe6effd),
                   image: 'assets/images/book.svg',
-                  text: 'Sign Language\nDictionary',
+                  text: 'Explore\nNew Signs',
                   onTap: () {
                     context.pushNamed(Routes.dictionaryScreen);
                   },
