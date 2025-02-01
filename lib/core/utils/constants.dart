@@ -11,12 +11,13 @@ class ApiUrls {
   static const login = "$baseURL/api/auth/signin";
   static const dictionary = "$baseURL/api/dectionary";
   static const questions = "$baseURL/api/level";
-  static const questions2 = "$baseURL/api/level/67599f435beef41c2da40fb1";
+  static const questions2 = "$baseURL/api/level/679091bac3d8ef98b2e24e90";
   static const EditInfo = "$baseURL/user/67238199dbb8f29faf211d6a";
 
   static const category = "$baseURL/api/category";
 
   static const levels = "$baseURL/api/level";
+  static const changePass = '$baseURL/api/auth/changepassword';
 
   static Future<String> getEditInfoUrl() async {
     final prefs = await SharedPreferences.getInstance();

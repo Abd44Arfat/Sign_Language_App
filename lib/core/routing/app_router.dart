@@ -12,6 +12,8 @@ import 'package:sign_lang_app/features/auth/presentation/manager/signup_cubit/si
 import 'package:sign_lang_app/features/auth/reset_password/presentation/reset_password_view.dart';
 import 'package:sign_lang_app/features/categories/domain/usecase/fetch_categories_usecase.dart';
 import 'package:sign_lang_app/features/categories/presentation/manager/cubit/categories_cubit.dart';
+import 'package:sign_lang_app/features/change_password/change_password_view.dart';
+import 'package:sign_lang_app/features/change_password/presentation/manager/change_password_cubit.dart';
 import 'package:sign_lang_app/features/common_words/presentation/common_words_view.dart';
 
 import 'package:sign_lang_app/features/dictionary/data/dictionary_repo_impl.dart';
@@ -32,6 +34,7 @@ import 'package:sign_lang_app/features/learn/presentation/manager/fetch_question
 import 'package:sign_lang_app/features/levels/domain/usecase/fetch_levels_usecase.dart';
 import 'package:sign_lang_app/features/levels/presentation/levels_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/manager/score_tracker_cubit/score_tracker_cubit.dart';
+import 'package:sign_lang_app/features/learn/presentation/quizs.dart/avatar_sign_before_quiz_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/quiz_view.dart';
 import 'package:sign_lang_app/features/levels/presentation/manager/levels_cubit.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
@@ -68,16 +71,14 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SettingView());
 
       case Routes.DictionaryDetailsView:
-  final args = settings.arguments as String?; // Assuming you're passing a String (videoId)
-  if (Platform.isIOS) {
-    return CupertinoPageRoute(
-      builder: (_) => DictionaryDetailsView(videoId: args ?? '', title: '',), // Pass videoId
-    );
-  } else {
-    return PageNavAnimation.applyPageAnimation(
-      screen: DictionaryDetailsView(videoId: args ?? '', title: '',), // Pass videoId
-    );
-  }
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (_) => const DictionaryDetailsView(videoId: '', title: '',));
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: const DictionaryDetailsView(videoId: '', title: '',));
+        }
+
       case Routes.editInfoview:
         if (Platform.isIOS) {
           return CupertinoPageRoute(
@@ -235,6 +236,26 @@ class AppRouter {
               screen: const ResetPasswordView());
         }
 
+      case Routes.changePassword:
+        if (Platform.isIOS) {
+          return CupertinoPageRoute(
+              builder: (builder) => BlocProvider(
+                    create: (context) => ChangePasswordCubit(
+                      dioClient: DioClient(),
+                    ),
+                    child: const ChangePasswordView(),
+                  ),
+              settings: settings);
+        } else {
+          return PageNavAnimation.applyPageAnimation(
+              screen: BlocProvider(
+                create: (context) => ChangePasswordCubit(
+                  dioClient: DioClient(),
+                ),
+                child: const ChangePasswordView(),
+              ),
+              settings: settings);
+        }
       case Routes.learnInstructionsLetsStartView:
         if (Platform.isIOS) {
           return CupertinoPageRoute(

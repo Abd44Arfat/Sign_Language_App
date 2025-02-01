@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
+import 'package:sign_lang_app/core/routing/routes.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/core/widgets/app_text_form_field.dart';
@@ -79,15 +80,14 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               },
             ),
             SizedBox(
-              height: 20.h,
+              height: 30.h,
             ),
             BlocListener<EditInfoCubit, EditInfoState>(
               listener: (context, state) {
                 if (state is EditInfoSuccess) {
-                  // Navigate to the bottom navigation bar or home screen
+
                   context.pop();
-                  // Navigator.of(context).pushReplacementNamed(Routes
-                  //     .bottomNavigation); // Use the appropriate route name
+
                 }
               },
               child: BlocBuilder<EditInfoCubit, EditInfoState>(
@@ -97,7 +97,6 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
                         formKey.currentState!.save();
-
                         // Update shared preferences
                         await SharedPrefHelper.setData(
                             SharedPrefKeys.username, userName);
@@ -116,6 +115,20 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     btnKey: EditInfoCubit.get(context).btnKey,
                   );
                 },
+              ),
+            ),
+            MaterialButton(
+              padding: EdgeInsets.zero,
+              highlightColor: Colors.transparent, // Color when pressed
+              splashColor: Colors.transparent, // Ripple effect color
+              onPressed: () {
+                context.pushNamed(Routes.changePassword,
+                    arguments: {'userEmail': userEmail});
+              },
+              child: Text(
+                'Change your password',
+                style: TextStyles.font32PrimaryExtraBold
+                    .copyWith(fontWeight: FontWeight.normal, fontSize: 18),
               ),
             ),
           ],

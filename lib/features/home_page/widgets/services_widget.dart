@@ -54,7 +54,7 @@ class ServicesWidget extends StatelessWidget {
                             .copyWith(color: Colors.black),
                       ),
                       StartNowBtn(
-                        backgroundColor: const Color(0xff146ee6),
+                        backgroundColor: Color(0xff146ee6),
                         buttonText: 'Start Now',
                         textStyle: TextStyles.font15BlackMedium.copyWith(
                             color: Colors.white, fontWeight: FontWeight.w600),
@@ -74,7 +74,7 @@ class ServicesWidget extends StatelessWidget {
                 child: ServicesHorizontalWidget(
                   //background: const Color(0xfffbff8b),
                   //background: Color(0xffB6D8A0),
-                  background: const Color(0xff7BCE7E),
+                  background: Color(0xff7BCE7E),
                   //background: Color(0xffA3D29C),
                   image: 'assets/images/Calendar.svg',
                   text: 'Daily Sign\nLanguage words ',

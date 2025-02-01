@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_lang_app/core/theming/styles.dart';
 
 import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/core/utils/extentions.dart';
 import 'package:sign_lang_app/core/utils/sharedprefrence.dart';
 
+import 'package:sign_lang_app/core/widgets/app_text_button.dart';
 import 'package:sign_lang_app/features/setting/presentation/manager/theme_cubit/theme_cubit.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/contact_us.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/custom_setting_app_bar.dart';
 import 'package:sign_lang_app/features/setting/presentation/widgets/setting_item.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/routing/routes.dart';
 
 class SettingViewBody extends StatelessWidget {
