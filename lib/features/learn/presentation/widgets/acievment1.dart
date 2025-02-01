@@ -22,11 +22,13 @@ class Achievement1 extends StatelessWidget {
               height: MediaQuery.sizeOf(context).height * 0.02,
             ),
             AvatarWithTxt(
+              imagePath: "assets/images/static_point_up1.png",
               screenWidth: screenWidth,
               screenHeight: screenHeight,
               text: "Here's what you can achieve!",
             ),
             Divider(
+              height: 0,
               color: Theme.of(context).colorScheme.onPrimary,
             ),
             const CustomListile(

@@ -130,8 +130,8 @@ class _DictionaryListViewState extends State<DictionaryListView> {
             title: widget.dictionary[index].mainTitle,
             isSaved: savedItems
                 .contains(widget.dictionary[index].mainTitle), // Check if saved
-            onSave: () =>
-                _saveItem(widget.dictionary[index]), videoId: widget.dictionary[index].Link, // Pass save action
+            onSave: () => _saveItem(widget.dictionary[index]),
+            videoId: widget.dictionary[index].Link, // Pass save action
           ),
         );
       },

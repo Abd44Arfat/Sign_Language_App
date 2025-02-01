@@ -65,10 +65,11 @@ class GuideBookListViewItem extends StatelessWidget {
 
   final int index; // Add index as a parameter
   final LevelModel levelModel;
-  GuideBookListViewItem(
-      {super.key,
-      required this.index,
-      required this.levelModel}); // Update constructor
+  GuideBookListViewItem({
+    super.key,
+    required this.index,
+    required this.levelModel,
+  }); // Update constructor
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +100,9 @@ class GuideBookListViewItem extends StatelessWidget {
                 child: SizedBox(
                   width: 180,
                   height: 180,
-                  child: Image.asset('assets/images/avatar.png'),
+                  child: Image.asset(index % 2 == 0
+                      ? 'assets/images/static_crossing_hands1_left.png'
+                      : 'assets/images/static_crossing_hands1_right.png'),
                 ),
               ),
 

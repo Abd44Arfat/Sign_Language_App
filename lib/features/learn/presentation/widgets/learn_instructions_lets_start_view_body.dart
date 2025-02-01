@@ -28,7 +28,11 @@ class LearnInstructionsLetsStartViewBody extends StatelessWidget {
             ],
           ),
         ),
-        SideAvatar(screenWidth: screenWidth, screenHeight: screenHeight),
+        SideAvatar(
+          screenWidth: screenWidth,
+          screenHeight: screenHeight,
+          imagePath: "assets/images/static_point_up1.png",
+        ),
         ContinueButton(
           text: 'Continue',
           onPressed: () {

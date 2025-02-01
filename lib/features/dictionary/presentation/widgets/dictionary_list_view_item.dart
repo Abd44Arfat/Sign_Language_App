@@ -29,7 +29,10 @@ class DictionaryListViewItem extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => DictionaryDetailsView(videoId: videoId,title: title,),
+              builder: (context) => DictionaryDetailsView(
+                videoId: videoId,
+                title: title,
+              ),
             ),
           );
         },
