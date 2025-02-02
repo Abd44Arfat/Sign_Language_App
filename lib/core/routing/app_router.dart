@@ -34,7 +34,6 @@ import 'package:sign_lang_app/features/learn/presentation/manager/fetch_question
 import 'package:sign_lang_app/features/levels/domain/usecase/fetch_levels_usecase.dart';
 import 'package:sign_lang_app/features/levels/presentation/levels_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/manager/score_tracker_cubit/score_tracker_cubit.dart';
-import 'package:sign_lang_app/features/learn/presentation/quizs.dart/avatar_sign_before_quiz_view.dart';
 import 'package:sign_lang_app/features/learn/presentation/quizs.dart/quiz_view.dart';
 import 'package:sign_lang_app/features/levels/presentation/manager/levels_cubit.dart';
 import 'package:sign_lang_app/features/onboarding/onboarding_view.dart';
@@ -73,10 +72,16 @@ class AppRouter {
       case Routes.DictionaryDetailsView:
         if (Platform.isIOS) {
           return CupertinoPageRoute(
-              builder: (_) => const DictionaryDetailsView(videoId: '', title: '',));
+              builder: (_) => const DictionaryDetailsView(
+                    videoId: '',
+                    title: '',
+                  ));
         } else {
           return PageNavAnimation.applyPageAnimation(
-              screen: const DictionaryDetailsView(videoId: '', title: '',));
+              screen: const DictionaryDetailsView(
+            videoId: '',
+            title: '',
+          ));
         }
 
       case Routes.editInfoview:

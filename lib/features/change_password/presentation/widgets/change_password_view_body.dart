@@ -1,17 +1,13 @@
-import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
-import 'package:sign_lang_app/core/errors/failure.dart';
 import 'package:sign_lang_app/core/theming/styles.dart';
 import 'package:sign_lang_app/core/utils/constants.dart';
 import 'package:sign_lang_app/core/utils/sharedprefrence.dart';
 import 'package:sign_lang_app/core/widgets/app_text_form_field.dart';
 import 'package:sign_lang_app/features/auth/presentation/widgets/loading_button.dart';
 import 'package:sign_lang_app/features/change_password/data/model/change_password_req.dart';
-import 'package:sign_lang_app/features/change_password/data/model/change_password_response.dart';
-import 'package:sign_lang_app/features/change_password/domain/repo/change_password_repo.dart';
 import 'package:sign_lang_app/features/change_password/domain/use_case/change_password_usecase.dart';
 import 'package:sign_lang_app/features/change_password/presentation/manager/change_password_cubit.dart';
 import 'package:sign_lang_app/features/change_password/presentation/manager/change_password_state.dart';

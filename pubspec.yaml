@@ -1,4 +1,4 @@
-name: sign_lang_app
+name:   sign_lang_app
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -127,10 +127,13 @@ flutter:
   # see https://flutter.dev/to/font-from-package
 flutter_launcher_icons:
   android: "launcher_icon"
+  background_color_ios: "#ffffff"
+  image_path_ios: "assets/images/div.png"
+  remove_alpha_ios: true
   ios: true
-  image_path: "assets/images/Group 36870.png"
+  image_path: "assets/images/div.png"
   min_sdk_android: 21
   adaptive_icon_background: '#056CE5'
-  adaptive_icon_foreground: 'assets/images/Group 36870.png'
+  adaptive_icon_foreground: 'assets/images/div.png'
 
 

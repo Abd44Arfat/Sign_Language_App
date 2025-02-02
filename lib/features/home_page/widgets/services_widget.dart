@@ -79,9 +79,7 @@ class ServicesWidget extends StatelessWidget {
                   image: 'assets/images/Calendar.svg',
                   text: 'Daily Sign\nLanguage Practice ',
                   onTap: () async {
-                    await SharedPrefHelper.setData(
-                        SharedPrefKeys.weclometestcomplete,
-                        false); // temporarily
+                    //await SharedPrefHelper.setData(SharedPrefKeys.weclometestcomplete,false); // temporarily
                     // Check if the test has been completed
                     bool testCompleted = await SharedPrefHelper.getBool(
                         SharedPrefKeys.weclometestcomplete);

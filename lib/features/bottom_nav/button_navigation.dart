@@ -10,8 +10,6 @@ import 'package:sign_lang_app/features/dictionary/domain/usecases/fetch_dictiona
 import 'package:sign_lang_app/features/dictionary/presentation/dictionary_view.dart';
 import 'package:sign_lang_app/features/dictionary/presentation/manager/dictionary_list_cubit/fetch_dictionary_list_cubit.dart';
 
-import 'package:sign_lang_app/features/learn/presentation/learn_instructions_welcome_msg_view.dart';
-
 import '../home_page/home_view.dart';
 import '../setting/presentation/views/setting_view.dart';
 
@@ -48,10 +46,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
       ),
 
       BlocProvider(
-        create: (context) => CategoriesCubit(
-getIt<FetchCategoriesListUsecase>()
-
-        ),
+        create: (context) =>
+            CategoriesCubit(getIt<FetchCategoriesListUsecase>()),
         child: const CategoriesView(),
       ),
 

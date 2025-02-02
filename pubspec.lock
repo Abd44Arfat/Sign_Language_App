@@ -194,12 +194,10 @@ packages:
     dependency: transitive
     description:
       name: collection
-
       sha256: "2f5709ae4d3d59dd8f7cd309b4e023046b57d8a6c82130785d2b0e5868084e76"
       url: "https://pub.dev"
     source: hosted
     version: "1.19.1"
-
   convert:
     dependency: transitive
     description:
@@ -616,22 +614,18 @@ packages:
     dependency: transitive
     description:
       name: leak_tracker
-
       sha256: "6bb818ecbdffe216e81182c2f0714a2e62b593f4a4f13098713ff1685dfb6ab0"
       url: "https://pub.dev"
     source: hosted
     version: "10.0.9"
-
   leak_tracker_flutter_testing:
     dependency: transitive
     description:
       name: leak_tracker_flutter_testing
-
       sha256: f8b613e7e6a13ec79cfdc0e97638fddb3ab848452eff057653abd3edba760573
       url: "https://pub.dev"
     source: hosted
     version: "3.0.9"
-
   leak_tracker_testing:
     dependency: transitive
     description:
@@ -985,12 +979,10 @@ packages:
     dependency: transitive
     description:
       name: stack_trace
-
       sha256: "8b27215b45d22309b5cddda1aa2b19bdfec9df0e765f2de506401c071d38d1b1"
       url: "https://pub.dev"
     source: hosted
     version: "1.12.1"
-
   stream_channel:
     dependency: transitive
     description:
@@ -1011,12 +1003,10 @@ packages:
     dependency: transitive
     description:
       name: string_scanner
-
       sha256: "921cd31725b72fe181906c6a94d987c78e3b98c2e205b397ea399d4054872b43"
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
-
   term_glyph:
     dependency: transitive
     description:
@@ -1029,12 +1019,10 @@ packages:
     dependency: transitive
     description:
       name: test_api
-
       sha256: fb31f383e2ee25fbbfe06b40fe21e1e458d14080e3c67e7ba0acfde4df4e0bbd
       url: "https://pub.dev"
     source: hosted
     version: "0.7.4"
-
   timing:
     dependency: transitive
     description:
@@ -1163,58 +1151,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
-
-  video_player:
-    dependency: "direct main"
-    description:
-      name: video_player
-      sha256: "4a8c3492d734f7c39c2588a3206707a05ee80cef52e8c7f3b2078d430c84bc17"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.9.2"
-  video_player_android:
-    dependency: transitive
-    description:
-      name: video_player_android
-      sha256: "7018dbcb395e2bca0b9a898e73989e67c0c4a5db269528e1b036ca38bcca0d0b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.7.17"
-  video_player_avfoundation:
-    dependency: transitive
-    description:
-      name: video_player_avfoundation
-      sha256: "8a4e73a3faf2b13512978a43cf1cdda66feeeb900a0527f1fbfd7b19cf3458d3"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.6.7"
-  video_player_platform_interface:
-    dependency: transitive
-    description:
-      name: video_player_platform_interface
-      sha256: df534476c341ab2c6a835078066fc681b8265048addd853a1e3c78740316a844
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.3.0"
-  video_player_web:
-    dependency: transitive
-    description:
-      name: video_player_web
-      sha256: "881b375a934d8ebf868c7fb1423b2bfaa393a0a265fa3f733079a86536064a10"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.3.3"
-
   vm_service:
     dependency: transitive
     description:
       name: vm_service
-
       sha256: ddfa8d30d89985b96407efce8acbdd124701f96741f2d981ca860662f1c0dc02
       url: "https://pub.dev"
     source: hosted
     version: "15.0.0"
-
   watcher:
     dependency: transitive
     description:

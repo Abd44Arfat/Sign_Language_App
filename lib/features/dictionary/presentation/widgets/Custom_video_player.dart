@@ -4,7 +4,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class YouTubeVideoPlayer extends StatefulWidget {
   final String videoId; // YouTube video ID
 
-  const YouTubeVideoPlayer({Key? key, required this.videoId}) : super(key: key);
+  const YouTubeVideoPlayer({super.key, required this.videoId});
 
   @override
   _YouTubeVideoPlayerState createState() => _YouTubeVideoPlayerState();
