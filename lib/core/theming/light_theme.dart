@@ -38,7 +38,7 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   ),*/
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.circular(16.0),
-    borderSide: const BorderSide(
+    borderSide: BorderSide(
       // color: colorScheme.primary,
       color: Colors.green,
     ),

@@ -60,9 +60,7 @@ dependencies:
   flutter_3d_controller: ^2.0.2
   page_transition: ^2.1.0
   flutter_native_splash: ^2.4.3
-  youtube_player_flutter: ^9.1.1
-  flutter_inappwebview: ^6.0.0
-  
+  youtube_player_flutter: ^8.0.0
 
 
   
@@ -98,6 +96,7 @@ flutter:
     - assets/icons/
     - assets/animations/
     - assets/3d_models/
+    - assets/videos/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -134,4 +133,4 @@ flutter_launcher_icons:
   adaptive_icon_background: '#056CE5'
   adaptive_icon_foreground: 'assets/images/Group 36870.png'
 
- 
+
