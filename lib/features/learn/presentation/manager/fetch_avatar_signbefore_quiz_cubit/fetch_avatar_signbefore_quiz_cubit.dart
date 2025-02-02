@@ -22,21 +22,21 @@ class FetchAvatarSignbeforeQuizCubit extends Cubit<FetchAvatarSignbeforeQuizStat
       },
       (learnRes) {
         // Assuming learnRes is of type LearnRes
-        final questionsList = learnRes.questions; // Extracting questions from the level
+        final questionsList = learnRes; // Extracting questions from the level
         
         // Extracting signs from the questions
-        final List<Question> signData = questionsList.map((question) {
-          return Question(
+      final List<Question> signData = questionsList.map((question) {
+        return Question(
             question: question.question,
-            options: question.options, id: question.id,
-            correctOption: question.correctOption, level: question.level, signUrl:  question.signUrl
-            , signText: question.signText, type: question.type,
-            
-              
-              
-
-          );
-        }).toList();
+            options: question.options,
+            id: question.id,
+            correctOption: question.correctOption,
+            level: question.level,
+            signUrl: question.signUrl,
+            signText: question.signText,
+            type: question.type,
+        );
+    }).toList();
 
         emit(FetchAvatarSignbeforeQuizSuccess(AvatarList: signData));
       },

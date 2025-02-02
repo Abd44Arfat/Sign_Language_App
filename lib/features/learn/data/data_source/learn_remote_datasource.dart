@@ -6,7 +6,7 @@ import 'package:sign_lang_app/features/learn/data/models/question_response.dart'
 
 abstract class LearnRemoteDataSource {
   Future<Either<Failure, List<Question>>> fetchQuestionList(String id);
-  Future<Either<Failure, LearnRes>> avatarSignBeforeQuizList(String id);
+  Future<Either<Failure, List<Question>>> avatarSignBeforeQuizList(String id);
 }
 
 class LearnRemoteDataSourceImpl extends LearnRemoteDataSource {
@@ -29,7 +29,7 @@ class LearnRemoteDataSourceImpl extends LearnRemoteDataSource {
   }
 
   @override
-  Future<Either<Failure, LearnRes>> avatarSignBeforeQuizList(String id) async {
+  Future<Either<Failure, List<Question>>> avatarSignBeforeQuizList(String id) async {
     try {
       var response = await dioClient.get('${ApiUrls.questions}/$id');
       var questions = (response.data['level']['Questions'] as List)
@@ -37,14 +37,8 @@ class LearnRemoteDataSourceImpl extends LearnRemoteDataSource {
           .toList();
 
       // Constructing the LearnRes object
- 
 
-      var learnRes = LearnRes(
-        message: response.data['message'], questions: response.data['questions'], 
-      
-      );
-
-      return Right(learnRes);
+      return Right(questions);
     } catch (e) {
       return Left(Failure(e.toString()));
     }

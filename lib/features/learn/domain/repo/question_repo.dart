@@ -4,5 +4,5 @@ import 'package:sign_lang_app/features/learn/data/models/question_response.dart'
 
 abstract class LearnRepo {
   Future<Either<Failure, List<Question>>> fetchQuestionsList(String levelId);
-  Future<Either<Failure, LearnRes>> avatarSignBeforeQuiz(String levelId);
+  Future<Either<Failure, List<Question>>> avatarSignBeforeQuiz(String levelId);
 }
