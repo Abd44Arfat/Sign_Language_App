@@ -21,7 +21,7 @@ class LearnRepoImpl extends LearnRepo {
   }
   
   @override
-  Future<Either<Failure, LearnRes>> avatarSignBeforeQuiz(String levelId) async {
+  Future<Either<Failure, List<Question>>> avatarSignBeforeQuiz(String levelId) async {
     try {
       final result = await getIt<LearnRemoteDataSource>().avatarSignBeforeQuizList(levelId);
 

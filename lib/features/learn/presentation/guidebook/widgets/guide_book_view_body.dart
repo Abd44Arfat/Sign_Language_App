@@ -14,7 +14,7 @@ class GuideBookViewBody extends StatelessWidget {
 
     context
         .read<FetchAvatarSignbeforeQuizCubit>()
-        .fetchAvatarSignBeforeQuerList("67599f435beef41c2da40fb1");
+        .fetchAvatarSignBeforeQuerList("679091bac3d8ef98b2e24e90");
 
     return BlocBuilder<FetchAvatarSignbeforeQuizCubit,
         FetchAvatarSignbeforeQuizState>(
