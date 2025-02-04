@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sign_lang_app/core/di/dependency_injection.dart';
@@ -13,7 +14,8 @@ import 'package:sign_lang_app/features/dictionary/domain/entities/dictionary_ent
 import 'package:sign_lang_app/features/setting/presentation/manager/theme_cubit/theme_cubit.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final widgetsFlutterBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsFlutterBinding);
   // Retrieve user token from SharedPreferences
   String? userToken =
       await SharedPrefHelper.getString(SharedPrefKeys.userToken);
@@ -31,10 +33,10 @@ void main() async {
   await Hive.openBox<DictionaryEntity>(KSavedwordsBox);
   Bloc.observer = SimpleBlocObserver();
   setupServiceLocator();
-
   runApp(MyApp(
       isLoggedInUser: isLoggedInUser,
       isOnboardingCompleted: isOnboardingCompleted));
+  FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {
